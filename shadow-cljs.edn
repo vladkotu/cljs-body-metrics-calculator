@@ -1,0 +1,19 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/dev"
+  "src/main"
+  "src/test"]
+
+ :dependencies
+ [[cider/cider-nrepl "0.22.0-beta8"]
+  [reagent "0.8.1"]]
+
+ :nrepl {:port 8202}
+
+ :dev-http {3000 "public"}
+
+ :builds
+ {:dev
+  {:target :browser
+   :modules {:main {:init-fn body-index-calculator.core/init}}
+   :devtools {:after-load body-index-calculator.core/init}}}}
