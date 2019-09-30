@@ -8,10 +8,10 @@
     "watch": "shadow-cljs watch dev"
   },
   "devDependencies": {
-    "shadow-cljs": "2.8.40"
+    "shadow-cljs": "2.8.40",
+    "brunch": "^2.10.17"
   },
   "dependencies": {
-    "brunch": "^2.10.17",
     "create-react-class": "^15.6.3",
     "pure-css": "^1.0.4",
     "react": "^16.8.6",
