@@ -1,9 +1,10 @@
-node_modules/
-public
+/node_modules
+/public
 
 /target
 /checkouts
 /src/gen
+
 
 pom.xml
 pom.xml.asc
