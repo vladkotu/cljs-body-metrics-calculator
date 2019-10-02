@@ -38,15 +38,19 @@
         {:item {:width "100%"
                 :bottom "0"
                 :position "absolute"}}
-        Grid) {:item true} [footer]])
+        Grid) {:item true} [footer-content]])
+
+(defn container [& children]
+  [:> (with-styles-react
+        {:root {:min-height "100vh"}}
+        Grid) {:container true
+               :direction "column"}
+   (into [:<>] children)])
 
 (defn App [_]
   [:<>
    [:> CssBaseline]
-   [:> (with-styles-react
-         {:root {:min-height "100vh"}}
-         Grid) {:container true
-                :direction "column"}
+   [container
     [header]
     [:> Grid {:item true} [:div {:class "content"} "Content"]]
     [footer]]])
