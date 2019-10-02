@@ -17,11 +17,8 @@
 (defn header-content []
   [:> AppBar {:position "static" :color "primary"}
    [:> Toolbar
-    [(with-styles
-       {:title {:color "#CCC"}}
-       (fn [{:keys [classes]}]
-         [h5 {:class (:title classes)}
-          "Body Indexes Calculator"]))]]])
+    [h5 {:style {:color "red"}}
+     "Body Indexes Calculator"]]])
 
 (defn header []
   [:> Grid {:item true} [header-content]])
