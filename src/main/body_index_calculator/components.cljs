@@ -1,10 +1,9 @@
 (ns body-index-calculator.components
   (:require  ["@material-ui/core" :refer [Typography]]))
 
-
 (defn h* [n]
-  (fn [& children] [:> Typography {:variant (str "h" n)}
-                    children]))
+  (fn [props & children] [:> Typography (merge {:variant (str "h" n)} props)
+                          children]))
 
 (def h1 (h* 1))
 (def h2 (h* 2))

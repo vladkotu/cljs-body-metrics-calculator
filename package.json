@@ -8,10 +8,11 @@
     "watch": "shadow-cljs watch dev"
   },
   "devDependencies": {
-    "shadow-cljs": "2.8.40",
+    "shadow-cljs": "2.8.59",
     "brunch": "^2.10.17"
   },
   "dependencies": {
+    "@material-ui/core": "^4.5.0",
     "create-react-class": "^15.6.3",
     "pure-css": "^1.0.4",
     "react": "^16.8.6",

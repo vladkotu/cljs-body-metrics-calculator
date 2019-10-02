@@ -1,38 +1,56 @@
 (ns body-index-calculator.core
   (:require
-   [reagent.core :as reagent]
+   [reagent.core :as r]
    [body-index-calculator.components :refer [h5]]
-   ["@material-ui/core" :refer [CssBaseline
-                                AppBar
-                                Toolbar
-                                Typography
+   [body-index-calculator.with-styles :refer [with-styles with-styles-react]]
+   ["@material-ui/styles" :refer [withStyles]]
+   ["@material-ui/core" :refer [AppBar
                                 BottomNavigation
                                 BottomNavigationAction
-                                Grid]]))
+                                CssBaseline
+                                createMuiTheme
+                                Grid
+                                ThemeProvider
+                                Toolbar
+                                Typography]]))
 
-(defn footer []
+(defn header-content []
+  [:> AppBar {:position "static" :color "primary"}
+   [:> Toolbar
+    [(with-styles
+       {:title {:color "#CCC"}}
+       (fn [{:keys [classes]}]
+         [h5 {:class (:title classes)}
+          "Body Indexes Calculator"]))]]])
+
+(defn header []
+  [:> Grid {:item true} [header-content]])
+
+(defn footer-content []
   [:> BottomNavigation {:value 0
                         :showLabels true}
    [:> BottomNavigationAction {:label "Copy"}]
    [:> BottomNavigationAction {:label "Authors"}]
    [:> BottomNavigationAction {:label "etc..."}]])
 
-(defn header []
-  [:> AppBar {:position "static" :color "primary"}
-   [:> Toolbar
-    [h5 "Body Indexes Calculator"]]])
+(defn footer []
+  [:> (with-styles-react
+        {:item {:width "100%"
+                :bottom "0"
+                :position "absolute"}}
+        Grid) {:item true} [footer]])
 
-(defn app []
+(defn App [_]
   [:<>
    [:> CssBaseline]
-   [:> Grid {:container true
-             :direction :column
-             :spacing 4}
-    [:> Grid {:item true} [header]]
-    [:> Grid {:item true} [:div.content "Content"]]
-    [:> Grid {:item true} [footer]]]])
+   [:> (with-styles-react
+         {:root {:min-height "100vh"}}
+         Grid) {:container true
+                :direction "column"}
+    [header]
+    [:> Grid {:item true} [:div {:class "content"} "Content"]]
+    [footer]]])
 
 (defn init []
-  (reagent/render [app]
-                  (js/document.getElementById "core"))
-  (println "App init done"))
+  (r/render [App] (js/document.getElementById "core"))
+  (println "App init"))

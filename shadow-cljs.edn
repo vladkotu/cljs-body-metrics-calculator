@@ -5,8 +5,11 @@
   "src/test"]
 
  :dependencies
- [[cider/cider-nrepl "0.22.0-beta8"]
-  [reagent "0.8.1"]]
+ [[re-frame "0.10.6" :exclusions [reagent]]
+  [reagent "0.8.1" :exclusions [cljsjs/react
+                                cljsjs/react-dom
+                                cljsjs/react-dom-server
+                                cljsjs/create-react-class]]]
 
  :nrepl {:port 8202}
 
@@ -14,7 +17,7 @@
 
  :builds
  {:dev
-  {:output-dir "public/"
+  {:output-dir "public/js"
    :target :browser
    :modules {:main {:init-fn body-index-calculator.core/init}}
    :devtools {:after-load body-index-calculator.core/init}}}}
