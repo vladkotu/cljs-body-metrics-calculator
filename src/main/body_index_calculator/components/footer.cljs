@@ -14,16 +14,15 @@
 (defn footer-content []
   [:> BottomNavigation {:value 0
                         :showLabels true}
-   [:> BottomNavigationAction {:label "Copy"
-                               :icon copy-icon}]
-   [:> BottomNavigationAction {:label "Authors"}]
-   [:> BottomNavigationAction {:label "etc..."}]])
+   (for [thing [{:label "Copy" :icon copy-icon}
+                {:label "Authors"}
+                {:label "etc..."}]]
+     ^{:key (:label thing)}
+     [:> BottomNavigationAction thing])])
 
 (defn footer []
   [:> (with-styles-react
         {:item {:width "100%"
                 :bottom "0"
                 :position "absolute"}}
-        Grid) {:item true} [:<>
-
-                            [footer-content]]])
+        Grid) {:item true} [footer-content]])
