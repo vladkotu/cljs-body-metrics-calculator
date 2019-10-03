@@ -1,8 +1,7 @@
 (ns body-index-calculator.components.footer
   (:require
    [reagent.core :as r]
-   [body-index-calculator.with-styles :refer [with-styles-react]]
-   [body-index-calculator.mui-theme :refer [primary-color]]
+   [body-index-calculator.helpers :refer [primary-color with-styles-react]]
    ["@material-ui/icons" :refer [CopyrightTwoTone]]
    ["@material-ui/core" :refer [BottomNavigation
                                 BottomNavigationAction

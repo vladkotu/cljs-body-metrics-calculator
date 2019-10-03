@@ -1,11 +1,11 @@
 (ns body-index-calculator.core
   (:require
    [reagent.core :as r]
-   [body-index-calculator.mui-theme :refer [js-theme]]
+   [body-index-calculator.helpers :refer [js-theme with-styles-react]]
    [body-index-calculator.components.header :refer [header]]
    [body-index-calculator.components.footer :refer [footer]]
    [body-index-calculator.components.headings :refer [h5]]
-   [body-index-calculator.with-styles :refer [with-styles with-styles-react]]
+   [body-index-calculator.components.input :refer [input]]
    ["@material-ui/styles" :refer [withStyles ThemeProvider]]
    ["@material-ui/core" :refer [AppBar
                                 BottomNavigation
@@ -28,7 +28,7 @@
    [:> CssBaseline]
    [container
     [header]
-    [:> Grid {:item true} [:div {:class "content"} "Content"]]
+    [:> Grid {:item true} [input]]
     [footer]]])
 
 (defn app-with-theme []
