@@ -9,8 +9,7 @@
 (defn header-content []
   [:> AppBar {:position "static" :color "primary"}
    [:> Toolbar
-    [h5 {:style {:color "red"}}
-     "Body Indexes Calculator"]]])
+    [h5 {} "Body Indexes Calculator"]]])
 
 (defn header []
   [:> Grid {:item true} [header-content]])

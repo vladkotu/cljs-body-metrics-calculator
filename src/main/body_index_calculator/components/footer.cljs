@@ -1,14 +1,21 @@
 (ns body-index-calculator.components.footer
   (:require
+   [reagent.core :as r]
    [body-index-calculator.with-styles :refer [with-styles-react]]
+   [body-index-calculator.mui-theme :refer [primary-color]]
+   ["@material-ui/icons" :refer [CopyrightTwoTone]]
    ["@material-ui/core" :refer [BottomNavigation
                                 BottomNavigationAction
                                 Grid]]))
 
+(def copy-icon (r/as-element
+                [:> CopyrightTwoTone {:htmlColor (primary-color)}]))
+
 (defn footer-content []
   [:> BottomNavigation {:value 0
                         :showLabels true}
-   [:> BottomNavigationAction {:label "Copy"}]
+   [:> BottomNavigationAction {:label "Copy"
+                               :icon copy-icon}]
    [:> BottomNavigationAction {:label "Authors"}]
    [:> BottomNavigationAction {:label "etc..."}]])
 
@@ -17,4 +24,6 @@
         {:item {:width "100%"
                 :bottom "0"
                 :position "absolute"}}
-        Grid) {:item true} [footer-content]])
+        Grid) {:item true} [:<>
+
+                            [footer-content]]])
