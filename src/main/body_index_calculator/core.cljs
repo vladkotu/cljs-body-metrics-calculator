@@ -1,7 +1,9 @@
 (ns body-index-calculator.core
   (:require
    [reagent.core :as r]
-   [body-index-calculator.components :refer [h5]]
+   [body-index-calculator.components.header :refer [header]]
+   [body-index-calculator.components.footer :refer [footer]]
+   [body-index-calculator.components.headings :refer [h5]]
    [body-index-calculator.with-styles :refer [with-styles with-styles-react]]
    ["@material-ui/styles" :refer [withStyles]]
    ["@material-ui/core" :refer [AppBar
@@ -13,29 +15,6 @@
                                 ThemeProvider
                                 Toolbar
                                 Typography]]))
-
-(defn header-content []
-  [:> AppBar {:position "static" :color "primary"}
-   [:> Toolbar
-    [h5 {:style {:color "red"}}
-     "Body Indexes Calculator"]]])
-
-(defn header []
-  [:> Grid {:item true} [header-content]])
-
-(defn footer-content []
-  [:> BottomNavigation {:value 0
-                        :showLabels true}
-   [:> BottomNavigationAction {:label "Copy"}]
-   [:> BottomNavigationAction {:label "Authors"}]
-   [:> BottomNavigationAction {:label "etc..."}]])
-
-(defn footer []
-  [:> (with-styles-react
-        {:item {:width "100%"
-                :bottom "0"
-                :position "absolute"}}
-        Grid) {:item true} [footer-content]])
 
 (defn container [& children]
   [:> (with-styles-react
