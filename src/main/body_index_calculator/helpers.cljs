@@ -1,8 +1,6 @@
 (ns body-index-calculator.helpers
   (:require [goog.object :as gobj]
             [reagent.core :as r]
-            #_["@material-ui/styles" :refer [withStyles]]
-
             ["@material-ui/core/styles" :refer [withStyles createMuiTheme]]
             ["@material-ui/core/colors" :refer [deepOrange amber]]))
 
@@ -57,6 +55,10 @@
 
 (defn secondary-color []
   (get-in theme [:palette :secondary :main]))
+
+(defn spacing
+  ([n]   (.spacing js-theme n))
+  ([n m] (.spacing js-theme n m)))
 
 (defn with-styles
   " With-styles wraps `@material-ui.styles/withStyles` HoC

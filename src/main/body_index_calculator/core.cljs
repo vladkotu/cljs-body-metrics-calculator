@@ -1,18 +1,18 @@
 (ns body-index-calculator.core
   (:require
    [reagent.core :as r]
-   [body-index-calculator.helpers :refer [js-theme with-styles-react]]
+   [body-index-calculator.helpers :refer [js-theme with-styles-react spacing]]
    [body-index-calculator.components.header :refer [header]]
    [body-index-calculator.components.footer :refer [footer]]
    [body-index-calculator.components.headings :refer [h5]]
-   [body-index-calculator.components.input :refer [input]]
+   [body-index-calculator.form :refer [form]]
    ["@material-ui/styles" :refer [withStyles ThemeProvider]]
    ["@material-ui/core" :refer [AppBar
                                 BottomNavigation
                                 BottomNavigationAction
                                 CssBaseline
                                 Grid
-                                ;; ThemeProvider
+                                Paper
                                 Toolbar
                                 Typography]]))
 
@@ -23,12 +23,19 @@
                :direction "column"}
    (into [:<>] children)])
 
+(defn content []
+  [:> Grid {:item true}
+   [:> (with-styles-react
+         {:root {:margin  (spacing 2 3)
+                 :padding (spacing 2 2)}}
+         Paper) [form]]])
+
 (defn App [_]
   [:<>
    [:> CssBaseline]
    [container
     [header]
-    [:> Grid {:item true} [input]]
+    [content]
     [footer]]])
 
 (defn app-with-theme []
