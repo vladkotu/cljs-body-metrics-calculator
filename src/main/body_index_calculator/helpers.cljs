@@ -2,7 +2,7 @@
   (:require [goog.object :as gobj]
             [reagent.core :as r]
             ["@material-ui/core/styles" :refer [withStyles createMuiTheme]]
-            ["@material-ui/core/colors" :refer [deepOrange amber]]))
+            ["@material-ui/core/colors" :refer [lightBlue cyan deepOrange amber]]))
 
 (defn to-clj
   "simplified js->clj for JSON data, :key-fn default to keyword"
@@ -45,8 +45,10 @@
       (js/JSON.stringify)))
 
 (def js-theme (createMuiTheme
-               (clj->js {:palette {:primary deepOrange
-                                   :secondary amber}})))
+               (clj->js {:palette
+                         {:type "dark"
+                          :primary lightBlue
+                          :secondary cyan}})))
 
 (def theme (to-clj js-theme))
 

@@ -7,7 +7,8 @@
                                 Toolbar]]))
 
 (defn header-content []
-  [:> AppBar {:position "static" :color "primary"}
+  [:> AppBar {:position "static"
+              :style {:background "#006064"}}
    [:> Toolbar
     [h5 {} "Body Indexes Calculator"]]])
 
