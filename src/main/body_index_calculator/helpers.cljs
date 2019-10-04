@@ -4,6 +4,7 @@
             ["@material-ui/core/styles" :refer [withStyles createMuiTheme]]
             ["@material-ui/core/colors" :refer [lightBlue cyan deepOrange amber]]))
 
+
 (defn to-clj
   "simplified js->clj for JSON data, :key-fn default to keyword"
   ([x] (to-clj x {}))
@@ -44,24 +45,6 @@
   (-> (clj->js obj)
       (js/JSON.stringify)))
 
-(def js-theme (createMuiTheme
-               (clj->js {:palette
-                         {:type "dark"
-                          :primary lightBlue
-                          :secondary cyan}})))
-
-(def theme (to-clj js-theme))
-
-(defn primary-color []
-  (get-in theme [:palette :primary :main]))
-
-(defn secondary-color []
-  (get-in theme [:palette :secondary :main]))
-
-(defn spacing
-  ([n]   (.spacing js-theme n))
-  ([n m] (.spacing js-theme n m)))
-
 (defn with-styles
   " With-styles wraps `@material-ui.styles/withStyles` HoC
   so that it is easier and convenient to use for reagent components.
@@ -93,3 +76,5 @@
 (defn with-styles-react [styles react-comp]
   (let [hoc (withStyles (clj->js styles))]
     (hoc react-comp)))
+
+(defn evalue [ev] (-> ev .-target .-value))
