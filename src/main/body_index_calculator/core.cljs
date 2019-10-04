@@ -4,17 +4,11 @@
             [body-index-calculator.mui-theme :refer [js-theme spacing]]
             [body-index-calculator.components.header   :refer [header]]
             [body-index-calculator.components.footer   :refer [footer]]
-            [body-index-calculator.components.headings :refer [h5]]
             [body-index-calculator.components.form     :refer [form]]
-            ["@material-ui/styles" :refer [withStyles ThemeProvider]]
-            ["@material-ui/core" :refer [AppBar
-                                         BottomNavigation
-                                         BottomNavigationAction
-                                         CssBaseline
+            ["@material-ui/styles" :refer [ThemeProvider]]
+            ["@material-ui/core" :refer [CssBaseline
                                          Grid
-                                         Paper
-                                         Toolbar
-                                         Typography]]))
+                                         Paper]]))
 
 (defn container [& children]
   [:> (with-styles-react

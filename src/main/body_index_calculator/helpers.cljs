@@ -1,9 +1,7 @@
 (ns body-index-calculator.helpers
-  (:require [goog.object :as gobj]
+  (:require [goog.object  :as gobj]
             [reagent.core :as r]
-            ["@material-ui/core/styles" :refer [withStyles createMuiTheme]]
-            ["@material-ui/core/colors" :refer [lightBlue cyan deepOrange amber]]))
-
+            ["@material-ui/core/styles" :refer [withStyles]]))
 
 (defn to-clj
   "simplified js->clj for JSON data, :key-fn default to keyword"

@@ -1,26 +1,17 @@
 (ns body-index-calculator.components.input
   (:require [reagent.core :as r]
-            [body-index-calculator.config    :refer [form-control-props]]
-            [body-index-calculator.helpers   :refer [evalue with-styles-react]]
-            [body-index-calculator.components.headings :refer [h5]]
+            [body-index-calculator.config  :refer [form-control-props]]
+            [body-index-calculator.helpers :refer [evalue]]
             ["@material-ui/core" :refer [FormControl
-                                         FormControlLabel
                                          FormLabel
                                          InputAdornment
-                                         MenuItem
-                                         OutlinedInput
-                                         Radio
-                                         RadioGroup
-                                         Select
-                                         TextField]]))
+                                         OutlinedInput]]))
 
 (defn input [{:keys [on-change
                      units
                      label
-                     value
-                     required]
-              :or   {value ""
-                     required false}}]
+                     value]
+              :or   {value ""}}]
   (let [id (str "intput-" (.toLowerCase label))]
     [:> FormControl form-control-props
      [:> FormLabel {:component "label"

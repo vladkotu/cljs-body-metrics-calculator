@@ -2,7 +2,6 @@
   (:require
    [body-index-calculator.components.headings :refer [h5]]
    ["@material-ui/core" :refer [AppBar
-                                CssBaseline
                                 Grid
                                 Toolbar]]))
 

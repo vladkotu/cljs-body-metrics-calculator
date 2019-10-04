@@ -1,9 +1,7 @@
 (ns body-index-calculator.mui-theme
-  (:require [goog.object :as gobj]
-            [reagent.core :as r]
-            [body-index-calculator.helpers :refer [to-clj]]
-            ["@material-ui/core/styles" :refer [withStyles createMuiTheme]]
-            ["@material-ui/core/colors" :refer [lightBlue cyan deepOrange amber]]))
+  (:require [body-index-calculator.helpers :refer [to-clj]]
+            ["@material-ui/core/styles"    :refer [createMuiTheme]]
+            ["@material-ui/core/colors"    :refer [lightBlue cyan]]))
 
 (def js-theme (createMuiTheme
                (clj->js {:palette
