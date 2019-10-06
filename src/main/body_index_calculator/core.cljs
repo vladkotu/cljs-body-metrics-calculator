@@ -16,7 +16,8 @@
            :height {:visited? false
                     :value ""}}}))
 
-(rf/reg-event-db :gender (fn [db [_ gender]] (assoc-in db [:form :gender] gender)))
+(rf/reg-event-db :gender (fn [db [_ gender]] (assoc-in db [:form :gender]
+                                                       (update gender :value keyword))))
 (rf/reg-event-db :age    (fn [db [_ age]]    (assoc-in db [:form :age] age)))
 (rf/reg-event-db :weight (fn [db [_ weight]] (assoc-in db [:form :weight] weight)))
 (rf/reg-event-db :height (fn [db [_ height]] (assoc-in db [:form :height] height)))
