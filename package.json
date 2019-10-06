@@ -5,11 +5,14 @@
   "scripts": {
     "css": "brunch build",
     "watch-assets": "brunch watch",
-    "watch": "shadow-cljs watch dev"
+    "watch": "shadow-cljs watch body-index-calculator"
   },
   "devDependencies": {
     "shadow-cljs": "2.8.59",
-    "brunch": "^2.10.17"
+    "brunch": "^2.10.17",
+    "highlight.js": "9.15.8",
+    "react-flip-move": "3.0.3",
+    "react-highlight.js": "1.0.7"
   },
   "dependencies": {
     "@material-ui/core": "^4.5.0",
