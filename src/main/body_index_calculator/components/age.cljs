@@ -1,5 +1,5 @@
 (ns body-index-calculator.components.age
-  (:require [body-index-calculator.config    :refer [form-control-props]]
+  (:require [body-index-calculator.components.styles :refer [form-control-props form-label-styles]]
             [body-index-calculator.helpers   :refer [evalue]]
             ["@material-ui/core" :refer [FormControl
                                          FormLabel
@@ -10,7 +10,9 @@
   (let [a-ages (range 12 (inc 99))
         default-age (nth a-ages (Math/floor (/ (count a-ages) 4)))]
     [:> FormControl form-control-props
-     [:> FormLabel {:component "label" :html-for "age-native"}
+     [:> FormLabel {:component "label"
+                    :html-for "age-native"
+                    :style form-label-styles}
       "Age"]
      [:> Select {:value (or value default-age)
                  :input-props {:name "age" :id "age-native"}

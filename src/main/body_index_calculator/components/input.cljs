@@ -1,6 +1,6 @@
 (ns body-index-calculator.components.input
   (:require [reagent.core :as r]
-            [body-index-calculator.config  :refer [form-control-props]]
+            [body-index-calculator.components.styles :refer [form-control-props form-label-styles]]
             [body-index-calculator.helpers :refer [evalue]]
             ["@material-ui/core" :refer [FormControl
                                          FormLabel
@@ -15,7 +15,9 @@
   (let [id (str "intput-" (.toLowerCase label))]
     [:> FormControl form-control-props
      [:> FormLabel {:component "label"
-                    :html-for id} label]
+                    :html-for id
+                    :style form-label-styles}
+      label]
      [:> OutlinedInput {:id id
                         :value value
                         :on-change #(on-change (evalue %))

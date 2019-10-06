@@ -1,6 +1,6 @@
 (ns body-index-calculator.components.gender
   (:require [reagent.core :as r]
-            [body-index-calculator.config  :refer [form-control-props]]
+            [body-index-calculator.components.styles :refer [form-control-props]]
             [body-index-calculator.helpers :refer [evalue]]
             ["@material-ui/core" :refer [FormControl
                                          FormControlLabel
