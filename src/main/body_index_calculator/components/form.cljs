@@ -1,7 +1,8 @@
 (ns body-index-calculator.components.form
   (:require [body-index-calculator.components.gender :refer [gender]]
-            [body-index-calculator.components.input  :refer [input]]
-            [body-index-calculator.components.age    :refer [age]]))
+            [body-index-calculator.components.age    :refer [age]]
+            [body-index-calculator.components.weight :refer [weight]]
+            [body-index-calculator.components.height :refer [height]]))
 
 (defn form []
   [:form {:name "index-calculator"
@@ -9,13 +10,5 @@
           :auto-complete "off"}
    [gender]
    [age]
-   [input {:label "Your Weight"
-           :value ""
-           :required true
-           :units "Kg"
-           :on-change #(prn %)}]
-   [input {:label "Your Height"
-           :value ""
-           :required true
-           :units "Sm"
-           :on-change #(prn %)}]])
+   [weight]
+   [height]])

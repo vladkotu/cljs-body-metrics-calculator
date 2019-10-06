@@ -1,41 +1,38 @@
 (ns body-index-calculator.core
   (:require [reagent.core :as r]
-            [body-index-calculator.helpers   :refer [with-styles-react]]
-            [body-index-calculator.mui-theme :refer [js-theme spacing]]
-            [body-index-calculator.components.header   :refer [header]]
-            [body-index-calculator.components.footer   :refer [footer]]
-            [body-index-calculator.components.form     :refer [form]]
-            ["@material-ui/styles" :refer [ThemeProvider]]
-            ["@material-ui/core" :refer [CssBaseline
-                                         Grid
-                                         Paper]]))
+            [re-frame.core :as rf]
+            [body-index-calculator.components.app :refer [app]]
+            [body-index-calculator.config :refer [config]]))
 
-(defn container [& children]
-  [:> (with-styles-react
-        {:root {:min-height "100vh"}}
-        Grid) {:container true
-               :direction "column"}
-   (into [:<>] children)])
+(rf/reg-event-db
+ :init
+ (fn [_ _]
+   {:form {:gender {:visited? false
+                    :value (second (:genres config))}
+           :age    {:visited? false
+                    :value (:default-age config)}
+           :weight {:visited? false
+                    :value ""}
+           :height {:visited? false
+                    :value ""}}}))
 
-(defn content []
-  [:> Grid {:item true}
-   [:> (with-styles-react
-         {:root {:margin  (spacing 2 3)
-                 :padding (spacing 2 2)}}
-         Paper) [form]]])
+(rf/reg-event-db :gender (fn [db [_ gender]] (assoc-in db [:form :gender] gender)))
+(rf/reg-event-db :age    (fn [db [_ age]]    (assoc-in db [:form :age] age)))
+(rf/reg-event-db :weight (fn [db [_ weight]] (assoc-in db [:form :weight] weight)))
+(rf/reg-event-db :height (fn [db [_ height]] (assoc-in db [:form :height] height)))
 
-(defn App [_]
-  [:<>
-   [:> CssBaseline]
-   [container
-    [header]
-    [content]
-    [footer]]])
+(rf/reg-sub :form               (fn [db _] (:form db)))
+(rf/reg-sub :gender :<- [:form] (fn [db _] (:gender db)))
+(rf/reg-sub :age    :<- [:form] (fn [db _] (:age db)))
+(rf/reg-sub :weight :<- [:form] (fn [db _] (:weight db)))
+(rf/reg-sub :height :<- [:form] (fn [db _] (:height db)))
 
-(defn app-with-theme []
-  [:> ThemeProvider {:theme js-theme}
-   [App]])
+(defn render []
+  (r/render [app] (js/document.getElementById "core")))
 
 (defn init []
-  (r/render [app-with-theme] (js/document.getElementById "core"))
-  (println "App init"))
+  (prn "start initialisation")
+  (rf/dispatch-sync [:init])
+  (prn "db initialisation finished")
+  (render)
+  (println "app rendered"))
