@@ -2,7 +2,7 @@
   (:require
    [re-frame.core :as rf]
    [body-index-calculator.lib.body-mass-index
-    :refer [classify-body-mass-person] ]))
+    :as bmi]))
 
 (rf/reg-sub
  :form
@@ -38,4 +38,10 @@
  :<- [:weight]
  :<- [:height]
  (fn [[weight height] _]
-   (classify-body-mass-person weight height)))
+   (if (not (some :active? [weight height]))
+     (conj
+      (bmi/classify-body-mass-person
+       (:value weight)
+       (:value height))
+      bmi/units)
+     [0 "N/A" bmi/units])))

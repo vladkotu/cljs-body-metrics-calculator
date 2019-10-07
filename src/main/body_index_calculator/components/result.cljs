@@ -6,27 +6,28 @@
                                          TableHead
                                          TableRow]]))
 
-(defn form->person [db]
-  (->> db
+(defn form->person [bmi]
+  (->> bmi
        (map (fn [[k {:keys [value]}]] [k value]))
        (into {})))
 
 (defn result-table []
-  (let [db (rf/subscribe [:bmi])]
+  (let [bmi (rf/subscribe [:bmi])]
     (fn []
-      [:> Table
-       [:> TableHead
-        [:> TableRow
-         [:> TableCell {:align "right"} "Metric name / Units"]
-         [:> TableCell {:align "right"} "Value"]
-         [:> TableCell {:align "right"} "Conclusion"]]]
-       [:> TableBody
-        [:> TableRow
-         [:> TableCell {:align "right"}
-          [:span "Body Mass Index (BMI) / kg/m" [:sup 2]]]
-         [:> TableCell 80]
-         [:> TableCell [:strong "Obese"]]]
+      (let [[score class unit] @bmi]
+        [:> Table
+         [:> TableHead
+          [:> TableRow
+           [:> TableCell {:align "right"} "Metric name / Units"]
+           [:> TableCell {:align "right"} "Value"]
+           [:> TableCell {:align "right"} "Conclusion"]]]
+         [:> TableBody
+          [:> TableRow
+           [:> TableCell {:align "right"}
+            [:span "Body Mass Index (BMI) / " unit]]
+           [:> TableCell {:align "right"} score]
+           [:> TableCell {:align "right"} [:strong class]]]
           ;; [:> TableCell {:align "right"} "Body Fat"]
           ;; [:> TableCell {:align "right"} "Lean Body Mass"]
           ;; [:> TableCell {:align "right"} "Basal Metabolic rate"]
-        ]])))
+          ]]))))
