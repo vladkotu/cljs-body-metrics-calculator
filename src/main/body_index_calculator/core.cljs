@@ -6,6 +6,7 @@
             [body-index-calculator.components.app :refer [app]]))
 
 (defn render []
+  (rf/clear-subscription-cache!)
   (r/render [app] (js/document.getElementById "core")))
 
 (defn init []
