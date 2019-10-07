@@ -12,10 +12,9 @@
         :required  true
         :units     "Sm"
         :on-change
-        #(when-let [value (->int %)]
-           (rf/dispatch
-            [:height
-             {:value value}]))
+        #(rf/dispatch
+          [:height
+           {:value (->int %)}])
         :on-focus
         #(rf/dispatch
           [:height

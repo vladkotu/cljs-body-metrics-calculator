@@ -24,7 +24,7 @@
                     :style form-label-styles}
       label]
      [:> OutlinedInput {:id id
-                        :value value
+                        :value (or value "")
                         :on-change #(on-change (evalue %))
                         :on-blur #(on-blur)
                         :on-focus #(on-focus)

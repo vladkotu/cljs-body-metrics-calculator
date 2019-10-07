@@ -12,11 +12,10 @@
         :required  true
         :units     "Kg"
         :on-change
-        #(when-let [value (->int %)]
-           (rf/dispatch
-            [:weight
-             {:value value}]))
-        :on-focus
+        #(rf/dispatch
+          [:weight
+           {:value (->int %)}])
+         :on-focus
         #(rf/dispatch
           [:weight
            {:visited? true
