@@ -76,3 +76,10 @@
     (hoc react-comp)))
 
 (defn evalue [ev] (-> ev .-target .-value))
+
+(defn ->int [v]
+  (let [v (clojure.string/trim v)
+        v (clojure.string/replace v #"[^0-9]+" "")]
+    (if-not (zero? (count v))
+      (js/parseInt v 10)
+      nil)))

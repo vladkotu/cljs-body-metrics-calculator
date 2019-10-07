@@ -28,7 +28,11 @@
 (defn age []
   (let [age (rf/subscribe [:age])]
     (fn []
-      [age-comp {:value (:value @age)
-                 :options (:ages config)
-                 :on-change #(rf/dispatch [:age {:visited? true
-                                                 :value %}])}])))
+      [age-comp
+       {:value (:value @age)
+        :options (:ages config)
+        :on-change
+        #(rf/dispatch
+          [:age
+           {:visited? true
+            :value %}])}])))

@@ -8,10 +8,15 @@
                                          OutlinedInput]]))
 
 (defn input [{:keys [on-change
+                     on-blur
+                     on-focus
                      units
                      label
                      value]
-              :or   {value ""}}]
+              :or   {value ""
+                     on-change #()
+                     on-focus #()
+                     on-blur #()}}]
   (let [id (str "intput-" (.toLowerCase label))]
     [:> FormControl form-control-props
      [:> FormLabel {:component "label"
@@ -21,6 +26,8 @@
      [:> OutlinedInput {:id id
                         :value value
                         :on-change #(on-change (evalue %))
+                        :on-blur #(on-blur)
+                        :on-focus #(on-focus)
                         :endAdornment
                         (r/as-element
                          [:> InputAdornment

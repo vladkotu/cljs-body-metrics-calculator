@@ -27,6 +27,9 @@
 (defn gender []
   (let [db (rf/subscribe [:gender])]
     (fn []
-      [gender-comp {:value (:value @db)
-                    :on-change #(rf/dispatch [:gender {:visited? true
-                                                       :value %}])}])))
+      [gender-comp
+       {:value (:value @db)
+        :on-change #(rf/dispatch
+                     [:gender
+                      {:visited? true
+                       :value (keyword %)}])}])))
