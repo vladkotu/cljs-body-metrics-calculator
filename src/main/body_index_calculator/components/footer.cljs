@@ -22,7 +22,5 @@
 
 (defn footer []
   [:> (with-styles-react
-        {:item {:width "100%"
-                :bottom "0"
-                :position "absolute"}}
+        {:item {:width "100%"}}
         Grid) {:item true} [footer-content]])

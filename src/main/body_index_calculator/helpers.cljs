@@ -83,3 +83,12 @@
     (if-not (zero? (count v))
       (js/parseInt v 10)
       nil)))
+
+(defn as-float
+  [n]
+  (js/parseFloat (.toFixed n 2)))
+
+(defn form->person [form]
+  (->> form
+       (map (fn [[k {:keys [value]}]] {k value}))
+       (into {})))

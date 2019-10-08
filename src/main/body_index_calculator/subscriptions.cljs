@@ -1,7 +1,9 @@
 (ns body-index-calculator.subscriptions
   (:require
    [re-frame.core :as rf]
+   [body-index-calculator.helpers :refer [as-float form->person]]
    [body-index-calculator.lib.body-mass-index :as bmi]
+   [body-index-calculator.lib.basal-matabolic-rate :as bmr]
    [body-index-calculator.lib.lean-body-mass :as lbm]))
 
 (rf/reg-sub
@@ -62,14 +64,32 @@
      (if (not (some :active? [weight height]))
        (assoc default-props
               :value
-              (lbm/calc-lean-body-mass
-               {:weight (:value weight)
-                :height (:value height)
-                :gender (:value gender)}))
+              (as-float
+               (lbm/calc-lean-body-mass
+                {:weight (:value weight)
+                 :height (:value height)
+                 :gender (:value gender)})))
        default-props))))
+
+(rf/reg-sub
+ :bmr
+ :<- [:form]
+ (fn [form _]
+   (let [person (form->person form)
+         mf-default-props {:title "Basal Metabolic Rate (BMR) [Mefflin St Jeor]"
+                           :units [:span "kcal/day"]
+                           :value "N/A"
+                           :conclusion "N/A"}]
+     (if (not (some :active? (map second form)))
+       (assoc mf-default-props
+              :value
+              (bmr/mifflin-jeor person))
+       mf-default-props))))
 
 (rf/reg-sub
  :result-table
  :<- [:bmi]
  :<- [:lbm]
- (fn [[bmi lbm]_] [bmi lbm]))
+ :<- [:bmr]
+ (fn [[bmi lbm bmr] _]
+   [bmi lbm bmr]))
