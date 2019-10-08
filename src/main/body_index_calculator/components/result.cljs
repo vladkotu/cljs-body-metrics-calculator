@@ -9,26 +9,24 @@
 (defn cell [child]
   [:> TableCell {:align "right"} child])
 
+(defn react-key [& ss]
+  (-> (clojure.string/join "-" ss)
+      (clojure.string/trim)
+      (clojure.string/replace #"\s+" "-")))
+
 (defn result-table []
-  (let [bmi (rf/subscribe [:bmi])
-        lbm (rf/subscribe [:lbm])]
+  (let [res (rf/subscribe [:result-table])]
     (fn []
-      (let [bmi @bmi
-            lbm @lbm]
-        [:> Table
-         [:> TableHead
+      [:> Table
+       [:> TableHead
+        [:> TableRow
+         [cell "Metric name / Units"]
+         [cell "Value"]
+         [cell "Conclusion"]]]
+       [:> TableBody
+        (for [row @res]
+          ^{:key (react-key "table-row" (:title row))}
           [:> TableRow
-           [cell "Metric name / Units"]
-           [cell "Value"]
-           [cell "Conclusion"]]]
-         [:> TableBody
-          [:> TableRow
-           [cell [:span "Body Mass Index (BMI) / "
-                  (last bmi)]]
-           [cell (first bmi)]
-           [cell [:strong (second bmi)]]]
-          [:> TableRow
-           [cell [:span "Lean Body Mass (LBM)"
-                  (last lbm)]]
-           [cell (first lbm)]
-           [cell [:strong (second lbm)]]]]]))))
+           [cell [:span (:title row) " / " (:units row)]]
+           [cell [:span (:value row)]]
+           [cell [:strong (:conclusion row)]]])]])))

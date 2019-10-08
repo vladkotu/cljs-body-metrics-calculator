@@ -30,7 +30,5 @@
   [person]
   (let [bmi (Math/floor (calc-body-mass-index person))
         class (classify-body-mass-index bmi)]
-    [bmi class]))
-
-(def units
-  [:span "kg"])
+    {:value bmi
+     :conclusion class}))

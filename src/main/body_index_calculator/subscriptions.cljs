@@ -38,13 +38,16 @@
  :<- [:weight]
  :<- [:height]
  (fn [[weight height] _]
-   (if (not (some :active? [weight height]))
-     (conj
-      (bmi/classify-body-mass-person
-       {:weight (:value weight)
-        :height (:value height)})
-      bmi/units)
-     [0 "N/A" bmi/units])))
+   (let [default-props {:title "Body Mass Index (BMI)"
+                        :units [:span "kg/m" [:sup 2]]
+                        :value "N/A"
+                        :conclusion "N/A"}]
+     (if (not (some :active? [weight height]))
+       (merge default-props
+              (bmi/classify-body-mass-person
+               {:weight (:value weight)
+                :height (:value height)}))
+       default-props))))
 
 (rf/reg-sub
  :lbm
@@ -52,11 +55,21 @@
  :<- [:height]
  :<- [:gender]
  (fn [[weight height gender] _]
-   (if (not (some :active? [weight height]))
-     [(lbm/calc-lean-body-mass
-       {:weight (:value weight)
-        :height (:value height)
-        :gender (:value gender)})
-      "N/A"
-      lbm/units]
-     [0 "N/A" lbm/units])))
+   (let [default-props {:title "Lean Body Mass (LBM)"
+                        :units [:span "kg"]
+                        :value "N/A"
+                        :conclusion "N/A"}]
+     (if (not (some :active? [weight height]))
+       (assoc default-props
+              :value
+              (lbm/calc-lean-body-mass
+               {:weight (:value weight)
+                :height (:value height)
+                :gender (:value gender)}))
+       default-props))))
+
+(rf/reg-sub
+ :result-table
+ :<- [:bmi]
+ :<- [:lbm]
+ (fn [[bmi lbm]_] [bmi lbm]))

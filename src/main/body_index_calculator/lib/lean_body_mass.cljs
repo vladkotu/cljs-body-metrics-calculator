@@ -50,6 +50,3 @@
   :default
   [_]
   "N/A")
-
-(def units
-  [:span "kg"])
