@@ -1,8 +1,8 @@
 (ns body-index-calculator.subscriptions
   (:require
    [re-frame.core :as rf]
-   [body-index-calculator.lib.body-mass-index
-    :as bmi]))
+   [body-index-calculator.lib.body-mass-index :as bmi]
+   [body-index-calculator.lib.lean-body-mass :as lbm]))
 
 (rf/reg-sub
  :form
@@ -41,7 +41,22 @@
    (if (not (some :active? [weight height]))
      (conj
       (bmi/classify-body-mass-person
-       (:value weight)
-       (:value height))
+       {:weight (:value weight)
+        :height (:value height)})
       bmi/units)
      [0 "N/A" bmi/units])))
+
+(rf/reg-sub
+ :lbm
+ :<- [:weight]
+ :<- [:height]
+ :<- [:gender]
+ (fn [[weight height gender] _]
+   (if (not (some :active? [weight height]))
+     [(lbm/calc-lean-body-mass
+       {:weight (:value weight)
+        :height (:value height)
+        :gender (:value gender)})
+      "N/A"
+      lbm/units]
+     [0 "N/A" lbm/units])))

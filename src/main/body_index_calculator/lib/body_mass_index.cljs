@@ -4,7 +4,7 @@
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;")
 
 (defn calc-body-mass-index
-  [weight height]
+  [{:keys [weight height]}]
   (/ weight (Math/pow (/ height 100) 2)))
 
 (def body-mass-ranges-table
@@ -17,18 +17,20 @@
 
 (defn classify-body-mass-index
   [bmi]
-  (let [[_ _ class _]
-        (first (filter (fn [[from to]]
-                         (and (< from bmi)
-                              (<= bmi to)))
-                       body-mass-ranges-table))]
+  (let [[_ _ class]
+        (->> body-mass-ranges-table
+             (filter
+              (fn [[from to]]
+                (and (< from bmi)
+                     (<= bmi to))))
+             first)]
     class))
 
 (defn classify-body-mass-person
-  [weight height]
-  (let [bmi (Math/floor (calc-body-mass-index weight height))
+  [person]
+  (let [bmi (Math/floor (calc-body-mass-index person))
         class (classify-body-mass-index bmi)]
     [bmi class]))
 
 (def units
-  [:span "kg/m" [:sup 2]])
+  [:span "kg"])

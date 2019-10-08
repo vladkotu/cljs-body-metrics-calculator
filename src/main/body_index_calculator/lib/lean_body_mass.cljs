@@ -4,20 +4,52 @@
     ;;;;;;;;;;;;;;;;;;;;;;;;;;"
   (:require [body-index-calculator.lib.body-mass-index :refer [calc-body-mass-index]]))
 
-(defn calc-boer-lean-body-mass
-  [{:keys [weight height]}]
-  (- (+ (* 0.407 weight)
-        (* 0.267 height))
-     19.2))
+(defn as-float
+  [n]
+  (js/parseFloat (.toFixed n 2)))
 
-(defn calc-hume-lean-body-mass
-  [{:keys [weight height]}]
-  (- (+ (* 0.252 weight)
-        (* 0.473 height))
-     48.3))
+(defn lean-body-mass-dispatcher [person]
+  (let [method (if (>= (calc-body-mass-index person) 35) :boer :hume)]
+    [method (:gender person)]))
 
-(defn calc-lean-body-mass [person]
-  (let [bmi (calc-body-mass-index person)]
-    (if (>= bmi 35)
-      (calc-boer-lean-body-mass person)
-      (calc-hume-lean-body-mass person))))
+(defmulti calc-lean-body-mass #'lean-body-mass-dispatcher)
+
+(defmethod calc-lean-body-mass
+  [:boer :male]
+  [{:keys [weight height]}]
+  (as-float
+   (- (+ (* 0.407 weight)
+         (* 0.267 height))
+      19.2)))
+
+(defmethod calc-lean-body-mass
+  [:boer :female]
+  [{:keys [weight height]}]
+  (as-float
+   (- (+ (* 0.252 weight)
+         (* 0.473 height))
+      48.3)))
+
+(defmethod calc-lean-body-mass
+  [:hume :male]
+  [{:keys [weight height]}]
+  (as-float
+   (- (+ (* 0.32810 weight)
+         (* 0.33929 height))
+      40.5336)))
+
+(defmethod calc-lean-body-mass
+  [:hume :female]
+  [{:keys [weight height]}]
+  (as-float
+   (- (+ (* 0.29569 weight)
+         (* 0.41813 height))
+      43.2933)))
+
+(defmethod calc-lean-body-mass
+  :default
+  [_]
+  "N/A")
+
+(def units
+  [:span "kg"])
