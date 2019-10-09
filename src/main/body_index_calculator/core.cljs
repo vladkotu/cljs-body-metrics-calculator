@@ -3,6 +3,7 @@
             [re-frame.core :as rf]
             [body-index-calculator.events]
             [body-index-calculator.subscriptions]
+            [body-index-calculator.events :as e]
             [body-index-calculator.components.app :refer [app]]))
 
 (defn render []
@@ -11,7 +12,7 @@
 
 (defn init []
   (prn "start initialisation")
-  (rf/dispatch-sync [:init])
+  (rf/dispatch-sync [::e/init])
   (prn "db initialisation finished")
   (render)
   (println "app rendered"))

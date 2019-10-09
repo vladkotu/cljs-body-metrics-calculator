@@ -3,6 +3,8 @@
             [body-index-calculator.components.styles :refer [form-control-props form-label-styles]]
             [body-index-calculator.helpers :refer [evalue]]
             [body-index-calculator.config  :refer [config]]
+            [body-index-calculator.subscriptions :as s]
+            [body-index-calculator.events :as e]
             ["@material-ui/core" :refer [FormControl
                                          FormLabel
                                          MenuItem
@@ -26,13 +28,13 @@
       [:> MenuItem {:value a} a])]])
 
 (defn age []
-  (let [age (rf/subscribe [:age])]
+  (let [age (rf/subscribe [::s/age])]
     (fn []
       [age-comp
        {:value (:value @age)
         :options (:ages config)
         :on-change
         #(rf/dispatch
-          [:age
+          [::e/age
            {:visited? true
             :value %}])}])))

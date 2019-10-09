@@ -1,5 +1,6 @@
 (ns body-index-calculator.components.result
   (:require [re-frame.core :as rf]
+            [body-index-calculator.subscriptions :as s]
             ["@material-ui/core" :refer [Table
                                          TableBody
                                          TableCell
@@ -15,7 +16,7 @@
       (clojure.string/replace #"\s+" "-")))
 
 (defn result-table []
-  (let [res (rf/subscribe [:result-table])]
+  (let [res (rf/subscribe [::s/result-table])]
     (fn []
       [:> Table
        [:> TableHead

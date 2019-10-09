@@ -5,7 +5,7 @@
 
 
 (rf/reg-event-db
- :init
+ ::init
  (fn [_ _] db/default-db))
 
 (defn make-form-event-handler [path]
@@ -16,17 +16,17 @@
      (fn [val] (merge val new-val)))))
 
 (rf/reg-event-db
- :gender
+ ::gender
  (make-form-event-handler [:form :gender]))
 
 (rf/reg-event-db
- :age
+ ::age
  (make-form-event-handler [:form :age]))
 
 (rf/reg-event-db
- :weight
+ ::weight
  (make-form-event-handler [:form :weight]))
 
 (rf/reg-event-db
- :height
+ ::height
  (make-form-event-handler [:form :height]))

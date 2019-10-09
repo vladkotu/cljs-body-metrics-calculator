@@ -3,6 +3,8 @@
             [re-frame.core :as rf]
             [body-index-calculator.components.styles :refer [form-control-props]]
             [body-index-calculator.helpers :refer [evalue]]
+            [body-index-calculator.subscriptions :as s]
+            [body-index-calculator.events :as e]
             ["@material-ui/core" :refer [FormControl
                                          FormControlLabel
                                          FormLabel
@@ -25,11 +27,11 @@
                           :control (r/as-element [:> Radio])}]]])
 
 (defn gender []
-  (let [db (rf/subscribe [:gender])]
+  (let [db (rf/subscribe [::s/gender])]
     (fn []
       [gender-comp
        {:value (:value @db)
         :on-change #(rf/dispatch
-                     [:gender
+                     [::e/gender
                       {:visited? true
                        :value (keyword %)}])}])))

@@ -1,10 +1,12 @@
 (ns body-index-calculator.components.weight
   (:require [re-frame.core :as rf]
             [body-index-calculator.helpers :refer [->int]]
+            [body-index-calculator.subscriptions :as s]
+            [body-index-calculator.events :as e]
             [body-index-calculator.components.input  :refer [input]]))
 
 (defn weight []
-  (let [db (rf/subscribe [:weight])]
+  (let [db (rf/subscribe [::s/weight])]
     (fn []
       [input
        {:label     "Your Weight"
@@ -13,14 +15,14 @@
         :units     "Kg"
         :on-change
         #(rf/dispatch
-          [:weight
+          [::e/weight
            {:value (->int %)}])
-         :on-focus
+        :on-focus
         #(rf/dispatch
-          [:weight
+          [::e/weight
            {:visited? true
             :active? true}])
         :on-blur
         #(rf/dispatch
-          [:weight
+          [::e/weight
            {:active? false}])}])))

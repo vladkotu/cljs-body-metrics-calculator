@@ -35,8 +35,6 @@
              (* 0.16 age))
           (* 10.34 sex))
        9)))
-(calc-body-mass-index me)
-(calc-body-fat me)
 
 (def body-fat-ranges-table
   [[0    18.5 :under]

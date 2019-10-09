@@ -6,39 +6,41 @@
    [body-index-calculator.lib.basal-matabolic-rate :as bmr]
    [body-index-calculator.lib.lean-body-mass :as lbm]))
 
+(def cider-have-to-have-at-least-one-def-in-a-file nil)
+
 (rf/reg-sub
- :form
+ ::form
  (fn [db _] (:form db)))
 
 (rf/reg-sub
- :gender
- :<- [:form]
+ ::gender
+ :<- [::form]
  (fn [db _] (:gender db)))
 
 (rf/reg-sub
- :age
- :<- [:form]
+ ::age
+ :<- [::form]
  (fn [db _] (:age db)))
 
 (rf/reg-sub
- :weight
- :<- [:form]
+ ::weight
+ :<- [::form]
  (fn [db _] (:weight db)))
 
 (rf/reg-sub
- :height
- :<- [:form]
+ ::height
+ :<- [::form]
  (fn [db _] (:height db)))
 
 (rf/reg-sub
- :visited?
- :<- [:form]
+ ::visited?
+ :<- [::form]
  (fn [db _] (map (comp :visited? second) db)))
 
 (rf/reg-sub
- :bmi
- :<- [:weight]
- :<- [:height]
+ ::bmi
+ :<- [::weight]
+ :<- [::height]
  (fn [[weight height] _]
    (let [default-props {:title "Body Mass Index (BMI)"
                         :units [:span "kg/m" [:sup 2]]
@@ -52,10 +54,10 @@
        default-props))))
 
 (rf/reg-sub
- :lbm
- :<- [:weight]
- :<- [:height]
- :<- [:gender]
+ ::lbm
+ :<- [::weight]
+ :<- [::height]
+ :<- [::gender]
  (fn [[weight height gender] _]
    (let [default-props {:title "Lean Body Mass (LBM)"
                         :units [:span "kg"]
@@ -72,8 +74,8 @@
        default-props))))
 
 (rf/reg-sub
- :bmr
- :<- [:form]
+ ::bmr
+ :<- [::form]
  (fn [form _]
    (let [person (form->person form)
          mf-default-props {:title "Basal Metabolic Rate (BMR) [Mefflin St Jeor]"
@@ -87,9 +89,9 @@
        mf-default-props))))
 
 (rf/reg-sub
- :result-table
- :<- [:bmi]
- :<- [:lbm]
- :<- [:bmr]
+ ::result-table
+ :<- [::bmi]
+ :<- [::lbm]
+ :<- [::bmr]
  (fn [[bmi lbm bmr] _]
    [bmi lbm bmr]))
