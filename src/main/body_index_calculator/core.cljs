@@ -11,21 +11,16 @@
   (let [error (r/atom nil)]
     (r/create-class
      {:get-derived-state-from-error
-      (fn [e]
-        (js/console.log ":get-derived-state-from-error" e)
-        (reset! error e)
-        (js/console.log @error)
-        #js {:error true})
+      (fn [e] (reset! error e) #js {:error true})
       :component-did-catch
-      (fn [_ error info]
-        (js/console.log ":get-derived-state-from-error" error into))
+      (fn [_ error _]
+        (for [row (clojure.string/split (.-message error) "\n")]
+          (prn row)))
       :reagent-render
-      (fn []
-        (js/console.log ":reagent-render")
-        (if @error
-          [:div "Something went wrong."
-           [:button {:on-click #(reset! error nil)} "Try again"]]
-          comp))})))
+      (fn [] (if @error
+               [:div "Something went wrong."
+                [:button {:on-click #(reset! error nil)} "Try again"]]
+               comp))})))
 
 (defn render []
   (r/render [error-boundary [app]] (js/document.getElementById "core"))
