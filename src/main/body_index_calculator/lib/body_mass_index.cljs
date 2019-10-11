@@ -1,10 +1,17 @@
 (ns body-index-calculator.lib.body-mass-index
   ";;;;;;;;;;;;;;;;;;;;;;;;;;;
    ;; BMI - body mass index ;;
-   ;;;;;;;;;;;;;;;;;;;;;;;;;;;")
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;"
+  (:require [body-index-calculator.lib.specs :as local-specs]
+            [cljs.spec.alpha :as s]
+            [orchestra.core :refer-macros [defn-spec]]
+            [orchestra-cljs.spec.test :as st]))
 
-(defn calc-body-mass-index
-  [{:keys [weight height]}]
+(s/def ::person (s/keys :req-un [::local-specs/height
+                                 ::local-specs/weight]))
+
+(defn-spec calc-body-mass-index number?
+  [{:keys [weight height]} ::person]
   (/ weight (Math/pow (/ height 100) 2)))
 
 (def body-mass-ranges-table
@@ -25,6 +32,9 @@
                      (<= bmi to))))
              first)]
     class))
+
+(s/fdef classify-body-mass-person
+  :args (s/cat :person ::person))
 
 (defn classify-body-mass-person
   [person]

@@ -4,15 +4,47 @@
             [body-index-calculator.events]
             [body-index-calculator.subscriptions]
             [body-index-calculator.events :as e]
-            [body-index-calculator.components.app :refer [app]]))
+            [body-index-calculator.components.app :refer [app]]
+            [orchestra-cljs.spec.test :as st]))
+
+(defn error-boundary [comp]
+  (let [error (r/atom nil)]
+    (r/create-class
+     {:get-derived-state-from-error
+      (fn [e]
+        (js/console.log ":get-derived-state-from-error" e)
+        (reset! error e)
+        (js/console.log @error)
+        #js {:error true})
+      :component-did-catch
+      (fn [_ error info]
+        (js/console.log ":get-derived-state-from-error" error into))
+      :reagent-render
+      (fn []
+        (js/console.log ":reagent-render")
+        (if @error
+          [:div "Something went wrong."
+           [:button {:on-click #(reset! error nil)} "Try again"]]
+          comp))})))
 
 (defn render []
+  (r/render [error-boundary [app]] (js/document.getElementById "core"))
+  (println "app rendered"))
+
+(defn instrument-specs []
+  (let [done (st/instrument)]
+    (prn (str (count done) " functions found and instrumented"))))
+
+(defn on-hmr-reload []
   (rf/clear-subscription-cache!)
-  (r/render [app] (js/document.getElementById "core")))
+  (prn "re-frame cache clean")
+  (instrument-specs)
+  (render))
 
 (defn init []
   (prn "start initialisation")
   (rf/dispatch-sync [::e/init])
   (prn "db initialisation finished")
-  (render)
-  (println "app rendered"))
+  (render))
+
+(instrument-specs)
