@@ -8,7 +8,7 @@
     "watch": "shadow-cljs watch body-index-calculator"
   },
   "devDependencies": {
-    "shadow-cljs": "2.8.59",
+    "shadow-cljs": "2.8.62",
     "brunch": "^2.10.17",
     "highlight.js": "9.15.8",
     "react-flip-move": "3.0.3",
@@ -19,7 +19,7 @@
     "@material-ui/icons": "^4.4.3",
     "create-react-class": "^15.6.3",
     "pure-css": "^1.0.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   }
 }
