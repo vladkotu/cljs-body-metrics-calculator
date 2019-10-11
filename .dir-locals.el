@@ -1,2 +1,3 @@
 ((nil . ((cider-default-cljs-repl . shadow)
-          (cider-shadow-default-options . "body-index-calculator"))))
+          (cider-shadow-default-options . "body-index-calculator")
+          (nrepl-log-messages nil))))
