@@ -19,10 +19,10 @@
            {:value (->int %)}])
         :on-focus
         #(rf/dispatch
-          [:height
+          [::e/height
            {:active? true
             :visited? true}])
         :on-blur
         #(rf/dispatch
-          [:height
+          [::e/height
            {:active? false}])}])))
