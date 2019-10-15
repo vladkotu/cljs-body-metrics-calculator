@@ -5,6 +5,8 @@
    [re-frame.core :as rf]
    [body-index-calculator.db :as db]))
 
+(def ^:dynamic *trace-events* false)
+
 (defn set-all-paths [db paths a-vals]
   (loop [paths paths
          a-vals a-vals
@@ -23,10 +25,13 @@
   (when-not (s/valid? a-spec db)
     (throw (ex-info (str "spec check failed: " (s/explain-str a-spec db)) {}))))
 
-;; now we create an interceptor using `after`
 (def check-spec-after-interceptor (rf/after (partial check-and-throw ::db/db)))
-(def form-interseptor (rf/path :form))
+(def common-interseptors (if *trace-events*
+                           [rf/debug
+                            check-spec-after-interceptor]
+                           [check-spec-after-interceptor]))
 
+(prn common-interseptors)
 (rf/reg-event-db
  ::init
  (fn [_ _] db/default-db))
@@ -40,12 +45,12 @@
 
 (rf/reg-event-db
  ::gender
- [rf/debug check-spec-after-interceptor]
+ common-interseptors
  (make-form-event-handler [:form :gender]))
 
 (rf/reg-event-db
  ::age
- [rf/debug check-spec-after-interceptor]
+ common-interseptors
  (make-form-event-handler [:form :age]))
 
 #_(rf/reg-event-db
@@ -54,7 +59,7 @@
 
 (rf/reg-event-fx
  ::weight
- [rf/debug check-spec-after-interceptor]
+ common-interseptors
  (fn [cofx [_ new-val]]
    {:db (update-in
          (:db cofx)
@@ -63,7 +68,7 @@
 
 (rf/reg-event-db
  ::height
- [rf/debug check-spec-after-interceptor]
+ common-interseptors
  (make-form-event-handler [:form :height]))
 
 (defonce timeouts (r/atom {}))
