@@ -2,7 +2,15 @@
   " ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; BMR - basal metabolic rate ;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
-  (:require [body-index-calculator.lib.lean-body-mass :refer [calc-lean-body-mass]]))
+  (:require
+   [body-index-calculator.lib.specs :as specs]
+   [cljs.spec.alpha :as s]
+   [body-index-calculator.lib.lean-body-mass :refer [calc-lean-body-mass]]))
+
+(s/def ::person (s/keys :req-un [::specs/height
+                                 ::specs/weight
+                                 ::specs/age
+                                 ::specs/gender]))
 
 (defn mifflin-jeor
   [{:keys [gender age weight height]}]

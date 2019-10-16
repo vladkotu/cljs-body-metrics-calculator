@@ -2,7 +2,14 @@
   " ;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; LBM - lean body mass ;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;"
-  (:require [body-index-calculator.lib.body-mass-index :refer [calc-body-mass-index]]))
+  (:require
+   [body-index-calculator.lib.specs :as local]
+   [cljs.spec.alpha :as s]
+   [body-index-calculator.lib.body-mass-index :refer [calc-body-mass-index]]))
+
+(s/def ::person (s/keys :req-un [::local/height
+                                 ::local/weight
+                                 ::local/gender]))
 
 (defn lean-body-mass-dispatcher [person]
   (let [method (if (>= (calc-body-mass-index person) 35) :boer :hume)]
