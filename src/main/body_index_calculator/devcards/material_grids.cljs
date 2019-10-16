@@ -3,17 +3,34 @@
             [devcards.core :as dc]
             [reagent.core :as r]
             [body-index-calculator.mui-theme :refer [js-theme spacing]]
+            ["@material-ui/icons/CheckCircle" :default CheckCircleIcon]
+            ["@material-ui/icons/HighlightOff" :default  HighlightOffIcon]
             ["@material-ui/core" :refer [CssBaseline
                                          Grid
                                          Paper]]))
 
 (def styles
   {:space {:margin (spacing 2 3 2 3)
-           :padding 0}
+           :padding (spacing 3)
+           :width "100%"}
    :paper {:padding (spacing 2)}})
+
+(defcard-rg ready-not-ready-icons
+  ""
+  (fn [_ _]
+    [:> Paper {:style (:space styles)}
+     [:> Grid {:container true
+               :direction "row"}
+      [:> Grid {:item true :xs 6}
+       [:h5 "In Progress Icon:"]
+       [:> CheckCircleIcon {:color "primary"}]]
+      [:> Grid {:item true :xs 6}
+       [:h5 "Done Icon:"]
+       [:> HighlightOffIcon {:color "disabled"}]]]]))
 
 (defcard-rg spacing-grid
   "
+Playing with example from material ui site.
 "
   (fn [_ _]
     [:<>
