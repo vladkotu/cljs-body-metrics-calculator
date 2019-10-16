@@ -86,7 +86,13 @@
 
 (defn as-float
   [n]
-  (js/parseFloat (.toFixed n 2)))
+  (when (number? n)
+    (js/parseFloat (.toFixed n 2))))
+
+(defn as-int
+  [n]
+  (when (number? n)
+    (Math/floor n)))
 
 (defn form->person [form]
   (->> form

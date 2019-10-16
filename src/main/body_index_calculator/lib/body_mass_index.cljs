@@ -38,7 +38,7 @@
 
 (defn classify-body-mass-person
   [person]
-  (let [bmi (Math/floor (calc-body-mass-index person))
-        class (classify-body-mass-index bmi)]
-    {:value bmi
-     :conclusion class}))
+  (->> person
+       calc-body-mass-index
+       Math/floor
+       classify-body-mass-index))
