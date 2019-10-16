@@ -17,6 +17,5 @@
 (defn secondary-color []
   (get-in theme [:palette :secondary :main]))
 
-(defn spacing
-  ([n]   (.spacing js-theme n))
-  ([n m] (.spacing js-theme n m)))
+(defn spacing [& args]
+  (apply (.-spacing js-theme) args))

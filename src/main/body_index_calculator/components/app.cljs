@@ -4,6 +4,7 @@
             [body-index-calculator.components.header   :refer [header]]
             [body-index-calculator.components.footer   :refer [footer]]
             [body-index-calculator.components.form     :refer [form]]
+            [body-index-calculator.components.dash     :refer [dash]]
             [body-index-calculator.components.result   :refer [result-table]]
             ["@material-ui/styles" :refer [ThemeProvider]]
             ["@material-ui/core" :refer [CssBaseline
@@ -19,6 +20,7 @@
 
 (defn content []
   [:> Grid {:item true}
+   [dash]
    [:> (with-styles-react
          {:root {:margin  (spacing 2 3)
                  :padding (spacing 2 2)}}
