@@ -26,8 +26,6 @@
                 [:button {:on-click #(reset! error nil)} "Try again"]]
                comp))})))
 
-
-
 (defn app []
   [error-boundary
    [with-theme

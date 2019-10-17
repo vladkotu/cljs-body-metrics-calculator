@@ -3,7 +3,7 @@
    [body-index-calculator.mui-theme :refer [js-theme spacing]]
    ["@material-ui/styles" :refer [ThemeProvider]]
    [body-index-calculator.helpers   :refer [with-styles-react]]
-   ["@material-ui/core" :refer [Grid Paper CssBaseline]]))
+   ["@material-ui/core" :refer [Grid Paper Box CssBaseline]]))
 
 (def spacing-paper
   (with-styles-react
