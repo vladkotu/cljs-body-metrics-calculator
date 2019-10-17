@@ -5,12 +5,10 @@
 
 (defn dash []
   (fn []
-    [:> Grid {:item true}
-     [:> spacing-paper
-      [:> Grid {:container true
-                :justify "space-around"
-                :spacing 3}
-       (for [x [1 2 3 4 5]]
-         ^{:key (str "name-" x)}
-         [:> Grid {:item true}
-          [:> Paper x]])]]]))
+    [:> Grid {:container true
+              :justify "space-around"
+              :spacing 3}
+     (for [x [1 2 3 4 5]]
+       ^{:key (str "name-" x)}
+       [:> Grid {:item true}
+        [:> Paper x]])]))
