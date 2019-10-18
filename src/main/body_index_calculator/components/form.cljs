@@ -2,6 +2,7 @@
   (:require [body-index-calculator.components.gender :refer [gender]]
             [body-index-calculator.components.age    :refer [age]]
             [body-index-calculator.components.weight :refer [weight]]
+            [body-index-calculator.components.waist :refer [waist]]
             [body-index-calculator.components.height :refer [height]]))
 
 (defn form []
@@ -11,4 +12,5 @@
    [gender]
    [age]
    [weight]
-   [height]])
+   [height]
+   [waist]])

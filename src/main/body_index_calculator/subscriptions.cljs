@@ -34,6 +34,12 @@
  :<- [::form]
  (fn [db _] (:height db)))
 
+(rf/reg-sub
+ ::waist
+ :<- [::form]
+ (fn [db _] (:waist db)))
+
+
 (defn form->metric-result
   [form {:keys [spec value conclusion] :as metric}]
   (try

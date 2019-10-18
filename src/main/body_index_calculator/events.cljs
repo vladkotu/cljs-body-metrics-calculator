@@ -53,10 +53,6 @@
  common-interseptors
  (make-form-event-handler [:form :age]))
 
-#_(rf/reg-event-db
-   ::weight
-   (make-form-event-handler [:form :weight]))
-
 (rf/reg-event-fx
  ::weight
  common-interseptors
@@ -70,6 +66,12 @@
  ::height
  common-interseptors
  (make-form-event-handler [:form :height]))
+
+(rf/reg-event-db
+ ::waist
+ common-interseptors
+ (make-form-event-handler [:form :waist]))
+
 
 (defonce timeouts (r/atom {}))
 
