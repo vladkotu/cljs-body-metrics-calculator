@@ -92,7 +92,7 @@
 (defn as-int
   [n]
   (when (number? n)
-    (Math/floor n)))
+    (Math/round n)))
 
 (defn form->person [form]
   (->> form

@@ -24,7 +24,7 @@
   {:female
    [[10   13   "Essintial fat"]
     [14   20   "Athletes Level"]
-    [21   24   "Fitness Person"]
+    [21   25   "Fitness Person"]
     [26   31   "Average Level"]
     [32   100  "Obese"]]
    :male
@@ -50,5 +50,5 @@
   [person]
   (->> person
        calc-body-fat
-       Math/floor
+       Math/round
        ((partial classify-body-fat-index person))))

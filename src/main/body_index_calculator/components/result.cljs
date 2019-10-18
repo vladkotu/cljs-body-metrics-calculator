@@ -2,7 +2,7 @@
   (:require
    [re-frame.core :as rf]
    [body-index-calculator.subscriptions :as s]
-   [body-index-calculator.helpers :refer [react-key]]
+   [body-index-calculator.helpers :refer [react-key as-int]]
    ["@material-ui/core" :refer [Table
                                 TableBody
                                 TableCell
@@ -25,6 +25,6 @@
         (for [row @res]
           ^{:key (react-key "table-row" (:title row))}
           [:> TableRow
-           [cell [:span (:title row) " / " (:units row)]]
-           [cell [:span (:value row)]]
+           [cell [:span (:title row) " (" (:abbr row)  ") " "/ " (:units row)]]
+           [cell [:span (as-int (:value row))]]
            [cell [:strong (:conclusion row)]]])]])))
