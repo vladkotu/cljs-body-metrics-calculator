@@ -34,65 +34,44 @@
                           {:visited? true
                            :value    (keyword %)}])}])))
 
-(defn weight []
-  (let [value (rf/subscribe [::s/weight])]
+(defn input-with-subscription [{:keys [sub-key ev-key label units]}]
+  (let [value (rf/subscribe [sub-key])]
     (fn []
       [input
-       {:label     "Your Weight"
+       {:label     label
         :value     (or @value "")
-        :units     "Kg"
+        :units     units
         :on-change #(rf/dispatch
-                     [::e/weight
-                      {:value (->int %)}])
+                     [ev-key {:value (->int %)}])
         :on-focus  #(rf/dispatch
-                     [::e/weight
-                      {:visited? true
-                       :active?  true}])
+                     [ev-key {:visited? true :active? true}])
         :on-blur   #(rf/dispatch
-                     [::e/weight
-                      {:active? false}])}])))
+                     [ev-key {:active? false}])}])))
+
+(defn weight []
+  [input-with-subscription
+   {:label   "Your Weight"
+    :sub-key ::s/weight
+    :ev-key  ::e/weight
+    :units   "Kg"}])
 
 (defn height []
-  (let [db (rf/subscribe [::s/height])]
-    (fn []
-      [input
-       {:label     "Your Height"
-        :value     (:value @db)
-        :required  true
-        :units     "Sm"
-        :on-change #(rf/dispatch
-                     [::e/height
-                      {:value (->int %)}])
-        :on-focus  #(rf/dispatch
-                     [::e/height
-                      {:active?  true
-                       :visited? true}])
-        :on-blur   #(rf/dispatch
-                     [::e/height
-                      {:active? false}])}])))
+  [input-with-subscription
+   {:label   "Your Height"
+    :sub-key ::s/height
+    :ev-key  ::e/height
+    :units   "Kg"}])
 
 (defn waist []
-  (let [db (rf/subscribe [::s/waist])]
-    (fn []
-      [input
-       {:label    "Your Waist Circumference"
-        :value    (:value @db)
-        :required true
-        :units    "Sm"
-        :on-change
-        #(rf/dispatch [::e/waist
-                       {:value (->int %)}])
-        :on-focus
-        #(rf/dispatch [::e/waist
-                       {:active?  true
-                        :visited? true}])
-        :on-blur
-        #(rf/dispatch [::e/waist
-                       {:active? false}])}])))
+  [input-with-subscription
+   {:label   "Your Waist Cimcurference"
+    :sub-key ::s/waist
+    :ev-key  ::e/waist
+    :units   "Sm"}])
 
 (defn form []
-  [:form {:name "index-calculator"
-          :no-validate true
+  [:form {:name          "index-calculator"
+          :no-validate   true
           :auto-complete "off"}
    [gender]
    [age]
