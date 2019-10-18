@@ -1,11 +1,12 @@
 (ns body-index-calculator.components.result
-  (:require [re-frame.core :as rf]
-            [body-index-calculator.subscriptions :as s]
-            ["@material-ui/core" :refer [Table
-                                         TableBody
-                                         TableCell
-                                         TableHead
-                                         TableRow]]))
+  (:require
+   [re-frame.core :as rf]
+   [body-index-calculator.subscriptions :as s]
+   ["@material-ui/core" :refer [Table
+                                TableBody
+                                TableCell
+                                TableHead
+                                TableRow]]))
 
 (defn cell [child]
   [:> TableCell {:align "right"} child])
@@ -16,8 +17,9 @@
       (clojure.string/replace #"\s+" "-")))
 
 (defn result-table []
-  (let [res (rf/subscribe [::s/result-table])]
+  (let [res (rf/subscribe [::s/result])]
     (fn []
+      (js/console.log @res)
       [:> Table
        [:> TableHead
         [:> TableRow

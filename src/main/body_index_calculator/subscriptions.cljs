@@ -33,53 +33,45 @@
  :<- [::form]
  (fn [db _] (:height db)))
 
-(defn make-result-sub [spec index-calculator]
-  (fn [form _]
-    (let [person (form->person form)]
-      (when (s/valid? spec person)
-        (index-calculator person)))))
+(defn form->metric-result
+  [form {:keys [spec value conclusion] :as metric}]
+  (try
+    (let [person (form->person form)
+          valid? (s/valid? spec person)
+          a-value (if valid? (value person) nil)
+          a-conclusion (if valid? (and conclusion (conclusion a-value)) nil)]
+      (-> metric
+          (assoc :value a-value)
+          (assoc :conclusion a-conclusion)))
+    (catch js/Object e
+      (prn e))))
 
 (def metrics
-  [::bmi ::bmi/person bmi/calc-body-mass-index])
-
-(rf/reg-sub
- ::bmi
- :<- [::form]
- (make-result-sub ::bmi/person bmi/calc-body-mass-index))
-
-(rf/reg-sub
- ::lbm
- :<- [::form]
- (make-result-sub ::lbm/person lbm/calc-lean-body-mass))
-
-(rf/reg-sub
- ::bmr
- :<- [::form]
- (make-result-sub ::bmr/person bmr/mifflin-jeor))
+  [{:a-key ::bmi
+    :spec ::bmi/person
+    :value #'bmi/calc-body-mass-index
+    :conclusion #'bmi/classify-body-mass-index
+    :abbr "BMI"
+    :title "Body Mass Index"
+    :units [:span "kg/m" [:sup 2]]}
+   {:a-key ::lbm
+    :spec ::lbm/person
+    :value #'lbm/calc-lean-body-mass
+    :conslusion nil
+    :title "Lean Body Mass"
+    :abbr "LBM"
+    :units [:span "kg"]}
+   {:a-key ::bmr
+    :spec ::bmr/person
+    :value #'bmr/mifflin-jeor
+    :conclusion nil
+    :title "Basal Metabolic Rate [Mefflin St Jeor]"
+    :abbr "BMR"
+    :units [:span "kcal/day"]}])
 
 (rf/reg-sub
  ::result
- :<- [::bmi]
- :<- [::lbm]
- :<- [::bmr]
- (fn [[bmi lbm bmr] _]
-   {:bmi bmi :lbm lbm :bmr bmr}))
-
-(rf/reg-sub
- ::result-table
- :<- [::bmi]
- :<- [::lbm]
- :<- [::bmr]
- (fn [[bmi lbm bmr] _]
-   [{:title "Body Mass Index (BMI)"
-     :units [:span "kg/m" [:sup 2]]
-     :value (or (as-int bmi) "N/A")
-     :conclusion (or (bmi/classify-body-mass-index bmi) "N/A")}
-    {:title "Lean Body Mass (LBM)"
-     :units [:span "kg"]
-     :value (or (as-float lbm) "N/A")
-     :conclusion "N/A"}
-    {:title "Basal Metabolic Rate (BMR) [Mefflin St Jeor]"
-     :units [:span "kcal/day"]
-     :value (or (as-int bmr) "N/A")
-     :conclusion "N/A"}]))
+ :<- [::form]
+ (fn [form _]
+   (map (partial form->metric-result form)
+        metrics)))
