@@ -14,31 +14,48 @@
  ::form
  (fn [db _] (:form db)))
 
-(rf/reg-sub
- ::gender
- :<- [::form]
- (fn [db _] (:gender db)))
+(def form-subs
+  [{:a-key ::gender
+    :path  [:gender :value]}
+   {:a-key ::age
+    :path  [:age :value]}
+   {:a-key ::weight
+    :path  [:weight :value]}
+   {:a-key ::height
+    :path  [:height :value]}
+   {:a-key ::waist
+    :path  [:waist :value]}])
 
-(rf/reg-sub
- ::age
- :<- [::form]
- (fn [db _] (:age db)))
+(doall (for [sub form-subs]
+         (rf/reg-sub
+          (:a-key sub)
+          :<- [::form]
+          (fn [db _] (get-in db (:path sub))))))
 
-(rf/reg-sub
- ::weight
- :<- [::form]
- (fn [db _] (:weight db)))
+;; (rf/reg-sub
+;;  ::gender
+;;  :<- [::form]
+;;  (fn [db _] (:gender db)))
 
-(rf/reg-sub
- ::height
- :<- [::form]
- (fn [db _] (:height db)))
+;; (rf/reg-sub
+;;  ::age
+;;  :<- [::form]
+;;  (fn [db _] (:age db)))
 
-(rf/reg-sub
- ::waist
- :<- [::form]
- (fn [db _] (:waist db)))
+;; (rf/reg-sub
+;;  ::weight
+;;  :<- [::form]
+;;  (fn [db _] (:weight db)))
 
+;; (rf/reg-sub
+;;  ::height
+;;  :<- [::form]
+;;  (fn [db _] (:height db)))
+
+;; (rf/reg-sub
+;;  ::waist
+;;  :<- [::form]
+;;  (fn [db _] (:waist db)))
 
 (defn form->metric-result
   [form {:keys [spec value conclusion] :as metric}]
