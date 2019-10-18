@@ -1,6 +1,6 @@
 (ns body-index-calculator.components.input
   (:require [reagent.core :as r]
-            [body-index-calculator.components.styles :refer [form-control-props form-label-styles]]
+            [body-index-calculator.components.common :refer [form-control-props form-label-styles]]
             [body-index-calculator.helpers :refer [evalue]]
             ["@material-ui/core" :refer [FormControl
                                          FormLabel

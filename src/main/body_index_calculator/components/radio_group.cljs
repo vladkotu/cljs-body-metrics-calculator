@@ -1,6 +1,6 @@
 (ns body-index-calculator.components.radio-group
   (:require [reagent.core :as r]
-            [body-index-calculator.components.styles :refer [form-control-props]]
+            [body-index-calculator.components.common :refer [form-control-props]]
             [body-index-calculator.helpers :refer [evalue]]
             ["@material-ui/core" :refer [FormControl
                                          FormControlLabel

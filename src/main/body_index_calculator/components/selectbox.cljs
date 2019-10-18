@@ -1,6 +1,6 @@
 (ns body-index-calculator.components.selectbox
   (:require
-   [body-index-calculator.components.styles :refer [form-control-props form-label-styles]]
+   [body-index-calculator.components.common :refer [form-control-props form-label-styles]]
    [body-index-calculator.helpers :refer [evalue react-key]]
    ["@material-ui/core" :refer [FormControl
                                 FormLabel

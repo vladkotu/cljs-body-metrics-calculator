@@ -22,3 +22,10 @@
     [:> Paper (:paper props)
      [:> Box (:inner props)
       (into [:<>] children)]]]])
+
+
+(def form-control-props {:full-width true
+                         :variant "outlined"
+                         :style {:margin "20px 0 20px 0"}})
+
+(def form-label-styles {:margin-bottom "10px"})
