@@ -98,3 +98,8 @@
   (->> form
        (map (fn [[k {:keys [value]}]] {k value}))
        (into {})))
+
+(defn react-key [& ss]
+  (-> (clojure.string/join "-" ss)
+      (clojure.string/trim)
+      (clojure.string/replace #"\s+" "-")))

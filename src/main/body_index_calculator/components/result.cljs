@@ -2,6 +2,7 @@
   (:require
    [re-frame.core :as rf]
    [body-index-calculator.subscriptions :as s]
+   [body-index-calculator.helpers :refer [react-key]]
    ["@material-ui/core" :refer [Table
                                 TableBody
                                 TableCell
@@ -10,11 +11,6 @@
 
 (defn cell [child]
   [:> TableCell {:align "right"} child])
-
-(defn react-key [& ss]
-  (-> (clojure.string/join "-" ss)
-      (clojure.string/trim)
-      (clojure.string/replace #"\s+" "-")))
 
 (defn result-table []
   (let [res (rf/subscribe [::s/result])]
