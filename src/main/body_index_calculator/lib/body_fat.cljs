@@ -2,6 +2,7 @@
   (:require
    [cljs.spec.alpha :as s]
    [body-index-calculator.lib.specs :as specs]
+   [body-index-calculator.lib.lib :as lib]
    [body-index-calculator.lib.body-mass-index  :refer [calc-body-mass-index]]))
 
 (s/def ::person (s/keys :req-un [::specs/height
@@ -34,21 +35,11 @@
     [18   24   "Average Level"]
     [25   100  "Obese"]]})
 
-(defn classify-body-fat-index
-  [person bfp]
-  (let [classes (-> body-fat-ranges-table
-                    ((:gender person)))
-        class   (->> classes
-                     (filter (fn [[from to]]
-                               (and (< from bfp)
-                                    (<= bfp to))))
-                     first
-                     last)]
-    class))
-
 (defn classify-fat-percentage-person
   [person]
   (->> person
        calc-body-fat
        Math/round
-       ((partial classify-body-fat-index person))))
+       (#(lib/classify-value-by-table-ranges
+          (get body-fat-ranges-table (:gender person))
+          %))))

@@ -85,9 +85,8 @@
       nil)))
 
 (defn as-float
-  [n]
-  (when (number? n)
-    (js/parseFloat (.toFixed n 2))))
+  ([n] (as-float n 2))
+  ([n m] (when (number? n) (js/parseFloat (.toFixed n m)))))
 
 (defn as-int
   [n]

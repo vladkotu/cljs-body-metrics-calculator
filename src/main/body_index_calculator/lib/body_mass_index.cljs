@@ -1,9 +1,9 @@
 (ns body-index-calculator.lib.body-mass-index
   (:require
    [body-index-calculator.lib.specs :as local-specs]
+   [body-index-calculator.lib.lib :as lib]
    [cljs.spec.alpha :as s]
-   [orchestra.core :refer-macros [defn-spec]]
-   [orchestra-cljs.spec.test :as st]))
+   [orchestra.core :refer-macros [defn-spec]]))
 
 (s/def ::person (s/keys :req-un [::local-specs/height
                                  ::local-specs/weight]))
@@ -20,17 +20,6 @@
    [35   40   "Morbid Obesity"]
    [40   80   "Super Obesity"]])
 
-(defn classify-body-mass-index
-  [bmi]
-  (let [[_ _ class]
-        (->> body-mass-ranges-table
-             (filter
-              (fn [[from to]]
-                (and (< from bmi)
-                     (<= bmi to))))
-             first)]
-    class))
-
 (s/fdef classify-body-mass-person
   :args (s/cat :person ::person))
 
@@ -39,4 +28,5 @@
   (->> person
        calc-body-mass-index
        Math/floor
-       classify-body-mass-index))
+       (#(lib/classify-value-by-table-ranges
+          body-mass-ranges-table %))))

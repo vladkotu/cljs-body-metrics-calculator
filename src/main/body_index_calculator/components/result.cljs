@@ -2,7 +2,7 @@
   (:require
    [re-frame.core :as rf]
    [body-index-calculator.subscriptions :as s]
-   [body-index-calculator.helpers :refer [react-key as-int]]
+   [body-index-calculator.helpers :refer [react-key as-int as-float]]
    ["@material-ui/core" :refer [Table
                                 TableBody
                                 TableCell
@@ -22,9 +22,9 @@
          [cell "Value"]
          [cell "Conclusion"]]]
        [:> TableBody
-        (for [row @res]
-          ^{:key (react-key "table-row" (:title row))}
+        (for [{:keys [abbr raw-value? title units value conclusion]} @res]
+          ^{:key (react-key "table-row" title)}
           [:> TableRow
-           [cell [:span (:title row) " (" (:abbr row)  ") " "/ " (:units row)]]
-           [cell [:span (as-int (:value row))]]
-           [cell [:strong (:conclusion row)]]])]])))
+           [cell [:span title " (" abbr  ") " "/ " units]]
+           [cell [:span (if raw-value? (as-float value 4) (as-int value))]]
+           [cell [:strong conclusion]]])]])))

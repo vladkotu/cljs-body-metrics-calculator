@@ -6,6 +6,7 @@
    [body-index-calculator.lib.body-fat :as bfp]
    [body-index-calculator.lib.body-mass-index :as bmi]
    [body-index-calculator.lib.basal-matabolic-rate :as bmr]
+   [body-index-calculator.lib.body-shape-index :as bsi]
    [body-index-calculator.lib.lean-body-mass :as lbm]))
 
 (def cider-have-to-have-at-least-one-def-in-a-file nil)
@@ -32,31 +33,6 @@
           :<- [::form]
           (fn [db _] (get-in db (:path sub))))))
 
-;; (rf/reg-sub
-;;  ::gender
-;;  :<- [::form]
-;;  (fn [db _] (:gender db)))
-
-;; (rf/reg-sub
-;;  ::age
-;;  :<- [::form]
-;;  (fn [db _] (:age db)))
-
-;; (rf/reg-sub
-;;  ::weight
-;;  :<- [::form]
-;;  (fn [db _] (:weight db)))
-
-;; (rf/reg-sub
-;;  ::height
-;;  :<- [::form]
-;;  (fn [db _] (:height db)))
-
-;; (rf/reg-sub
-;;  ::waist
-;;  :<- [::form]
-;;  (fn [db _] (:waist db)))
-
 (defn form->metric-result
   [form {:keys [spec value conclusion] :as metric}]
   (try
@@ -77,14 +53,15 @@
     :conclusion #'bmi/classify-body-mass-person
     :abbr "BMI"
     :title "Body Mass Index"
-    :units [:span "kg/m" [:sup 2]]}
-   {:a-key ::lbm
-    :spec ::lbm/person
-    :value #'lbm/calc-lean-body-mass
-    :conslusion nil
-    :title "Lean Body Mass"
-    :abbr "LBM"
-    :units [:span "kg"]}
+    :units [:span "kg·m" [:sup -2]]}
+   {:a-key ::bsi
+    :spec ::bsi/person
+    :raw-value? true
+    :value #'bsi/calc-body-shape-z-score
+    :conclusion #'bsi/classify-body-shape-person
+    :title "A Body Shape Index"
+    :abbr "ABSI"
+    :units [:span "m" [:sup "11/6"] "kg"[:sup "-2/3"]]}
    {:a-key ::bmr
     :spec ::bmr/person
     :value #'bmr/mifflin-jeor
@@ -92,6 +69,13 @@
     :title "Basal Metabolic Rate [Mefflin St Jeor]"
     :abbr "BMR"
     :units [:span "kcal/day"]}
+   {:a-key ::lbm
+    :spec ::lbm/person
+    :value #'lbm/calc-lean-body-mass
+    :conslusion nil
+    :title "Lean Body Mass"
+    :abbr "LBM"
+    :units [:span "kg"]}
    {:a-key ::bfp
     :spec ::bfp/person
     :value #'bfp/calc-body-fat
