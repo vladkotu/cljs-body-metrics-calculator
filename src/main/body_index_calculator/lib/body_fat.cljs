@@ -2,44 +2,56 @@
   " ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; Body Fat Percentage based on BMI measurement ;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; "
-  (:require [body-index-calculator.lib.body-mass-index  :refer [calc-body-mass-index]]))
+  (:require
+   [cljs.spec.alpha :as s]
+   [body-index-calculator.lib.specs :as specs]
+   [body-index-calculator.lib.body-mass-index  :refer [calc-body-mass-index]]))
 
-(def me {:gender :male
-         :age 36
-         :body-fat 26
-         :weight 85
-         :height 179})
+(s/def ::person (s/keys :req-un [::specs/height
+                                 ::specs/weight
+                                 ::specs/age
+                                 ::specs/gender]))
 
-(def she {:gender :male
-          :age 36
-          :body-fat 16
-          :weight 55
-          :height 164})
-
-(def normal-male {:gender :male
-                  :age 30
-                  :weight 65
-                  :height 182})
-
-(def normal-female {:gender :female
-                    :age 24
-                    :weight 50
-                    :height 162})
 (defn calc-body-fat
   "Calculate body fat bass based on https://en.wikipedia.org/wiki/Body_fat_percentage"
   [person]
-  (let [bmi (calc-body-mass-index person)
+  (let [bfp (calc-body-mass-index person)
         {:keys [age gender]} person
         sex (if (:male gender) 1 0)]
-    (- (- (+ (* 1.39 bmi)
+    (- (- (+ (* 1.39 bfp)
              (* 0.16 age))
           (* 10.34 sex))
        9)))
 
 (def body-fat-ranges-table
-  [[0    18.5 :under]
-   [18.5 25   :normal]
-   [25   30   :over]
-   [30   35   :obes :Level-I]
-   [35   40   :obes :Level-II]
-   [40   80   :obes :Level-III]])
+  {:female
+   [[10   13   "Essintial fat"]
+    [14   20   "Athletes Level"]
+    [21   24   "Fitness Person"]
+    [26   31   "Average Level"]
+    [32   100  "Obese"]]
+   :male
+   [[3    5    "Essintial fat"]
+    [6    13   "Athletes Level"]
+    [14   17   "Fitness Person"]
+    [18   24   "Average Level"]
+    [25   100  "Obese"]]})
+
+(defn classify-body-fat-index
+  [person bfp]
+  (let [classes (-> body-fat-ranges-table
+                    ((:gender person)))
+        class   (->> classes
+                     (filter (fn [[from to]]
+                               (and (< from bfp)
+                                    (<= bfp to))))
+                     first
+                     last)]
+    class))
+
+(defn classify-fat-percentage-person
+  [person]
+  (->> person
+       calc-body-fat
+       Math/floor
+       ((partial classify-body-fat-index person))))

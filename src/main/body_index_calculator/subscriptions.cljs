@@ -3,6 +3,7 @@
    [re-frame.core :as rf]
    [cljs.spec.alpha :as s]
    [body-index-calculator.helpers :refer [as-float form->person as-int]]
+   [body-index-calculator.lib.body-fat :as bfp]
    [body-index-calculator.lib.body-mass-index :as bmi]
    [body-index-calculator.lib.basal-matabolic-rate :as bmr]
    [body-index-calculator.lib.lean-body-mass :as lbm]))
@@ -39,7 +40,7 @@
     (let [person (form->person form)
           valid? (s/valid? spec person)
           a-value (if valid? (value person) nil)
-          a-conclusion (if valid? (and conclusion (conclusion a-value)) nil)]
+          a-conclusion (if valid? (and conclusion (conclusion person)) nil)]
       (-> metric
           (assoc :value a-value)
           (assoc :conclusion a-conclusion)))
@@ -50,7 +51,7 @@
   [{:a-key ::bmi
     :spec ::bmi/person
     :value #'bmi/calc-body-mass-index
-    :conclusion #'bmi/classify-body-mass-index
+    :conclusion #'bmi/classify-body-mass-person
     :abbr "BMI"
     :title "Body Mass Index"
     :units [:span "kg/m" [:sup 2]]}
@@ -67,7 +68,14 @@
     :conclusion nil
     :title "Basal Metabolic Rate [Mefflin St Jeor]"
     :abbr "BMR"
-    :units [:span "kcal/day"]}])
+    :units [:span "kcal/day"]}
+   {:a-key ::bfp
+    :spec ::bfp/person
+    :value #'bfp/calc-body-fat
+    :conclusion #'bfp/classify-fat-percentage-person
+    :title "Body Fat Percentage"
+    :abbr "BF"
+    :units [:span "%"]}])
 
 (rf/reg-sub
  ::result

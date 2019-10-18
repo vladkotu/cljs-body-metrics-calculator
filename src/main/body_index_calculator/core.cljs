@@ -21,6 +21,7 @@
   (prn :on-hmr-reload)
   (rf/clear-subscription-cache!)
   (prn "re-frame cache clean")
+  (rf/dispatch-sync [::e/init])
   (instrument-specs)
   (render))
 

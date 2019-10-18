@@ -2,10 +2,11 @@
   ";;;;;;;;;;;;;;;;;;;;;;;;;;;
    ;; BMI - body mass index ;;
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;"
-  (:require [body-index-calculator.lib.specs :as local-specs]
-            [cljs.spec.alpha :as s]
-            [orchestra.core :refer-macros [defn-spec]]
-            [orchestra-cljs.spec.test :as st]))
+  (:require
+   [body-index-calculator.lib.specs :as local-specs]
+   [cljs.spec.alpha :as s]
+   [orchestra.core :refer-macros [defn-spec]]
+   [orchestra-cljs.spec.test :as st]))
 
 (s/def ::person (s/keys :req-un [::local-specs/height
                                  ::local-specs/weight]))
