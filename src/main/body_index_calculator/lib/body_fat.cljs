@@ -1,7 +1,4 @@
 (ns body-index-calculator.lib.body-fat
-  " ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;; Body Fat Percentage based on BMI measurement ;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; "
   (:require
    [cljs.spec.alpha :as s]
    [body-index-calculator.lib.specs :as specs]

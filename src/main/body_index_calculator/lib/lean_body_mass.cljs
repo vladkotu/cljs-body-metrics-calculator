@@ -1,7 +1,4 @@
 (ns body-index-calculator.lib.lean-body-mass
-  " ;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;; LBM - lean body mass ;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;"
   (:require
    [body-index-calculator.lib.specs :as local]
    [cljs.spec.alpha :as s]

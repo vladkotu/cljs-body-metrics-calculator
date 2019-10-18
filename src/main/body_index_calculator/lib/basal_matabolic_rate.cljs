@@ -1,7 +1,4 @@
 (ns body-index-calculator.lib.basal-matabolic-rate
-  " ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;; BMR - basal metabolic rate ;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
   (:require
    [body-index-calculator.lib.specs :as specs]
    [cljs.spec.alpha :as s]

@@ -1,7 +1,4 @@
 (ns body-index-calculator.lib.body-mass-index
-  ";;;;;;;;;;;;;;;;;;;;;;;;;;;
-   ;; BMI - body mass index ;;
-   ;;;;;;;;;;;;;;;;;;;;;;;;;;;"
   (:require
    [body-index-calculator.lib.specs :as local-specs]
    [cljs.spec.alpha :as s]
