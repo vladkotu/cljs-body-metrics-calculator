@@ -10,7 +10,7 @@
     (fn []
       [input
        {:label     "Your Weight"
-        :value     (:value @db)
+        :value     (or (:value @db) "")
         :required  true
         :units     "Kg"
         :on-change

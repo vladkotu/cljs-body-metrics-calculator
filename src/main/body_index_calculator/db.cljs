@@ -1,10 +1,9 @@
 (ns body-index-calculator.db
   (:require
    [cljs.spec.alpha :as s]
-   [body-index-calculator.lib.specs :as specs]
-   [body-index-calculator.config :refer [config]]))
+   [body-index-calculator.lib.specs :as specs]))
 
-(s/def :gender/value ::specs/gender)
+(s/def :gender/value (s/nilable ::specs/gender))
 (s/def :db/gender (s/keys :req-un [::visited?
                                    ::active?
                                    :gender/value]))
@@ -34,13 +33,13 @@
 (def default-db
   {:form {:gender {:visited? false
                    :active?  false
-                   :value    (second (:genres config))}
+                   :value    nil}
           :age    {:visited? false
                    :active?  false
-                   :value    (:default-age config)}
+                   :value    nil}
           :weight {:visited? false
-                   :value    80
+                   :value    nil
                    :active?  false}
           :height {:visited? false
                    :active?  false
-                   :value    180}}})
+                   :value    nil}}})

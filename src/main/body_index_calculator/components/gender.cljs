@@ -24,13 +24,17 @@
                           :control (r/as-element [:> Radio])}]
     [:> FormControlLabel {:value "male"
                           :label "Male"
-                          :control (r/as-element [:> Radio])}]]])
+                          :control (r/as-element [:> Radio])}]
+    [:div {:style {:visibility "hidden "}}
+     [:> FormControlLabel {:value ""
+                           :label ""
+                           :control (r/as-element [:> Radio])}]]]])
 
 (defn gender []
   (let [db (rf/subscribe [::s/gender])]
     (fn []
       [gender-comp
-       {:value (:value @db)
+       {:value (or (:value @db) "")
         :on-change #(rf/dispatch
                      [::e/gender
                       {:visited? true

@@ -31,7 +31,7 @@
   (let [age (rf/subscribe [::s/age])]
     (fn []
       [age-comp
-       {:value (:value @age)
+       {:value (or (:value @age) "")
         :options (:ages config)
         :on-change
         #(rf/dispatch

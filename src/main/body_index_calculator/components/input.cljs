@@ -13,8 +13,7 @@
                      units
                      label
                      value]
-              :or   {value ""
-                     on-change #()
+              :or   {on-change #()
                      on-focus #()
                      on-blur #()}}]
   (let [id (str "intput-" (.toLowerCase label))]
