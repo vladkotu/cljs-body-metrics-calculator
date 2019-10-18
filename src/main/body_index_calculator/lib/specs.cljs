@@ -6,9 +6,7 @@
          :weight 85
          :height 179})
 
-(s/def ::male #{:male})
-(s/def ::female #{:female})
-(s/def ::gender (s/or ::male ::female))
+(s/def ::gender #{:male :female})
 
 (s/def ::int (s/nilable int?))
 

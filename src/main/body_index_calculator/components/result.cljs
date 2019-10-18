@@ -19,7 +19,6 @@
 (defn result-table []
   (let [res (rf/subscribe [::s/result])]
     (fn []
-      (js/console.log @res)
       [:> Table
        [:> TableHead
         [:> TableRow
