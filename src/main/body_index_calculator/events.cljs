@@ -35,6 +35,10 @@
  ::init
  (fn [_ _] db/default-db))
 
+(rf/reg-event-db
+ ::units
+ (fn [db [_ units]] (assoc db :units units)))
+
 (defn make-form-event-handler [path]
   (fn [db [_ new-val]]
     (update-in

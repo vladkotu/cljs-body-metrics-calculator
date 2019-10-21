@@ -6,6 +6,17 @@
    [body-index-calculator.events :as e]
    [body-index-calculator.components.radio-group :refer [radio-group]]
    [body-index-calculator.components.input  :refer [input]]))
+(defn units []
+  (let [value (rf/subscribe [::s/units])]
+    (fn []
+      [radio-group
+       {:value         (or @value "")
+        :name          "units"
+        :add-hidden?   false
+        :radio-buttons [{:label "Metric" :value :metric}
+                        {:label "Imperial" :value :imperial}]
+        :on-change     #(rf/dispatch
+                         [::e/units (keyword %)])}])))
 
 (defn gender []
   (let [value (rf/subscribe [::s/gender])]
@@ -73,6 +84,7 @@
   [:form {:name          "index-calculator"
           :no-validate   true
           :auto-complete "off"}
+   [units]
    [gender]
    [age]
    [weight]

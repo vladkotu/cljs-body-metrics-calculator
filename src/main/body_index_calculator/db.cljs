@@ -40,10 +40,13 @@
                                  :db/hip
                                  :db/waist]))
 
-(s/def ::db (s/keys :req-un [:db/form]))
+(s/def :db/units #{:metric :imperial})
+(s/def ::db (s/keys :req-un [:db/form
+                             :db/units]))
 
 (def default-db
-  {:form {:gender {:visited? false
+  {:units :metric
+   :form {:gender {:visited? false
                    :active?  false
                    :value    nil}
           :age    {:visited? false

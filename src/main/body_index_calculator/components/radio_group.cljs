@@ -14,15 +14,15 @@
                          :label ""
                          :control (r/as-element [:> Radio])}]])
 
-(defn radio-group [{:keys [value on-change label radio-buttons]}]
-  [:> FormControl form-control-props
+(defn radio-group [{:keys [add-hidden? value name on-change label radio-buttons]}]
+  [:> FormControl
    [:> FormLabel {:component "legend"} label]
-   [:> RadioGroup {:name "gender"
-                   :value value
+   [:> RadioGroup {:name      name
+                   :value     value
                    :on-change #(on-change (evalue %))
-                   :row true}
+                   :row       true}
     (for [radio radio-buttons]
       ^{:key (str (:label radio))}
       [:> FormControlLabel
        (assoc radio :control (r/as-element [:> Radio]))])
-    [hidden-radio]]])
+    (when add-hidden? [hidden-radio])]])
