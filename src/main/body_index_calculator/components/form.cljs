@@ -1,25 +1,11 @@
 (ns body-index-calculator.components.form
   (:require
    [re-frame.core :as rf]
-   [body-index-calculator.config  :refer [config]]
    [body-index-calculator.subscriptions :as s]
    [body-index-calculator.helpers :refer [->int]]
    [body-index-calculator.events :as e]
    [body-index-calculator.components.radio-group :refer [radio-group]]
-   [body-index-calculator.components.selectbox :refer [selectbox]]
    [body-index-calculator.components.input  :refer [input]]))
-
-(defn age []
-  (let [value (rf/subscribe [::s/age])]
-    (fn []
-      [selectbox
-       {:value   (or @value "")
-        :label "Age"
-        :options (:ages config)
-        :on-change
-        #(rf/dispatch
-          [::e/age {:visited? true
-                    :value    %}])}])))
 
 (defn gender []
   (let [value (rf/subscribe [::s/gender])]
@@ -48,23 +34,30 @@
         :on-blur   #(rf/dispatch
                      [ev-key {:active? false}])}])))
 
+(defn age []
+  [input-with-subscription
+   {:label   "Age"
+    :sub-key ::s/age
+    :ev-key  ::e/age
+    :units   "Years"}])
+
 (defn weight []
   [input-with-subscription
-   {:label   "Your Weight"
+   {:label   "Weight"
     :sub-key ::s/weight
     :ev-key  ::e/weight
     :units   "Kg"}])
 
 (defn height []
   [input-with-subscription
-   {:label   "Your Height"
+   {:label   "Height"
     :sub-key ::s/height
     :ev-key  ::e/height
-    :units   "Kg"}])
+    :units   "Sm"}])
 
 (defn waist []
   [input-with-subscription
-   {:label   "Your Waist Cimcurference"
+   {:label   "Waist Circumference"
     :sub-key ::s/waist
     :ev-key  ::e/waist
     :units   "Sm"}])

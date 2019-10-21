@@ -8,7 +8,7 @@
                                    ::active?
                                    :gender/value]))
 
-(s/def :age/value ::specs/age)
+(s/def :age/value (s/nilable int?))
 (s/def :db/age (s/keys :req-un [::visited?
                                 ::active?
                                 :age/value]))
