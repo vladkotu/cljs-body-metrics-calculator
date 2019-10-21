@@ -26,6 +26,14 @@
 (s/def ::waist-lt #(< % 200))
 (s/def ::waist (s/and ::int ::waist-lt ::waist-gt))
 
+
+;; what are real max and min values known?
+
+
+(s/def ::hip-gt #(< 40 %))
+(s/def ::hip-lt #(< % 200))
+(s/def ::hip (s/and ::int ::hip-lt ::hip-gt))
+
 (s/def ::form (s/keys :req-un [::height ::weight]))
 
 (def weight-error-messages

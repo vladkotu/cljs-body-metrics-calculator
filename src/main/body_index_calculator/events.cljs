@@ -52,7 +52,9 @@
    {:a-key ::height
     :path  [:form :height]}
    {:a-key ::waist
-    :path  [:form :waist]}])
+    :path  [:form :waist]}
+   {:a-key ::hip
+    :path  [:form :hip]}])
 
 (doall (for [{:keys [a-key path]} form-events]
          (rf/reg-event-db

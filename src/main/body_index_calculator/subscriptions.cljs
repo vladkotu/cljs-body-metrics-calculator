@@ -5,6 +5,7 @@
    [body-index-calculator.helpers :refer [as-float form->person as-int]]
    [body-index-calculator.lib.body-fat :as bfp]
    [body-index-calculator.lib.body-mass-index :as bmi]
+   [body-index-calculator.lib.wais-hip-ratio :as whr]
    [body-index-calculator.lib.basal-matabolic-rate :as bmr]
    [body-index-calculator.lib.body-shape-index :as bsi]
    [body-index-calculator.lib.lean-body-mass :as lbm]))
@@ -25,7 +26,9 @@
    {:a-key ::height
     :path  [:height :value]}
    {:a-key ::waist
-    :path  [:waist :value]}])
+    :path  [:waist :value]}
+   {:a-key ::hip
+    :path  [:hip :value]}])
 
 (doall (for [{:keys [a-key path]} form-subs]
          (rf/reg-sub
@@ -47,42 +50,55 @@
       (prn e))))
 
 (def metrics
-  [{:a-key ::bmi
-    :spec ::bmi/person
-    :value #'bmi/calc-body-mass-index
+  [{:a-key      ::bmi
+    :spec       ::bmi/person
+    :value      #'bmi/calc-body-mass-index
     :conclusion #'bmi/classify-body-mass-person
-    :abbr "BMI"
-    :title "Body Mass Index"
-    :units [:span "kg·m" [:sup -2]]}
-   {:a-key ::bsi
-    :spec ::bsi/person
+    :abbr       "BMI"
+    :title      "Body Mass Index"
+    :units      [:span "kg·m" [:sup -2]]}
+
+   {:a-key      ::bsi
+    :spec       ::bsi/person
     :raw-value? true
-    :value #'bsi/calc-body-shape-z-score
+    :value      #'bsi/calc-body-shape-z-score
     :conclusion #'bsi/classify-body-shape-person
-    :title "A Body Shape Index"
-    :abbr "ABSI"
-    :units [:span "m" [:sup "11/6"] "kg"[:sup "-2/3"]]}
-   {:a-key ::bmr
-    :spec ::bmr/person
-    :value #'bmr/mifflin-jeor
+    :title      "A Body Shape Index"
+    :abbr       "ABSI"
+    :units      [:span "m" [:sup "11/6"] "kg" [:sup "-2/3"]]}
+
+   {:a-key      ::bmr
+    :spec       ::bmr/person
+    :value      #'bmr/mifflin-jeor
     :conclusion nil
-    :title "Basal Metabolic Rate [Mefflin St Jeor]"
-    :abbr "BMR"
-    :units [:span "kcal/day"]}
-   {:a-key ::lbm
-    :spec ::lbm/person
-    :value #'lbm/calc-lean-body-mass
+    :title      "Basal Metabolic Rate [Mefflin St Jeor]"
+    :abbr       "BMR"
+    :units      [:span "kcal/day"]}
+
+   {:a-key      ::lbm
+    :spec       ::lbm/person
+    :value      #'lbm/calc-lean-body-mass
     :conslusion nil
-    :title "Lean Body Mass"
-    :abbr "LBM"
-    :units [:span "kg"]}
-   {:a-key ::bfp
-    :spec ::bfp/person
-    :value #'bfp/calc-body-fat
+    :title      "Lean Body Mass"
+    :abbr       "LBM"
+    :units      [:span "kg"]}
+
+   {:a-key      ::bfp
+    :spec       ::bfp/person
+    :value      #'bfp/calc-body-fat
     :conclusion #'bfp/classify-fat-percentage-person
-    :title "Body Fat Percentage"
-    :abbr "BF"
-    :units [:span "%"]}])
+    :title      "Body Fat Percentage"
+    :abbr       "BF"
+    :units      [:span "%"]}
+
+   {:a-key      ::whr
+    :spec       ::whr/person
+    :raw-value? true
+    :value      #'whr/calc-waist-hip-ratio
+    :conclusion #'whr/classify-waist-hip-ratio
+    :title      "Waist to Hip Ratio"
+    :abbr       "WHR"
+    :units      [:span ""]}])
 
 (rf/reg-sub
  ::result

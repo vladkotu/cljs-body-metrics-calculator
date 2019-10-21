@@ -34,6 +34,13 @@
         :on-blur   #(rf/dispatch
                      [ev-key {:active? false}])}])))
 
+(defn hip []
+  [input-with-subscription
+   {:label   "Hip Circumference"
+    :sub-key ::s/hip
+    :ev-key  ::e/hip
+    :units   "Sm"}])
+
 (defn age []
   [input-with-subscription
    {:label   "Age"
@@ -70,4 +77,5 @@
    [age]
    [weight]
    [height]
-   [waist]])
+   [waist]
+   [hip]])

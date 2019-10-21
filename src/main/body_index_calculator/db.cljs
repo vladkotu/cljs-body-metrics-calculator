@@ -28,10 +28,16 @@
                                   ::active?
                                   :waist/value]))
 
+(s/def :hip/value (s/nilable int?))
+(s/def :db/hip (s/keys :req-un [::visited?
+                                ::active?
+                                :hip/value]))
+
 (s/def :db/form (s/keys :req-un [:db/gender
                                  :db/age
                                  :db/weight
                                  :db/height
+                                 :db/hip
                                  :db/waist]))
 
 (s/def ::db (s/keys :req-un [:db/form]))
@@ -50,5 +56,8 @@
                    :active?  false
                    :value    nil}
           :waist  {:visited? false
+                   :active?  false
+                   :value    nil}
+          :hip  {:visited? false
                    :active?  false
                    :value    nil}}})
