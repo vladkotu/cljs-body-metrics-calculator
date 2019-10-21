@@ -31,7 +31,6 @@
                             check-spec-after-interceptor]
                            [check-spec-after-interceptor]))
 
-(prn common-interseptors)
 (rf/reg-event-db
  ::init
  (fn [_ _] db/default-db))
@@ -43,35 +42,23 @@
      path
      (fn [val] (merge val new-val)))))
 
-(rf/reg-event-db
- ::gender
- common-interseptors
- (make-form-event-handler [:form :gender]))
+(def form-events
+  [{:a-key ::gender
+    :path  [:form :gender]}
+   {:a-key ::age
+    :path  [:form :age]}
+   {:a-key ::weight
+    :path  [:form :weight]}
+   {:a-key ::height
+    :path  [:form :height]}
+   {:a-key ::waist
+    :path  [:form :waist]}])
 
-(rf/reg-event-db
- ::age
- common-interseptors
- (make-form-event-handler [:form :age]))
-
-(rf/reg-event-fx
- ::weight
- common-interseptors
- (fn [cofx [_ new-val]]
-   {:db (update-in
-         (:db cofx)
-         [:form :weight]
-         (fn [val] (merge val new-val)))}))
-
-(rf/reg-event-db
- ::height
- common-interseptors
- (make-form-event-handler [:form :height]))
-
-(rf/reg-event-db
- ::waist
- common-interseptors
- (make-form-event-handler [:form :waist]))
-
+(doall (for [{:keys [a-key path]} form-events]
+         (rf/reg-event-db
+          a-key
+          common-interseptors
+          (make-form-event-handler path))))
 
 (defonce timeouts (r/atom {}))
 

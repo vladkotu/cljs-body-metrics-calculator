@@ -27,11 +27,11 @@
    {:a-key ::waist
     :path  [:waist :value]}])
 
-(doall (for [sub form-subs]
+(doall (for [{:keys [a-key path]} form-subs]
          (rf/reg-sub
-          (:a-key sub)
+          a-key
           :<- [::form]
-          (fn [db _] (get-in db (:path sub))))))
+          (fn [db _] (get-in db path)))))
 
 (defn form->metric-result
   [form {:keys [spec value conclusion] :as metric}]
