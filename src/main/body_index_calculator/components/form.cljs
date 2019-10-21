@@ -4,9 +4,12 @@
    [re-frame.core :as rf]
    [body-index-calculator.subscriptions :as s]
    [body-index-calculator.helpers :refer [->int]]
+   [body-index-calculator.mui-theme :refer [spacing]]
    [body-index-calculator.events :as e]
    [body-index-calculator.components.radio-group :refer [radio-group]]
-   [body-index-calculator.components.input  :refer [input double-input]]))
+   [body-index-calculator.components.input  :refer [input double-input]]
+   ["@material-ui/core/Box" :default Box]
+   ["@material-ui/core/Divider" :default Divider]))
 
 (defn units []
   (let [value (rf/subscribe [::s/units])]
@@ -102,10 +105,18 @@
   [:form {:name          "index-calculator"
           :no-validate   true
           :auto-complete "off"}
-   [units]
-   [gender]
-   [age]
-   [weight]
-   [height]
-   [waist]
-   [hip]])
+   [:> Box {:my 1.5}
+    [units]
+    [:> Divider]]
+   [:> Box {:my 1.5}
+    [gender]]
+   [:> Box {:my 1.5}
+    [age]]
+   [:> Box {:my 1.5}
+    [weight]]
+   [:> Box {:my 1.5}
+    [height]]
+   [:> Box {:my 1.5}
+    [waist]]
+   [:> Box {:my 1.5}
+    [hip]]])
