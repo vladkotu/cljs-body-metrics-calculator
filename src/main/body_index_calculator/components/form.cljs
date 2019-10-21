@@ -1,11 +1,13 @@
 (ns body-index-calculator.components.form
   (:require
+   [reagent.core :as r]
    [re-frame.core :as rf]
    [body-index-calculator.subscriptions :as s]
    [body-index-calculator.helpers :refer [->int]]
    [body-index-calculator.events :as e]
    [body-index-calculator.components.radio-group :refer [radio-group]]
-   [body-index-calculator.components.input  :refer [input]]))
+   [body-index-calculator.components.input  :refer [input double-input]]))
+
 (defn units []
   (let [value (rf/subscribe [::s/units])]
     (fn []
@@ -23,9 +25,10 @@
     (fn []
       [radio-group
        {:value         (or @value "")
-        :label         "Gender"
-        :radio-buttons [{:label "Female" :value "female"}
-                        {:label "Male" :value "male"}]
+        :name          "gender"
+        :add-hidden?   true
+        :radio-buttons [{:label "Male" :value "male"}
+                        {:label "Female" :value "female"}]
         :on-change     #(rf/dispatch
                          [::e/gender
                           {:visited? true
@@ -50,35 +53,50 @@
    {:label   "Hip Circumference"
     :sub-key ::s/hip
     :ev-key  ::e/hip
-    :units   "Sm"}])
+    :units   "cm"}])
 
 (defn age []
   [input-with-subscription
    {:label   "Age"
     :sub-key ::s/age
     :ev-key  ::e/age
-    :units   "Years"}])
+    :units   "yrs"}])
 
 (defn weight []
   [input-with-subscription
    {:label   "Weight"
     :sub-key ::s/weight
     :ev-key  ::e/weight
-    :units   "Kg"}])
+    :units   "kg"}])
 
 (defn height []
   [input-with-subscription
    {:label   "Height"
     :sub-key ::s/height
     :ev-key  ::e/height
-    :units   "Sm"}])
+    :units   "cm"}])
 
 (defn waist []
-  [input-with-subscription
-   {:label   "Waist Circumference"
-    :sub-key ::s/waist
-    :ev-key  ::e/waist
-    :units   "Sm"}])
+  (let [units (rf/subscribe [::s/units])]
+    (fn []
+      (if (= :metric @units)
+        [input-with-subscription
+         {:label   "Waist Circumference"
+          :sub-key ::s/waist
+          :ev-key  ::e/waist
+          :units   "cm"}]
+        [double-input
+         "Waist Circumference"
+         {:value     5
+          :units     "ft"
+          :on-change #()
+          :on-focus  #()
+          :on-blur   #()}
+         {:value     3
+          :units     "in"
+          :on-change #()
+          :on-focus  #()
+          :on-blur   #()}]))))
 
 (defn form []
   [:form {:name          "index-calculator"

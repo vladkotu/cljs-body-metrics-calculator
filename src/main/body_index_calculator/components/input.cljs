@@ -1,33 +1,69 @@
 (ns body-index-calculator.components.input
   (:require [reagent.core :as r]
             [body-index-calculator.components.common :refer [form-control-props form-label-styles]]
-            [body-index-calculator.helpers :refer [evalue]]
+            [body-index-calculator.helpers :refer [evalue react-key]]
             ["@material-ui/core" :refer [FormControl
                                          FormLabel
+                                         InputLabel
+                                         Input
+                                         TextField
                                          InputAdornment
+                                         FilledInput
+                                         Box
+                                         Grid
                                          OutlinedInput]]))
 
-(defn input [{:keys [on-change
-                     on-blur
-                     on-focus
-                     units
-                     label
-                     value]
-              :or   {on-change #()
-                     on-focus #()
-                     on-blur #()}}]
-  (let [id (str "intput-" (.toLowerCase label))]
-    [:> FormControl form-control-props
-     [:> FormLabel {:component "label"
-                    :html-for id
-                    :style form-label-styles}
-      label]
-     [:> OutlinedInput {:id id
-                        :value (or value "")
-                        :on-change #(on-change (evalue %))
-                        :on-blur #(on-blur)
-                        :on-focus #(on-focus)
-                        :endAdornment
-                        (r/as-element
-                         [:> InputAdornment
-                          {:position "end"} units])}]]))
+(defn shared-input [{:keys [on-change
+                            on-blur
+                            on-focus
+                            units
+                            id
+                            label
+                            value
+                            input-style]
+                     :or   {on-change #()
+                            on-focus  #()
+                            on-blur   #()}}]
+  [:> FormControl {:style {:width "100%" :position "initial"}}
+   [:> InputLabel {:html-for id :shrink true}
+    label]
+   [:> FilledInput {:id        id
+                    :value     (or value "")
+                    :on-change #(on-change (evalue %))
+                    :on-blur   #(on-blur)
+                    :on-focus  #(on-focus)
+                    :style     input-style
+                    :endAdornment
+                    (r/as-element
+                     [:> InputAdornment
+                      {:position "end"
+                       :style {:align-items "baseline"}}
+                      units])}]])
+
+(defn input [props]
+  (let [id (react-key "input-" (:label props))]
+    [:> Grid {:container true :xs 12 :item true :style {:position "relative"}}
+     [shared-input (assoc props :id id)]]))
+
+(defn double-input [label props1 props2]
+  (let [active       (r/atom 1)
+        id           (react-key "input-" label)
+        reset-active (fn [n] (fn [on-focus]
+                               #(do (reset! active n)
+                                    (on-focus))))]
+    (fn []
+      [:> Grid {:container true :xs 12 :item true :style {:position "relative"}}
+       (let [props (-> props1
+                       (assoc :label (when (= 1 @active) label))
+                       (assoc :id (str "1-" id))
+                       (update :on-focus (reset-active 1)))]
+         [:> Grid {:item true :xs 6}
+          [shared-input
+           (merge props {:input-style {:border-top-right-radius 0}})]])
+       (let [props (-> props2
+                       (assoc :label (when (= 2 @active) label))
+                       (assoc :id (str "2-" id))
+                       (update :on-focus (reset-active 2)))]
+         [:> Grid {:item true :xs 6}
+          [shared-input
+           (merge props {:input-style {:border-top-left-radius 0}})]])])))
