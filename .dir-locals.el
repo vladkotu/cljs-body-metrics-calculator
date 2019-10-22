@@ -1,3 +1,3 @@
 ((nil . ((cider-default-cljs-repl . shadow)
           (cider-shadow-default-options . "app")
-          (nrepl-log-messages nil))))
+          (nrepl-log-messages true))))
