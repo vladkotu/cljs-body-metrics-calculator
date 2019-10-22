@@ -13,8 +13,8 @@
 (def cider-have-to-have-at-least-one-def-in-a-file nil)
 
 (rf/reg-sub
- ::units
- (fn [db _] (:units db)))
+ ::system
+ (fn [db _] (:system db)))
 
 (rf/reg-sub
  ::form

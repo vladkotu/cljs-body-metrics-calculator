@@ -36,8 +36,8 @@
  (fn [_ _] db/default-db))
 
 (rf/reg-event-db
- ::units
- (fn [db [_ units]] (assoc db :units units)))
+ ::system
+ (fn [db [_ system]] (assoc db :system system)))
 
 (defn make-form-event-handler [path]
   (fn [db [_ new-val]]
