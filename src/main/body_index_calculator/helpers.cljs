@@ -78,11 +78,13 @@
 (defn evalue [ev] (-> ev .-target .-value))
 
 (defn ->int [v]
-  (let [v (clojure.string/trim v)
-        v (clojure.string/replace v #"[^0-9]+" "")]
-    (if-not (zero? (count v))
-      (js/parseInt v 10)
-      nil)))
+  (when-not (nil? v)
+    (let [v (-> (str v)
+                (clojure.string/trim)
+                (clojure.string/replace #"[^0-9.]+" ""))]
+      (if-not (zero? (count v))
+        (js/parseFloat v 10)
+        nil))))
 
 (defn as-float
   ([n] (as-float n 2))
@@ -102,3 +104,14 @@
   (-> (clojure.string/join "-" ss)
       (clojure.string/trim)
       (clojure.string/replace #"\s+" "-")))
+
+(defn lb->kg [m] (/ m 0.45359237))
+(defn kg->lb [m] (* m 0.45359237))
+(defn sm->ft-in [sm]
+  (let [in (/ sm 2.54)]
+    [(quot in 12)
+     (as-float (rem in 12))]))
+(defn ft-in->sm [[ft in]]
+  (Math/round
+   (+ (* ft 30.48)
+      (* in 2.54))))

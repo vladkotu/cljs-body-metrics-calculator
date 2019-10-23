@@ -41,24 +41,23 @@
      [shared-input (assoc props :id id)]]))
 
 (defn double-input [label props1 props2]
-  (let [active       (r/atom 1)
-        id           (react-key "input-" label)
-        reset-active (fn [n] (fn [on-focus]
-                               #(do (reset! active n)
-                                    (on-focus))))]
-    (fn []
-      [:> Grid {:container true :xs 12 :item true :style {:position "relative"}}
-       (let [props (-> props1
-                       (assoc :label (when (= 1 @active) label))
-                       (assoc :id (str "1-" id))
-                       (update :on-focus (reset-active 1)))]
-         [:> Grid {:item true :xs 6}
-          [shared-input
-           (merge props {:input-style {:border-top-right-radius 0}})]])
-       (let [props (-> props2
-                       (assoc :label (when (= 2 @active) label))
-                       (assoc :id (str "2-" id))
-                       (update :on-focus (reset-active 2)))]
-         [:> Grid {:item true :xs 6}
-          [shared-input
-           (merge props {:input-style {:border-top-left-radius 0}})]])])))
+  (r/with-let [active       (r/atom 1)
+               id           (react-key "input-" label)
+               reset-active (fn [n] (fn [on-focus]
+                                      #(do (reset! active n)
+                                           (on-focus))))]
+    [:> Grid {:container true :xs 12 :item true :style {:position "relative"}}
+     (let [props (-> props1
+                     (assoc :label (when (= 1 @active) label))
+                     (assoc :id (str "1-" id))
+                     (update :on-focus (reset-active 1)))]
+       [:> Grid {:item true :xs 6}
+        [shared-input
+         (merge props {:input-style {:border-top-right-radius 0}})]])
+     (let [props (-> props2
+                     (assoc :label (when (= 2 @active) label))
+                     (assoc :id (str "2-" id))
+                     (update :on-focus (reset-active 2)))]
+       [:> Grid {:item true :xs 6}
+        [shared-input
+         (merge props {:input-style {:border-top-left-radius 0}})]])]))

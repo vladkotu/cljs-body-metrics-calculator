@@ -37,7 +37,8 @@
 
 (rf/reg-event-db
  ::system
- (fn [db [_ system]] (assoc db :system system)))
+ (fn [db [_ system]]
+   (assoc db :system system)))
 
 (defn make-form-event-handler [path]
   (fn [db [_ new-val]]

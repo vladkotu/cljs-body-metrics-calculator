@@ -37,8 +37,10 @@
 (doall (for [{:keys [a-key path]} form-subs]
          (rf/reg-sub
           a-key
+          :<- [::system]
           :<- [::form]
-          (fn [db _] (get-in db path)))))
+          (fn [[system form] _]
+            [system (get-in form path)]))))
 
 (defn form->metric-result
   [form {:keys [spec value conclusion] :as metric}]

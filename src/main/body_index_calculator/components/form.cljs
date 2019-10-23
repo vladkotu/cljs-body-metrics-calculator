@@ -4,7 +4,6 @@
    [re-frame.core :as rf]
    [body-index-calculator.subscriptions :as s]
    [body-index-calculator.helpers :refer [->int]]
-   [body-index-calculator.mui-theme :refer [spacing]]
    [body-index-calculator.events :as e]
    [body-index-calculator.components.radio-group :refer [radio-group]]
    [body-index-calculator.components.input  :refer [input double-input]]
@@ -37,48 +36,64 @@
                           {:visited? true
                            :value    (keyword %)}])}])))
 
-(def unit-types {:imperial {:length ["ft" "in"]
-                            :weight "lb"
-                            :age    "yrs"}
-                 :metric {:length "cm"
-                          :weight "kg"
-                          :age    "yrs"}})
+(def unit-types {:imperial
+                 {:length ["ft" "in"]
+                  :weight "lb"
+                  :age    "yrs"}
+                 :metric
+                 {:length "cm"
+                  :weight "kg"
+                  :age    "yrs"}})
 
-(defn input-with-subscription [{:keys [sub-key ev-key label unit-type]}]
-  (let [system (rf/subscribe [::s/system])
-        value  (rf/subscribe [sub-key])]
-    (fn []
-      (let [units  (get-in unit-types [@system unit-type])]
-        (if (= PersistentVector (type units))
-          [double-input
-           label
-           {:value     (or (first @value) "")
-            :units     (first units)
-            :on-change #()
-            :on-focus  #()
-            :on-blur   #()}
-           {:value     (or (second @value) "")
-            :units     (second units)
-            :on-change #()
-            :on-focus  #()
-            :on-blur   #()}]
-          [input
-           {:label     label
-            :value     (or @value "")
-            :units     units
-            :on-change #(rf/dispatch
-                         [ev-key {:value (->int %)}])
-            :on-focus  #(rf/dispatch
-                         [ev-key {:visited? true :active? true}])
-            :on-blur   #(rf/dispatch
-                         [ev-key {:active? false}])}])))))
+(defn input-with-subscription [{:keys [value ev-key label units]}]
+  [input
+   {:label     label
+    :value     (or value "")
+    :units     units
+    :on-change #(rf/dispatch
+                 [ev-key {:value [(->int %)]}])
+    :on-focus  #(rf/dispatch
+                 [ev-key {:visited? true :active? true}])
+    :on-blur   #(rf/dispatch
+                 [ev-key {:active? false}])}])
+
+(defn double-input-with-subscription [{:keys [value ev-key label units]}]
+  (r/with-let [local-state (r/atom {:ft/value (first value)
+                                    :in/value (second value)})]
+    (letfn [(dispatch-change [state]
+              (rf/dispatch [ev-key {:value (mapv ->int [(:ft/value state) (:in/value state)])}]))
+            (dispatch-focus [] (rf/dispatch [ev-key {:visited? true :active? true}]))
+            (dispatch-blur [] (rf/dispatch [ev-key {:active? false}]))]
+      [double-input
+       label
+       {:value     (or (first value) "")
+        :units     (first units)
+        :on-change #(do (swap! local-state assoc :ft/value %)
+                        (dispatch-change @local-state))
+        :on-focus  dispatch-focus
+        :on-blur   dispatch-blur}
+       {:value     (or (second value) "")
+        :units     (second units)
+        :on-change #(do (swap! local-state assoc :in/value %)
+                        (dispatch-change @local-state))
+        :on-focus  dispatch-focus
+        :on-blur   dispatch-blur}])))
+
+(defn unit-type-dispatcher [{:keys [unit-type]} props]
+  (r/with-let [sub-value (rf/subscribe [(:sub-key props)])]
+    (let [[system value] @sub-value
+          units          (get-in unit-types [system unit-type])
+          full-props     (merge props {:units units :value value})]
+      (if (= PersistentVector (type units))
+        [double-input-with-subscription full-props]
+        [input-with-subscription full-props]))))
 
 (defn hip []
-  [input-with-subscription
-   {:label     "Hip Circumference"
-    :sub-key   ::s/hip
-    :ev-key    ::e/hip
-    :unit-type :length}])
+  [unit-type-dispatcher
+   {:unit-type :length}
+   {:label   "Hip Circumference"
+    :sub-key ::s/hip
+    :ev-key  ::e/hip}])
 
 (defn age []
   [input-with-subscription
@@ -106,23 +121,7 @@
    {:label     "Waist Circumference"
     :sub-key   ::s/waist
     :ev-key    ::e/waist
-    :unit-type :length}]
-
-  #_(fn []
-      (if (= :metric @units)
-
-        [double-input
-         "Waist Circumference"
-         {:value     5
-          :units     "ft"
-          :on-change #()
-          :on-focus  #()
-          :on-blur   #()}
-         {:value     3
-          :units     "in"
-          :on-change #()
-          :on-focus  #()
-          :on-blur   #()}])))
+    :unit-type :length}])
 
 (defn form []
   [:form {:name          "index-calculator"
@@ -131,15 +130,15 @@
    [:> Box {:my 1.5}
     [meassuring-system]
     [:> Divider]]
-   [:> Box {:my 1.5}
-    [gender]]
-   [:> Box {:my 1.5}
-    [age]]
-   [:> Box {:my 1.5}
-    [weight]]
-   [:> Box {:my 1.5}
-    [height]]
-   [:> Box {:my 1.5}
-    [waist]]
+   ;; [:> Box {:my 1.5}
+   ;;  [gender]]
+   ;; [:> Box {:my 1.5}
+   ;;  [age]]
+   ;; [:> Box {:my 1.5}
+   ;;  [weight]]
+   ;; [:> Box {:my 1.5}
+   ;;  [height]]
+   ;; [:> Box {:my 1.5}
+   ;;  [waist]]
    [:> Box {:my 1.5}
     [hip]]])
