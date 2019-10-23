@@ -1,12 +1,12 @@
 (ns body-index-calculator.components.radio-group
-  (:require [reagent.core :as r]
-            [body-index-calculator.components.common :refer [form-control-props]]
-            [body-index-calculator.helpers :refer [evalue]]
-            ["@material-ui/core" :refer [FormControl
-                                         FormControlLabel
-                                         FormLabel
-                                         Radio
-                                         RadioGroup]]))
+  (:require
+   [reagent.core :as r]
+   [body-index-calculator.helpers :refer [evalue]]
+   ["@material-ui/core/FormControl" :default FormControl]
+   ["@material-ui/core/FormControlLabel" :default FormControlLabel]
+   ["@material-ui/core/FormLabel" :default FormLabel]
+   ["@material-ui/core/Radio" :default Radio]
+   ["@material-ui/core/RadioGroup" :default RadioGroup]))
 
 (defn hidden-radio []
   [:div {:style {:visibility "hidden "}}

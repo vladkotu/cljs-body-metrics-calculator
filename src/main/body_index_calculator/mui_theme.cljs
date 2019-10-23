@@ -1,7 +1,8 @@
 (ns body-index-calculator.mui-theme
   (:require [body-index-calculator.helpers :refer [to-clj]]
-            ["@material-ui/core/styles"    :refer [createMuiTheme]]
-            ["@material-ui/core/colors"    :refer [lightBlue cyan]]))
+            ["@material-ui/core/styles/createMuiTheme" :default createMuiTheme]
+            ["@material-ui/core/colors/lightBlue" :default lightBlue]
+            ["@material-ui/core/colors/cyan" :default cyan]))
 
 (def js-theme (createMuiTheme
                (clj->js {:palette

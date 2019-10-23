@@ -1,17 +1,12 @@
 (ns body-index-calculator.components.input
-  (:require [reagent.core :as r]
-            [body-index-calculator.components.common :refer [form-control-props form-label-styles]]
-            [body-index-calculator.helpers :refer [evalue react-key]]
-            ["@material-ui/core" :refer [FormControl
-                                         FormLabel
-                                         InputLabel
-                                         Input
-                                         TextField
-                                         InputAdornment
-                                         FilledInput
-                                         Box
-                                         Grid
-                                         OutlinedInput]]))
+  (:require
+   [reagent.core :as r]
+   [body-index-calculator.helpers :refer [evalue react-key]]
+   ["@material-ui/core/FormControl" :default FormControl]
+   ["@material-ui/core/InputLabel" :default InputLabel]
+   ["@material-ui/core/InputAdornment" :default InputAdornment]
+   ["@material-ui/core/FilledInput" :default FilledInput]
+   ["@material-ui/core/Grid" :default Grid]))
 
 (defn shared-input [{:keys [on-change
                             on-blur

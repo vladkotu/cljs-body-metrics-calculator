@@ -3,10 +3,10 @@
    [reagent.core :as r]
    [body-index-calculator.helpers   :refer [with-styles-react]]
    [body-index-calculator.mui-theme :refer [primary-color]]
-   ["@material-ui/icons" :refer [CopyrightTwoTone]]
-   ["@material-ui/core" :refer [BottomNavigation
-                                BottomNavigationAction
-                                Grid]]))
+   ["@material-ui/icons/CopyrightTwoTone" :default CopyrightTwoTone]
+   ["@material-ui/core/BottomNavigation" :default BottomNavigation]
+   ["@material-ui/core/BottomNavigationAction" :default BottomNavigationAction]
+   ["@material-ui/core/Grid" :default Grid]))
 
 (def copy-icon (r/as-element
                 [:> CopyrightTwoTone {:htmlColor (primary-color)}]))

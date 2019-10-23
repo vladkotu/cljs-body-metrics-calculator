@@ -3,11 +3,11 @@
    [re-frame.core :as rf]
    [body-index-calculator.subscriptions :as s]
    [body-index-calculator.helpers :refer [react-key as-int as-float]]
-   ["@material-ui/core" :refer [Table
-                                TableBody
-                                TableCell
-                                TableHead
-                                TableRow]]))
+   ["@material-ui/core/Table" :default Table]
+   ["@material-ui/core/TableBody" :default TableBody]
+   ["@material-ui/core/TableCell" :default TableCell]
+   ["@material-ui/core/TableHead" :default TableHead]
+   ["@material-ui/core/TableRow" :default TableRow]))
 
 (defn cell [child]
   [:> TableCell {:align "right"} child])

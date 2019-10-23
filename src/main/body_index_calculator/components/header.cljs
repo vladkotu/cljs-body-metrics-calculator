@@ -1,9 +1,9 @@
 (ns body-index-calculator.components.header
   (:require
-   ["@material-ui/core" :refer [AppBar
-                                Grid
-                                Toolbar
-                                Typography]]))
+   ["@material-ui/core/AppBar" :default AppBar]
+   ["@material-ui/core/Grid" :default Grid]
+   ["@material-ui/core/Toolbar" :default Toolbar]
+   ["@material-ui/core/Typography" :default Typography]))
 
 (defn header-content []
   [:> AppBar {:position "static"

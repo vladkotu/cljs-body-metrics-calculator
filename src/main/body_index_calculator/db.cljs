@@ -3,6 +3,8 @@
    [cljs.spec.alpha :as s]
    [body-index-calculator.lib.specs :as specs]))
 
+(s/def ::value (s/coll-of (s/nilable int?) :kind vector? :min-count 1 :maxcount 2))
+
 (s/def :gender/value (s/nilable ::specs/gender))
 (s/def :db/gender (s/keys :req-un [::visited?
                                    ::active?
@@ -16,22 +18,19 @@
 (s/def :weight/value (s/nilable int?))
 (s/def :db/weight (s/keys :req-un [::visited?
                                    ::active?
-                                   :weight/value]))
+                                   ::value]))
 
-(s/def :height/value (s/nilable int?))
 (s/def :db/height (s/keys :req-un [::visited?
                                    ::active?
-                                   :height/value]))
+                                   ::value]))
 
-(s/def :waist/value (s/nilable int?))
 (s/def :db/waist (s/keys :req-un [::visited?
                                   ::active?
-                                  :waist/value]))
+                                  ::value]))
 
-(s/def :hip/value (s/nilable int?))
 (s/def :db/hip (s/keys :req-un [::visited?
                                 ::active?
-                                :hip/value]))
+                                ::value]))
 
 (s/def :db/form (s/keys :req-un [:db/gender
                                  :db/age
