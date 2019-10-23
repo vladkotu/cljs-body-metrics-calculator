@@ -47,25 +47,15 @@
      path
      (fn [val] (merge val new-val)))))
 
-(def form-events
-  [{:a-key ::gender
-    :path  [:form :gender]}
-   {:a-key ::age
-    :path  [:form :age]}
-   {:a-key ::weight
-    :path  [:form :weight]}
-   {:a-key ::height
-    :path  [:form :height]}
-   {:a-key ::waist
-    :path  [:form :waist]}
-   {:a-key ::hip
-    :path  [:form :hip]}])
-
-(doall (for [{:keys [a-key path]} form-events]
-         (rf/reg-event-db
-          a-key
-          common-interseptors
-          (make-form-event-handler path))))
+(doall
+ (for [ev-name [::gender ::age
+                ::weight ::height
+                ::waist  ::hip]]
+   (let [path [:form (keyword (name ev-name))]]
+     (rf/reg-event-db
+      ev-name
+      common-interseptors
+      (make-form-event-handler path)))))
 
 (defonce timeouts (r/atom {}))
 

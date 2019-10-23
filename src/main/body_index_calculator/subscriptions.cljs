@@ -20,27 +20,17 @@
  ::form
  (fn [db _] (:form db)))
 
-(def form-subs
-  [{:a-key ::gender
-    :path  [:gender :value]}
-   {:a-key ::age
-    :path  [:age :value]}
-   {:a-key ::weight
-    :path  [:weight :value]}
-   {:a-key ::height
-    :path  [:height :value]}
-   {:a-key ::waist
-    :path  [:waist :value]}
-   {:a-key ::hip
-    :path  [:hip :value]}])
-
-(doall (for [{:keys [a-key path]} form-subs]
-         (rf/reg-sub
-          a-key
-          :<- [::system]
-          :<- [::form]
-          (fn [[system form] _]
-            [system (get-in form path)]))))
+(doall
+ (for [sub-name [::gender ::age
+                 ::weight ::height
+                 ::waist  ::hip]]
+   (let [path [(keyword (name sub-name)) :value]]
+     (rf/reg-sub
+      sub-name
+      :<- [::system]
+      :<- [::form]
+      (fn [[system form] _]
+        [system (get-in form path)])))))
 
 (defn form->metric-result
   [form {:keys [spec value conclusion] :as metric}]
