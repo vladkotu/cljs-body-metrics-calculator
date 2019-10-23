@@ -1,13 +1,10 @@
 (ns body-index-calculator.core
   (:require [reagent.core :as r]
             [re-frame.core :as rf]
-            [body-index-calculator.events]
             [body-index-calculator.subscriptions]
             [body-index-calculator.events :as e]
             [body-index-calculator.components.app :refer [app]]
             [orchestra-cljs.spec.test :as st]))
-
-
 
 (defn render []
   (r/render [app] (js/document.getElementById "core"))
