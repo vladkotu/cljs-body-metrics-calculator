@@ -8,7 +8,10 @@
    [body-index-calculator.components.dash     :refer [dash]]
    [body-index-calculator.components.result   :refer [result-table]]
    [body-index-calculator.components.common :refer [item-box-paper with-theme]]
-   ["@material-ui/core" :refer [Box Container Grid Paper Hidden]]))
+   ["@material-ui/core/Box" :default Box]
+   ["@material-ui/core/Container" :default Container]
+   ["@material-ui/core/Grid" :default Grid]
+   ["@material-ui/core/Hidden" :default Hidden]))
 
 (defn error-boundary [comp]
   (let [error (r/atom nil)]

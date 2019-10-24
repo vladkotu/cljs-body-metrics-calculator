@@ -2,9 +2,10 @@
   (:require
    [re-frame.core :as rf]
    [body-index-calculator.subscriptions :as s]
-   [body-index-calculator.mui-theme :refer [js-theme spacing]]
-   [body-index-calculator.components.common :refer [spacing-paper]]
-   ["@material-ui/core" :refer [Box Grid Paper Typography]]
+   ["@material-ui/core/Box" :default Box]
+   ["@material-ui/core/Grid" :default Grid]
+   ["@material-ui/core/Paper" :default Paper]
+   ["@material-ui/core/Typography" :default Typography]
    ["@material-ui/icons/CheckCircle" :default CheckCircleIcon]
    ["@material-ui/icons/HighlightOff" :default  HighlightOffIcon]))
 

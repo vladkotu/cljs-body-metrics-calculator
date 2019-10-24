@@ -1,9 +1,12 @@
 (ns body-index-calculator.components.common
   (:require
    [body-index-calculator.mui-theme :refer [js-theme spacing]]
-   ["@material-ui/styles" :refer [ThemeProvider]]
    [body-index-calculator.helpers   :refer [with-styles-react]]
-   ["@material-ui/core" :refer [Grid Paper Box CssBaseline]]))
+   ["@material-ui/styles/ThemeProvider" :default ThemeProvider]
+   ["@material-ui/core/Grid" :default Grid]
+   ["@material-ui/core/Paper" :default Paper]
+   ["@material-ui/core/Box" :default Box]
+   ["@material-ui/core/CssBaseline" :default CssBaseline]))
 
 (def spacing-paper
   (with-styles-react
@@ -25,7 +28,7 @@
 
 
 (def form-control-props {:full-width true
-                         :variant "outlined"
+                         :variant ""
                          :style {:margin "20px 0 20px 0"}})
 
 (def form-label-styles {:margin-bottom "10px"})

@@ -2,10 +2,10 @@
   (:require
    [body-index-calculator.components.common :refer [form-control-props form-label-styles]]
    [body-index-calculator.helpers :refer [evalue react-key]]
-   ["@material-ui/core" :refer [FormControl
-                                FormLabel
-                                MenuItem
-                                Select]]))
+   ["@material-ui/core/FormControl" :default FormControl]
+   ["@material-ui/core/FormLabel" :default FormLabel]
+   ["@material-ui/core/MenuItem" :default MenuItem]
+   ["@material-ui/core/Select" :default Select]))
 
 (defn selectbox [{:keys [value options on-change label]}]
   (let [com-id (react-key label)]

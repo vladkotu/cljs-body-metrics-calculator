@@ -154,8 +154,6 @@
   (when-let [utype (:utype value)]
     (keyword system utype)))
 
-
-
 (def system-converters
   {:metric/len    #'helpers/ft-in->sm
    :imperial/len  #'helpers/sm->ft-in
@@ -193,8 +191,7 @@
                sys-converter (or (get system-converters comp-type) #'identity)
                title         (when comp-type (tr {:dict dict} [:en] [comp-type]))
                derrived-val  (merge field {:compound-type comp-type :value (sys-converter (:value field)) :old-value (:value field)})]
-           (cljs.pprint/pprint
-            [comp-type sys-converter title derrived-val])))
+           [comp-type sys-converter title derrived-val]))
        form))
 
 (defn form []
