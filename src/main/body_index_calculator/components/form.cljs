@@ -1,8 +1,8 @@
 (ns body-index-calculator.components.form
   (:require
    [reagent.core :as r]
+   [body-index-calculator.i18n :refer [tr]]
    [re-frame.core :as rf]
-   [taoensso.tempura :as tempura :refer [tr]]
    [body-index-calculator.subscriptions :as s]
    [body-index-calculator.helpers :as helpers :refer [->int]]
    [body-index-calculator.events :as e]
@@ -160,38 +160,21 @@
    :metric/mass   #'helpers/lb->kg
    :imperial/mass #'helpers/kg->lb})
 
-(def dict
-  {:en {:missing ":en missing text"
 
-        :metric
-        {:len  "cm"
-         :time "years"
-         :mass "kg"}
+(js/console.log
+ "!!!!!!!!!!!!!"
+ (tr [:ru] [:imperial/mass])
+ )
 
-        :imperial
-        {:len  "ft|in"
-         :time :en.metric/time
-         :mass "lb"}}
-
-   :ru {:missing ":ru Нэту тэкста"
-
-        :metric
-        {:len    "cм"
-         :time   "лет"
-         :weight "кг"}
-        :imperial
-
-        {:len    "футов"
-         :time   :ru.metric/time
-         :weight "фунтов"}}})
 
 (let [{:keys [system form]} ddb]
   (map (fn [[_ field]]
          (let [comp-type     (compound-type system field)
                sys-converter (or (get system-converters comp-type) #'identity)
-               title         (when comp-type (tr {:dict dict} [:en] [comp-type]))
+               title         (when comp-type (tr [:en] [comp-type]))
                derrived-val  (merge field {:compound-type comp-type :value (sys-converter (:value field)) :old-value (:value field)})]
-           [comp-type sys-converter title derrived-val]))
+           (cljs.pprint/pprint
+            [comp-type sys-converter title derrived-val])))
        form))
 
 (defn form []

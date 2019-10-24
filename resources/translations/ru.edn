@@ -1,0 +1,9 @@
+{:missing ":ru Нэту тэкста"
+ :metric
+ {:len  "cм"
+  :time "лет"
+  :mass "кг"}
+ :imperial
+ {:len  "футы"
+  :time :ru.metric/time
+  :mass "фунты"}}
