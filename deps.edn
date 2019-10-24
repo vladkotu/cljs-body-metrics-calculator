@@ -1,4 +1,4 @@
-{:paths ["src/dev" "src/main" "src/test"]
+{:paths ["src/dev" "src/main" "src/test" "resources"]
 
  :deps
  {reagent              {:mvn/version "0.9.0-rc1" :exclusions [cljsjs/react
