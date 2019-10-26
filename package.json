@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "shadow-cljs -A:dev watch app",
+    "repl": "shadow-cljs -A:dev cljs-repl",
+    "dev": "shadow-cljs -A:dev watch app",
     "test": "shadow-cljs -A:dev watch test",
     "devcards": "shadow-cljs -A:dev watch devcards",
     "release": "shadow-cljs -A:prod release app",
@@ -14,7 +16,7 @@
     "marked": "^0.7.0",
     "react-flip-move": "3.0.3",
     "react-highlight.js": "1.0.7",
-    "shadow-cljs": "2.8.64",
+    "shadow-cljs": "2.8.67",
     "showdown": "^1.9.0"
   },
   "dependencies": {

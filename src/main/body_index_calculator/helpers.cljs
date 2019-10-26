@@ -139,7 +139,3 @@
        (map (fn [[key field]]
               [key (convert-field-value system field)]))
        (into {})))
-
-(convert-form-values :imperial
-                     {:name {:utype :len
-                             :value "299"}})

@@ -31,7 +31,7 @@
       :<- [::form]
       (fn [[system form] _]
         (let [field (get-in form a-key)]
-          [(helpers/field->com-type system field) (:value field)]))))))
+          [(keyword system (:utype field)) (:value field)]))))))
 
 (defn form->metric-result
   [form {:keys [spec value conclusion] :as metric}]
