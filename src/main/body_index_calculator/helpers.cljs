@@ -112,26 +112,14 @@
    (+ (* ft 30.48)
       (* in 2.54))))
 
-(defn field->com-type [to-system field]
-  (when-let [utype (:utype field)]
-    (keyword to-system utype)))
-
-
 (defprotocol FormValueRCast
   (rcast [this]))
 
-(extend-type string
-  FormValueRCast
-  (rcast [this] (js/parseFloat this 10)))
-
-(extend-type number
-  FormValueRCast
-  (rcast [this] (str this)))
-
-(extend-type PersistentVector
-  FormValueRCast
-  (rcast [this] (mapv rcast this)))
-
+(extend-protocol FormValueRCast
+  string           (rcast [this] (js/parseFloat this 10))
+  number           (rcast [this] (str this))
+  PersistentVector (rcast [this] (mapv rcast this))
+  nil              (rcast [this] this))
 
 (def system-converters {:metric/len    #'ft-in->sm
                         :imperial/len  #'sm->ft-in
