@@ -85,6 +85,8 @@
   ([n] (as-float n 2))
   ([n m] (when (number? n) (js/parseFloat (.toFixed n m)))))
 
+(def to-fixed #'as-float)
+
 (defn as-int
   [n]
   (when (number? n)
@@ -101,12 +103,12 @@
        (clojure.string/join "-")
        (#(clojure.string/replace %  #"\s+" "-"))))
 
-(defn lb->kg [m] (/ m 0.45359237))
-(defn kg->lb [m] (* m 0.45359237))
-(defn sm->ft-in [sm]
+(defn lb->kg [m] (Math/round (/ m 0.45359237)))
+(defn kg->lb [m] (Math/round (* m 0.45359237)))
+(defn cm->ft-in [sm]
   (let [in (/ sm 2.54)]
     [(quot in 12)
-     (as-float (rem in 12))]))
+     (to-fixed (rem in 12))]))
 (defn ft-in->sm [[ft in]]
   (Math/round
    (+ (* ft 30.48)
@@ -121,25 +123,23 @@
   PersistentVector (rcast [this] (mapv rcast this))
   nil              (rcast [this] this))
 
-(def system-converters {:metric/len    #'ft-in->sm
-                        :imperial/len  #'sm->ft-in
-                        :metric/mass   #'lb->kg
-                        :imperial/mass #'kg->lb})
+(defn rcast-value-with [with this]
+  (update this :value #(-> % rcast with rcast)))
 
-(defn convert-system-value [comp-type value]
-  (let [converter (get system-converters comp-type #'identity)]
-    (converter value)))
+(defn convert-field-value [system field]
+  (case [system (:utype field)]
+    [:metric :len]    (rcast-value-with ft-in->sm field)
+    [:imperial :len]  (rcast-value-with cm->ft-in field)
+    [:metric :mass]   (rcast-value-with kg->lb field)
+    [:imperial :mass] (rcast-value-with lb->kg field)
+    (identity field)))
 
-(defn convert-form-values [to-system form]
+(defn convert-form-values [system form]
   (->> form
        (map (fn [[key field]]
-              (if-let [utype (:utype field)]
-                (let [to-sys-utype   (keyword to-system utype)
-                      new-value      (->> (:value field)
-                                          (rcast)
-                                          (convert-system-value to-sys-utype)
-                                          (rcast))
-                      new-field      (assoc field :value new-value)]
-                  [key new-field])
-                [key field])))
+              [key (convert-field-value system field)]))
        (into {})))
+
+(convert-form-values :imperial
+                     {:name {:utype :len
+                             :value "299"}})
