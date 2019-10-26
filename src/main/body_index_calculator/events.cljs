@@ -38,11 +38,11 @@
 
 (rf/reg-event-db
  ::system
- (fn [{:keys [system] :as db} [_ new-system]]
+ (fn [db [_ new-system]]
    (-> db
        (assoc :system new-system)
        (update :form
-               #(helpers/convert-form-values system new-system %)))))
+               #(helpers/convert-form-values new-system %)))))
 
 (defn make-form-event-handler [path]
   (fn [{:keys [system] :as db} [_ new-val]]

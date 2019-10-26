@@ -1,6 +1,7 @@
 (ns body-index-calculator.helpers
   (:require [goog.object  :as gobj]
             [reagent.core :as r]
+            [clojure.string :refer [replace trim]]
             ["@material-ui/core/styles" :refer [withStyles]]))
 
 (defn to-clj
@@ -115,6 +116,23 @@
   (when-let [utype (:utype field)]
     (keyword to-system utype)))
 
+
+(defprotocol FormValueRCast
+  (rcast [this]))
+
+(extend-type string
+  FormValueRCast
+  (rcast [this] (js/parseFloat this 10)))
+
+(extend-type number
+  FormValueRCast
+  (rcast [this] (str this)))
+
+(extend-type PersistentVector
+  FormValueRCast
+  (rcast [this] (mapv rcast this)))
+
+
 (def system-converters {:metric/len    #'ft-in->sm
                         :imperial/len  #'sm->ft-in
                         :metric/mass   #'lb->kg
@@ -124,37 +142,15 @@
   (let [converter (get system-converters comp-type #'identity)]
     (converter value)))
 
-(defn cast-dispatcher [& args] (first args))
-(defmulti to-num #'cast-dispatcher)
-(defmethod to-num :imperial/len [_ value] (mapv str->num value))
-(defmethod to-num :default [_ value] (str->num value))
-
-(defmulti to-str #'cast-dispatcher)
-(defmethod to-str :imperial/len [_ value] (mapv str value))
-(defmethod to-str :default [_ value] (str value))
-
-(defmulti cast-> #'cast-dispatcher)
-(defmethod cast-> :num [& args] (apply to-num (rest args)))
-(defmethod cast-> :str [& args] (apply to-str (rest args)))
-
-(cast-> :num :imperial/len ["2" "2.2"])
-(cast-> :str :imperial/len (cast-> :num :imperial/len ["2" "2.2"]))
-
-(->> "222"
-     (cast-> :num :metric/len)
-     (convert-system-value :imperial/len)
-     (cast-> :str :imperial/len))
-
-(defn convert-form-values [from-system to-system form]
+(defn convert-form-values [to-system form]
   (->> form
        (map (fn [[key field]]
               (if-let [utype (:utype field)]
                 (let [to-sys-utype   (keyword to-system utype)
-                      from-sys-utype (keyword from-system utype)
                       new-value      (->> (:value field)
-                                          (cast-> :num from-sys-utype)
+                                          (rcast)
                                           (convert-system-value to-sys-utype)
-                                          (cast-> :str to-sys-utype))
+                                          (rcast))
                       new-field      (assoc field :value new-value)]
                   [key new-field])
                 [key field])))
