@@ -5,9 +5,9 @@
 
 (s/def ::number (s/nilable float?))
 (s/def ::res-value (s/nilable
-                (s/or :number ::number
-                      :coll-of-nubmers
-                      (s/coll-of ::number :kind vector? :count 2))))
+                    (s/or :number ::number
+                          :coll-of-nubmers
+                          (s/coll-of ::number :kind vector? :count 2))))
 
 (s/def ::str-number (s/nilable string?))
 (s/def ::value (s/or :str-number ::str-number
@@ -24,31 +24,26 @@
 (s/def :db/age (s/keys :req-un [::visited?
                                 ::active?
                                 ::utype
-                                ;; ::res-value
                                 ::value]))
 
 (s/def :db/weight (s/keys :req-un [::visited?
                                    ::active?
                                    ::utype
-                                   ;; ::res-value
                                    ::value]))
 
 (s/def :db/height (s/keys :req-un [::visited?
                                    ::active?
                                    ::utype
-                                   ;; ::res-value
                                    ::value]))
 
 (s/def :db/waist (s/keys :req-un [::visited?
                                   ::active?
                                   ::utype
-                                  ;; ::res-value
                                   ::value]))
 
 (s/def :db/hip (s/keys :req-un [::visited?
                                 ::active?
                                 ::utype
-                                ;; ::res-value
                                 ::value]))
 
 (s/def :db/form (s/keys :req-un [:db/gender
@@ -77,7 +72,6 @@
                      :utype    :mass}
             :height {:visited? false
                      :active?  false
-                     ;; :res-value ""
                      :value    nil
                      :utype    :len}
             :waist  {:visited? false
