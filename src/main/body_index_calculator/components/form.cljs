@@ -27,7 +27,7 @@
   (let [value (rf/subscribe [::s/gender])]
     (fn []
       [radio-group
-       {:value         (or @value "")
+       {:value         (or (second @value) "")
         :name          "gender"
         :add-hidden?   true
         :radio-buttons [{:label "Male" :value "male"}
@@ -43,7 +43,7 @@
     :value     (or value "")
     :units     units
     :on-change #(rf/dispatch
-                 [ev-key {:raw-value %}])
+                 [ev-key {:value %}])
     :on-focus  #(rf/dispatch
                  [ev-key {:visited? true :active? true}])
     :on-blur   #(rf/dispatch
@@ -53,7 +53,7 @@
   (r/with-let [local-state (r/atom {:ft/value (first value)
                                     :in/value (second value)})]
     (letfn [(dispatch-change [state]
-              (rf/dispatch [ev-key {:raw-value [(:ft/value state) (:in/value state)]}]))
+              (rf/dispatch [ev-key {:value [(:ft/value state) (:in/value state)]}]))
             (dispatch-focus [] (rf/dispatch [ev-key {:visited? true :active? true}]))
             (dispatch-blur [] (rf/dispatch [ev-key {:active? false}]))]
       [double-input
@@ -120,8 +120,8 @@
    [:> Box {:my 1.5}
     [meassuring-system]
     [:> Divider]]
-   ;; [:> Box {:my 1.5}
-   ;;  [gender]]
+   [:> Box {:my 1.5}
+    [gender]]
    ;; [:> Box {:my 1.5}
    ;;  [age]]
    ;; [:> Box {:my 1.5}

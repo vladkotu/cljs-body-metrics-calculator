@@ -4,13 +4,13 @@
    [body-index-calculator.lib.specs :as specs]))
 
 (s/def ::number (s/nilable float?))
-(s/def ::value (s/nilable
+(s/def ::res-value (s/nilable
                 (s/or :number ::number
                       :coll-of-nubmers
                       (s/coll-of ::number :kind vector? :count 2))))
 
-(s/def ::str-number (s/and string?))
-(s/def ::raw-value (s/or :str-number ::str-number
+(s/def ::str-number (s/nilable string?))
+(s/def ::value (s/or :str-number ::str-number
                          :coll-of-str-nubmers
                          (s/coll-of ::str-number :kind vector? :count 2)))
 
@@ -24,31 +24,31 @@
 (s/def :db/age (s/keys :req-un [::visited?
                                 ::active?
                                 ::utype
-                                ::raw-value
+                                ;; ::res-value
                                 ::value]))
 
 (s/def :db/weight (s/keys :req-un [::visited?
                                    ::active?
                                    ::utype
-                                   ::raw-value
+                                   ;; ::res-value
                                    ::value]))
 
 (s/def :db/height (s/keys :req-un [::visited?
                                    ::active?
                                    ::utype
-                                   ::raw-value
+                                   ;; ::res-value
                                    ::value]))
 
 (s/def :db/waist (s/keys :req-un [::visited?
                                   ::active?
                                   ::utype
-                                  ::raw-value
+                                  ;; ::res-value
                                   ::value]))
 
 (s/def :db/hip (s/keys :req-un [::visited?
                                 ::active?
                                 ::utype
-                                ::raw-value
+                                ;; ::res-value
                                 ::value]))
 
 (s/def :db/form (s/keys :req-un [:db/gender
@@ -69,26 +69,22 @@
                      :value    nil}
             :age    {:visited? false
                      :active?  false
-                     :value    nil
-                     :raw-value ""
+                     :value    ""
                      :utype    :time}
             :weight {:visited? false
                      :value    nil
                      :active?  nil
-                     :raw-value ""
                      :utype    :mass}
             :height {:visited? false
                      :active?  false
-                     :raw-value ""
+                     ;; :res-value ""
                      :value    nil
                      :utype    :len}
             :waist  {:visited? false
                      :active?  false
                      :value    nil
-                     :raw-value ""
                      :utype    :len}
             :hip    {:visited? false
                      :active?  false
-                     :raw-value ""
                      :value    nil
                      :utype    :len}}})

@@ -77,14 +77,8 @@
 
 (defn evalue [ev] (-> ev .-target .-value))
 
-(defn ->int [v]
-  (when-not (nil? v)
-    (let [v (-> (str v)
-                (clojure.string/trim)
-                (clojure.string/replace #"[^0-9.]+" ""))]
-      (if-not (zero? (count v))
-        (js/parseFloat v 10)
-        nil))))
+(defn str->num [v]
+  (-> v (js/parseFloat 10)))
 
 (defn as-float
   ([n] (as-float n 2))
@@ -101,9 +95,10 @@
        (into {})))
 
 (defn react-key [& ss]
-  (-> (clojure.string/join "-" ss)
-      (clojure.string/trim)
-      (clojure.string/replace #"\s+" "-")))
+  (->> ss
+       (map clojure.string/trim)
+       (clojure.string/join "-")
+       (#(clojure.string/replace %  #"\s+" "-"))))
 
 (defn lb->kg [m] (/ m 0.45359237))
 (defn kg->lb [m] (* m 0.45359237))
@@ -116,48 +111,51 @@
    (+ (* ft 30.48)
       (* in 2.54))))
 
-(defn field->com-type [system field]
+(defn field->com-type [to-system field]
   (when-let [utype (:utype field)]
-    (keyword system utype)))
+    (keyword to-system utype)))
 
-(defn get-system-value-converters [comp-type]
-  (if (keyword comp-type)
-    (or (comp-type  {:metric/len    #'ft-in->sm
-                     :imperial/len  #'sm->ft-in
-                     :metric/mass   #'lb->kg
-                     :imperial/mass #'kg->lb})
-        #'identity)
-    #'identity))
+(def system-converters {:metric/len    #'ft-in->sm
+                        :imperial/len  #'sm->ft-in
+                        :metric/mass   #'lb->kg
+                        :imperial/mass #'kg->lb})
 
-(def map->int (partial mapv ->int))
-(defn system-value->int [comp-type]
-  (if (= comp-type :imperial/len)
-    #'map->int
-    #'->int))
+(defn convert-system-value [comp-type value]
+  (let [converter (get system-converters comp-type #'identity)]
+    (converter value)))
 
-(def map->str (partial mapv str))
-(defn system-value->str [comp-type]
-  (if (= comp-type :imperial/len)
-    #'map->str
-    #'str))
+(defn cast-dispatcher [& args] (first args))
+(defmulti to-num #'cast-dispatcher)
+(defmethod to-num :imperial/len [_ value] (mapv str->num value))
+(defmethod to-num :default [_ value] (str->num value))
 
-(defn normilize-value [system utype value]
-  (let [caster (system-value->int (keyword system utype))]
-    (caster value)))
+(defmulti to-str #'cast-dispatcher)
+(defmethod to-str :imperial/len [_ value] (mapv str value))
+(defmethod to-str :default [_ value] (str value))
 
-;; (normilize-value :imperial :len ["7" "3."])
+(defmulti cast-> #'cast-dispatcher)
+(defmethod cast-> :num [& args] (apply to-num (rest args)))
+(defmethod cast-> :str [& args] (apply to-str (rest args)))
 
-(defn convert-form-values [system]
-  (fn [[key field]]
-    (let [comp-type (field->com-type system field)
-          converter (get-system-value-converters comp-type)
-          converted-value (converter (:value field))
-          new-field (-> field
-                        (assoc :value converted-value)
-                        (assoc :raw-value ((system-value->str comp-type)
-                                           converted-value)))]
-      [key new-field])))
+(cast-> :num :imperial/len ["2" "2.2"])
+(cast-> :str :imperial/len (cast-> :num :imperial/len ["2" "2.2"]))
 
-(defn as-values [v]
-  {:value (mapv ->int v)
-   :raw-value v})
+(->> "222"
+     (cast-> :num :metric/len)
+     (convert-system-value :imperial/len)
+     (cast-> :str :imperial/len))
+
+(defn convert-form-values [from-system to-system form]
+  (->> form
+       (map (fn [[key field]]
+              (if-let [utype (:utype field)]
+                (let [to-sys-utype   (keyword to-system utype)
+                      from-sys-utype (keyword from-system utype)
+                      new-value      (->> (:value field)
+                                          (cast-> :num from-sys-utype)
+                                          (convert-system-value to-sys-utype)
+                                          (cast-> :str to-sys-utype))
+                      new-field      (assoc field :value new-value)]
+                  [key new-field])
+                [key field])))
+       (into {})))

@@ -38,30 +38,28 @@
 
 (rf/reg-event-db
  ::system
- (fn [db [_ new-system]]
+ (fn [{:keys [system] :as db} [_ new-system]]
    (-> db
        (assoc :system new-system)
        (update :form
-               #(->> %
-                     (map (helpers/convert-form-values new-system))
-                     (into {}))))))
+               #(helpers/convert-form-values system new-system %)))))
 
 (defn make-form-event-handler [path]
   (fn [{:keys [system] :as db} [_ new-val]]
-    (let [{:keys [raw-value]} new-val
+    #_(let [{:keys [raw-value]} new-val
 
-          {:keys [utype]} (get-in db path)
+            {:keys [utype]} (get-in db path)
 
-          norm-val
-          (if raw-value
-            (assoc new-val
-                   :value
-                   (helpers/normilize-value system utype raw-value))
-            new-val)]
-      (update-in
-       db
-       path
-       (fn [val] (merge val norm-val))))))
+            norm-val
+            (if raw-value
+              (assoc new-val
+                     :value
+                     (helpers/normilize-value system utype raw-value))
+              new-val)])
+    (update-in
+     db
+     path
+     (fn [val] (merge val new-val)))))
 
 (doall
  (for [ev-name [::gender ::age

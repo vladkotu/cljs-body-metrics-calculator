@@ -31,7 +31,7 @@
       :<- [::form]
       (fn [[system form] _]
         (let [field (get-in form a-key)]
-          [(helpers/field->com-type  system field) (:raw-value field)]))))))
+          [(helpers/field->com-type system field) (:value field)]))))))
 
 (defn form->metric-result
   [form {:keys [spec value conclusion] :as metric}]
@@ -57,7 +57,6 @@
 
    {:a-key      ::bsi
     :spec       ::bsi/person
-    :raw-value? true
     :value      #'bsi/calc-body-shape-z-score
     :conclusion #'bsi/classify-body-shape-person
     :title      "A Body Shape Index"
@@ -90,7 +89,6 @@
 
    {:a-key      ::whr
     :spec       ::whr/person
-    :raw-value? true
     :value      #'whr/calc-waist-hip-ratio
     :conclusion #'whr/classify-waist-hip-ratio
     :title      "Waist to Hip Ratio"
