@@ -3,6 +3,7 @@
    [cljs.spec.alpha :as s]
    [reagent.core :as r]
    [re-frame.core :as rf]
+   [body-index-calculator.helpers :as helpers]
    [body-index-calculator.db :as db]))
 
 (def ^:dynamic *trace-events* false)
@@ -37,15 +38,30 @@
 
 (rf/reg-event-db
  ::system
- (fn [db [_ system]]
-   (assoc db :system system)))
+ (fn [db [_ new-system]]
+   (-> db
+       (assoc :system new-system)
+       (update :form
+               #(->> %
+                     (map (helpers/convert-form-values new-system))
+                     (into {}))))))
 
 (defn make-form-event-handler [path]
-  (fn [db [_ new-val]]
-    (update-in
-     db
-     path
-     (fn [val] (merge val new-val)))))
+  (fn [{:keys [system] :as db} [_ new-val]]
+    (let [{:keys [raw-value]} new-val
+
+          {:keys [utype]} (get-in db path)
+
+          norm-val
+          (if raw-value
+            (assoc new-val
+                   :value
+                   (helpers/normilize-value system utype raw-value))
+            new-val)]
+      (update-in
+       db
+       path
+       (fn [val] (merge val norm-val))))))
 
 (doall
  (for [ev-name [::gender ::age

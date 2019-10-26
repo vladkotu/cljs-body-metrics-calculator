@@ -4,7 +4,7 @@
    [body-index-calculator.i18n :refer [tr]]
    [re-frame.core :as rf]
    [body-index-calculator.subscriptions :as s]
-   [body-index-calculator.helpers :as helpers :refer [->int]]
+   [body-index-calculator.helpers :as helpers]
    [body-index-calculator.events :as e]
    [body-index-calculator.components.radio-group :refer [radio-group]]
    [body-index-calculator.components.input  :refer [input double-input]]
@@ -37,32 +37,23 @@
                           {:visited? true
                            :value    (keyword %)}])}])))
 
-(def unit-types {:imperial
-                 {:length ["ft" "in"]
-                  :weight "lb"
-                  :age    "yrs"}
-                 :metric
-                 {:length "cm"
-                  :weight "kg"
-                  :age    "yrs"}})
-
-(defn input-with-subscription [{:keys [value ev-key label units]}]
+(defn input-with-dispatchers [{:keys [value ev-key label units]}]
   [input
    {:label     label
     :value     (or value "")
     :units     units
     :on-change #(rf/dispatch
-                 [ev-key {:value [(->int %)]}])
+                 [ev-key {:raw-value %}])
     :on-focus  #(rf/dispatch
                  [ev-key {:visited? true :active? true}])
     :on-blur   #(rf/dispatch
                  [ev-key {:active? false}])}])
 
-(defn double-input-with-subscription [{:keys [value ev-key label units]}]
+(defn double-input-with-dispatchers [{:keys [value ev-key label units]}]
   (r/with-let [local-state (r/atom {:ft/value (first value)
                                     :in/value (second value)})]
     (letfn [(dispatch-change [state]
-              (rf/dispatch [ev-key {:value (mapv ->int [(:ft/value state) (:in/value state)])}]))
+              (rf/dispatch [ev-key {:raw-value [(:ft/value state) (:in/value state)]}]))
             (dispatch-focus [] (rf/dispatch [ev-key {:visited? true :active? true}]))
             (dispatch-blur [] (rf/dispatch [ev-key {:active? false}]))]
       [double-input
@@ -80,102 +71,47 @@
         :on-focus  dispatch-focus
         :on-blur   dispatch-blur}])))
 
-(defn unit-type-dispatcher [{:keys [unit-type]} props]
+(defn input-with-subscription [props]
   (r/with-let [sub-value (rf/subscribe [(:sub-key props)])]
-    (let [[system value] @sub-value
-          units          (get-in unit-types [system unit-type])
-          full-props     (merge props {:units units :value value})]
-      (if (= PersistentVector (type units))
-        [double-input-with-subscription full-props]
-        [input-with-subscription full-props]))))
+    (let [[utype value] @sub-value
+          units         (clojure.string/split  (tr [:en] [utype]) #"\|")]
+      (if (= 2 (count units))
+        [double-input-with-dispatchers (merge props {:units units :value value})]
+        [input-with-dispatchers (merge props {:units (first units) :value value})]))))
 
 (defn hip []
-  [unit-type-dispatcher
-   {:unit-type :length}
+  [input-with-subscription
    {:label   "Hip Circumference"
     :sub-key ::s/hip
     :ev-key  ::e/hip}])
 
 (defn age []
-  [input-with-subscription
+  [input-with-dispatchers
    {:label     "Age"
     :sub-key   ::s/age
     :ev-key    ::e/age
     :unit-type :age}])
 
 (defn weight []
-  [input-with-subscription
+  [input-with-dispatchers
    {:label     "Weight"
     :sub-key   ::s/weight
     :ev-key    ::e/weight
     :unit-type :weight}])
 
 (defn height []
-  [input-with-subscription
+  [input-with-dispatchers
    {:label     "Height"
     :sub-key   ::s/height
     :ev-key    ::e/height
     :unit-type :length}])
 
 (defn waist []
-  [input-with-subscription
+  [input-with-dispatchers
    {:label     "Waist Circumference"
     :sub-key   ::s/waist
     :ev-key    ::e/waist
     :unit-type :length}])
-
-(def ddb {:system :metric
-          :form   {:gender {:visited? false
-                            :active?  false
-                            :value    nil
-                            :utype    nil}
-                   :age    {:visited? false
-                            :active?  false
-                            :value    nil
-                            :utype    :time}
-                   :weight {:visited? false
-                            :value    nil
-                            :active?  [nil]
-                            :utype    :mass}
-                   :height {:visited? false
-                            :active?  false
-                            :value    [nil nil]
-                            :utype    :len}
-                   :waist  {:visited? false
-                            :active?  false
-                            :value    [1 2]
-                            :utype    :len}
-                   :hip    {:visited? false
-                            :active?  false
-                            :value    [23]
-                            :utype    :len}}})
-
-(defn compound-type [system value]
-  (when-let [utype (:utype value)]
-    (keyword system utype)))
-
-(def system-converters
-  {:metric/len    #'helpers/ft-in->sm
-   :imperial/len  #'helpers/sm->ft-in
-   :metric/mass   #'helpers/lb->kg
-   :imperial/mass #'helpers/kg->lb})
-
-
-(js/console.log
- "!!!!!!!!!!!!!"
- (tr [:ru] [:imperial/mass])
- )
-
-
-(let [{:keys [system form]} ddb]
-  (map (fn [[_ field]]
-         (let [comp-type     (compound-type system field)
-               sys-converter (or (get system-converters comp-type) #'identity)
-               title         (when comp-type (tr [:en] [comp-type]))
-               derrived-val  (merge field {:compound-type comp-type :value (sys-converter (:value field)) :old-value (:value field)})]
-           (cljs.pprint/pprint
-            [comp-type sys-converter title derrived-val])))
-       form))
 
 (defn form []
   [:form {:name          "index-calculator"

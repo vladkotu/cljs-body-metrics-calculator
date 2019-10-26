@@ -3,33 +3,52 @@
    [cljs.spec.alpha :as s]
    [body-index-calculator.lib.specs :as specs]))
 
-(s/def ::value (s/nilable (s/coll-of (s/nilable int?) :kind vector? :maxcount 2)))
+(s/def ::number (s/nilable float?))
+(s/def ::value (s/nilable
+                (s/or :number ::number
+                      :coll-of-nubmers
+                      (s/coll-of ::number :kind vector? :count 2))))
+
+(s/def ::str-number (s/and string?))
+(s/def ::raw-value (s/or :str-number ::str-number
+                         :coll-of-str-nubmers
+                         (s/coll-of ::str-number :kind vector? :count 2)))
+
+(s/def ::utype #{:time :len :mass})
 
 (s/def :gender/value (s/nilable ::specs/gender))
 (s/def :db/gender (s/keys :req-un [::visited?
                                    ::active?
                                    :gender/value]))
 
-(s/def :age/value (s/nilable int?))
 (s/def :db/age (s/keys :req-un [::visited?
                                 ::active?
+                                ::utype
+                                ::raw-value
                                 ::value]))
 
-(s/def :weight/value (s/nilable int?))
 (s/def :db/weight (s/keys :req-un [::visited?
                                    ::active?
+                                   ::utype
+                                   ::raw-value
                                    ::value]))
 
 (s/def :db/height (s/keys :req-un [::visited?
                                    ::active?
+                                   ::utype
+                                   ::raw-value
                                    ::value]))
 
 (s/def :db/waist (s/keys :req-un [::visited?
                                   ::active?
+                                  ::utype
+                                  ::raw-value
                                   ::value]))
 
 (s/def :db/hip (s/keys :req-un [::visited?
                                 ::active?
+                                ::utype
+                                ::raw-value
                                 ::value]))
 
 (s/def :db/form (s/keys :req-un [:db/gender
@@ -45,21 +64,31 @@
 
 (def default-db
   {:system :metric
-   :form  {:gender {:visited? false
-                    :active?  false
-                    :value    nil}
-           :age    {:visited? false
-                    :active?  false
-                    :value    nil}
-           :weight {:visited? false
-                    :value    nil
-                    :active?  false}
-           :height {:visited? false
-                    :active?  false
-                    :value    nil}
-           :waist  {:visited? false
-                    :active?  false
-                    :value    nil}
-           :hip    {:visited? false
-                    :active?  false
-                    :value    [23]}}})
+   :form   {:gender {:visited? false
+                     :active?  false
+                     :value    nil}
+            :age    {:visited? false
+                     :active?  false
+                     :value    nil
+                     :raw-value ""
+                     :utype    :time}
+            :weight {:visited? false
+                     :value    nil
+                     :active?  nil
+                     :raw-value ""
+                     :utype    :mass}
+            :height {:visited? false
+                     :active?  false
+                     :raw-value ""
+                     :value    nil
+                     :utype    :len}
+            :waist  {:visited? false
+                     :active?  false
+                     :value    nil
+                     :raw-value ""
+                     :utype    :len}
+            :hip    {:visited? false
+                     :active?  false
+                     :raw-value ""
+                     :value    nil
+                     :utype    :len}}})

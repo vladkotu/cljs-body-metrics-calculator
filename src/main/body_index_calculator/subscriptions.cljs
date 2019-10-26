@@ -2,7 +2,7 @@
   (:require
    [re-frame.core :as rf]
    [cljs.spec.alpha :as s]
-   [body-index-calculator.helpers :refer [as-float form->person as-int]]
+   [body-index-calculator.helpers :as helpers]
    [body-index-calculator.lib.body-fat :as bfp]
    [body-index-calculator.lib.body-mass-index :as bmi]
    [body-index-calculator.lib.wais-hip-ratio :as whr]
@@ -24,18 +24,19 @@
  (for [sub-name [::gender ::age
                  ::weight ::height
                  ::waist  ::hip]]
-   (let [path [(keyword (name sub-name)) :value]]
+   (let [a-key [(keyword (name sub-name))]]
      (rf/reg-sub
       sub-name
       :<- [::system]
       :<- [::form]
       (fn [[system form] _]
-        [system (get-in form path)])))))
+        (let [field (get-in form a-key)]
+          [(helpers/field->com-type  system field) (:raw-value field)]))))))
 
 (defn form->metric-result
   [form {:keys [spec value conclusion] :as metric}]
   (try
-    (let [person (form->person form)
+    (let [person (helpers/form->person form)
           valid? (s/valid? spec person)
           a-value (if valid? (value person) nil)
           a-conclusion (if valid? (and conclusion (conclusion person)) nil)]

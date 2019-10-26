@@ -115,3 +115,49 @@
   (Math/round
    (+ (* ft 30.48)
       (* in 2.54))))
+
+(defn field->com-type [system field]
+  (when-let [utype (:utype field)]
+    (keyword system utype)))
+
+(defn get-system-value-converters [comp-type]
+  (if (keyword comp-type)
+    (or (comp-type  {:metric/len    #'ft-in->sm
+                     :imperial/len  #'sm->ft-in
+                     :metric/mass   #'lb->kg
+                     :imperial/mass #'kg->lb})
+        #'identity)
+    #'identity))
+
+(def map->int (partial mapv ->int))
+(defn system-value->int [comp-type]
+  (if (= comp-type :imperial/len)
+    #'map->int
+    #'->int))
+
+(def map->str (partial mapv str))
+(defn system-value->str [comp-type]
+  (if (= comp-type :imperial/len)
+    #'map->str
+    #'str))
+
+(defn normilize-value [system utype value]
+  (let [caster (system-value->int (keyword system utype))]
+    (caster value)))
+
+;; (normilize-value :imperial :len ["7" "3."])
+
+(defn convert-form-values [system]
+  (fn [[key field]]
+    (let [comp-type (field->com-type system field)
+          converter (get-system-value-converters comp-type)
+          converted-value (converter (:value field))
+          new-field (-> field
+                        (assoc :value converted-value)
+                        (assoc :raw-value ((system-value->str comp-type)
+                                           converted-value)))]
+      [key new-field])))
+
+(defn as-values [v]
+  {:value (mapv ->int v)
+   :raw-value v})
