@@ -86,32 +86,28 @@
     :ev-key  ::e/hip}])
 
 (defn age []
-  [input-with-dispatchers
+  [input-with-subscription
    {:label     "Age"
     :sub-key   ::s/age
-    :ev-key    ::e/age
-    :unit-type :age}])
+    :ev-key    ::e/age}])
 
 (defn weight []
-  [input-with-dispatchers
+  [input-with-subscription
    {:label     "Weight"
     :sub-key   ::s/weight
-    :ev-key    ::e/weight
-    :unit-type :weight}])
+    :ev-key    ::e/weight}])
 
 (defn height []
-  [input-with-dispatchers
+  [input-with-subscription
    {:label     "Height"
     :sub-key   ::s/height
-    :ev-key    ::e/height
-    :unit-type :length}])
+    :ev-key    ::e/height}])
 
 (defn waist []
-  [input-with-dispatchers
+  [input-with-subscription
    {:label     "Waist Circumference"
     :sub-key   ::s/waist
-    :ev-key    ::e/waist
-    :unit-type :length}])
+    :ev-key    ::e/waist}])
 
 (defn form []
   [:form {:name          "index-calculator"
@@ -122,13 +118,13 @@
     [:> Divider]]
    [:> Box {:my 1.5}
     [gender]]
-   ;; [:> Box {:my 1.5}
-   ;;  [age]]
-   ;; [:> Box {:my 1.5}
-   ;;  [weight]]
-   ;; [:> Box {:my 1.5}
-   ;;  [height]]
-   ;; [:> Box {:my 1.5}
-   ;;  [waist]]
+   [:> Box {:my 1.5}
+    [age]]
+   [:> Box {:my 1.5}
+    [weight]]
+   [:> Box {:my 1.5}
+    [height]]
+   [:> Box {:my 1.5}
+    [waist]]
    [:> Box {:my 1.5}
     [hip]]])
