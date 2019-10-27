@@ -92,11 +92,6 @@
   (when (number? n)
     (Math/round n)))
 
-(defn form->person [form]
-  (->> form
-       (map (fn [[k {:keys [value]}]] {k value}))
-       (into {})))
-
 (defn react-key [& ss]
   (->> ss
        (map clojure.string/trim)
@@ -121,8 +116,10 @@
   string           (rcast [this] (js/parseFloat this 10))
   number           (rcast [this] (str this))
   PersistentVector (rcast [this] (mapv rcast this))
-  nil              (rcast [this] this))
+  nil              (rcast [this] this)
+  Keyword          (rcast [this] this))
 
+(type :a)
 (defn rcast-value-with [with this]
   (update this :value #(-> % rcast with rcast)))
 
@@ -138,4 +135,9 @@
   (->> form
        (map (fn [[key field]]
               [key (convert-field-value system field)]))
+       (into {})))
+
+(defn form->person [form]
+  (->> form
+       (map (fn [[k {:keys [value]}]] {k (rcast value)}))
        (into {})))

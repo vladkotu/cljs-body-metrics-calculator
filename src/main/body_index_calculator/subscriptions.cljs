@@ -33,7 +33,7 @@
         (let [field (get-in form a-key)]
           [(keyword system (:utype field)) (:value field)]))))))
 
-(defn form->metric-result
+(defn form-metric->result
   [form {:keys [spec value conclusion] :as metric}]
   (try
     (let [person (helpers/form->person form)
@@ -99,5 +99,5 @@
  ::result
  :<- [::form]
  (fn [form _]
-   (map (partial form->metric-result form)
+   (map (partial form-metric->result form)
         metrics)))
