@@ -1,7 +1,7 @@
 (ns body-index-calculator.helpers
   (:require [goog.object  :as gobj]
             [reagent.core :as r]
-            [clojure.string :refer [replace trim]]
+            [clojure.string :refer [replace trim join]]
             ["@material-ui/core/styles" :refer [withStyles]]))
 
 (defn to-clj
@@ -94,9 +94,9 @@
 
 (defn react-key [& ss]
   (->> ss
-       (map clojure.string/trim)
-       (clojure.string/join "-")
-       (#(clojure.string/replace %  #"\s+" "-"))))
+       (map trim)
+       (join "-")
+       (#(replace %  #"\s+" "-"))))
 
 (defn lb->kg [m] (Math/round (/ m 0.45359237)))
 (defn kg->lb [m] (Math/round (* m 0.45359237)))
@@ -113,7 +113,7 @@
   (rcast [this]))
 
 (extend-protocol FormValueRCast
-  string           (rcast [this] (js/parseFloat this 10))
+  string           (rcast [this] (js/parseFloat (if (empty? this) "0" this) 10))
   number           (rcast [this] (str this))
   PersistentVector (rcast [this] (mapv rcast this))
   nil              (rcast [this] this)

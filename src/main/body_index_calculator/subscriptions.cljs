@@ -97,7 +97,11 @@
 
 (rf/reg-sub
  ::result
+ :<- [::system]
  :<- [::form]
- (fn [form _]
-   (map (partial form-metric->result form)
-        metrics)))
+ (fn [[system form] _]
+   (let [converted-form (if (= :imperial system)
+                          (helpers/convert-form-values :metric form)
+                          form)]
+     (map (partial form-metric->result converted-form)
+          metrics))))
