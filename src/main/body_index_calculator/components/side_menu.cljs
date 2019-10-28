@@ -26,19 +26,27 @@
 
 (defn menu-header []
   [:> ListSubheader
-   [:> Box {:pt (spacing (/ 1 3))
-            :p  (spacing (/ 1 4))}
+   [:> Box {:p (spacing (/ 1 3))}
     [:> Typography  {:variant "h5"} "Settings"]]
    [:> Divider]])
 
 (defn side-menu [props]
   [:> Drawer props
    [:> Box {:pt    (spacing (/ 1 4))
-            :pr    (spacing (/ 1 4))
             :style {:width "auto"}}
     [:> List {:subheader (r/as-element (menu-header))
               :style     {:width (spacing 40)}}
-     [:> ListItem {:align-items "flex-start"}
-      [:> ListItemIcon [:> LanguageIcon {:font-size "large"}]]
-      [:> ListItemText {:primary   "Pick your language"
-                        :secondary (r/as-element [:> Button "button"])}]]]]])
+     (for [item [{:label    "Pick your language"
+                  :icon     LanguageIcon
+                  :controls (r/as-element [:> Button "button"])}
+                 {:label    "System Units"
+                  :icon     StraightenIcon
+                  :controls (r/as-element [:> Button "button"])}
+                 {:label    "Theme"
+                  :icon     ColorLensIcon
+                  :controls (r/as-element [:> Button "button"])}]]
+       ^{:key (:label item)}
+       [:> ListItem {:align-items "flex-start"}
+        [:> ListItemIcon [:> (:icon item) {:font-size "large"}]]
+        [:> ListItemText {:primary   (:label item)
+                          :secondary (:controls item)}]])]]])
