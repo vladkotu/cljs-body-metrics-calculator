@@ -7,23 +7,29 @@
    [body-index-calculator.mui-theme :refer [spacing]]
    [body-index-calculator.components.common :refer [with-theme]]
    [body-index-calculator.components.dash :refer [status-icon]]
-   [body-index-calculator.components.menu-button :refer [menu-button]]
+   [body-index-calculator.components.side-menu :refer [menu-button side-menu]]
    ["@material-ui/icons/Menu" :default MenuIcon]
    ["@material-ui/core/IconButton" :default IconButton]
    ["@material-ui/icons/HighlightOff" :default  HighlightOffIcon]
    ["@material-ui/core" :refer [Grid
+                                Drawer
+                                List
+                                ListItem
+                                ListItemIcon
+                                ListItemText
                                 Box
                                 Paper]]))
 
-
 (defcard-rg swith-lang ""
-  (fn [_ _]
+  (fn [db _]
     [with-theme {:theme "light"}
+     [side-menu {:open     (:side-menu @db)
+                      :on-close #(swap! db update :side-menu not)}]
      [:> Box {:m (spacing 1)}
-      [menu-button {:on-click #(js/console.log "menu button")}]]])
-  (r/atom {})
-  {:inspect-data true})
+      [menu-button {:on-click #(swap! db update :side-menu not)}]]])
 
+  (r/atom {:side-menu true})
+  {:inspect-data true})
 
 (defcard-rg ready-not-ready-icons ""
   (fn [done _]
