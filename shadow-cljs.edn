@@ -22,12 +22,12 @@
   :devcards {:target     :browser
              :output-dir "public/js/devcards"
              :asset-path "/js/devcards"
-             :modules    {:main {:entries [body-index-calculator.devcards]}}
+             :modules    {:main {:entries [body-index-calculator.devcards.devcards]}}
              :devtools   {:http-root        "public"
                           :http-port        4001
                           :http-handler     shadow.http.push-state/handle
                           :push-state/index "devcards.html"
-                          :after-load       body-index-calculator.devcards/main}
+                          :after-load       body-index-calculator.devcards.devcacrds/main}
              :dev        {:compiler-options {:devcards true}}}
 
   :test {:target   :browser-test
