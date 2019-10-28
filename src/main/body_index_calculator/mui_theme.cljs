@@ -4,11 +4,15 @@
             ["@material-ui/core/colors/lightBlue" :default lightBlue]
             ["@material-ui/core/colors/cyan" :default cyan]))
 
-(def js-theme (createMuiTheme
-               (clj->js {:palette
-                         {:type "dark"
-                          :primary lightBlue
-                          :secondary cyan}})))
+(defn create-js-theme [{:keys [type primary secondary]
+                        :or {type "dark" primary lightBlue secondary cyan}}]
+  (createMuiTheme
+   (clj->js {:palette
+             {:type type
+              :primary primary
+              :secondary secondary}})))
+
+(def js-theme (create-js-theme {}))
 
 (def theme (to-clj js-theme))
 

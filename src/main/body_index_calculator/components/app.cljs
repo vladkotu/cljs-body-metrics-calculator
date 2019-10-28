@@ -31,7 +31,7 @@
 
 (defn app []
   [error-boundary
-   [with-theme
+   [with-theme {:theme "dark"}
     [header]
     [:> Container {:fixed false}
      [:> Box {:my {:xs 1 :md 2}}
