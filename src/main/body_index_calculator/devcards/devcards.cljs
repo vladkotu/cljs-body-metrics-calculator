@@ -7,7 +7,11 @@
    [body-index-calculator.mui-theme :refer [spacing]]
    [body-index-calculator.components.common :refer [with-theme]]
    [body-index-calculator.components.dash :refer [status-icon]]
-   [body-index-calculator.components.side-menu :refer [menu-button side-menu]]
+   [body-index-calculator.components.side-menu :refer [menu-button
+                                                       side-menu
+                                                       language-picker
+                                                       units-picker
+                                                       theme-picker]]
    ["@material-ui/icons/Menu" :default MenuIcon]
    ["@material-ui/core/IconButton" :default IconButton]
    ["@material-ui/icons/HighlightOff" :default  HighlightOffIcon]
@@ -20,15 +24,36 @@
                                 Box
                                 Paper]]))
 
-(defcard-rg swith-lang ""
+;; [with-theme {:theme "light"}
+;;  [:> Box {:m (spacing 1)}]]
+
+(defcard-rg language-picker-card ""
+  (fn [_ _]
+    [with-theme {:theme "light"}
+     [:> Box {:m (spacing 1)}
+      [language-picker]]]))
+
+(defcard-rg units-picker-card ""
+  (fn [_ _]
+    [with-theme {:theme "light"}
+     [:> Box {:m (spacing 1)}
+      [units-picker]]]))
+
+(defcard-rg theme-picker-card ""
+  (fn [_ _]
+    [with-theme {:theme "light"}
+     [:> Box {:m (spacing 1)}
+      [theme-picker]]]))
+
+(defcard-rg setings-menu ""
   (fn [db _]
     [with-theme {:theme "light"}
      [side-menu {:open     (:side-menu @db)
-                      :on-close #(swap! db update :side-menu not)}]
+                 :on-close #(swap! db update :side-menu not)}]
      [:> Box {:m (spacing 1)}
       [menu-button {:on-click #(swap! db update :side-menu not)}]]])
 
-  (r/atom {:side-menu true})
+  (r/atom {:side-menu false})
   {:inspect-data true})
 
 (defcard-rg ready-not-ready-icons ""

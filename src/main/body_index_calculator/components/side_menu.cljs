@@ -30,8 +30,18 @@
     [:> Typography  {:variant "h5"} "Settings"]]
    [:> Divider]])
 
-(defn side-menu [props]
-  [:> Drawer props
+(defn language-picker []
+  [:span "lang picker"])
+
+(defn units-picker []
+  [:span "units picker"])
+
+(defn theme-picker []
+  [:span "theme picker"])
+
+(defn side-menu [{:keys [open on-close]}]
+  [:> Drawer {:open     open
+              :on-close on-close}
    [:> Box {:pt    (spacing (/ 1 4))
             :style {:width "auto"}}
     [:> List {:subheader (r/as-element (menu-header))
