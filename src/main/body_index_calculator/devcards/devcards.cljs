@@ -7,21 +7,28 @@
    [body-index-calculator.mui-theme :refer [spacing]]
    [body-index-calculator.components.common :refer [with-theme]]
    [body-index-calculator.components.dash :refer [status-icon]]
-   ["@material-ui/icons/CheckCircle" :default CheckCircleIcon]
+   [body-index-calculator.components.menu-button :refer [menu-button]]
+   ["@material-ui/icons/Menu" :default MenuIcon]
+   ["@material-ui/core/IconButton" :default IconButton]
    ["@material-ui/icons/HighlightOff" :default  HighlightOffIcon]
    ["@material-ui/core" :refer [Grid
+                                Box
                                 Paper]]))
 
-(def styles
-  {:space {:margin (spacing 2 3 2 3)
-           :padding (spacing 3)
-           :width "100%"}
-   :paper {:padding (spacing 2)}})
+
+(defcard-rg swith-lang ""
+  (fn [_ _]
+    [with-theme {:theme "light"}
+     [:> Box {:m (spacing 1)}
+      [menu-button {:on-click #(js/console.log "menu button")}]]])
+  (r/atom {})
+  {:inspect-data true})
+
 
 (defcard-rg ready-not-ready-icons ""
   (fn [done _]
     [with-theme {:theme "light"}
-     [:> Paper {:style (:space styles)}
+     [:> Box {:m (spacing (/ 1 4))}
       [:> Grid {:container true :direction "column" :spacing 3}
        [:> Grid {:item true :xs 6}
         [:button {:on-click #(swap! done not)
@@ -40,26 +47,25 @@
   (r/atom true)
   {:inspect-data true})
 
-(defcard-rg spacing-grid
-  "Playing with example from material ui site."
+(defcard-rg icons-in-a-grid-grid
   (fn [_ _]
     [with-theme {:theme "light"}
-     [:> Grid {:container true
-               :justify "center"
-               :spacing 3}
-      [:> Grid {:item true
-                :xs 12
-                :style (:space styles)}
-       [:> Paper {:style (:paper styles)}
-        [:> Grid {:container true
-                  :justify "space-around"
-                  :spacing 3}
-         (for [x [{:done? true :label "BMI"}
-                  {:done? false :label "BMR"}
-                  {:done? false :label "LBM?"}]]
-           ^{:key (str "name-" (:label x))}
-           [:> Grid {:item true :xs 4}
-            [status-icon x]])]]]]]))
+     [:> Box {:m (spacing (/ 1 4))}
+      [:> Grid {:container true
+                :justify "center"
+                :spacing 3}
+       [:> Grid {:item true
+                 :xs 12}
+        [:> Paper
+         [:> Grid {:container true
+                   :justify "space-around"
+                   :spacing 3}
+          (for [x [{:done? true :label "BMI"}
+                   {:done? false :label "BMR"}
+                   {:done? false :label "LBM?"}]]
+            ^{:key (str "name-" (:label x))}
+            [:> Grid {:item true :xs 4}
+             [status-icon x]])]]]]]]))
 
 (defn main []
   (dc/start-devcard-ui!))
