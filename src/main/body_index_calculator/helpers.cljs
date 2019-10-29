@@ -94,6 +94,7 @@
 
 (defn react-key [& ss]
   (->> ss
+       (map str)
        (map trim)
        (join "-")
        (#(replace %  #"\s+" "-"))))

@@ -4,6 +4,8 @@
    [re-frame.core :as rf]
    [body-index-calculator.subscriptions :as s]
    [body-index-calculator.events :as ev]
+   [body-index-calculator.helpers :refer [react-key]]
+   [body-index-calculator.i18n :refer [tr]]
    [body-index-calculator.mui-theme :refer [spacing]]
    ["@material-ui/icons/Menu" :default MenuIcon]
    ["@material-ui/icons/Language" :default LanguageIcon]
@@ -13,12 +15,7 @@
    ["@material-ui/core/Box" :default Box]
    ["@material-ui/core/Drawer" :default Drawer]
    ["@material-ui/core/Typography" :default Typography]
-   ["@material-ui/core/List" :default List]
    ["@material-ui/core/ListSubheader" :default ListSubheader]
-   ["@material-ui/core/ListItem" :default ListItem]
-   ["@material-ui/core/ListItemText" :default ListItemText]
-   ["@material-ui/core/ListItemIcon" :default ListItemIcon]
-
    ["@material-ui/core/ButtonGroup" :default ButtonGroup]
    ["@material-ui/core/Button" :default Button]
    ["@material-ui/core/IconButton" :default IconButton]))
@@ -35,55 +32,78 @@
     [:> Typography  {:variant "h5"} "Settings"]]
    [:> Divider]])
 
+(defn items [locale {:keys [active? label on-click]}]
+  [(r/adapt-react-class Button)
+   {:variant  (if active? "contained" "outlined")
+    :key (react-key label)
+    :on-click on-click}
+   (tr [@locale] label)])
+
+(def button (r/adapt-react-class Button))
+(def button-group (r/adapt-react-class ButtonGroup))
+
 (defn button-picker [props]
-  [:> ButtonGroup {:size "small"}
-   (for [{:keys [active? label on-click]} (:items props)]
-     [(r/adapt-react-class Button)
-      {:variant (if active? "contained" "outlined")
-       :key label
-       :on-click on-click}
-      label])])
-
-(defn language-picker []
-  [button-picker
-   {:items [{:label "Eng" :active? true}
-            {:label "Ru"  :active? false}]}])
-
-(defn units-picker []
-  [button-picker
-   {:items [{:label "Metric" :active? true}
-            {:label "Imperial" :active? false}]}])
+  (r/with-let [locale (rf/subscribe [::s/locale])]
+    (into
+     [button-group {:size "small"}
+      (for [{:keys [active? label on-click]} (:items props)]
+        ^{:key (react-key label)}
+        [button {:variant  (if active? "contained" "outlined")
+                 :on-click on-click}
+         (tr [@locale] label)])])))
 
 (defn theme-picker []
   (r/with-let [theme (rf/subscribe [::s/theme])]
     [button-picker
-     {:items [{:label "Light"
-               :active? (= :light @theme)
+     {:items [{:label    [:theme.light/label]
+               :active?  (= :light @theme)
                :on-click #(rf/dispatch [::ev/theme :light])}
-              {:label "Dark"
-               :active? (= :dark @theme)
+              {:label    [:theme.dark/label]
+               :active?  (= :dark @theme)
                :on-click #(rf/dispatch [::ev/theme :dark])}]}]))
 
+(defn language-picker []
+  (r/with-let [locale (rf/subscribe [::s/locale])]
+    [button-picker
+     {:items [{:label    [:locale.en/label]
+               :active?  (= :en @locale)
+               :on-click #(rf/dispatch [::ev/locale :en])}
+              {:label    [:locale.ru/label]
+               :active?  (= :ru @locale)
+               :on-click #(rf/dispatch [::ev/locale :ru])}]}]))
+
+(defn units-picker []
+  [button-picker
+   {:items [{:label    [:system.metric/label]
+             :active?  true
+             :on-click #(rf/dispatch [::ev/system :metric])}
+            {:label    [:system.imperial/label]
+             :active?  false
+             :on-click #(rf/dispatch [::ev/system :imperial])}]}])
+
 (defn side-menu [{:keys [open on-close]}]
-  [:> Drawer {:open     open
-              :on-close on-close}
-   [:> Box {:pt    (spacing (/ 1 4))
-            :style {:width (spacing 40)}}
-    [menu-header]
-    (for [item [{:label    "Pick your language"
-                 :icon     LanguageIcon
-                 :controls [language-picker]}
-                {:label    "System Units"
-                 :icon     StraightenIcon
-                 :controls [units-picker]}
-                {:label    "Theme"
-                 :icon     ColorLensIcon
-                 :controls [theme-picker]}]]
-      ^{:key (:label item)}
-      [:> Box {:m 3 :display "flex" :flex-direction "row"}
-       [:> Box {:mr 2 :color "text.secondary"}
-        [:> (:icon item) {:font-size "large"}]]
-       [:> Box {:display "flex" :flex-direction "column"}
-        [:> Typography {:variant "h6" :element "div"}
-         (:label item)]
-        [:> Box {:mt 1} [r/as-element (:controls item)]]]])]])
+  (r/with-let [locale (rf/subscribe [::s/locale])]
+    [:> Drawer {:open     open
+                :on-close on-close}
+     [:> Box {:pt    (spacing (/ 1 4))
+              :style {:width (spacing 40)}}
+      [menu-header]
+      (into
+       [:div]
+       (for [{:keys [label icon controls l]}
+             [{:label    #_[:locale/label] (tr [@locale] [:locale/label])
+               :icon     LanguageIcon
+               :controls language-picker}
+              {:label    #_[:system/label] (tr [@locale] [:system/label])
+               :icon     StraightenIcon
+               :controls units-picker}
+              {:label    #_[:theme/label] (tr [@locale] [:theme/label])
+               :icon     ColorLensIcon
+               :controls theme-picker}]]
+         [:> Box {:m 3 :display "flex" :flex-direction "row" :key (str label)}
+          [:> Box {:mr 2 :color "text.secondary"}
+           [:> icon {:font-size "large"}]]
+          [:> Box {:display "flex" :flex-direction "column"}
+           [:> Typography {:variant "h6" :element "div"}
+            (str label)]
+           [:> Box {:mt 1} [controls]]]]))]]))

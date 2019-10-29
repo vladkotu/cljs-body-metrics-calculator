@@ -30,6 +30,11 @@
    (assoc db :theme new-theme)))
 
 (rf/reg-event-db
+ ::locale
+ (fn [db [_ new-locale]]
+   (assoc db :locale new-locale)))
+
+(rf/reg-event-db
  ::system
  (fn [db [_ new-system]]
    (-> db
