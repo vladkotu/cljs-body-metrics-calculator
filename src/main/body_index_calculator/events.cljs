@@ -8,18 +8,6 @@
 
 (def ^:dynamic *trace-events* false)
 
-(defn set-all-paths [db paths a-vals]
-  (loop [paths paths
-         a-vals a-vals
-         m db]
-    (if (empty? paths)
-      m
-      (recur (rest paths)
-             (rest a-vals)
-             (assoc-in m
-                       (first paths)
-                       (first a-vals))))))
-
 (defn check-and-throw
   "Throws an exception if `db` doesn't match the Spec `a-spec`."
   [a-spec db]
@@ -45,31 +33,20 @@
                #(helpers/convert-form-values new-system %)))))
 
 (defn make-form-event-handler [path]
-  (fn [{:keys [system] :as db} [_ new-val]]
-    #_(let [{:keys [raw-value]} new-val
-
-            {:keys [utype]} (get-in db path)
-
-            norm-val
-            (if raw-value
-              (assoc new-val
-                     :value
-                     (helpers/normilize-value system utype raw-value))
-              new-val)])
+  (fn [db [_ new-val]]
     (update-in
      db
      path
      (fn [val] (merge val new-val)))))
 
-(doall
- (for [ev-name [::gender ::age
-                ::weight ::height
-                ::waist  ::hip]]
-   (let [path [:form (keyword (name ev-name))]]
-     (rf/reg-event-db
-      ev-name
-      common-interseptors
-      (make-form-event-handler path)))))
+(doseq [ev-name [::gender ::age
+                 ::weight ::height
+                 ::waist  ::hip]]
+  (let [path [:form (keyword (name ev-name))]]
+    (rf/reg-event-db
+     ev-name
+     common-interseptors
+     (make-form-event-handler path))))
 
 (defonce timeouts (r/atom {}))
 
