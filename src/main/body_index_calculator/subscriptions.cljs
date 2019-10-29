@@ -12,26 +12,26 @@
 
 (def cider-have-to-have-at-least-one-def-in-a-file nil)
 
-(rf/reg-sub
- ::system
- (fn [db _] (:system db)))
+;; register hight level flat subscriptions
+(doseq [sub-name [::form ::system ::theme ::locale]
+        a-key [(keyword (name sub-name))]]
+  (rf/reg-sub
+   sub-name
+   (fn [db _] (get db a-key))))
 
-(rf/reg-sub
- ::form
- (fn [db _] (:form db)))
-
-(doall
- (for [sub-name [::gender ::age
-                 ::weight ::height
-                 ::waist  ::hip]]
-   (let [a-key [(keyword (name sub-name))]]
-     (rf/reg-sub
-      sub-name
-      :<- [::system]
-      :<- [::form]
-      (fn [[system form] _]
-        (let [field (get-in form a-key)]
-          [(keyword system (:utype field)) (:value field)]))))))
+;; register every form field as subscription
+(doseq [sub-name [::gender ::age
+                  ::weight ::height
+                  ::waist  ::hip]]
+  (let [a-key [(keyword (name sub-name))]]
+    (rf/reg-sub
+     sub-name
+     :<- [::system]
+     :<- [::form]
+     (fn [[system form] _]
+       (let [field (get-in form a-key)]
+          ;; qualified name space like :metric/len
+         [(keyword system (:utype field)) (:value field)])))))
 
 (defn form-metric->result
   [form {:keys [spec value conclusion] :as metric}]

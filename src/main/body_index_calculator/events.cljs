@@ -25,6 +25,11 @@
  (fn [_ _] db/default-db))
 
 (rf/reg-event-db
+ ::theme
+ (fn [db [_ new-theme]]
+   (assoc db :theme new-theme)))
+
+(rf/reg-event-db
  ::system
  (fn [db [_ new-system]]
    (-> db

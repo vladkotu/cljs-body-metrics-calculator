@@ -1,6 +1,9 @@
 (ns body-index-calculator.components.side-menu
   (:require
    [reagent.core :as r]
+   [re-frame.core :as rf]
+   [body-index-calculator.subscriptions :as s]
+   [body-index-calculator.events :as ev]
    [body-index-calculator.mui-theme :refer [spacing]]
    ["@material-ui/icons/Menu" :default MenuIcon]
    ["@material-ui/icons/Language" :default LanguageIcon]
@@ -34,11 +37,12 @@
 
 (defn button-picker [props]
   [:> ButtonGroup {:size "small"}
-   (for [item (:items props)]
+   (for [{:keys [active? label on-click]} (:items props)]
      [(r/adapt-react-class Button)
-      {:variant (if (:active? item) "contained" "outlined")
-       :key (:label item)}
-      (:label item)])])
+      {:variant (if active? "contained" "outlined")
+       :key label
+       :on-click on-click}
+      label])])
 
 (defn language-picker []
   [button-picker
@@ -51,9 +55,14 @@
             {:label "Imperial" :active? false}]}])
 
 (defn theme-picker []
-  [button-picker
-   {:items [{:label "Light" :active? true}
-            {:label "Dark" :active? false}]}])
+  (r/with-let [theme (rf/subscribe [::s/theme])]
+    [button-picker
+     {:items [{:label "Light"
+               :active? (= :light @theme)
+               :on-click #(rf/dispatch [::ev/theme :light])}
+              {:label "Dark"
+               :active? (= :dark @theme)
+               :on-click #(rf/dispatch [::ev/theme :dark])}]}]))
 
 (defn side-menu [{:keys [open on-close]}]
   [:> Drawer {:open     open

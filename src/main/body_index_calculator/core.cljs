@@ -3,11 +3,11 @@
             [re-frame.core :as rf]
             [body-index-calculator.subscriptions]
             [body-index-calculator.events :as e]
-            [body-index-calculator.components.app :refer [app]]
+            [body-index-calculator.components.app :refer [app error-boundary]]
             [orchestra-cljs.spec.test :as st]))
 
 (defn render []
-  (r/render [app] (js/document.getElementById "core"))
+  (r/render [error-boundary [app]] (js/document.getElementById "core"))
   (println "app rendered"))
 
 (defn instrument-specs []

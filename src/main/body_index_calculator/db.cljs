@@ -11,8 +11,8 @@
 
 (s/def ::str-number (s/nilable string?))
 (s/def ::value (s/or :str-number ::str-number
-                         :coll-of-str-nubmers
-                         (s/coll-of ::str-number :kind vector? :count 2)))
+                     :coll-of-str-nubmers
+                     (s/coll-of ::str-number :kind vector? :count 2)))
 
 (s/def ::utype #{:time :len :mass})
 
@@ -54,11 +54,17 @@
                                  :db/waist]))
 
 (s/def :db/system #{:metric :imperial})
+(s/def :db/locale #{:en :ru})
+(s/def :db/theme #{:light :dark})
 (s/def ::db (s/keys :req-un [:db/form
-                             :db/system]))
+                             :db/system
+                             :db/locale
+                             :db/theme]))
 
 (def default-db
   {:system :metric
+   :locale :en
+   :theme  :dark
    :form   {:gender {:visited? false
                      :active?  false
                      :value    nil}
