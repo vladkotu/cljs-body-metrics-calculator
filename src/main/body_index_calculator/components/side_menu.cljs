@@ -73,13 +73,14 @@
                :on-click #(rf/dispatch [::ev/locale :ru])}]}]))
 
 (defn units-picker []
-  [button-picker
-   {:items [{:label    [:system.metric/label]
-             :active?  true
-             :on-click #(rf/dispatch [::ev/system :metric])}
-            {:label    [:system.imperial/label]
-             :active?  false
-             :on-click #(rf/dispatch [::ev/system :imperial])}]}])
+  (r/with-let [system (rf/subscribe [::s/system])]
+    [button-picker
+     {:items [{:label    [:system.metric/label]
+               :active?  (= :metric @system)
+               :on-click #(rf/dispatch [::ev/system :metric])}
+              {:label    [:system.imperial/label]
+               :active?  (= :imperial @system)
+               :on-click #(rf/dispatch [::ev/system :imperial])}]}]))
 
 (defn side-menu [{:keys [open on-close]}]
   (r/with-let [locale (rf/subscribe [::s/locale])]

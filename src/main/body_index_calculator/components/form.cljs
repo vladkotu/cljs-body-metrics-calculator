@@ -73,11 +73,13 @@
 
 (defn input-with-subscription [props]
   (r/with-let [sub-value (rf/subscribe [(:sub-key props)])]
-    (let [[utype value] @sub-value
-          units         (clojure.string/split  (tr [:en] [utype]) #"\|")]
-      (if (= 2 (count units))
-        [double-input-with-dispatchers (merge props {:units units :value value})]
-        [input-with-dispatchers (merge props {:units (first units) :value value})]))))
+    (let [[system locale field]        @sub-value
+          {:keys [value utype]} field
+          locale-path           (keyword (str "system." (name system) ".units") utype)
+          units                 (tr [locale] [locale-path])]
+      (if (and (= :len utype) (= :imperial system))
+        [double-input-with-dispatchers (merge props {:units (rest units) :value value})]
+        [input-with-dispatchers (merge props {:units units :value value})]))))
 
 (defn hip []
   [input-with-subscription

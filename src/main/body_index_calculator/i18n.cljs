@@ -26,8 +26,8 @@
                   :imperial
                   {:label "Imperial"
                    :units
-                   {:len  "ft|in"
-                    :time :en.metric/time
+                   {:len  ["ft" "in"]
+                    :time :en.system.metric.units/time
                     :mass "lb"}}}}
    :ru {:missing "Нэту тэкста"
         :locale  {:label "Выбор языка"
@@ -49,7 +49,7 @@
                    {:label "Имперская"
                     :units
                     {:len  "футы"
-                     :time :ru.metric/time
+                     :time :ru.system.metric.units/time
                      :mass "фунты"}}}}}})
 
 (def tr (partial tempura/tr {:dict local-dictionary}))

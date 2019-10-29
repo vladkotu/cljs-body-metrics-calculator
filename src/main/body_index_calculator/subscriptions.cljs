@@ -23,15 +23,14 @@
 (doseq [sub-name [::gender ::age
                   ::weight ::height
                   ::waist  ::hip]]
-  (let [a-key [(keyword (name sub-name))]]
+  (let [a-key (keyword (name sub-name))]
     (rf/reg-sub
      sub-name
      :<- [::system]
+     :<- [::locale]
      :<- [::form]
-     (fn [[system form] _]
-       (let [field (get-in form a-key)]
-          ;; qualified name space like :metric/len
-         [(keyword system (:utype field)) (:value field)])))))
+     (fn [[system locale form] _]
+       [system locale (get form a-key)]))))
 
 (defn form-metric->result
   [form {:keys [spec value conclusion] :as metric}]
