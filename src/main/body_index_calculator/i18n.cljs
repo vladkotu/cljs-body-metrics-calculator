@@ -8,7 +8,8 @@
 
 (def local-dictionary
   {:en {:missing "missing text"
-        :form    {:hip    "Hip Circumference"
+        :form    {:call-to-action "Measure You Body"
+                  :hip    "Hip Circumference"
                   :waist  "Waist Circumference"
                   :height "Height"
                   :weight "Weight"
@@ -38,7 +39,8 @@
                     :time :en.system.metric.units/time
                     :mass "lb"}}}}
    :ru {:missing "Нэту тэкста"
-        :form    {:hip    "Окружность бедер"
+        :form    {:call-to-action "Измерьте свое тело"
+                  :hip    "Окружность бедер"
                   :waist  "Обхват а талии"
                   :height "Рост"
                   :weight "Вес"

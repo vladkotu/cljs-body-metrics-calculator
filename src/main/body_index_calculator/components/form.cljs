@@ -9,7 +9,9 @@
    [body-index-calculator.events :as e]
    [body-index-calculator.components.radio-group :refer [radio-group]]
    [body-index-calculator.components.input  :refer [input double-input]]
+   ["@material-ui/icons/ArrowDownward" :default ArrowDownIcon]
    ["@material-ui/core/Box" :default Box]
+   ["@material-ui/core/Typography" :default Typography]
    ["@material-ui/core/Divider" :default Divider]))
 
 (defn meassuring-system []
@@ -28,9 +30,9 @@
   (let [value  (rf/subscribe [::s/gender])
         locale (rf/subscribe [::s/locale])]
     (fn []
-      (js/console.log @value)
       [radio-group
        {:value         (or (:value @value) "")
+        :label         (tr [@locale] [:form.gender/label])
         :name          "gender"
         :add-hidden?   true
         :radio-buttons [{:label (tr [@locale] [:form.gender/male])
@@ -118,11 +120,25 @@
     :sub-key ::s/waist
     :ev-key  ::e/waist}])
 
+(defn i18n [path]
+  (r/with-let [locale (rf/subscribe [::s/locale])]
+    [:span (tr [@locale] (if (= 1 (count path))
+                           path
+                           (loc path)))]))
+
 (defn form []
   [:form {:name          "index-calculator"
           :no-validate   true
           :auto-complete "off"}
-   [:> Box {:min-height (spacing 6.5)}]
+   [:> Box {:min-height      (spacing 6.5)
+            :display         "flex"
+            :flex-direction  "row"
+            :justify-content "center"
+            :align-items     "center"}
+    [:> Box {:mr 1.5}
+     [:> ArrowDownIcon {:font-size "small"}]]
+    [:> Typography {:variant "h6" :component "h2"}
+     [i18n [:form/call-to-action]]]]
    [:> Divider]
    [:> Box {:my 1.5}
     [gender]]
