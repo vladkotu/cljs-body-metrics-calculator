@@ -26,11 +26,9 @@
   (let [a-key (keyword (name sub-name))]
     (rf/reg-sub
      sub-name
-     :<- [::system]
-     :<- [::locale]
      :<- [::form]
-     (fn [[system locale form] _]
-       [system locale (get form a-key)]))))
+     (fn [form _]
+       (get form a-key)))))
 
 (defn form-metric->result
   [form {:keys [spec value conclusion] :as metric}]

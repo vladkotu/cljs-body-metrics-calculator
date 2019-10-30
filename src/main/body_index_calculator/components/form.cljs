@@ -28,8 +28,9 @@
   (let [value  (rf/subscribe [::s/gender])
         locale (rf/subscribe [::s/locale])]
     (fn []
+      (js/console.log @value)
       [radio-group
-       {:value         (or (second @value) "")
+       {:value         (or (:value @value) "")
         :name          "gender"
         :add-hidden?   true
         :radio-buttons [{:label (tr [@locale] [:form.gender/male])
@@ -76,12 +77,14 @@
         :on-blur   dispatch-blur}])))
 
 (defn input-with-subscription [props]
-  (r/with-let [sub-value (rf/subscribe [(:sub-key props)])]
-    (let [[system locale field] @sub-value
-          {:keys [value utype]} field
-          units                 (tr [locale] (loc [:system system :units utype]))
-          common-props          {:value value :label (tr [locale] [(:label props) "unknown label"])}]
-      (if (and (= :len utype) (= :imperial system))
+  (r/with-let [field  (rf/subscribe [(:sub-key props)])
+               locale (rf/subscribe [::s/locale])
+               system (rf/subscribe [::s/system])]
+    (let [{:keys [value utype]} @field
+          units                 (tr [@locale] (loc [:system @system :units utype]))
+          common-props          {:value value
+                                 :label (tr [@locale] [(:label props) "unknown label"])}]
+      (if (and (= :len utype) (= :imperial @system))
         [double-input-with-dispatchers (merge props {:units (rest units)} common-props)]
         [input-with-dispatchers (merge props {:units units} common-props)]))))
 
