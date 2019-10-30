@@ -1,10 +1,11 @@
 (ns body-index-calculator.components.form
   (:require
    [reagent.core :as r]
-   [body-index-calculator.i18n :refer [tr]]
    [re-frame.core :as rf]
+   [body-index-calculator.i18n :refer [tr]]
+   [body-index-calculator.mui-theme :refer [spacing]]
    [body-index-calculator.subscriptions :as s]
-   [body-index-calculator.helpers :as helpers]
+   [body-index-calculator.helpers :refer [loc]]
    [body-index-calculator.events :as e]
    [body-index-calculator.components.radio-group :refer [radio-group]]
    [body-index-calculator.components.input  :refer [input double-input]]
@@ -24,14 +25,17 @@
                          [::e/system (keyword %)])}])))
 
 (defn gender []
-  (let [value (rf/subscribe [::s/gender])]
+  (let [value  (rf/subscribe [::s/gender])
+        locale (rf/subscribe [::s/locale])]
     (fn []
       [radio-group
        {:value         (or (second @value) "")
         :name          "gender"
         :add-hidden?   true
-        :radio-buttons [{:label "Male" :value "male"}
-                        {:label "Female" :value "female"}]
+        :radio-buttons [{:label (tr [@locale] [:form.gender/male])
+                         :value :male}
+                        {:label (tr [@locale] [:form.gender/female])
+                         :value :female}]
         :on-change     #(rf/dispatch
                          [::e/gender
                           {:visited? true
@@ -73,51 +77,50 @@
 
 (defn input-with-subscription [props]
   (r/with-let [sub-value (rf/subscribe [(:sub-key props)])]
-    (let [[system locale field]        @sub-value
+    (let [[system locale field] @sub-value
           {:keys [value utype]} field
-          locale-path           (keyword (str "system." (name system) ".units") utype)
-          units                 (tr [locale] [locale-path])]
+          units                 (tr [locale] (loc [:system system :units utype]))
+          common-props          {:value value :label (tr [locale] [(:label props) "unknown label"])}]
       (if (and (= :len utype) (= :imperial system))
-        [double-input-with-dispatchers (merge props {:units (rest units) :value value})]
-        [input-with-dispatchers (merge props {:units units :value value})]))))
+        [double-input-with-dispatchers (merge props {:units (rest units)} common-props)]
+        [input-with-dispatchers (merge props {:units units} common-props)]))))
 
 (defn hip []
   [input-with-subscription
-   {:label   "Hip Circumference"
+   {:label   :form/hip
     :sub-key ::s/hip
     :ev-key  ::e/hip}])
 
 (defn age []
   [input-with-subscription
-   {:label     "Age"
-    :sub-key   ::s/age
-    :ev-key    ::e/age}])
+   {:label   :form/age
+    :sub-key ::s/age
+    :ev-key  ::e/age}])
 
 (defn weight []
   [input-with-subscription
-   {:label     "Weight"
-    :sub-key   ::s/weight
-    :ev-key    ::e/weight}])
+   {:label   :form/weight
+    :sub-key ::s/weight
+    :ev-key  ::e/weight}])
 
 (defn height []
   [input-with-subscription
-   {:label     "Height"
-    :sub-key   ::s/height
-    :ev-key    ::e/height}])
+   {:label   :form/height
+    :sub-key ::s/height
+    :ev-key  ::e/height}])
 
 (defn waist []
   [input-with-subscription
-   {:label     "Waist Circumference"
-    :sub-key   ::s/waist
-    :ev-key    ::e/waist}])
+   {:label   :form/waist
+    :sub-key ::s/waist
+    :ev-key  ::e/waist}])
 
 (defn form []
   [:form {:name          "index-calculator"
           :no-validate   true
           :auto-complete "off"}
-   [:> Box {:my 1.5}
-    [meassuring-system]
-    [:> Divider]]
+   [:> Box {:min-height (spacing 6.5)}]
+   [:> Divider]
    [:> Box {:my 1.5}
     [gender]]
    [:> Box {:my 1.5}

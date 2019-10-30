@@ -142,3 +142,13 @@
   (->> form
        (map (fn [[k {:keys [value]}]] {k (rcast value)}))
        (into {})))
+
+(defn loc [path]
+  (let [strify (comp str name)
+        path   (reduce
+                (fn [agg val]
+                  (if (qualified-keyword? val)
+                    (conj agg (-> val namespace strify) (-> val name strify))
+                    (conj agg (-> val strify)))) [] path)]
+    [(keyword (clojure.string/join "." (butlast path))
+              (last path))]))

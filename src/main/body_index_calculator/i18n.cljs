@@ -8,6 +8,14 @@
 
 (def local-dictionary
   {:en {:missing "missing text"
+        :form    {:hip    "Hip Circumference"
+                  :waist  "Waist Circumference"
+                  :height "Height"
+                  :weight "Weight"
+                  :age    "Age"
+                  :gender {:label  "Gender"
+                           :male   "Male"
+                           :female "Female"}}
         :locale  {:label "Language"
                   :en    {:label "En"
                           :title "English"}
@@ -30,6 +38,14 @@
                     :time :en.system.metric.units/time
                     :mass "lb"}}}}
    :ru {:missing "Нэту тэкста"
+        :form    {:hip    "Окружность бедер"
+                  :waist  "Обхват а талии"
+                  :height "Рост"
+                  :weight "Вес"
+                  :age    "Возраст"
+                  :gender {:label  "Пол"
+                           :male   "Мужской"
+                           :female "Женский"}}
         :locale  {:label "Выбор языка"
                   :en    {:label "En"
                           :title "Английский"}
