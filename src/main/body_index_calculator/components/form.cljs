@@ -14,6 +14,10 @@
    ["@material-ui/core/Typography" :default Typography]
    ["@material-ui/core/Divider" :default Divider]))
 
+(defn pprn [& args]
+  (doseq [av args]
+    (cljs.pprint/pprint av)))
+
 ;; it is not used but will leave it here for a dev process
 (defn meassuring-system []
   (let [value (rf/subscribe [::s/system])]
@@ -26,7 +30,6 @@
                         {:label "Imperial" :value :imperial}]
         :on-change     #(rf/dispatch
                          [::e/system (keyword %)])}])))
-
 
 (defn gender [{:keys [locale value ev-key label]}]
   [radio-group
@@ -43,17 +46,27 @@
                       {:visited? true
                        :value    (keyword %)}])}])
 
-(defn input-with-dispatchers [{:keys [value ev-key label units]}]
+(defn input-with-dispatchers [{:keys [value
+                                      ev-key
+                                      label
+                                      units
+                                      error
+                                      error-text]
+                               :or   {error false}
+                               :as   props}]
+  ;; (pprn props)
   [input
-   {:label     label
-    :value     (or value "")
-    :units     units
-    :on-change #(rf/dispatch
-                 [ev-key {:value %}])
-    :on-focus  #(rf/dispatch
-                 [ev-key {:visited? true :active? true}])
-    :on-blur   #(rf/dispatch
-                 [ev-key {:active? false}])}])
+   {:label      label
+    :value      (or value "")
+    :units      units
+    :error      error
+    :error-text error-text
+    :on-change  #(rf/dispatch
+                  [ev-key {:value %}])
+    :on-focus   #(rf/dispatch
+                  [ev-key {:visited? true :active? true}])
+    :on-blur    #(rf/dispatch
+                  [ev-key {:active? false}])}])
 
 (defn double-input-with-dispatchers [{:keys [value ev-key label units]}]
   (r/with-let [local-state (r/atom {:ft/value (first value)
@@ -65,61 +78,70 @@
       [double-input
        label
        {:value     (or (first value) "")
-        :units     (first units)
+        :units     (second units)
         :on-change #(do (swap! local-state assoc :ft/value %)
                         (dispatch-change @local-state))
         :on-focus  dispatch-focus
         :on-blur   dispatch-blur}
        {:value     (or (second value) "")
-        :units     (second units)
+        :units     (last units)
         :on-change #(do (swap! local-state assoc :in/value %)
                         (dispatch-change @local-state))
         :on-focus  dispatch-focus
         :on-blur   dispatch-blur}])))
 
-(defn input-with-subscription [props]
-  (r/with-let [field  (rf/subscribe [(:sub-key props)])
+(defn input-with-subscription [{:keys [sub-key ev-key label] :as props}]
+  (r/with-let [field  (rf/subscribe [sub-key])
                locale (rf/subscribe [::s/locale])
                system (rf/subscribe [::s/system])]
-    (let [{:keys [value utype]} @field
-          units                 (tr [@locale] (loc [:system @system :units utype]))
-          common-props          {:value value
-                                 :locale @locale
-                                 :label (tr [@locale] [(:label props) "unknown label"])}]
+    (let [{:keys [value
+                  utype
+                  error-text]} @field
+          units                (tr [@locale] (loc [:system @system :units utype]))
+          common-props         (-> @field
+                                   ;; (assoc :error-text (tr [@locale] (loc error-text)))
+                                   (assoc :ev-key ev-key)
+                                   (assoc :units units)
+                                   (assoc :locale @locale)
+                                   (assoc :label (tr [@locale] [label])))]
+      ;; (pprn @field)
       (cond
         (and (= :len utype) (= :imperial @system))
-        [double-input-with-dispatchers (merge props {:units (rest units)} common-props)]
+        [double-input-with-dispatchers common-props
+         #_(merge props {:units (rest units)} common-props)]
 
         (nil? utype)
-        [gender (merge props common-props)]
+        [gender common-props
+         #_(merge props common-props)]
 
         :else
         [input-with-dispatchers (merge props {:units units} common-props)]))))
 
 (def inputs
-  [{:label   :form.gender/label
-    :sub-key ::s/gender
-    :ev-key  ::e/gender}
+  [;; {:label   :form.gender/label
+   ;;  :sub-key ::s/gender
+   ;;  :ev-key  ::e/gender}
 
-   {:label   :form/age
-    :sub-key ::s/age
-    :ev-key  ::e/age}
+   ;; {:label   :form/age
+   ;;  :sub-key ::s/age
+   ;;  :ev-key  ::e/age}
 
    {:label   :form/weight
     :sub-key ::s/weight
     :ev-key  ::e/weight}
 
-   {:label   :form/height
-    :sub-key ::s/height
-    :ev-key  ::e/height}
+   ;; {:label   :form/height
+   ;;  :sub-key ::s/height
+   ;;  :ev-key  ::e/height}
 
-   {:label   :form/waist
-    :sub-key ::s/waist
-    :ev-key  ::e/waist}
+   ;; {:label   :form/waist
+   ;;  :sub-key ::s/waist
+   ;;  :ev-key  ::e/waist}
 
-   {:label   :form/hip
-    :sub-key ::s/hip
-    :ev-key  ::e/hip}])
+   ;; {:label   :form/hip
+   ;;  :sub-key ::s/hip
+   ;;  :ev-key  ::e/hip}
+   ])
 
 (defn i18n [path]
   (r/with-let [locale (rf/subscribe [::s/locale])]
@@ -142,6 +164,7 @@
     [:> Typography {:variant "h6" :component "h2"}
      [i18n [:form/call-to-action]]]]
    [:> Divider]
+   [meassuring-system]
    ;; form fields
    (into
     [:> Box]

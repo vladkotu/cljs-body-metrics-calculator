@@ -3,6 +3,8 @@
    [re-frame.core :as rf]
    [cljs.spec.alpha :as s]
    [body-index-calculator.helpers :as helpers]
+   [body-index-calculator.lib.specs :as specs]
+   [body-index-calculator.validation :refer [validate]]
    [body-index-calculator.lib.body-fat :as bfp]
    [body-index-calculator.lib.body-mass-index :as bmi]
    [body-index-calculator.lib.wais-hip-ratio :as whr]
@@ -23,12 +25,24 @@
 (doseq [sub-name [::gender ::age
                   ::weight ::height
                   ::waist  ::hip]]
-  (let [a-key (keyword (name sub-name))]
+  (let [a-key (keyword (name sub-name))
+        a-spec (keyword (ns-name 'body-index-calculator.lib.specs) a-key)]
     (rf/reg-sub
      sub-name
+     :<- [::system]
+     :<- [::locale]
      :<- [::form]
-     (fn [form _]
-       (get form a-key)))))
+     (fn [[system locale form] _]
+       (let [field (get form a-key)
+             value (:value field)]
+         field
+         ;; 1. convert values to metric system
+         ;; 2. validate
+         ;;    it should return only decision  based on those rules:
+         ;;    if field is active - check only format (allowed chars)
+         ;;    if it visited but not active and not empty - provide final value check (like ranges)
+         #_(js/console.log a-spec numberic-value)
+         #_(validate system (assoc field :name a-key)))))))
 
 (defn form-metric->result
   [form {:keys [spec value conclusion] :as metric}]

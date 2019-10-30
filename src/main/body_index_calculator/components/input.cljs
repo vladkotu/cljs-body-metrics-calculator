@@ -3,6 +3,7 @@
    [reagent.core :as r]
    [body-index-calculator.helpers :refer [evalue react-key]]
    ["@material-ui/core/FormControl" :default FormControl]
+   ["@material-ui/core/FormHelperText" :default FormHelperText]
    ["@material-ui/core/InputLabel" :default InputLabel]
    ["@material-ui/core/InputAdornment" :default InputAdornment]
    ["@material-ui/core/FilledInput" :default FilledInput]
@@ -14,13 +15,15 @@
                             units
                             id
                             label
+                            error
+                            error-text
                             value
                             input-style]
                      :or   {on-change #()
                             on-focus  #()
                             on-blur   #()}}]
-  [:> FormControl {:style {:width "100%" :position "initial"}}
-   [:> InputLabel {:html-for id :shrink true}
+  [:> FormControl {:error error :style {:width "100%" :position "initial"}}
+   [:> InputLabel {:html-for id :variant "filled"}
     label]
    [:> FilledInput {:id        id
                     :value     (or value "")
@@ -33,7 +36,8 @@
                      [:> InputAdornment
                       {:position "end"
                        :style {:align-items "baseline"}}
-                      units])}]])
+                      units])}]
+   (when error-text [:> FormHelperText error-text])])
 
 (defn input [props]
   (let [id (react-key "input-" (:label props))]
