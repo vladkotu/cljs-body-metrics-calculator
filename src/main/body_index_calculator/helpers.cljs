@@ -1,8 +1,9 @@
 (ns body-index-calculator.helpers
-  (:require [goog.object  :as gobj]
-            [reagent.core :as r]
-            [clojure.string :refer [replace trim join]]
-            ["@material-ui/core/styles" :refer [withStyles]]))
+  (:require
+   [goog.object  :as gobj]
+   [reagent.core :as r]
+   [clojure.string :refer [replace trim join]]
+   ["@material-ui/core/styles" :refer [withStyles]]))
 
 (defn to-clj
   "simplified js->clj for JSON data, :key-fn default to keyword"
@@ -105,22 +106,21 @@
   (let [in (/ sm 2.54)]
     [(quot in 12)
      (to-fixed (rem in 12))]))
-(defn ft-in->sm [[ft in]]
+(defn ft-in->sm [len]
   (Math/round
-   (+ (* ft 30.48)
-      (* in 2.54))))
+   (+ (* (first len) 30.48)
+      (* (last len) 2.54))))
 
 (defprotocol FormValueRCast
   (rcast [this]))
 
 (extend-protocol FormValueRCast
-  string           (rcast [this] (js/parseFloat (if (empty? this) "0" this) 10))
-  number           (rcast [this] (str this))
+  string           (rcast [this] (if (empty? this) 0 (js/parseFloat  this 10)))
+  number           (rcast [this] (if (zero? this) "" (str this)))
   PersistentVector (rcast [this] (mapv rcast this))
   nil              (rcast [this] this)
   Keyword          (rcast [this] this))
 
-(type :a)
 (defn rcast-value-with [with this]
   (update this :value #(-> % rcast with rcast)))
 
@@ -142,7 +142,6 @@
   (->> form
        (map (fn [[k {:keys [value]}]] {k (rcast value)}))
        (into {})))
-
 
 (defn namestr [k]
   (-> k name str))
@@ -166,5 +165,5 @@
                   :else
                   (throw (ex-info "keywords of strings allowed only in `loc` function" {}))))
               [] path)]
-    [(keyword (clojure.string/join "." (butlast path))
+    [(keyword (join "." (butlast path))
               (last path))]))
