@@ -143,12 +143,28 @@
        (map (fn [[k {:keys [value]}]] {k (rcast value)}))
        (into {})))
 
+
+(defn namestr [k]
+  (-> k name str))
+
 (defn loc [path]
-  (let [strify (comp str name)
-        path   (reduce
-                (fn [agg val]
-                  (if (qualified-keyword? val)
-                    (conj agg (-> val namespace strify) (-> val name strify))
-                    (conj agg (-> val strify)))) [] path)]
+  (let [path (reduce
+              (fn [agg val]
+                (cond
+                  (qualified-keyword? val)
+                  (conj agg (-> val namespace namestr) (-> val name namestr))
+
+                  (keyword? val)
+                  (conj agg (-> val namestr))
+
+                  (string? val)
+                  (conj agg val)
+
+                  (nil? val)
+                  agg
+
+                  :else
+                  (throw (ex-info "keywords of strings allowed only in `loc` function" {}))))
+              [] path)]
     [(keyword (clojure.string/join "." (butlast path))
               (last path))]))

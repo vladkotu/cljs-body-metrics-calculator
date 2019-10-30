@@ -5,7 +5,7 @@
    [body-index-calculator.i18n :refer [tr]]
    [body-index-calculator.mui-theme :refer [spacing]]
    [body-index-calculator.subscriptions :as s]
-   [body-index-calculator.helpers :refer [loc]]
+   [body-index-calculator.helpers :refer [loc react-key]]
    [body-index-calculator.events :as e]
    [body-index-calculator.components.radio-group :refer [radio-group]]
    [body-index-calculator.components.input  :refer [input double-input]]
@@ -14,6 +14,7 @@
    ["@material-ui/core/Typography" :default Typography]
    ["@material-ui/core/Divider" :default Divider]))
 
+;; it is not used but will leave it here for a dev process
 (defn meassuring-system []
   (let [value (rf/subscribe [::s/system])]
     (fn []
@@ -26,23 +27,21 @@
         :on-change     #(rf/dispatch
                          [::e/system (keyword %)])}])))
 
-(defn gender []
-  (let [value  (rf/subscribe [::s/gender])
-        locale (rf/subscribe [::s/locale])]
-    (fn []
-      [radio-group
-       {:value         (or (:value @value) "")
-        :label         (tr [@locale] [:form.gender/label])
-        :name          "gender"
-        :add-hidden?   true
-        :radio-buttons [{:label (tr [@locale] [:form.gender/male])
-                         :value :male}
-                        {:label (tr [@locale] [:form.gender/female])
-                         :value :female}]
-        :on-change     #(rf/dispatch
-                         [::e/gender
-                          {:visited? true
-                           :value    (keyword %)}])}])))
+
+(defn gender [{:keys [locale value ev-key label]}]
+  [radio-group
+   {:value         (or value "")
+    :label         label
+    :name          "gender"
+    :add-hidden?   true
+    :radio-buttons [{:label (tr [locale] [:form.gender/male])
+                     :value :male}
+                    {:label (tr [locale] [:form.gender/female])
+                     :value :female}]
+    :on-change     #(rf/dispatch
+                     [ev-key
+                      {:visited? true
+                       :value    (keyword %)}])}])
 
 (defn input-with-dispatchers [{:keys [value ev-key label units]}]
   [input
@@ -85,40 +84,42 @@
     (let [{:keys [value utype]} @field
           units                 (tr [@locale] (loc [:system @system :units utype]))
           common-props          {:value value
+                                 :locale @locale
                                  :label (tr [@locale] [(:label props) "unknown label"])}]
-      (if (and (= :len utype) (= :imperial @system))
+      (cond
+        (and (= :len utype) (= :imperial @system))
         [double-input-with-dispatchers (merge props {:units (rest units)} common-props)]
+
+        (nil? utype)
+        [gender (merge props common-props)]
+
+        :else
         [input-with-dispatchers (merge props {:units units} common-props)]))))
 
-(defn hip []
-  [input-with-subscription
+(def inputs
+  [{:label   :form.gender/label
+    :sub-key ::s/gender
+    :ev-key  ::e/gender}
+
+   {:label   :form/age
+    :sub-key ::s/age
+    :ev-key  ::e/age}
+
+   {:label   :form/weight
+    :sub-key ::s/weight
+    :ev-key  ::e/weight}
+
+   {:label   :form/height
+    :sub-key ::s/height
+    :ev-key  ::e/height}
+
+   {:label   :form/waist
+    :sub-key ::s/waist
+    :ev-key  ::e/waist}
+
    {:label   :form/hip
     :sub-key ::s/hip
     :ev-key  ::e/hip}])
-
-(defn age []
-  [input-with-subscription
-   {:label   :form/age
-    :sub-key ::s/age
-    :ev-key  ::e/age}])
-
-(defn weight []
-  [input-with-subscription
-   {:label   :form/weight
-    :sub-key ::s/weight
-    :ev-key  ::e/weight}])
-
-(defn height []
-  [input-with-subscription
-   {:label   :form/height
-    :sub-key ::s/height
-    :ev-key  ::e/height}])
-
-(defn waist []
-  [input-with-subscription
-   {:label   :form/waist
-    :sub-key ::s/waist
-    :ev-key  ::e/waist}])
 
 (defn i18n [path]
   (r/with-let [locale (rf/subscribe [::s/locale])]
@@ -130,6 +131,7 @@
   [:form {:name          "index-calculator"
           :no-validate   true
           :auto-complete "off"}
+   ;; form header
    [:> Box {:min-height      (spacing 6.5)
             :display         "flex"
             :flex-direction  "row"
@@ -140,15 +142,9 @@
     [:> Typography {:variant "h6" :component "h2"}
      [i18n [:form/call-to-action]]]]
    [:> Divider]
-   [:> Box {:my 1.5}
-    [gender]]
-   [:> Box {:my 1.5}
-    [age]]
-   [:> Box {:my 1.5}
-    [weight]]
-   [:> Box {:my 1.5}
-    [height]]
-   [:> Box {:my 1.5}
-    [waist]]
-   [:> Box {:my 1.5}
-    [hip]]])
+   ;; form fields
+   (into
+    [:> Box]
+    (for [props inputs]
+      [:> Box {:my 1.5 :key (react-key (:label props))}
+       [input-with-subscription props]]))])

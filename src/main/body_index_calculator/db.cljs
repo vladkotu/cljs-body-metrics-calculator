@@ -70,7 +70,7 @@
                      :value    nil}
             :age    {:visited? false
                      :active?  false
-                     :value    ""
+                     :value    nil
                      :utype    :time}
             :weight {:visited? false
                      :value    nil
