@@ -1,11 +1,13 @@
 (ns body-index-calculator.config)
 
-(def available-ages (range 12 (inc 99)))
-
-(defn default-age []
-  (nth available-ages (Math/floor (/ (count available-ages) 4))))
-
 (def config
-  {:genres [:male :female]
-   :ages available-ages
-   :default-age (default-age)})
+  {:age    {:max 99
+            :min 12}
+   :weight {:max 300
+            :min 30}
+   :height {:max 300
+            :min 30}
+   :waist  {:max 200
+            :min 20}
+   :hip    {:max 200
+            :min 20}})

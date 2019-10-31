@@ -8,7 +8,7 @@
 
 (defn render []
   (r/render [error-boundary [app]] (js/document.getElementById "core"))
-  (println "app rendered"))
+  (js/console.log "app rendered\n\n"))
 
 (defn instrument-specs []
   (let [done (st/instrument)]

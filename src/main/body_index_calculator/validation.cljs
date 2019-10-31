@@ -3,36 +3,20 @@
    [cljs.spec.alpha :as s]
    [cljs.spec.test.alpha :as ts]
    [body-index-calculator.i18n :refer [tr]]
-   [body-index-calculator.helpers :refer [rcast loc convert-single-value]]
-   [body-index-calculator.helpers :as helpers]))
+   [body-index-calculator.lib.specs :as specs]
+   [body-index-calculator.config :refer [config]]
+   [body-index-calculator.helpers :refer [loc convert-single-value]]))
 
-(def config {:age    {:max 99
-                      :min 12}
-             :weight {:max 300
-                      :min 30}
-             :height {:max 300
-                      :min 30}})
-
-(defn is [comparator ref-value]
-  (fn [value]
-    (comparator
-     (rcast value)
-     ref-value)))
-
-(s/def ::number    (s/nilable (s/and string? #(not (re-find #"[^0-9.]+" %)))))
-(s/def ::age-lt    (is < (-> config :age :max)))
-(s/def ::age-gt    (is > (-> config :age :min)))
-(s/def ::weight-lt (is < (-> config :weight :max)))
-(s/def ::weight-gt (is > (-> config :weight :min)))
-(s/def ::height-lt (is < (-> config :height :max)))
-(s/def ::height-gt (is > (-> config :height :min)))
-
-(def rules {:age    {:as-you-type [::number]
-                     :finaly      [::age-lt ::age-gt]}
-            :weight {:as-you-type [::number]
-                     :finaly      [::weight-lt ::weight-gt]}
-            :height {:as-you-type [::number]
-                     :finaly      [::height-lt ::height-gt]}})
+(def rules {:age    {:as-you-type [::specs/number]
+                     :finaly      [::specs/age-lt ::specs/age-gt]}
+            :weight {:as-you-type [::specs/number]
+                     :finaly      [::specs/weight-lt ::specs/weight-gt]}
+            :height {:as-you-type [::specs/number]
+                     :finaly      [::specs/height-lt ::specs/height-gt]}
+            :waist  {:as-you-type [::specs/number]
+                     :finaly      [::specs/waist-lt ::specs/waist-gt]}
+            :hip    {:as-you-type [::specs/number ::specs/hip-gt]
+                     :finaly      [::specs/hip-lt ::specs/hip-gt]}})
 
 (defn fail-spec
   [spec value]
@@ -99,7 +83,6 @@
   :args (s/cat :field ::field)
   :ret  ::error)
 
-
 (defn get-argv [system locale name utype]
   (let [units     (tr [locale] (loc [:units system :long utype]))
         conf-vals (vals (get config name))
@@ -114,6 +97,5 @@
           argv (get-argv system locale name utype)]
       {:error-text (tr [locale] (conj (loc path) "Incorrect input") argv)})
     {:error-text nil}))
-
 
 (ts/instrument 'validate)
