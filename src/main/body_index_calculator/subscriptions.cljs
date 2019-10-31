@@ -2,6 +2,7 @@
   (:require
    [re-frame.core :as rf]
    [cljs.spec.alpha :as s]
+   [body-index-calculator.validation :refer [validate]]
    [body-index-calculator.helpers :as helpers]
    [body-index-calculator.lib.specs :as specs]
    [body-index-calculator.validation :refer [validate]]
@@ -13,6 +14,10 @@
    [body-index-calculator.lib.lean-body-mass :as lbm]))
 
 (def cider-have-to-have-at-least-one-def-in-a-file nil)
+
+(defn pprn [& args]
+  (doseq [av args]
+    (cljs.pprint/pprint av)))
 
 ;; register hight level flat subscriptions
 (doseq [sub-name [::form ::system ::theme ::locale]
@@ -33,16 +38,12 @@
      :<- [::locale]
      :<- [::form]
      (fn [[system locale form] _]
-       (let [field (get form a-key)
-             value (:value field)]
-         field
-         ;; 1. convert values to metric system
-         ;; 2. validate
-         ;;    it should return only decision  based on those rules:
-         ;;    if field is active - check only format (allowed chars)
-         ;;    if it visited but not active and not empty - provide final value check (like ranges)
-         #_(js/console.log a-spec numberic-value)
-         #_(validate system (assoc field :name a-key)))))))
+       (let [field (assoc  (get form a-key) :name a-key)
+             errors (validate (if (= :imperial system)
+                                (helpers/convert-field-value :metric field)
+                                field))]
+         (pprn field)
+         (merge field errors))))))
 
 (defn form-metric->result
   [form {:keys [spec value conclusion] :as metric}]
