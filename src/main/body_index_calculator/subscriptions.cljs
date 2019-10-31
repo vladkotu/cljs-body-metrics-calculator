@@ -2,7 +2,7 @@
   (:require
    [re-frame.core :as rf]
    [cljs.spec.alpha :as s]
-   [body-index-calculator.validation :refer [validate]]
+   [body-index-calculator.validation :refer [validate localize-error-code]]
    [body-index-calculator.helpers :as helpers]
    [body-index-calculator.lib.specs :as specs]
    [body-index-calculator.validation :refer [validate]]
@@ -30,20 +30,19 @@
 (doseq [sub-name [::gender ::age
                   ::weight ::height
                   ::waist  ::hip]]
-  (let [a-key (keyword (name sub-name))
-        a-spec (keyword (ns-name 'body-index-calculator.lib.specs) a-key)]
+  (let [a-key  (keyword (name sub-name))]
     (rf/reg-sub
      sub-name
      :<- [::system]
      :<- [::locale]
      :<- [::form]
      (fn [[system locale form] _]
-       (let [field (assoc  (get form a-key) :name a-key)
-             errors (validate (if (= :imperial system)
-                                (helpers/convert-field-value :metric field)
-                                field))]
-         (pprn field)
-         (merge field errors))))))
+       (let [field      (assoc  (get form a-key) :name a-key)
+             errors     (validate (if (= :imperial system)
+                                    (helpers/convert-field-value :metric field)
+                                    field))
+             error-text (localize-error-code system locale (merge field errors))]
+         (merge field errors error-text))))))
 
 (defn form-metric->result
   [form {:keys [spec value conclusion] :as metric}]

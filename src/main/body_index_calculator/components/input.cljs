@@ -44,7 +44,7 @@
     [:> Grid {:container true :xs 12 :item true :style {:position "relative"}}
      [shared-input (assoc props :id id)]]))
 
-(defn double-input [label props1 props2]
+(defn double-input [label props1 props2 error]
   (r/with-let [active       (r/atom 1)
                id           (react-key "input-" label)
                reset-active (fn [n] (fn [on-focus]
@@ -54,14 +54,16 @@
      (let [props (-> props1
                      (assoc :label (when (= 1 @active) label))
                      (assoc :id (str "1-" id))
-                     (update :on-focus (reset-active 1)))]
+                     (update :on-focus (reset-active 1))
+                     (merge error))]
        [:> Grid {:item true :xs 6}
         [shared-input
          (merge props {:input-style {:border-top-right-radius 0}})]])
      (let [props (-> props2
                      (assoc :label (when (= 2 @active) label))
                      (assoc :id (str "2-" id))
-                     (update :on-focus (reset-active 2)))]
+                     (update :on-focus (reset-active 2))
+                     (assoc :error (:error error)))]
        [:> Grid {:item true :xs 6}
         [shared-input
          (merge props {:input-style {:border-top-left-radius 0}})]])]))

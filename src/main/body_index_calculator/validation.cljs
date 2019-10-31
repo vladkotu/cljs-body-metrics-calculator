@@ -2,11 +2,15 @@
   (:require
    [cljs.spec.alpha :as s]
    [cljs.spec.test.alpha :as ts]
-   [body-index-calculator.helpers :refer [rcast]]))
+   [body-index-calculator.i18n :refer [tr]]
+   [body-index-calculator.helpers :refer [rcast loc convert-single-value]]
+   [body-index-calculator.helpers :as helpers]))
 
 (def config {:age    {:max 99
                       :min 12}
              :weight {:max 300
+                      :min 30}
+             :height {:max 300
                       :min 30}})
 
 (defn is [comparator ref-value]
@@ -20,11 +24,15 @@
 (s/def ::age-gt    (is > (-> config :age :min)))
 (s/def ::weight-lt (is < (-> config :weight :max)))
 (s/def ::weight-gt (is > (-> config :weight :min)))
+(s/def ::height-lt (is < (-> config :height :max)))
+(s/def ::height-gt (is > (-> config :height :min)))
 
 (def rules {:age    {:as-you-type [::number]
                      :finaly      [::age-lt ::age-gt]}
             :weight {:as-you-type [::number]
-                     :finaly      [::weight-lt ::weight-gt]}})
+                     :finaly      [::weight-lt ::weight-gt]}
+            :height {:as-you-type [::number]
+                     :finaly      [::height-lt ::height-gt]}})
 
 (defn fail-spec
   [spec value]
@@ -75,8 +83,8 @@
 (s/def ::visited? boolean?)
 (s/def ::name keyword?)
 (s/def ::value string?)
-(s/def ::error-text (s/nilable (s/coll-of keyword?)))
-(s/def ::error (s/keys :req-un [::error ::error-text]))
+(s/def ::error-code (s/nilable (s/coll-of keyword?)))
+(s/def ::error (s/keys :req-un [::error ::error-code]))
 (s/def ::field (s/keys :req-un [::visited? ::active? ::name ::value]))
 
 (defn validate
@@ -90,5 +98,22 @@
 (s/fdef validate
   :args (s/cat :field ::field)
   :ret  ::error)
+
+
+(defn get-argv [system locale name utype]
+  (let [units     (tr [locale] (loc [:units system :long utype]))
+        conf-vals (vals (get config name))
+        argv      (if (= :imperial system)
+                    (mapv #(convert-single-value system utype %) conf-vals)
+                    (vec conf-vals))]
+    (into argv [units])))
+
+(defn localize-error-code [system locale {:keys [name error-code utype]}]
+  (if error-code
+    (let [path (into [] (concat [:validation name system] error-code))
+          argv (get-argv system locale name utype)]
+      {:error-text (tr [locale] (conj (loc path) "Incorrect input") argv)})
+    {:error-text nil}))
+
 
 (ts/instrument 'validate)

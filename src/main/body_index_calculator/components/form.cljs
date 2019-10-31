@@ -54,7 +54,6 @@
                                       error-text]
                                :or   {error false}
                                :as   props}]
-  ;; (pprn props)
   [input
    {:label      label
     :value      (or value "")
@@ -68,7 +67,7 @@
     :on-blur    #(rf/dispatch
                   [ev-key {:active? false}])}])
 
-(defn double-input-with-dispatchers [{:keys [value ev-key label units]}]
+(defn double-input-with-dispatchers [{:keys [value ev-key label units] :as props}]
   (r/with-let [local-state (r/atom {:ft/value (first value)
                                     :in/value (second value)})]
     (letfn [(dispatch-change [state]
@@ -88,12 +87,14 @@
         :on-change #(do (swap! local-state assoc :in/value %)
                         (dispatch-change @local-state))
         :on-focus  dispatch-focus
-        :on-blur   dispatch-blur}])))
+        :on-blur   dispatch-blur}
+       (select-keys props [:error :error-text])])))
 
 (defn input-with-subscription [{:keys [sub-key ev-key label] :as props}]
   (r/with-let [field  (rf/subscribe [sub-key])
                locale (rf/subscribe [::s/locale])
                system (rf/subscribe [::s/system])]
+    ;; (pprn @field)
     (let [{:keys [value
                   utype
                   error-text]} @field
@@ -104,7 +105,6 @@
                                    (assoc :units units)
                                    (assoc :locale @locale)
                                    (assoc :label (tr [@locale] [label])))]
-      ;; (pprn @field)
       (cond
         (and (= :len utype) (= :imperial @system))
         [double-input-with-dispatchers common-props
@@ -118,29 +118,29 @@
         [input-with-dispatchers (merge props {:units units} common-props)]))))
 
 (def inputs
-  [;; {:label   :form.gender/label
-   ;;  :sub-key ::s/gender
-   ;;  :ev-key  ::e/gender}
+  [{:label   :form.gender/label
+    :sub-key ::s/gender
+    :ev-key  ::e/gender}
 
-   ;; {:label   :form/age
-   ;;  :sub-key ::s/age
-   ;;  :ev-key  ::e/age}
+   {:label   :form/age
+    :sub-key ::s/age
+    :ev-key  ::e/age}
 
    {:label   :form/weight
     :sub-key ::s/weight
     :ev-key  ::e/weight}
 
-   ;; {:label   :form/height
-   ;;  :sub-key ::s/height
-   ;;  :ev-key  ::e/height}
+   {:label   :form/height
+    :sub-key ::s/height
+    :ev-key  ::e/height}
 
-   ;; {:label   :form/waist
-   ;;  :sub-key ::s/waist
-   ;;  :ev-key  ::e/waist}
+   {:label   :form/waist
+    :sub-key ::s/waist
+    :ev-key  ::e/waist}
 
-   ;; {:label   :form/hip
-   ;;  :sub-key ::s/hip
-   ;;  :ev-key  ::e/hip}
+   {:label   :form/hip
+    :sub-key ::s/hip
+    :ev-key  ::e/hip}
    ])
 
 (defn i18n [path]

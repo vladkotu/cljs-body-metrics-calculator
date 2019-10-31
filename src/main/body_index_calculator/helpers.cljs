@@ -132,6 +132,15 @@
     [:imperial :mass] (rcast-value-with lb->kg field)
     (identity field)))
 
+(defn convert-single-value [system utype value]
+  (case [system utype]
+    [:metric :len]    (-> value rcast ft-in->sm rcast)
+    [:imperial :len]  (map #(if (empty? %) "0" %)
+                           (-> value rcast cm->ft-in rcast))
+    [:metric :mass]   (-> value rcast kg->lb rcast)
+    [:imperial :mass] (-> value rcast lb->kg rcast)
+    value))
+
 (defn convert-form-values [system form]
   (->> form
        (map (fn [[key field]]
