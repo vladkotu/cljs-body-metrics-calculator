@@ -15,7 +15,8 @@
                      (s/coll-of ::str-number :kind vector? :count 2)))
 
 (s/def ::utype #{:time :len :mass})
-
+(s/def ::active? boolean?)
+(s/def ::visited? boolean?)
 (s/def :gender/value (s/nilable ::specs/gender))
 (s/def :db/gender (s/keys :req-un [::visited?
                                    ::active?
@@ -74,7 +75,7 @@
                      :utype    :time}
             :weight {:visited? false
                      :value    nil
-                     :active?  nil
+                     :active?  false
                      :utype    :mass}
             :height {:visited? false
                      :active?  false
