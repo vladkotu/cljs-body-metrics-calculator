@@ -3,6 +3,7 @@
    [cljs.spec.alpha :as s]
    [reagent.core :as r]
    [re-frame.core :as rf]
+   [body-index-calculator.validation :as validation]
    [body-index-calculator.helpers :as helpers]
    [body-index-calculator.db :as db]))
 
@@ -42,12 +43,8 @@
        (update :form
                #(helpers/convert-form-values new-system %)))))
 
-(defn make-form-event-handler [path]
-  (fn [db [_ new-val]]
-    (update-in
-     db
-     path
-     (fn [val] (merge val new-val)))))
+(defn cond-field->metric [system field]
+  (if (= :imperial system) (helpers/convert-field-value :metric field) field))
 
 (doseq [ev-name [::gender ::age
                  ::weight ::height
@@ -56,7 +53,12 @@
     (rf/reg-event-db
      ev-name
      common-interseptors
-     (make-form-event-handler path))))
+     (fn [{:keys [system] :as db} [_ form-field]]
+       (update-in db path
+                  (fn [db-field]
+                    (let [field  (merge db-field form-field)
+                          errors (validation/validate (cond-field->metric system field))]
+                      (merge field errors))))))))
 
 (defonce timeouts (r/atom {}))
 

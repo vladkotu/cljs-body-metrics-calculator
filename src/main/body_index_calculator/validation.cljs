@@ -7,16 +7,16 @@
    [body-index-calculator.config :refer [config]]
    [body-index-calculator.helpers :refer [loc convert-single-value]]))
 
-(def rules {:age    {:as-you-type [::specs/number]
-                     :finaly      [::specs/age-lt ::specs/age-gt]}
-            :weight {:as-you-type [::specs/number]
-                     :finaly      [::specs/weight-lt ::specs/weight-gt]}
-            :height {:as-you-type [::specs/number]
-                     :finaly      [::specs/height-lt ::specs/height-gt]}
-            :waist  {:as-you-type [::specs/number]
-                     :finaly      [::specs/waist-lt ::specs/waist-gt]}
-            :hip    {:as-you-type [::specs/number ::specs/hip-gt]
-                     :finaly      [::specs/hip-lt ::specs/hip-gt]}})
+(def rules {:age    {:as-you-type [::specs/number ::specs/age-lt]
+                     :finaly      [::specs/age-gt]}
+            :weight {:as-you-type [::specs/number ::specs/weight-lt]
+                     :finaly      [::specs/weight-gt]}
+            :height {:as-you-type [::specs/number ::specs/height-lt]
+                     :finaly      [::specs/height-gt]}
+            :waist  {:as-you-type [::specs/number ::specs/waist-lt]
+                     :finaly      [::specs/waist-gt]}
+            :hip    {:as-you-type [::specs/number ::specs/hip-lt]
+                     :finaly      [::specs/hip-gt]}})
 
 (defn fail-spec
   [spec value]
@@ -68,20 +68,24 @@
 (s/def ::name keyword?)
 (s/def ::value (s/nilable any?))
 (s/def ::error-code (s/nilable (s/coll-of keyword?)))
-(s/def ::field (s/keys :req-un [::visited? ::active? ::name ::value]))
-(s/def ::validation-error (s/keys :req-un [::error ::error-code]))
+(s/def ::field (s/keys :req-un [::visited? ::active? ::name ::value]
+                       :opt-un [::error ::error-code]))
+(s/def ::validation-error (s/keys :opt-un [::error ::error-code]))
 
 (defn empty-value? [{:keys [value]}]
   (empty? value))
 
 (defn validate
-  [{:keys [visited? active?] :as field}]
+  [{:keys [visited? active? error] :as field}]
   (cond
     (false? visited?)    (valid)
     (empty-value? field) (valid)
-    (false? active?)     (validate-with-rules :all field)
-    (true? active?)      (validate-with-rules :as-you-type field)
-    :else                (throw (ex-info "cannot validate" {}))))
+    (or (false? active?)
+        (true? error))  (validate-with-rules :all field)
+
+    (and  (true? active?)
+          (false? error)) (validate-with-rules :as-you-type field)
+    :else                 field))
 
 (s/fdef validate
   :args (s/cat :field ::field)

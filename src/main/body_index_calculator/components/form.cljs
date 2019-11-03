@@ -63,17 +63,17 @@
     :on-change  #(rf/dispatch
                   [ev-key {:value %}])
     :on-focus   #(rf/dispatch
-                  [ev-key {:active? true}])
+                  [ev-key {:visited? true :active? true}])
     :on-blur    #(rf/dispatch
-                  [ev-key {:visited? true :active? false}])}])
+                  [ev-key {:active? false}])}])
 
 (defn double-input-with-dispatchers [{:keys [value ev-key label units] :as props}]
   (r/with-let [local-state (r/atom {:ft/value (first value)
                                     :in/value (second value)})]
     (letfn [(dispatch-change [state]
               (rf/dispatch [ev-key {:value [(:ft/value state) (:in/value state)]}]))
-            (dispatch-focus [] (rf/dispatch [ev-key {:active? true}]))
-            (dispatch-blur [] (rf/dispatch [ev-key {:visited? true :active? false}]))]
+            (dispatch-focus [] (rf/dispatch [ev-key {:visited? true :active? true}]))
+            (dispatch-blur [] (rf/dispatch [ev-key {:active? false}]))]
       [double-input
        label
        {:value     (or (first value) "")
@@ -163,7 +163,7 @@
     [:> Typography {:variant "h6" :component "h2"}
      [i18n [:form/call-to-action]]]]
    [:> Divider]
-   [meassuring-system]
+   ;; [meassuring-system]
    ;; form fields
    (into
     [:> Box]
