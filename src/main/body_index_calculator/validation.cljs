@@ -66,22 +66,26 @@
 (s/def ::active? boolean?)
 (s/def ::visited? boolean?)
 (s/def ::name keyword?)
-(s/def ::value string?)
+(s/def ::value (s/nilable any?))
 (s/def ::error-code (s/nilable (s/coll-of keyword?)))
-(s/def ::error (s/keys :req-un [::error ::error-code]))
 (s/def ::field (s/keys :req-un [::visited? ::active? ::name ::value]))
+(s/def ::validation-error (s/keys :req-un [::error ::error-code]))
+
+(defn empty-value? [{:keys [value]}]
+  (empty? value))
 
 (defn validate
   [{:keys [visited? active?] :as field}]
   (cond
-    (false? visited?) (valid)
-    (false? active?)  (validate-with-rules :all field)
-    (true? active?)   (validate-with-rules :as-you-type field)
-    :else             (throw (ex-info "cannot validate" {}))))
+    (false? visited?)    (valid)
+    (empty-value? field) (valid)
+    (false? active?)     (validate-with-rules :all field)
+    (true? active?)      (validate-with-rules :as-you-type field)
+    :else                (throw (ex-info "cannot validate" {}))))
 
 (s/fdef validate
   :args (s/cat :field ::field)
-  :ret  ::error)
+  :ret  ::validation-error)
 
 (defn get-argv [system locale name utype]
   (let [units     (tr [locale] (loc [:units system :long utype]))

@@ -4,8 +4,6 @@
    [cljs.spec.alpha :as s]
    [body-index-calculator.validation :refer [validate localize-error-code]]
    [body-index-calculator.helpers :as helpers]
-   [body-index-calculator.lib.specs :as specs]
-   [body-index-calculator.validation :refer [validate]]
    [body-index-calculator.lib.body-fat :as bfp]
    [body-index-calculator.lib.body-mass-index :as bmi]
    [body-index-calculator.lib.wais-hip-ratio :as whr]
@@ -37,7 +35,7 @@
      :<- [::locale]
      :<- [::form]
      (fn [[system locale form] _]
-       (let [field      (assoc  (get form a-key) :name a-key)
+       (let [field      (get form a-key)
              errors     (validate (if (= :imperial system)
                                     (helpers/convert-field-value :metric field)
                                     field))

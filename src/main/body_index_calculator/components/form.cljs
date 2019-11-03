@@ -63,17 +63,17 @@
     :on-change  #(rf/dispatch
                   [ev-key {:value %}])
     :on-focus   #(rf/dispatch
-                  [ev-key {:visited? true :active? true}])
+                  [ev-key {:active? true}])
     :on-blur    #(rf/dispatch
-                  [ev-key {:active? false}])}])
+                  [ev-key {:visited? true :active? false}])}])
 
 (defn double-input-with-dispatchers [{:keys [value ev-key label units] :as props}]
   (r/with-let [local-state (r/atom {:ft/value (first value)
                                     :in/value (second value)})]
     (letfn [(dispatch-change [state]
               (rf/dispatch [ev-key {:value [(:ft/value state) (:in/value state)]}]))
-            (dispatch-focus [] (rf/dispatch [ev-key {:visited? true :active? true}]))
-            (dispatch-blur [] (rf/dispatch [ev-key {:active? false}]))]
+            (dispatch-focus [] (rf/dispatch [ev-key {:active? true}]))
+            (dispatch-blur [] (rf/dispatch [ev-key {:visited? true :active? false}]))]
       [double-input
        label
        {:value     (or (first value) "")
@@ -140,8 +140,7 @@
 
    {:label   :form/hip
     :sub-key ::s/hip
-    :ev-key  ::e/hip}
-   ])
+    :ev-key  ::e/hip}])
 
 (defn i18n [path]
   (r/with-let [locale (rf/subscribe [::s/locale])]
