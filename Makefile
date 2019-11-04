@@ -2,27 +2,32 @@
 .DEFAUL_GOAL := info
 shadow-cljs = ./node_modules/.bin/shadow-cljs
 local = open http://localhost
+app = public/app
+target = target
 
-loc.clean:
+all.clean: modules.clean m2.clean app.clean target.clean devcards.clean tests.clean
+
+modules.clean:
 	@echo "Removing modules and caches"
 	rm -rf node_modules
 	rm -rf .shadow-cljs/
 	rm -rf .cpcache/
-	rm -rf target
 
-js.clean
-	@echo "Removing compiled js files"
-	rm -rf public/app/js/*
-	rm -rf public/devcards/js/*
+target.clean:
+	rm -rf ${target}
+
+tests.clean:
 	rm -rf public/tests/*
+
+tests.watch:
+	${shadow-cljs} -A:dev watch test
+	${local}:3002
 
 m2.clean:
 	echo "Removing m2 modules"
 	rm -rf ~/.m2/*
 
-all.clean: loc.clean m2.clean js.clean
-
-deps:
+deps: npm.deps
 	@echo "Installing shadow-cljs deps"
 	@${shadow-cljs} classpath > /dev/null
 
@@ -30,24 +35,33 @@ npm.deps:
 	@echo "Installing node deps"
 	@npm i
 
-all.deps: npm.deps deps
-
 info:
 	${shadow-cljs} info
 
-app.release:
+app.clean:
+	rm -rf ${app}/js/*
+
+app.target: app.clean
+	cp -r ${app}/* ${target}
+
+app.release: app.target
 	${shadow-cljs} -A:prod release app
 
 app.watch:
 	${shadow-cljs} -A:dev watch app
 	${local}:3000
 
+devcards.clean:
+	rm -rf public/devcards/js/*
+
 devcards.watch:
 	${shadow-cljs} -A:dev watch devcards
 	${local}:3001
 
-test.watch:
-	${shadow-cljs} -A:dev watch test
-	${local}:3002
+deploy:
+	cd ${target}
+	git add --all
+	git commit -m "deploy updates"
+	git push origin gh-pages
 
-
+cd: app.release deploy
