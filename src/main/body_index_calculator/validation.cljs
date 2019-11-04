@@ -70,13 +70,13 @@
 (s/def ::error-code (s/nilable (s/coll-of keyword?)))
 (s/def ::field (s/keys :req-un [::visited? ::active? ::name ::value]
                        :opt-un [::error ::error-code]))
-(s/def ::validation-error (s/keys :opt-un [::error ::error-code]))
+(s/def ::validation-error (s/keys :req-un [::error ::error-code]))
 
 (defn empty-value? [{:keys [value]}]
   (empty? value))
 
 (defn validate
-  [{:keys [visited? active? error] :as field}]
+  [{:keys [visited? active? error error-code] :as field}]
   (cond
     (false? visited?)    (valid)
     (empty-value? field) (valid)
@@ -85,7 +85,8 @@
 
     (and  (true? active?)
           (false? error)) (validate-with-rules :as-you-type field)
-    :else                 field))
+    :else                 {:error error
+                           :error-code error-code}))
 
 (s/fdef validate
   :args (s/cat :field ::field)

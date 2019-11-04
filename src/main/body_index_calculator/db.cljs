@@ -15,6 +15,8 @@
                      :coll-of-str-nubmers
                      (s/coll-of ::str-number :kind vector? :count 2)))
 
+(s/def ::error boolean?)
+(s/def ::error-code (s/nilable (s/coll-of keyword?)))
 (s/def ::utype #{:time :len :mass})
 (s/def ::active? boolean?)
 (s/def ::visited? boolean?)
@@ -22,36 +24,48 @@
 (s/def :db/gender (s/keys :req-un [::visited?
                                    ::active?
                                    ::name
+                                   ::error
+                                   ::error-code
                                    :gender/value]))
 
 (s/def :db/age (s/keys :req-un [::visited?
                                 ::active?
                                 ::utype
                                 ::name
+                                ::error
+                                ::error-code
                                 ::value]))
 
 (s/def :db/weight (s/keys :req-un [::visited?
                                    ::active?
                                    ::utype
                                    ::name
+                                   ::error
+                                   ::error-code
                                    ::value]))
 
 (s/def :db/height (s/keys :req-un [::visited?
                                    ::active?
                                    ::utype
                                    ::name
+                                   ::error
+                                   ::error-code
                                    ::value]))
 
 (s/def :db/waist (s/keys :req-un [::visited?
                                   ::active?
                                   ::utype
                                   ::name
+                                  ::error
+                                  ::error-code
                                   ::value]))
 
 (s/def :db/hip (s/keys :req-un [::visited?
                                 ::active?
                                 ::utype
                                 ::name
+                                ::error
+                                ::error-code
                                 ::value]))
 
 (s/def :db/form (s/keys :req-un [:db/gender
@@ -73,35 +87,47 @@
   {:system :metric
    :locale :en
    :theme  :dark
-   :form   {:gender {:name     :gender
-                     :visited? false
-                     :active?  false
-                     :value    :female}
-            :age    {:name     :age
-                     :visited? false
-                     :active?  false
-                     :value    "33"
-                     :utype    :time}
-            :weight {:name     :weight
-                     :visited? false
-                     :value    "82"
-                     :active?  false
-                     :utype    :mass}
-            :height {:name     :height
-                     :visited? false
-                     :active?  false
-                     :value    "179"
-                     :utype    :len}
-            :waist  {:name     :waist
-                     :visited? false
-                     :active?  false
-                     :value    "88"
-                     :utype    :len}
-            :hip    {:name     :hip
-                     :visited? false
-                     :active?  false
-                     :value    "99"
-                     :utype    :len}}})
+   :form   {:gender {:name       :gender
+                     :visited?   false
+                     :active?    false
+                     :error      false
+                     :error-code nil
+                     :value      :female}
+            :age    {:name       :age
+                     :visited?   false
+                     :active?    false
+                     :error      false
+                     :error-code nil
+                     :value      "33"
+                     :utype      :time}
+            :weight {:name       :weight
+                     :visited?   false
+                     :value      "82"
+                     :active?    false
+                     :error      false
+                     :error-code nil
+                     :utype      :mass}
+            :height {:name       :height
+                     :visited?   false
+                     :active?    false
+                     :error      false
+                     :error-code nil
+                     :value      "179"
+                     :utype      :len}
+            :waist  {:name       :waist
+                     :visited?   false
+                     :active?    false
+                     :value      "88"
+                     :error      false
+                     :error-code nil
+                     :utype      :len}
+            :hip    {:name       :hip
+                     :visited?   false
+                     :active?    false
+                     :error      false
+                     :error-code nil
+                     :value      "99"
+                     :utype      :len}}})
 
 (def default-db
   {:system :metric
@@ -110,29 +136,41 @@
    :form   {:gender {:name     :gender
                      :visited? false
                      :active?  false
+                     :error      false
+                     :error-code nil
                      :value nil}
             :age    {:name     :age
                      :visited? false
                      :active?  false
+                     :error      false
+                     :error-code nil
                      :value    nil
                      :utype    :time}
             :weight {:name     :weight
                      :visited? false
                      :value    nil
                      :active?  false
+                     :error      false
+                     :error-code nil
                      :utype    :mass}
             :height {:name     :height
                      :visited? false
                      :active?  false
+                     :error      false
+                     :error-code nil
                      :value    nil
                      :utype    :len}
             :waist  {:name     :waist
                      :visited? false
                      :active?  false
+                     :error      false
+                     :error-code nil
                      :value    nil
                      :utype    :len}
             :hip    {:name     :hip
                      :visited? false
                      :active?  false
+                     :error      false
+                     :error-code nil
                      :value    nil
                      :utype    :len}}})
