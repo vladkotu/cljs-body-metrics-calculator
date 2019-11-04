@@ -26,6 +26,7 @@
    [:> InputLabel {:html-for id :variant "filled"}
     label]
    [:> FilledInput {:id        id
+                    :type      "tel"
                     :value     (or value "")
                     :on-change #(on-change (evalue %))
                     :on-blur   #(on-blur)
