@@ -8,8 +8,7 @@
     "dev": "shadow-cljs -A:dev watch app",
     "test": "shadow-cljs -A:dev watch test",
     "devcards": "shadow-cljs -A:dev watch devcards",
-    "release": "shadow-cljs -A:prod release app",
-    "repl": "shadow-cljs cljs-repl app"
+    "release": "shadow-cljs -A:prod release app"
   },
   "devDependencies": {
     "highlight.js": "9.15.8",

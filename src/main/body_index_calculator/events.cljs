@@ -23,7 +23,7 @@
 
 (rf/reg-event-db
  ::init
- (fn [_ _] db/default-db))
+ (fn [_ _] db/default-db-with-values))
 
 (rf/reg-event-db
  ::theme
