@@ -27,10 +27,25 @@
       sizes="16x16"
       href="img/favicon-16x16.png"
     />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="manifest" href="site.webmanifest" />
     <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5" />
-    <meta name="msapplication-TileColor" content="#da532c" />
-    <meta name="theme-color" content="#00e5ff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="msapplication-TileColor" content="#03a9f4" />
+    <meta name="theme-color" content="#03a9f4" />
+    <style>
+      body {
+        height: calc(100% + 40px);
+      }
+      @media screen and (width: 320px) {
+        html {
+          height: calc(100% + 72px);
+        }
+      }
+    </style>
   </head>
 
   <body>
