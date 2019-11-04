@@ -15,6 +15,10 @@
    ["@material-ui/core/Grid" :default Grid]
    ["@material-ui/core/Hidden" :default Hidden]))
 
+(defn log [m]
+  (when js/goog.DEBUG
+    (js/console.log m)))
+
 (defn error-boundary [& comps]
   (let [error (r/atom nil)]
     (r/create-class
@@ -22,9 +26,9 @@
       (fn [e] (reset! error e) #js {:error true})
       :component-did-catch
       (fn [_ error _]
-        (prn :component-did-catch)
+        (log :component-did-catch)
         (doseq [r (split (str (.-message error)) "\n")]
-          (prn r)))
+          (log r)))
       :reagent-render
       (fn [] (if @error
                [:div "Something went wrong."

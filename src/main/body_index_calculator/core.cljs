@@ -6,24 +6,27 @@
             [body-index-calculator.components.app :refer [app error-boundary]]
             [orchestra-cljs.spec.test :as st]))
 
+(defn log [m]
+  (when js/goog.DEBUG
+    (js/console.log m)))
+
 (defn render []
   (r/render [error-boundary [app]] (js/document.getElementById "core"))
-  (js/console.log "app rendered\n\n"))
+  (log "app render"))
 
 (defn instrument-specs []
   (let [done (st/instrument)]
-    (js/console.log (str (count done) " functions found and instrumented"))))
+    (log (str (count done) " functions found and instrumented"))))
 
 (defn on-hmr-reload []
-  (js/console.log :on-hmr-reload)
   (rf/clear-subscription-cache!)
-  (js/console.log "re-frame cache clean")
+  (log "re-frame cache clean")
   (instrument-specs)
-  (render))
+  (render)
+  (log "Reload done\n\n"))
 
 (defn init []
-  (js/console.log "start initialisation")
   (rf/dispatch-sync [::e/init])
-  (js/console.log "db initialisation finished")
   (render)
-  (instrument-specs))
+  (instrument-specs)
+  (log "Done\n\n"))
