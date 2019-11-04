@@ -1,4 +1,4 @@
-{:deps {:aliases [:dev]}
+{:deps {:aliases [:dev :prod]}
 
  :nrepl {:port 8202
          :middleware
