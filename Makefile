@@ -1,7 +1,6 @@
 # .RECIPEPREFIX +=
 .DEFAUL_GOAL := info
 shadow-cljs = ./node_modules/.bin/shadow-cljs
-local = open http://localhost
 app = public/app
 target = target
 
@@ -21,7 +20,6 @@ tests.clean:
 
 tests.watch:
 	${shadow-cljs} -A:dev watch test
-	${local}:3002
 
 m2.clean:
 	echo "Removing m2 modules"
@@ -49,19 +47,19 @@ app.release: app.target
 
 app.watch:
 	${shadow-cljs} -A:dev watch app
-	${local}:3000
 
 devcards.clean:
 	rm -rf public/devcards/js/*
 
 devcards.watch:
 	${shadow-cljs} -A:dev watch devcards
-	${local}:3001
 
 deploy:
-	cd ${target}
-	git add --all
-	git commit -m "deploy updates"
+	@echo "Deploy to git pages:"
+	@cd ${target};  \
+	git status;    \
+	git add --all;  \
+	git commit -m "deploy updates"; \
 	git push origin gh-pages
 
 cd: app.release deploy
