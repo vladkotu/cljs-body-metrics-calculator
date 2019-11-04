@@ -12,18 +12,18 @@
 
 (defn instrument-specs []
   (let [done (st/instrument)]
-    (prn (str (count done) " functions found and instrumented"))))
+    (js/console.log (str (count done) " functions found and instrumented"))))
 
 (defn on-hmr-reload []
-  (prn :on-hmr-reload)
+  (js/console.log :on-hmr-reload)
   (rf/clear-subscription-cache!)
-  (prn "re-frame cache clean")
+  (js/console.log "re-frame cache clean")
   (instrument-specs)
   (render))
 
 (defn init []
-  (prn "start initialisation")
+  (js/console.log "start initialisation")
   (rf/dispatch-sync [::e/init])
-  (prn "db initialisation finished")
+  (js/console.log "db initialisation finished")
   (render)
   (instrument-specs))

@@ -41,7 +41,7 @@ info:
 app.clean:
 	rm -rf ${app}/js/*
 
-app.target: app.clean
+app.target:
 	cp -r ${app}/* ${target}
 
 app.release: app.target
