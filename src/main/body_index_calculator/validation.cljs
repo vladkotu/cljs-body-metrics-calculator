@@ -72,20 +72,22 @@
                        :opt-un [::error ::error-code]))
 (s/def ::validation-error (s/keys :req-un [::error ::error-code]))
 
-(defn empty-value? [{:keys [value]}]
-  (empty? value))
+(defn not-validate? [{:keys [value]}]
+  (or (nil? value)
+      (keyword? value)
+      (empty? value)))
 
 (defn validate
   [{:keys [visited? active? error error-code] :as field}]
   (cond
-    (false? visited?)    (valid)
-    (empty-value? field) (valid)
+    (false? visited?)     (valid)
+    (not-validate? field) (valid)
     (or (false? active?)
-        (true? error))  (validate-with-rules :all field)
+        (true? error))    (validate-with-rules :all field)
 
     (and  (true? active?)
           (false? error)) (validate-with-rules :as-you-type field)
-    :else                 {:error error
+    :else                 {:error      error
                            :error-code error-code}))
 
 (s/fdef validate
