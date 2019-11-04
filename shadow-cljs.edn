@@ -5,7 +5,7 @@
          [refactor-nrepl.middleware/wrap-refactor]}
  :builds
  {:app {:target     :browser
-        :output-dir "public/js"
+        :output-dir "public/app/js"
         :modules    {:main {:init-fn body-index-calculator.core/init
                             :entries [body-index-calculator.core]}}
         :dev        {:compiler-options
@@ -14,23 +14,22 @@
                        "day8.re_frame.tracing.trace_enabled_QMARK_" true}}}
 
         :devtools {:after-load body-index-calculator.core/on-hmr-reload
-                   :http-root  "public"
+                   :http-root  "public/app"
                    :http-port  3000
                    :preloads   [day8.re-frame-10x.preload
                                 devtools.preload]}}
 
   :devcards {:target     :browser
-             :output-dir "public/js/devcards"
-             :asset-path "/js/devcards"
+             :output-dir "public/devcards/js"
+             ;; :asset-path "/js"
              :modules    {:main {:entries [body-index-calculator.devcards.devcards]}}
-             :devtools   {:http-root        "public"
-                          :http-port        4001
+             :devtools   {:http-root        "public/devcards"
+                          :http-port        3001
                           :http-handler     shadow.http.push-state/handle
-                          :push-state/index "devcards.html"
                           :after-load       body-index-calculator.devcards.devcacrds/main}
              :dev        {:compiler-options {:devcards true}}}
 
   :test {:target   :browser-test
-         :test-dir "target/tests"
-         :devtools {:http-root "target/tests"
-                    :http-port 8021}}}}
+         :test-dir "public/tests"
+         :devtools {:http-root "public/tests"
+                    :http-port 3002}}}}
