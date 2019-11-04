@@ -34,8 +34,9 @@
 (defn app []
   (r/with-let [theme (rf/subscribe [::s/theme])]
     [with-theme {:theme (name @theme)}
-     [header]
      [:> Container {:fixed false}
+      [:> Box {:mb 9}
+       [header]]
       [:> Box {:my {:xs 1 :md 2}}
        [:> Grid {:container true :direction "row"}
         [:> Hidden {:lg-up true}

@@ -9,14 +9,12 @@
 
 (defn header-content []
   (r/with-let [open? (r/atom false)]
-    [:> AppBar {:position "static"
-                :style    {:background "#006064"}}
+    [:> AppBar {:position "fixed"}
      [:> Toolbar
       [side-menu {:open @open? :on-close #(swap! open? not)}]
       [menu-button {:on-click #(swap! open? not)}]
-
       [:> Typography {:variant "h5" :component "h1"}
-       "Body Indexes Calculator"]]]))
+       "Body Metrics Calculator"]]]))
 
 (defn header []
   [:> Grid {:item true} [header-content]])
