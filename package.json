@@ -2,14 +2,6 @@
   "name": "body-index-calculator",
   "version": "0.0.1",
   "private": true,
-  "scripts": {
-    "dev": "shadow-cljs -A:dev watch app",
-    "repl": "shadow-cljs -A:dev cljs-repl",
-    "dev": "shadow-cljs -A:dev watch app",
-    "test": "shadow-cljs -A:dev watch test",
-    "devcards": "shadow-cljs -A:dev watch devcards",
-    "release": "shadow-cljs -A:prod release app"
-  },
   "devDependencies": {
     "highlight.js": "9.15.8",
     "marked": "^0.7.0",
