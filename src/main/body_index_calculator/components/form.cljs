@@ -14,10 +14,6 @@
    ["@material-ui/core/Typography" :default Typography]
    ["@material-ui/core/Divider" :default Divider]))
 
-(defn pprn [& args]
-  (doseq [av args]
-    (cljs.pprint/pprint av)))
-
 ;; it is not used but will leave it here for a dev process
 (defn meassuring-system []
   (let [value (rf/subscribe [::s/system])]

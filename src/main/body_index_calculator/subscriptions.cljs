@@ -13,10 +13,6 @@
 
 (def cider-have-to-have-at-least-one-def-in-a-file nil)
 
-(defn pprn [& args]
-  (doseq [av args]
-    (cljs.pprint/pprint av)))
-
 ;; register hight level flat subscriptions
 (doseq [sub-name [::form ::system ::theme ::locale]
         a-key [(keyword (name sub-name))]]
