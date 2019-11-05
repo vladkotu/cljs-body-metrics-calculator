@@ -21,14 +21,38 @@
 (s/def ::active? boolean?)
 (s/def ::visited? boolean?)
 (s/def :gender/value (s/nilable ::specs/gender))
-(s/def :db/gender (s/keys :req-un [::visited?
-                                   ::active?
-                                   ::name
-                                   ::error
-                                   ::error-code
-                                   :gender/value]))
+(s/def ::gender (s/keys :req-un [::visited?
+                                 ::active?
+                                 ::name
+                                 ::error
+                                 ::error-code
+                                 :gender/value]))
 
-(s/def :db/age (s/keys :req-un [::visited?
+(s/def ::age (s/keys :req-un [::visited?
+                              ::active?
+                              ::utype
+                              ::name
+                              ::error
+                              ::error-code
+                              ::value]))
+
+(s/def ::weight (s/keys :req-un [::visited?
+                                 ::active?
+                                 ::utype
+                                 ::name
+                                 ::error
+                                 ::error-code
+                                 ::value]))
+
+(s/def ::height (s/keys :req-un [::visited?
+                                 ::active?
+                                 ::utype
+                                 ::name
+                                 ::error
+                                 ::error-code
+                                 ::value]))
+
+(s/def ::waist (s/keys :req-un [::visited?
                                 ::active?
                                 ::utype
                                 ::name
@@ -36,52 +60,28 @@
                                 ::error-code
                                 ::value]))
 
-(s/def :db/weight (s/keys :req-un [::visited?
-                                   ::active?
-                                   ::utype
-                                   ::name
-                                   ::error
-                                   ::error-code
-                                   ::value]))
+(s/def ::hip (s/keys :req-un [::visited?
+                              ::active?
+                              ::utype
+                              ::name
+                              ::error
+                              ::error-code
+                              ::value]))
 
-(s/def :db/height (s/keys :req-un [::visited?
-                                   ::active?
-                                   ::utype
-                                   ::name
-                                   ::error
-                                   ::error-code
-                                   ::value]))
+(s/def ::form (s/keys :req-un [::gender
+                               ::age
+                               ::weight
+                               ::height
+                               ::hip
+                               ::waist]))
 
-(s/def :db/waist (s/keys :req-un [::visited?
-                                  ::active?
-                                  ::utype
-                                  ::name
-                                  ::error
-                                  ::error-code
-                                  ::value]))
-
-(s/def :db/hip (s/keys :req-un [::visited?
-                                ::active?
-                                ::utype
-                                ::name
-                                ::error
-                                ::error-code
-                                ::value]))
-
-(s/def :db/form (s/keys :req-un [:db/gender
-                                 :db/age
-                                 :db/weight
-                                 :db/height
-                                 :db/hip
-                                 :db/waist]))
-
-(s/def :db/system #{:metric :imperial})
-(s/def :db/locale #{:en :ru})
-(s/def :db/theme #{:light :dark})
-(s/def ::db (s/keys :req-un [:db/form
-                             :db/system
-                             :db/locale
-                             :db/theme]))
+(s/def ::system #{:metric :imperial})
+(s/def ::locale #{:en :ru})
+(s/def ::theme #{:light :dark})
+(s/def ::db (s/keys :req-un [::form
+                             ::system
+                             ::locale
+                             ::theme]))
 
 (def default-db-with-values
   {:system :metric

@@ -3,6 +3,7 @@
    [cljs.spec.alpha :as s]
    [reagent.core :as r]
    [re-frame.core :as rf]
+   [body-index-calculator.utils.lang :as lang]
    [body-index-calculator.validation :as validation]
    [body-index-calculator.helpers :as helpers]
    [body-index-calculator.db :as db]))
@@ -21,22 +22,29 @@
                             check-spec-after-interceptor]
                            [check-spec-after-interceptor]))
 
+(def html-attr-interceptor
+  (rf/after #(lang/write-html-lang-attr! (:locale %))))
+
 (rf/reg-event-db
  ::init
+ common-interseptors
  (fn [_ _] db/default-db))
 
 (rf/reg-event-db
  ::theme
+ common-interseptors
  (fn [db [_ new-theme]]
    (assoc db :theme new-theme)))
 
 (rf/reg-event-db
  ::locale
+ (conj common-interseptors html-attr-interceptor)
  (fn [db [_ new-locale]]
    (assoc db :locale new-locale)))
 
 (rf/reg-event-db
  ::system
+ common-interseptors
  (fn [db [_ new-system]]
    (-> db
        (assoc :system new-system)
