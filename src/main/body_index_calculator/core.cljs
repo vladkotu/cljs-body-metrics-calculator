@@ -3,6 +3,7 @@
             [re-frame.core :as rf]
             [body-index-calculator.subscriptions]
             [body-index-calculator.events :as e]
+            [body-index-calculator.utils.lang :as lang]
             [body-index-calculator.components.app :refer [app error-boundary]]
             [orchestra-cljs.spec.test :as st]))
 
@@ -27,6 +28,7 @@
 
 (defn init []
   (rf/dispatch-sync [::e/init])
+  (lang/put-detect-lang-to-store!)
   (render)
   (instrument-specs)
   (log "Done\n\n"))
