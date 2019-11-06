@@ -3,8 +3,8 @@ goog.require('cljs.core');
 goog.require('clojure.string');
 goog.require('taoensso.encore');
 taoensso.tempura.impl.str__GT__QMARK_arg_idx = (function taoensso$tempura$impl$str__GT__QMARK_arg_idx(s){
-var G__68313 = s;
-switch (G__68313) {
+var G__68776 = s;
+switch (G__68776) {
 case "%0":
 throw cljs.core.ex_info.cljs$core$IFn$_invoke$arity$2("`%0` is invalid, starts at `%1`",new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"s","s",1705939918),s], null));
 
@@ -56,22 +56,22 @@ taoensso.tempura.impl.re_clojure_arg = /%\d/;
  *   string parts and int arg indexes for later joining.
  */
 taoensso.tempura.impl.str__GT_split_args = (function taoensso$tempura$impl$str__GT_split_args(s){
-var e_68382 = (function (){try{if(typeof s === 'string'){
+var e_68862 = (function (){try{if(typeof s === 'string'){
 return null;
 } else {
 return taoensso.truss.impl._dummy_error;
 }
-}catch (e68315){if((e68315 instanceof Error)){
-var e = e68315;
+}catch (e68777){if((e68777 instanceof Error)){
+var e = e68777;
 return e;
 } else {
-throw e68315;
+throw e68777;
 
 }
 }})();
-if((e_68382 == null)){
+if((e_68862 == null)){
 } else {
-taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",25,"(string? s)",s,e_68382,null);
+taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",25,"(string? s)",s,e_68862,null);
 }
 
 if(cljs.core.not((function (){var and__4120__auto__ = taoensso.encore.str_contains_QMARK_(s,"%");
@@ -101,11 +101,11 @@ return (function (arg_idxs_count,splits_count){
 return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(arg_idxs_count,(splits_count - (1)));
 });
 ;})(arg_idxs,splits,splits__$1,uuid_esc,s__$1,_QMARK_arg_seq))
-}catch (e68317){if((e68317 instanceof Error)){
-var e = e68317;
+}catch (e68779){if((e68779 instanceof Error)){
+var e = e68779;
 return (new taoensso.truss.impl.WrappedError(e));
 } else {
-throw e68317;
+throw e68779;
 
 }
 }})();
@@ -118,11 +118,11 @@ return null;
 return taoensso.truss.impl._dummy_error;
 }
 }
-}catch (e68318){if((e68318 instanceof Error)){
-var e = e68318;
+}catch (e68780){if((e68780 instanceof Error)){
+var e = e68780;
 return e;
 } else {
-throw e68318;
+throw e68780;
 
 }
 }})();
@@ -142,8 +142,8 @@ return taoensso.encore.vinterleave_all(splits__$1,arg_idxs);
  *   Optimized for fn runtime, not fn creation.
  */
 taoensso.tempura.impl.str__GT_vargs_fn = (function taoensso$tempura$impl$str__GT_vargs_fn(var_args){
-var G__68320 = arguments.length;
-switch (G__68320) {
+var G__68783 = arguments.length;
+switch (G__68783) {
 case 1:
 return taoensso.tempura.impl.str__GT_vargs_fn.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -163,22 +163,22 @@ return taoensso.tempura.impl.str__GT_vargs_fn.cljs$core$IFn$_invoke$arity$2(s,nu
 });
 
 taoensso.tempura.impl.str__GT_vargs_fn.cljs$core$IFn$_invoke$arity$2 = (function (s,argval_fn){
-var e_68387 = (function (){try{if(typeof s === 'string'){
+var e_68871 = (function (){try{if(typeof s === 'string'){
 return null;
 } else {
 return taoensso.truss.impl._dummy_error;
 }
-}catch (e68321){if((e68321 instanceof Error)){
-var e = e68321;
+}catch (e68784){if((e68784 instanceof Error)){
+var e = e68784;
 return e;
 } else {
-throw e68321;
+throw e68784;
 
 }
 }})();
-if((e_68387 == null)){
+if((e_68871 == null)){
 } else {
-taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",53,"(string? s)",s,e_68387,null);
+taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",53,"(string? s)",s,e_68871,null);
 }
 
 var parts = taoensso.tempura.impl.str__GT_split_args(s);
@@ -190,23 +190,23 @@ return taoensso.encore.undefined__GT_nil;
 }
 })();
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.count(parts),(1))){
-var vec__68322 = parts;
-var p1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68322,(0),null);
+var vec__68785 = parts;
+var p1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68785,(0),null);
 if(typeof p1 === 'string'){
-return ((function (vec__68322,p1,parts,argval_fn__$1){
+return ((function (vec__68785,p1,parts,argval_fn__$1){
 return (function (vargs){
 return p1;
 });
-;})(vec__68322,p1,parts,argval_fn__$1))
+;})(vec__68785,p1,parts,argval_fn__$1))
 } else {
 if(cljs.core.integer_QMARK_(p1)){
-return ((function (vec__68322,p1,parts,argval_fn__$1){
+return ((function (vec__68785,p1,parts,argval_fn__$1){
 return (function (vargs){
-return cljs.core.str.cljs$core$IFn$_invoke$arity$1((function (){var G__68326 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(vargs,p1);
-return (argval_fn__$1.cljs$core$IFn$_invoke$arity$1 ? argval_fn__$1.cljs$core$IFn$_invoke$arity$1(G__68326) : argval_fn__$1.call(null,G__68326));
+return cljs.core.str.cljs$core$IFn$_invoke$arity$1((function (){var G__68789 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(vargs,p1);
+return (argval_fn__$1.cljs$core$IFn$_invoke$arity$1 ? argval_fn__$1.cljs$core$IFn$_invoke$arity$1(G__68789) : argval_fn__$1.call(null,G__68789));
 })());
 });
-;})(vec__68322,p1,parts,argval_fn__$1))
+;})(vec__68785,p1,parts,argval_fn__$1))
 } else {
 throw cljs.core.ex_info.cljs$core$IFn$_invoke$arity$2("No matching `encore/cond!` clause",cljs.core.PersistentArrayMap.EMPTY);
 }
@@ -220,8 +220,8 @@ return (function (p){
 if(typeof p === 'string'){
 return taoensso.encore.sb_append.cljs$core$IFn$_invoke$arity$2(sb,p);
 } else {
-return taoensso.encore.sb_append.cljs$core$IFn$_invoke$arity$2(sb,cljs.core.str.cljs$core$IFn$_invoke$arity$1((function (){var G__68328 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(vargs,p);
-return (argval_fn__$1.cljs$core$IFn$_invoke$arity$1 ? argval_fn__$1.cljs$core$IFn$_invoke$arity$1(G__68328) : argval_fn__$1.call(null,G__68328));
+return taoensso.encore.sb_append.cljs$core$IFn$_invoke$arity$2(sb,cljs.core.str.cljs$core$IFn$_invoke$arity$1((function (){var G__68791 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(vargs,p);
+return (argval_fn__$1.cljs$core$IFn$_invoke$arity$1 ? argval_fn__$1.cljs$core$IFn$_invoke$arity$1(G__68791) : argval_fn__$1.call(null,G__68791));
 })()));
 }
 });})(sb,parts,argval_fn__$1))
@@ -254,8 +254,8 @@ return (rf.cljs$core$IFn$_invoke$arity$2 ? rf.cljs$core$IFn$_invoke$arity$2(acc,
 }),cljs.core.PersistentVector.EMPTY,v);
 });
 taoensso.tempura.impl.node_paths = (function taoensso$tempura$impl$node_paths(var_args){
-var G__68331 = arguments.length;
-switch (G__68331) {
+var G__68795 = arguments.length;
+switch (G__68795) {
 case 1:
 return taoensso.tempura.impl.node_paths.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -310,8 +310,8 @@ taoensso.tempura.impl.node_paths.cljs$lang$maxFixedArity = 3;
  *   Optimized for fn runtime, not fn creation.
  */
 taoensso.tempura.impl.vec__GT_vargs_fn = (function taoensso$tempura$impl$vec__GT_vargs_fn(var_args){
-var G__68333 = arguments.length;
-switch (G__68333) {
+var G__68798 = arguments.length;
+switch (G__68798) {
 case 1:
 return taoensso.tempura.impl.vec__GT_vargs_fn.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -331,22 +331,22 @@ return taoensso.tempura.impl.vec__GT_vargs_fn.cljs$core$IFn$_invoke$arity$2(v,nu
 });
 
 taoensso.tempura.impl.vec__GT_vargs_fn.cljs$core$IFn$_invoke$arity$2 = (function (v,argval_fn){
-var e_68404 = (function (){try{if(cljs.core.vector_QMARK_(v)){
+var e_68883 = (function (){try{if(cljs.core.vector_QMARK_(v)){
 return null;
 } else {
 return taoensso.truss.impl._dummy_error;
 }
-}catch (e68334){if((e68334 instanceof Error)){
-var e = e68334;
+}catch (e68799){if((e68799 instanceof Error)){
+var e = e68799;
 return e;
 } else {
-throw e68334;
+throw e68799;
 
 }
 }})();
-if((e_68404 == null)){
+if((e_68883 == null)){
 } else {
-taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",146,"(vector? v)",v,e_68404,null);
+taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",146,"(vector? v)",v,e_68883,null);
 }
 
 var node_paths = taoensso.tempura.impl.node_paths.cljs$core$IFn$_invoke$arity$1(v);
@@ -387,8 +387,8 @@ return (function taoensso$tempura$impl$rf1(acc,k,v__$1){
 if(cljs.core.map_QMARK_(v__$1)){
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(acc,k,cljs.core.reduce_kv(taoensso$tempura$impl$rf1,cljs.core.get.cljs$core$IFn$_invoke$arity$2(acc,k),v__$1));
 } else {
-return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(acc,k,(function (){var G__68336 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(vargs,v__$1);
-return (argval_fn__$1.cljs$core$IFn$_invoke$arity$1 ? argval_fn__$1.cljs$core$IFn$_invoke$arity$1(G__68336) : argval_fn__$1.call(null,G__68336));
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(acc,k,(function (){var G__68800 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(vargs,v__$1);
+return (argval_fn__$1.cljs$core$IFn$_invoke$arity$1 ? argval_fn__$1.cljs$core$IFn$_invoke$arity$1(G__68800) : argval_fn__$1.call(null,G__68800));
 })());
 }
 });})(argval_fn__$1,node_paths,idxs__GT_arg_idxs))
@@ -401,22 +401,22 @@ return (argval_fn__$1.cljs$core$IFn$_invoke$arity$1 ? argval_fn__$1.cljs$core$IF
 taoensso.tempura.impl.vec__GT_vargs_fn.cljs$lang$maxFixedArity = 2;
 
 taoensso.tempura.impl.vec_explode_args_in_strs = (function taoensso$tempura$impl$vec_explode_args_in_strs(v){
-var e_68412 = (function (){try{if(cljs.core.vector_QMARK_(v)){
+var e_68885 = (function (){try{if(cljs.core.vector_QMARK_(v)){
 return null;
 } else {
 return taoensso.truss.impl._dummy_error;
 }
-}catch (e68337){if((e68337 instanceof Error)){
-var e = e68337;
+}catch (e68801){if((e68801 instanceof Error)){
+var e = e68801;
 return e;
 } else {
-throw e68337;
+throw e68801;
 
 }
 }})();
-if((e_68412 == null)){
+if((e_68885 == null)){
 } else {
-taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",188,"(vector? v)",v,e_68412,null);
+taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",188,"(vector? v)",v,e_68885,null);
 }
 
 return taoensso.tempura.impl.reducev_nested((function (acc,in$){
@@ -438,33 +438,33 @@ return cljs.core.into.cljs$core$IFn$_invoke$arity$2(acc,parts__$1);
 }),v);
 });
 taoensso.tempura.impl.str__GT_split_styles = (function taoensso$tempura$impl$str__GT_split_styles(s){
-var e_68414 = (function (){try{if(typeof s === 'string'){
+var e_68887 = (function (){try{if(typeof s === 'string'){
 return null;
 } else {
 return taoensso.truss.impl._dummy_error;
 }
-}catch (e68340){if((e68340 instanceof Error)){
-var e = e68340;
+}catch (e68807){if((e68807 instanceof Error)){
+var e = e68807;
 return e;
 } else {
-throw e68340;
+throw e68807;
 
 }
 }})();
-if((e_68414 == null)){
+if((e_68887 == null)){
 } else {
-taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",206,"(string? s)",s,e_68414,null);
+taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",206,"(string? s)",s,e_68887,null);
 }
 
 var matches_ = cljs.core.volatile_BANG_(cljs.core.PersistentArrayMap.EMPTY);
 var replace_matches = ((function (matches_){
 return (function (s__$1,regex,tag){
 return taoensso.encore.str_replace(s__$1,regex,((function (matches_){
-return (function (p__68341){
-var vec__68342 = p__68341;
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68342,(0),null);
-var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68342,(1),null);
-var content = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68342,(2),null);
+return (function (p__68808){
+var vec__68810 = p__68808;
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68810,(0),null);
+var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68810,(1),null);
+var content = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68810,(2),null);
 var uuid = taoensso.encore.uuid_str.cljs$core$IFn$_invoke$arity$0();
 matches_.cljs$core$IVolatile$_vreset_BANG_$arity$2(null,cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(matches_.cljs$core$IDeref$_deref$arity$1(null),uuid,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [tag,content], null)));
 
@@ -492,13 +492,13 @@ if(cljs.core.empty_QMARK_(matches)){
 return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [s__$11], null);
 } else {
 var ordered_match_ks = cljs.core.sort_by.cljs$core$IFn$_invoke$arity$2(((function (matches_,replace_matches,uuid_esc_STAR_,uuid_esc_,uuid_esc_tilde,s__$1,s__$2,s__$3,s__$4,s__$5,s__$6,s__$7,s__$8,s__$9,s__$10,s__$11,matches){
-return (function (p1__68338_SHARP_){
-return taoensso.encore.str__QMARK_index.cljs$core$IFn$_invoke$arity$2(s__$11,p1__68338_SHARP_);
+return (function (p1__68805_SHARP_){
+return taoensso.encore.str__QMARK_index.cljs$core$IFn$_invoke$arity$2(s__$11,p1__68805_SHARP_);
 });})(matches_,replace_matches,uuid_esc_STAR_,uuid_esc_,uuid_esc_tilde,s__$1,s__$2,s__$3,s__$4,s__$5,s__$6,s__$7,s__$8,s__$9,s__$10,s__$11,matches))
 ,cljs.core.keys(matches));
 var ordered_match_vs = cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(((function (ordered_match_ks,matches_,replace_matches,uuid_esc_STAR_,uuid_esc_,uuid_esc_tilde,s__$1,s__$2,s__$3,s__$4,s__$5,s__$6,s__$7,s__$8,s__$9,s__$10,s__$11,matches){
-return (function (p1__68339_SHARP_){
-return cljs.core.get.cljs$core$IFn$_invoke$arity$2(matches,p1__68339_SHARP_);
+return (function (p1__68806_SHARP_){
+return cljs.core.get.cljs$core$IFn$_invoke$arity$2(matches,p1__68806_SHARP_);
 });})(ordered_match_ks,matches_,replace_matches,uuid_esc_STAR_,uuid_esc_,uuid_esc_tilde,s__$1,s__$2,s__$3,s__$4,s__$5,s__$6,s__$7,s__$8,s__$9,s__$10,s__$11,matches))
 ,ordered_match_ks);
 var splits = clojure.string.split.cljs$core$IFn$_invoke$arity$2(s__$11,cljs.core.re_pattern(clojure.string.join.cljs$core$IFn$_invoke$arity$2("|",ordered_match_ks)));
@@ -509,26 +509,26 @@ return taoensso.encore.vinterleave_all(splits,ordered_match_vs);
  * ["foo"] -> [:span "foo"] as a convenience.
  */
 taoensso.tempura.impl.vec__GT_vtag = (function taoensso$tempura$impl$vec__GT_vtag(v){
-var e_68425 = (function (){try{if(cljs.core.vector_QMARK_(v)){
+var e_68892 = (function (){try{if(cljs.core.vector_QMARK_(v)){
 return null;
 } else {
 return taoensso.truss.impl._dummy_error;
 }
-}catch (e68346){if((e68346 instanceof Error)){
-var e = e68346;
+}catch (e68814){if((e68814 instanceof Error)){
+var e = e68814;
 return e;
 } else {
-throw e68346;
+throw e68814;
 
 }
 }})();
-if((e_68425 == null)){
+if((e_68892 == null)){
 } else {
-taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",255,"(vector? v)",v,e_68425,null);
+taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",255,"(vector? v)",v,e_68892,null);
 }
 
-var vec__68348 = v;
-var v1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68348,(0),null);
+var vec__68816 = v;
+var v1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68816,(0),null);
 if((!((v1 instanceof cljs.core.Keyword)))){
 return cljs.core.into.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991)], null),v);
 } else {
@@ -536,8 +536,8 @@ return v;
 }
 });
 taoensso.tempura.impl.vec_explode_styles_in_strs = (function taoensso$tempura$impl$vec_explode_styles_in_strs(var_args){
-var G__68352 = arguments.length;
-switch (G__68352) {
+var G__68820 = arguments.length;
+switch (G__68820) {
 case 1:
 return taoensso.tempura.impl.vec_explode_styles_in_strs.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -557,22 +557,22 @@ return taoensso.tempura.impl.vec_explode_styles_in_strs.cljs$core$IFn$_invoke$ar
 });
 
 taoensso.tempura.impl.vec_explode_styles_in_strs.cljs$core$IFn$_invoke$arity$2 = (function (v,str_splitter){
-var e_68433 = (function (){try{if(cljs.core.vector_QMARK_(v)){
+var e_68897 = (function (){try{if(cljs.core.vector_QMARK_(v)){
 return null;
 } else {
 return taoensso.truss.impl._dummy_error;
 }
-}catch (e68353){if((e68353 instanceof Error)){
-var e = e68353;
+}catch (e68821){if((e68821 instanceof Error)){
+var e = e68821;
 return e;
 } else {
-throw e68353;
+throw e68821;
 
 }
 }})();
-if((e_68433 == null)){
+if((e_68897 == null)){
 } else {
-taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",269,"(vector? v)",v,e_68433,null);
+taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",269,"(vector? v)",v,e_68897,null);
 }
 
 return taoensso.tempura.impl.reducev_nested((function (acc,in$){
@@ -590,22 +590,22 @@ taoensso.tempura.impl.escape_html = (function taoensso$tempura$impl$escape_html(
 return taoensso.encore.str_replace(taoensso.encore.str_replace(taoensso.encore.str_replace(taoensso.encore.str_replace(s,"&","&amp;"),"<","&lt;"),">","&gt;"),"\"","&quot;");
 });
 taoensso.tempura.impl.vec_escape_html_in_strs = (function taoensso$tempura$impl$vec_escape_html_in_strs(v){
-var e_68435 = (function (){try{if(cljs.core.vector_QMARK_(v)){
+var e_68905 = (function (){try{if(cljs.core.vector_QMARK_(v)){
 return null;
 } else {
 return taoensso.truss.impl._dummy_error;
 }
-}catch (e68354){if((e68354 instanceof Error)){
-var e = e68354;
+}catch (e68826){if((e68826 instanceof Error)){
+var e = e68826;
 return e;
 } else {
-throw e68354;
+throw e68826;
 
 }
 }})();
-if((e_68435 == null)){
+if((e_68905 == null)){
 } else {
-taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",294,"(vector? v)",v,e_68435,null);
+taoensso.truss.impl._invar_violation_BANG_(true,"taoensso.tempura.impl",294,"(vector? v)",v,e_68905,null);
 }
 
 return taoensso.tempura.impl.mapv_nested((function (x){
@@ -619,23 +619,23 @@ return x;
 taoensso.tempura.impl.expand_locales = (function (){var expand_locale = taoensso.encore.memoize_((function (locale){
 var parts = clojure.string.split.cljs$core$IFn$_invoke$arity$2(clojure.string.lower_case(cljs.core.name(locale)),/[_-]/);
 return cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(((function (parts){
-return (function (p1__68355_SHARP_){
-return cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(clojure.string.join.cljs$core$IFn$_invoke$arity$2("-",p1__68355_SHARP_));
+return (function (p1__68831_SHARP_){
+return cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(clojure.string.join.cljs$core$IFn$_invoke$arity$2("-",p1__68831_SHARP_));
 });})(parts))
 ,cljs.core.take_while.cljs$core$IFn$_invoke$arity$2(cljs.core.identity,cljs.core.iterate(cljs.core.butlast,parts)));
 }));
 var expand_locales_STAR_ = ((function (expand_locale){
 return (function (locales){
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.count(locales),(1))){
-return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (){var G__68357 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(locales,(0));
-return (expand_locale.cljs$core$IFn$_invoke$arity$1 ? expand_locale.cljs$core$IFn$_invoke$arity$1(G__68357) : expand_locale.call(null,G__68357));
+return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (){var G__68832 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(locales,(0));
+return (expand_locale.cljs$core$IFn$_invoke$arity$1 ? expand_locale.cljs$core$IFn$_invoke$arity$1(G__68832) : expand_locale.call(null,G__68832));
 })()], null);
 } else {
-var vec__68359 = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(((function (expand_locale){
-return (function (p__68362,in$){
-var vec__68363 = p__68362;
-var acc = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68363,(0),null);
-var seen = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68363,(1),null);
+var vec__68833 = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(((function (expand_locale){
+return (function (p__68836,in$){
+var vec__68837 = p__68836;
+var acc = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68837,(0),null);
+var seen = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68837,(1),null);
 var lvars = (expand_locale.cljs$core$IFn$_invoke$arity$1 ? expand_locale.cljs$core$IFn$_invoke$arity$1(in$) : expand_locale.call(null,in$));
 var lbase = cljs.core.peek(lvars);
 if(cljs.core.truth_((seen.cljs$core$IFn$_invoke$arity$1 ? seen.cljs$core$IFn$_invoke$arity$1(lbase) : seen.call(null,lbase)))){
@@ -645,8 +645,8 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 }
 });})(expand_locale))
 ,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.PersistentVector.EMPTY,cljs.core.PersistentHashSet.EMPTY], null),locales);
-var acc = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68359,(0),null);
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68359,(1),null);
+var acc = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68833,(0),null);
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68833,(1),null);
 return acc;
 }
 });})(expand_locale))
@@ -690,8 +690,8 @@ var as_paths = taoensso.encore.memoize_(((function (preprocess){
 return (function (dict){
 return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(((function (preprocess){
 return (function (acc,in$){
-var vec__68369 = in$;
-var locale = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68369,(0),null);
+var vec__68841 = in$;
+var locale = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__68841,(0),null);
 var normed_locale = clojure.string.lower_case(cljs.core.name(locale));
 var in$__$1 = cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(in$,(0),normed_locale);
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(acc,taoensso.encore.merge_keywords.cljs$core$IFn$_invoke$arity$1(cljs.core.pop(in$__$1)),cljs.core.peek(in$__$1));
@@ -701,8 +701,8 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(acc,taoensso.encore.merge_k
 );
 var compile_dictionary_STAR_ = taoensso.encore.memoize_STAR_.cljs$core$IFn$_invoke$arity$2((1000),((function (preprocess,as_paths){
 return (function (dict){
-var G__68372 = preprocess(preprocess(dict));
-return (as_paths.cljs$core$IFn$_invoke$arity$1 ? as_paths.cljs$core$IFn$_invoke$arity$1(G__68372) : as_paths.call(null,G__68372));
+var G__68847 = preprocess(preprocess(dict));
+return (as_paths.cljs$core$IFn$_invoke$arity$1 ? as_paths.cljs$core$IFn$_invoke$arity$1(G__68847) : as_paths.call(null,G__68847));
 });})(preprocess,as_paths))
 );
 var compile_dictionary_STAR__cached = taoensso.encore.memoize_(compile_dictionary_STAR_);
@@ -718,13 +718,13 @@ return (compile_dictionary_STAR_.cljs$core$IFn$_invoke$arity$1 ? compile_diction
 })();
 taoensso.tempura.impl.vargs = (function taoensso$tempura$impl$vargs(x){
 if(cljs.core.map_QMARK_(x)){
-var max_idx = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__68373_SHARP_,p2__68374_SHARP_){
-var n1__65851__auto__ = p1__68373_SHARP_;
-var n2__65852__auto__ = p2__68374_SHARP_;
-if((n1__65851__auto__ < n2__65852__auto__)){
-return n2__65852__auto__;
+var max_idx = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__68850_SHARP_,p2__68851_SHARP_){
+var n1__66315__auto__ = p1__68850_SHARP_;
+var n2__66316__auto__ = p2__68851_SHARP_;
+if((n1__66315__auto__ < n2__66316__auto__)){
+return n2__66316__auto__;
 } else {
-return n1__65851__auto__;
+return n1__66315__auto__;
 }
 }),(0),cljs.core.keys(x));
 if((cljs.core.get.cljs$core$IFn$_invoke$arity$2(x,(0)) == null)){
@@ -743,11 +743,11 @@ return null;
 } else {
 return taoensso.truss.impl._dummy_error;
 }
-}catch (e68379){if((e68379 instanceof Error)){
-var e = e68379;
+}catch (e68857){if((e68857 instanceof Error)){
+var e = e68857;
 return e;
 } else {
-throw e68379;
+throw e68857;
 
 }
 }})();

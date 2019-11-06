@@ -4,8 +4,8 @@ goog.require('cljs.core');
  * Returns a transducer that filters for :id between beginning and ending. Inclusive on both ends.
  */
 day8.re_frame_10x.metamorphic.id_between_xf = (function day8$re_frame_10x$metamorphic$id_between_xf(beginning,ending){
-return cljs.core.filter.cljs$core$IFn$_invoke$arity$1((function (p1__57590_SHARP_){
-return (((beginning <= new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__57590_SHARP_))) && ((new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__57590_SHARP_) <= ending)));
+return cljs.core.filter.cljs$core$IFn$_invoke$arity$1((function (p1__58090_SHARP_){
+return (((beginning <= new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__58090_SHARP_))) && ((new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__58090_SHARP_) <= ending)));
 }));
 });
 day8.re_frame_10x.metamorphic.fsm_trigger_QMARK_ = (function day8$re_frame_10x$metamorphic$fsm_trigger_QMARK_(event){
@@ -63,9 +63,9 @@ return false;
  * Is this part of re-frame internals?
  */
 day8.re_frame_10x.metamorphic.low_level_re_frame_trace_QMARK_ = (function day8$re_frame_10x$metamorphic$low_level_re_frame_trace_QMARK_(trace){
-var G__57606 = new cljs.core.Keyword(null,"op-type","op-type",-1636141668).cljs$core$IFn$_invoke$arity$1(trace);
-var G__57606__$1 = (((G__57606 instanceof cljs.core.Keyword))?G__57606.fqn:null);
-switch (G__57606__$1) {
+var G__58114 = new cljs.core.Keyword(null,"op-type","op-type",-1636141668).cljs$core$IFn$_invoke$arity$1(trace);
+var G__58114__$1 = (((G__58114 instanceof cljs.core.Keyword))?G__58114.fqn:null);
+switch (G__58114__$1) {
 case "re-frame.router/fsm-trigger":
 return true;
 
@@ -88,8 +88,8 @@ day8.re_frame_10x.metamorphic.unchanged_l2_subscription_QMARK_ = (function day8$
 var and__4120__auto__ = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(sub,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("sub","traits","sub/traits",1778340671),new cljs.core.Keyword(null,"unchanged?","unchanged?",1212001763)], null));
 if(cljs.core.truth_(and__4120__auto__)){
 return ((cljs.core.not_any_QMARK_(((function (and__4120__auto__){
-return (function (p1__57609_SHARP_){
-return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("sub","dispose","sub/dispose",365440536),p1__57609_SHARP_);
+return (function (p1__58120_SHARP_){
+return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("sub","dispose","sub/dispose",365440536),p1__58120_SHARP_);
 });})(and__4120__auto__))
 ,new cljs.core.Keyword(null,"order","order",-1254677256).cljs$core$IFn$_invoke$arity$1(sub))) && (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((2),cljs.core.get.cljs$core$IFn$_invoke$arity$2(sub,new cljs.core.Keyword(null,"layer","layer",-1601820589)))));
 } else {
@@ -157,8 +157,8 @@ return cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(event_trace,new cljs.core.
  */
 day8.re_frame_10x.metamorphic.subscription_info = (function day8$re_frame_10x$metamorphic$subscription_info(initial_state,filtered_traces,app_db_id){
 return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (state,trace){
-return cljs.core.assoc_in(state,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"operation","operation",-1267664310).cljs$core$IFn$_invoke$arity$1(trace),new cljs.core.Keyword(null,"layer","layer",-1601820589)], null),(cljs.core.truth_(cljs.core.some((function (p1__57657_SHARP_){
-return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(app_db_id,p1__57657_SHARP_);
+return cljs.core.assoc_in(state,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"operation","operation",-1267664310).cljs$core$IFn$_invoke$arity$1(trace),new cljs.core.Keyword(null,"layer","layer",-1601820589)], null),(cljs.core.truth_(cljs.core.some((function (p1__58124_SHARP_){
+return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(app_db_id,p1__58124_SHARP_);
 }),cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(trace,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tags","tags",1771418977),new cljs.core.Keyword(null,"input-signals","input-signals",563633497)], null))))?(2):(3)));
 }),initial_state,cljs.core.filter.cljs$core$IFn$_invoke$arity$2(day8.re_frame_10x.metamorphic.subscription_re_run_QMARK_,filtered_traces));
 });
@@ -173,10 +173,10 @@ return null;
 } else {
 return me;
 }
-})),cljs.core.map.cljs$core$IFn$_invoke$arity$1((function (p__57664){
-var vec__57666 = p__57664;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__57666,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__57666,(1),null);
+})),cljs.core.map.cljs$core$IFn$_invoke$arity$1((function (p__58125){
+var vec__58126 = p__58125;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__58126,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__58126,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k,cljs.core.dissoc.cljs$core$IFn$_invoke$arity$variadic(v,new cljs.core.Keyword(null,"order","order",-1254677256),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"created?","created?",850508195),new cljs.core.Keyword(null,"run?","run?",752622859),new cljs.core.Keyword(null,"disposed?","disposed?",1178302522),new cljs.core.Keyword(null,"previous-value","previous-value",-1638799677),new cljs.core.Keyword("sub","traits","sub/traits",1778340671)], 0))], null);
 }))),state);
 });
@@ -185,18 +185,18 @@ var first_pass = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (init_
 var tags = cljs.core.get.cljs$core$IFn$_invoke$arity$2(trace,new cljs.core.Keyword(null,"tags","tags",1771418977));
 var reaction_id = new cljs.core.Keyword(null,"reaction","reaction",490869788).cljs$core$IFn$_invoke$arity$1(tags);
 var state = cljs.core.assoc_in(cljs.core.update_in.cljs$core$IFn$_invoke$arity$4(init_state,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [reaction_id,new cljs.core.Keyword(null,"order","order",-1254677256)], null),cljs.core.fnil.cljs$core$IFn$_invoke$arity$2(cljs.core.conj,cljs.core.PersistentVector.EMPTY),new cljs.core.Keyword(null,"op-type","op-type",-1636141668).cljs$core$IFn$_invoke$arity$1(trace)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [reaction_id,new cljs.core.Keyword(null,"subscription","subscription",1949009182)], null),new cljs.core.Keyword(null,"query-v","query-v",-1514170131).cljs$core$IFn$_invoke$arity$1(tags));
-var new_state = (function (){var G__57672 = new cljs.core.Keyword(null,"op-type","op-type",-1636141668).cljs$core$IFn$_invoke$arity$1(trace);
-var G__57672__$1 = (((G__57672 instanceof cljs.core.Keyword))?G__57672.fqn:null);
-switch (G__57672__$1) {
+var new_state = (function (){var G__58129 = new cljs.core.Keyword(null,"op-type","op-type",-1636141668).cljs$core$IFn$_invoke$arity$1(trace);
+var G__58129__$1 = (((G__58129 instanceof cljs.core.Keyword))?G__58129.fqn:null);
+switch (G__58129__$1) {
 case "sub/create":
 return cljs.core.assoc_in(cljs.core.assoc_in(state,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [reaction_id,new cljs.core.Keyword(null,"created?","created?",850508195)], null),true),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [reaction_id,new cljs.core.Keyword(null,"subscription","subscription",1949009182)], null),new cljs.core.Keyword(null,"query-v","query-v",-1514170131).cljs$core$IFn$_invoke$arity$1(tags));
 
 break;
 case "sub/run":
-return cljs.core.update.cljs$core$IFn$_invoke$arity$3(state,reaction_id,((function (G__57672,G__57672__$1,tags,reaction_id,state){
+return cljs.core.update.cljs$core$IFn$_invoke$arity$3(state,reaction_id,((function (G__58129,G__58129__$1,tags,reaction_id,state){
 return (function (sub_state){
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$variadic(((cljs.core.contains_QMARK_(sub_state,new cljs.core.Keyword(null,"value","value",305978217)))?cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(sub_state,new cljs.core.Keyword(null,"previous-value","previous-value",-1638799677),new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(sub_state)):sub_state),new cljs.core.Keyword(null,"run?","run?",752622859),true,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"value","value",305978217),new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(tags)], 0));
-});})(G__57672,G__57672__$1,tags,reaction_id,state))
+});})(G__58129,G__58129__$1,tags,reaction_id,state))
 );
 
 break;
@@ -205,7 +205,7 @@ return cljs.core.assoc_in(state,new cljs.core.PersistentVector(null, 2, 5, cljs.
 
 break;
 default:
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__57672__$1)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__58129__$1)].join('')));
 
 }
 })();
@@ -217,10 +217,10 @@ console.warn(trace,cljs.core.get.cljs$core$IFn$_invoke$arity$2(new_state,reactio
 return new_state;
 }),initial_state,traces);
 var second_pass = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(((function (first_pass){
-return (function (all_state,p__57678){
-var vec__57679 = p__57678;
-var sub_id = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__57679,(0),null);
-var sub_state = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__57679,(1),null);
+return (function (all_state,p__58130){
+var vec__58131 = p__58130;
+var sub_id = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__58131,(0),null);
+var sub_state = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__58131,(1),null);
 if(((cljs.core.contains_QMARK_(sub_state,new cljs.core.Keyword(null,"previous-value","previous-value",-1638799677))) && (cljs.core.contains_QMARK_(sub_state,new cljs.core.Keyword(null,"value","value",305978217))) && (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"previous-value","previous-value",-1638799677).cljs$core$IFn$_invoke$arity$1(sub_state),new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(sub_state))))){
 return cljs.core.assoc_in(all_state,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [sub_id,new cljs.core.Keyword("sub","traits","sub/traits",1778340671),new cljs.core.Keyword(null,"unchanged?","unchanged?",1212001763)], null),true);
 } else {

@@ -17,7 +17,7 @@ goog.inherits(goog.structs.PriorityPool, goog.structs.Pool);
 /** @private @type {number} */ goog.structs.PriorityPool.DEFAULT_PRIORITY_ = 100;
 /** @override */ goog.structs.PriorityPool.prototype.setDelay = function(delay) {
   goog.structs.PriorityPool.base(this, "setDelay", delay);
-  if (!goog.isDefAndNotNull(this.lastAccess)) {
+  if (this.lastAccess == null) {
     return;
   }
   goog.global.clearTimeout(this.delayTimeout_);
@@ -38,7 +38,7 @@ goog.structs.PriorityPool.prototype.getObject = function(opt_callback, opt_prior
     }
     return result;
   }
-  var priority = goog.isDef(opt_priority) ? opt_priority : goog.structs.PriorityPool.DEFAULT_PRIORITY_;
+  var priority = opt_priority !== undefined ? opt_priority : goog.structs.PriorityPool.DEFAULT_PRIORITY_;
   this.requestQueue_.enqueue(priority, opt_callback);
   this.handleQueueRequests_();
   return undefined;

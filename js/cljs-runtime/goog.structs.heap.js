@@ -5,7 +5,8 @@ goog.require("goog.structs.Node");
 /**
  * @constructor
  * @param {(goog.structs.Heap|Object)=} opt_heap
- * @template K, V
+ * @template K
+ * @template V
  */
 goog.structs.Heap = function(opt_heap) {
   /** @private @type {Array<goog.structs.Node>} */ this.nodes_ = [];

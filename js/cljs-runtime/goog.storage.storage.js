@@ -1,7 +1,7 @@
 goog.provide("goog.storage.Storage");
+goog.forwardDeclare("goog.storage.mechanism.Mechanism");
 goog.require("goog.json");
 goog.require("goog.storage.ErrorCode");
-goog.forwardDeclare("goog.storage.mechanism.Mechanism");
 /**
  * @struct
  * @constructor
@@ -15,7 +15,7 @@ goog.storage.Storage = function(mechanism) {
  * @param {*} value
  */
 goog.storage.Storage.prototype.set = function(key, value) {
-  if (!goog.isDef(value)) {
+  if (value === undefined) {
     this.mechanism.remove(key);
     return;
   }
@@ -32,12 +32,12 @@ goog.storage.Storage.prototype.get = function(key) {
   } catch (e) {
     return undefined;
   }
-  if (goog.isNull(json)) {
+  if (json === null) {
     return undefined;
   }
   try {
     return JSON.parse(json);
-  } catch (e$4) {
+  } catch (e$5) {
     throw goog.storage.ErrorCode.INVALID_VALUE;
   }
 };

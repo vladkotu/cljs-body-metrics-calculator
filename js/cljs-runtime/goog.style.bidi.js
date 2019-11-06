@@ -90,7 +90,7 @@ goog.style.bidi.usesNegativeScrollLeftInRtl_ = function() {
  * @param {boolean} isRtl
  */
 goog.style.bidi.setPosition = function(elem, left, top, isRtl) {
-  if (!goog.isNull(top)) {
+  if (top !== null) {
     elem.style.top = top + "px";
   }
   if (isRtl) {

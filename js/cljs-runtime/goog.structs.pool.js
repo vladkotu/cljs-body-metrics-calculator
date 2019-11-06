@@ -56,7 +56,7 @@ goog.structs.Pool.prototype.setDelay = function(delay) {
  */
 goog.structs.Pool.prototype.getObject = function() {
   var time = goog.now();
-  if (goog.isDefAndNotNull(this.lastAccess) && time - this.lastAccess < this.delay) {
+  if (this.lastAccess != null && time - this.lastAccess < this.delay) {
     return undefined;
   }
   var obj = this.removeFreeObject_();

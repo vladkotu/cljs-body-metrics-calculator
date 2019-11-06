@@ -38,7 +38,7 @@ goog.Delay = goog.async.Delay;
  */
 goog.async.Delay.prototype.start = function(opt_interval) {
   this.stop();
-  this.id_ = goog.Timer.callOnce(this.callback_, goog.isDef(opt_interval) ? opt_interval : this.interval_);
+  this.id_ = goog.Timer.callOnce(this.callback_, opt_interval !== undefined ? opt_interval : this.interval_);
 };
 /**
  * @param {number=} opt_interval

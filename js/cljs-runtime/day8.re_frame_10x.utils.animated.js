@@ -15,8 +15,8 @@ day8.re_frame_10x.utils.animated.rc_v_box_style = new cljs.core.PersistentArrayM
  * for supported props other then :style
  */
 day8.re_frame_10x.utils.animated.v_box_options = (function day8$re_frame_10x$utils$animated$v_box_options(options){
-return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.update.cljs$core$IFn$_invoke$arity$3(options,new cljs.core.Keyword(null,"style","style",-496642736),(function (p1__51875_SHARP_){
-return cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([day8.re_frame_10x.utils.animated.rc_v_box_style,p1__51875_SHARP_], 0));
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.update.cljs$core$IFn$_invoke$arity$3(options,new cljs.core.Keyword(null,"style","style",-496642736),(function (p1__52425_SHARP_){
+return cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([day8.re_frame_10x.utils.animated.rc_v_box_style,p1__52425_SHARP_], 0));
 })),new cljs.core.Keyword(null,"class","class",-2030961996),"rc-v-box display-flex");
 });
 /**
@@ -31,8 +31,8 @@ day8.re_frame_10x.utils.animated.rc_h_box_style = new cljs.core.PersistentArrayM
  * for supported props other then :style
  */
 day8.re_frame_10x.utils.animated.h_box_options = (function day8$re_frame_10x$utils$animated$h_box_options(options){
-return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.update.cljs$core$IFn$_invoke$arity$3(options,new cljs.core.Keyword(null,"style","style",-496642736),(function (p1__51884_SHARP_){
-return cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([day8.re_frame_10x.utils.animated.rc_h_box_style,p1__51884_SHARP_], 0));
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.update.cljs$core$IFn$_invoke$arity$3(options,new cljs.core.Keyword(null,"style","style",-496642736),(function (p1__52430_SHARP_){
+return cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([day8.re_frame_10x.utils.animated.rc_h_box_style,p1__52430_SHARP_], 0));
 })),new cljs.core.Keyword(null,"class","class",-2030961996),"rc-h-box display-flex");
 });
 

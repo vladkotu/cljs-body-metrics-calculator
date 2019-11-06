@@ -7,14 +7,14 @@ goog.require('day8.re_frame_10x.inlined_deps.re_frame.v0v10v6.re_frame.loggers')
  *   will not be present in the new structure.
  *   The key thing is that 'm' remains identical? to istelf if the path was never present
  */
-day8.re_frame_10x.inlined_deps.re_frame.v0v10v6.re_frame.utils.dissoc_in = (function day8$re_frame_10x$inlined_deps$re_frame$v0v10v6$re_frame$utils$dissoc_in(m,p__51876){
-var vec__51879 = p__51876;
-var seq__51880 = cljs.core.seq(vec__51879);
-var first__51881 = cljs.core.first(seq__51880);
-var seq__51880__$1 = cljs.core.next(seq__51880);
-var k = first__51881;
-var ks = seq__51880__$1;
-var keys = vec__51879;
+day8.re_frame_10x.inlined_deps.re_frame.v0v10v6.re_frame.utils.dissoc_in = (function day8$re_frame_10x$inlined_deps$re_frame$v0v10v6$re_frame$utils$dissoc_in(m,p__52503){
+var vec__52504 = p__52503;
+var seq__52505 = cljs.core.seq(vec__52504);
+var first__52506 = cljs.core.first(seq__52505);
+var seq__52505__$1 = cljs.core.next(seq__52505);
+var k = first__52506;
+var ks = seq__52505__$1;
+var keys = vec__52504;
 if(ks){
 var temp__5733__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(m,k);
 if(cljs.core.truth_(temp__5733__auto__)){

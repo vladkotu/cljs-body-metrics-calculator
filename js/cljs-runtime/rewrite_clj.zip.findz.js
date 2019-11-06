@@ -7,14 +7,14 @@ goog.require('rewrite_clj.zip.whitespace');
 goog.require('clojure.zip');
 rewrite_clj.zip.findz.tag_predicate = (function rewrite_clj$zip$findz$tag_predicate(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___54755 = arguments.length;
-var i__4731__auto___54756 = (0);
+var len__4730__auto___55211 = arguments.length;
+var i__4731__auto___55212 = (0);
 while(true){
-if((i__4731__auto___54756 < len__4730__auto___54755)){
-args__4736__auto__.push((arguments[i__4731__auto___54756]));
+if((i__4731__auto___55212 < len__4730__auto___55211)){
+args__4736__auto__.push((arguments[i__4731__auto___55212]));
 
-var G__54757 = (i__4731__auto___54756 + (1));
-i__4731__auto___54756 = G__54757;
+var G__55213 = (i__4731__auto___55212 + (1));
+i__4731__auto___55212 = G__55213;
 continue;
 } else {
 }
@@ -25,11 +25,11 @@ var argseq__4737__auto__ = ((((1) < args__4736__auto__.length))?(new cljs.core.I
 return rewrite_clj.zip.findz.tag_predicate.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__4737__auto__);
 });
 
-rewrite_clj.zip.findz.tag_predicate.cljs$core$IFn$_invoke$arity$variadic = (function (t,p__54665){
-var vec__54666 = p__54665;
-var additional = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__54666,(0),null);
+rewrite_clj.zip.findz.tag_predicate.cljs$core$IFn$_invoke$arity$variadic = (function (t,p__55111){
+var vec__55112 = p__55111;
+var additional = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55112,(0),null);
 if(cljs.core.truth_(additional)){
-return ((function (vec__54666,additional){
+return ((function (vec__55112,additional){
 return (function (node){
 var and__4120__auto__ = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(rewrite_clj.zip.base.tag(node),t);
 if(and__4120__auto__){
@@ -38,37 +38,37 @@ return (additional.cljs$core$IFn$_invoke$arity$1 ? additional.cljs$core$IFn$_inv
 return and__4120__auto__;
 }
 });
-;})(vec__54666,additional))
+;})(vec__55112,additional))
 } else {
-return ((function (vec__54666,additional){
-return (function (p1__54660_SHARP_){
-return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(rewrite_clj.zip.base.tag(p1__54660_SHARP_),t);
+return ((function (vec__55112,additional){
+return (function (p1__55106_SHARP_){
+return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(rewrite_clj.zip.base.tag(p1__55106_SHARP_),t);
 });
-;})(vec__54666,additional))
+;})(vec__55112,additional))
 }
 });
 
 rewrite_clj.zip.findz.tag_predicate.cljs$lang$maxFixedArity = (1);
 
 /** @this {Function} */
-rewrite_clj.zip.findz.tag_predicate.cljs$lang$applyTo = (function (seq54663){
-var G__54664 = cljs.core.first(seq54663);
-var seq54663__$1 = cljs.core.next(seq54663);
+rewrite_clj.zip.findz.tag_predicate.cljs$lang$applyTo = (function (seq55107){
+var G__55108 = cljs.core.first(seq55107);
+var seq55107__$1 = cljs.core.next(seq55107);
 var self__4717__auto__ = this;
-return self__4717__auto__.cljs$core$IFn$_invoke$arity$variadic(G__54664,seq54663__$1);
+return self__4717__auto__.cljs$core$IFn$_invoke$arity$variadic(G__55108,seq55107__$1);
 });
 
-rewrite_clj.zip.findz.in_range_QMARK_ = (function rewrite_clj$zip$findz$in_range_QMARK_(p__54673,p__54674){
-var map__54675 = p__54673;
-var map__54675__$1 = (((((!((map__54675 == null))))?(((((map__54675.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__54675.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__54675):map__54675);
-var row = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__54675__$1,new cljs.core.Keyword(null,"row","row",-570139521));
-var col = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__54675__$1,new cljs.core.Keyword(null,"col","col",-1959363084));
-var end_row = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__54675__$1,new cljs.core.Keyword(null,"end-row","end-row",-545103581));
-var end_col = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__54675__$1,new cljs.core.Keyword(null,"end-col","end-col",-724155879));
-var map__54677 = p__54674;
-var map__54677__$1 = (((((!((map__54677 == null))))?(((((map__54677.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__54677.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__54677):map__54677);
-var r = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__54677__$1,new cljs.core.Keyword(null,"row","row",-570139521));
-var c = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__54677__$1,new cljs.core.Keyword(null,"col","col",-1959363084));
+rewrite_clj.zip.findz.in_range_QMARK_ = (function rewrite_clj$zip$findz$in_range_QMARK_(p__55119,p__55120){
+var map__55121 = p__55119;
+var map__55121__$1 = (((((!((map__55121 == null))))?(((((map__55121.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__55121.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__55121):map__55121);
+var row = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__55121__$1,new cljs.core.Keyword(null,"row","row",-570139521));
+var col = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__55121__$1,new cljs.core.Keyword(null,"col","col",-1959363084));
+var end_row = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__55121__$1,new cljs.core.Keyword(null,"end-row","end-row",-545103581));
+var end_col = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__55121__$1,new cljs.core.Keyword(null,"end-col","end-col",-724155879));
+var map__55123 = p__55120;
+var map__55123__$1 = (((((!((map__55123 == null))))?(((((map__55123.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__55123.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__55123):map__55123);
+var r = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__55123__$1,new cljs.core.Keyword(null,"row","row",-570139521));
+var c = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__55123__$1,new cljs.core.Keyword(null,"col","col",-1959363084));
 var and__4120__auto__ = (r >= row);
 if(and__4120__auto__){
 var and__4120__auto____$1 = (r <= end_row);
@@ -96,8 +96,8 @@ return and__4120__auto__;
  * location.
  */
 rewrite_clj.zip.findz.find = (function rewrite_clj$zip$findz$find(var_args){
-var G__54681 = arguments.length;
-switch (G__54681) {
+var G__55127 = arguments.length;
+switch (G__55127) {
 case 2:
 return rewrite_clj.zip.findz.find.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -128,8 +128,8 @@ rewrite_clj.zip.findz.find.cljs$lang$maxFixedArity = 3;
  *   location.
  */
 rewrite_clj.zip.findz.find_last_by_pos = (function rewrite_clj$zip$findz$find_last_by_pos(var_args){
-var G__54686 = arguments.length;
-switch (G__54686) {
+var G__55135 = arguments.length;
+switch (G__55135) {
 case 2:
 return rewrite_clj.zip.findz.find_last_by_pos.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -149,10 +149,10 @@ return rewrite_clj.zip.findz.find_last_by_pos.cljs$core$IFn$_invoke$arity$3(zloc
 });
 
 rewrite_clj.zip.findz.find_last_by_pos.cljs$core$IFn$_invoke$arity$3 = (function (zloc,pos,p_QMARK_){
-return cljs.core.last(cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__54684_SHARP_){
-var and__4120__auto__ = (p_QMARK_.cljs$core$IFn$_invoke$arity$1 ? p_QMARK_.cljs$core$IFn$_invoke$arity$1(p1__54684_SHARP_) : p_QMARK_.call(null,p1__54684_SHARP_));
+return cljs.core.last(cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__55133_SHARP_){
+var and__4120__auto__ = (p_QMARK_.cljs$core$IFn$_invoke$arity$1 ? p_QMARK_.cljs$core$IFn$_invoke$arity$1(p1__55133_SHARP_) : p_QMARK_.call(null,p1__55133_SHARP_));
 if(cljs.core.truth_(and__4120__auto__)){
-return rewrite_clj.zip.findz.in_range_QMARK_(cljs.core.meta(clojure.zip.node(p1__54684_SHARP_)),pos);
+return rewrite_clj.zip.findz.in_range_QMARK_(cljs.core.meta(clojure.zip.node(p1__55133_SHARP_)),pos);
 } else {
 return and__4120__auto__;
 }
@@ -174,8 +174,8 @@ return rewrite_clj.zip.findz.find.cljs$core$IFn$_invoke$arity$3(zloc,rewrite_clj
  * to the initial zipper location.
  */
 rewrite_clj.zip.findz.find_next = (function rewrite_clj$zip$findz$find_next(var_args){
-var G__54691 = arguments.length;
-switch (G__54691) {
+var G__55147 = arguments.length;
+switch (G__55147) {
 case 2:
 return rewrite_clj.zip.findz.find_next.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -195,12 +195,12 @@ return rewrite_clj.zip.findz.find_next.cljs$core$IFn$_invoke$arity$3(zloc,rewrit
 });
 
 rewrite_clj.zip.findz.find_next.cljs$core$IFn$_invoke$arity$3 = (function (zloc,f,p_QMARK_){
-var G__54692 = zloc;
-var G__54692__$1 = (((G__54692 == null))?null:(f.cljs$core$IFn$_invoke$arity$1 ? f.cljs$core$IFn$_invoke$arity$1(G__54692) : f.call(null,G__54692)));
-if((G__54692__$1 == null)){
+var G__55148 = zloc;
+var G__55148__$1 = (((G__55148 == null))?null:(f.cljs$core$IFn$_invoke$arity$1 ? f.cljs$core$IFn$_invoke$arity$1(G__55148) : f.call(null,G__55148)));
+if((G__55148__$1 == null)){
 return null;
 } else {
-return rewrite_clj.zip.findz.find.cljs$core$IFn$_invoke$arity$3(G__54692__$1,f,p_QMARK_);
+return rewrite_clj.zip.findz.find.cljs$core$IFn$_invoke$arity$3(G__55148__$1,f,p_QMARK_);
 }
 });
 
@@ -219,8 +219,8 @@ return rewrite_clj.zip.findz.find_next.cljs$core$IFn$_invoke$arity$3(zloc,rewrit
  * movement function to the initial zipper location.
  */
 rewrite_clj.zip.findz.find_tag = (function rewrite_clj$zip$findz$find_tag(var_args){
-var G__54695 = arguments.length;
-switch (G__54695) {
+var G__55155 = arguments.length;
+switch (G__55155) {
 case 2:
 return rewrite_clj.zip.findz.find_tag.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -240,8 +240,8 @@ return rewrite_clj.zip.findz.find_tag.cljs$core$IFn$_invoke$arity$3(zloc,rewrite
 });
 
 rewrite_clj.zip.findz.find_tag.cljs$core$IFn$_invoke$arity$3 = (function (zloc,f,t){
-return rewrite_clj.zip.findz.find.cljs$core$IFn$_invoke$arity$3(zloc,f,(function (p1__54693_SHARP_){
-return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(rewrite_clj.zip.base.tag(p1__54693_SHARP_),t);
+return rewrite_clj.zip.findz.find.cljs$core$IFn$_invoke$arity$3(zloc,f,(function (p1__55153_SHARP_){
+return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(rewrite_clj.zip.base.tag(p1__55153_SHARP_),t);
 }));
 });
 
@@ -253,8 +253,8 @@ rewrite_clj.zip.findz.find_tag.cljs$lang$maxFixedArity = 3;
  * the initial zipper location.
  */
 rewrite_clj.zip.findz.find_next_tag = (function rewrite_clj$zip$findz$find_next_tag(var_args){
-var G__54699 = arguments.length;
-switch (G__54699) {
+var G__55169 = arguments.length;
+switch (G__55169) {
 case 2:
 return rewrite_clj.zip.findz.find_next_tag.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -283,8 +283,8 @@ rewrite_clj.zip.findz.find_next_tag.cljs$lang$maxFixedArity = 3;
  * Find node with the given tag and pos depth-first from initial zipper location.
  */
 rewrite_clj.zip.findz.find_tag_by_pos = (function rewrite_clj$zip$findz$find_tag_by_pos(zloc,pos,t){
-return rewrite_clj.zip.findz.find_last_by_pos.cljs$core$IFn$_invoke$arity$3(zloc,pos,(function (p1__54705_SHARP_){
-return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(rewrite_clj.zip.base.tag(p1__54705_SHARP_),t);
+return rewrite_clj.zip.findz.find_last_by_pos.cljs$core$IFn$_invoke$arity$3(zloc,pos,(function (p1__55175_SHARP_){
+return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(rewrite_clj.zip.base.tag(p1__55175_SHARP_),t);
 }));
 });
 /**
@@ -293,8 +293,8 @@ return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(rewrite_clj.zip.base.tag(p1_
  * to `right`.
  */
 rewrite_clj.zip.findz.find_token = (function rewrite_clj$zip$findz$find_token(var_args){
-var G__54707 = arguments.length;
-switch (G__54707) {
+var G__55179 = arguments.length;
+switch (G__55179) {
 case 2:
 return rewrite_clj.zip.findz.find_token.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -325,8 +325,8 @@ rewrite_clj.zip.findz.find_token.cljs$lang$maxFixedArity = 3;
  * to `right`.
  */
 rewrite_clj.zip.findz.find_next_token = (function rewrite_clj$zip$findz$find_next_token(var_args){
-var G__54717 = arguments.length;
-switch (G__54717) {
+var G__55191 = arguments.length;
+switch (G__55191) {
 case 2:
 return rewrite_clj.zip.findz.find_next_token.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -357,8 +357,8 @@ rewrite_clj.zip.findz.find_next_token.cljs$lang$maxFixedArity = 3;
  * to `right`.
  */
 rewrite_clj.zip.findz.find_value = (function rewrite_clj$zip$findz$find_value(var_args){
-var G__54729 = arguments.length;
-switch (G__54729) {
+var G__55196 = arguments.length;
+switch (G__55196) {
 case 2:
 return rewrite_clj.zip.findz.find_value.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -378,8 +378,8 @@ return rewrite_clj.zip.findz.find_value.cljs$core$IFn$_invoke$arity$3(zloc,rewri
 });
 
 rewrite_clj.zip.findz.find_value.cljs$core$IFn$_invoke$arity$3 = (function (zloc,f,v){
-var p_QMARK_ = ((cljs.core.set_QMARK_(v))?cljs.core.comp.cljs$core$IFn$_invoke$arity$2(v,rewrite_clj.zip.base.sexpr):(function (p1__54724_SHARP_){
-return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(rewrite_clj.zip.base.sexpr(p1__54724_SHARP_),v);
+var p_QMARK_ = ((cljs.core.set_QMARK_(v))?cljs.core.comp.cljs$core$IFn$_invoke$arity$2(v,rewrite_clj.zip.base.sexpr):(function (p1__55193_SHARP_){
+return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(rewrite_clj.zip.base.sexpr(p1__55193_SHARP_),v);
 }));
 return rewrite_clj.zip.findz.find_token.cljs$core$IFn$_invoke$arity$3(zloc,f,p_QMARK_);
 });
@@ -392,8 +392,8 @@ rewrite_clj.zip.findz.find_value.cljs$lang$maxFixedArity = 3;
  * to `right`.
  */
 rewrite_clj.zip.findz.find_next_value = (function rewrite_clj$zip$findz$find_next_value(var_args){
-var G__54744 = arguments.length;
-switch (G__54744) {
+var G__55209 = arguments.length;
+switch (G__55209) {
 case 2:
 return rewrite_clj.zip.findz.find_next_value.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 

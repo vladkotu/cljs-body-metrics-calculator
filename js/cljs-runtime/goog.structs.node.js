@@ -3,7 +3,8 @@ goog.provide("goog.structs.Node");
  * @constructor
  * @param {K} key
  * @param {V} value
- * @template K, V
+ * @template K
+ * @template V
  */
 goog.structs.Node = function(key, value) {
   /** @private @type {K} */ this.key_ = key;

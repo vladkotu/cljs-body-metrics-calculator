@@ -17,9 +17,9 @@ zprint.config.zprintedn = ".zprint.edn";
 zprint.config.zprint_keys = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"width","width",-384071477)], null);
 zprint.config.explain_hide_keys = new cljs.core.PersistentVector(null, 22, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"configured?","configured?",642178633),new cljs.core.Keyword(null,"dbg-print?","dbg-print?",-660113872),new cljs.core.Keyword(null,"dbg?","dbg?",1845730771),new cljs.core.Keyword(null,"do-in-hang?","do-in-hang?",-1235364947),new cljs.core.Keyword(null,"drop?","drop?",-2009514790),new cljs.core.Keyword(null,"dbg-ge","dbg-ge",257927017),new cljs.core.Keyword(null,"file?","file?",1755223728),new cljs.core.Keyword(null,"spaces?","spaces?",1967773960),new cljs.core.Keyword(null,"process-bang-zprint?","process-bang-zprint?",-1250782024),new cljs.core.Keyword(null,"trim-comments?","trim-comments?",-1532658667),new cljs.core.Keyword(null,"zipper?","zipper?",-1061271842),new cljs.core.Keyword(null,"indent","indent",-148200125),new cljs.core.Keyword(null,"remove","remove",-131428414),new cljs.core.Keyword(null,"return-cvec?","return-cvec?",1372433982),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"object","object",1474613949),new cljs.core.Keyword(null,"wrap-after-multi?","wrap-after-multi?",1010808052),new cljs.core.Keyword(null,"wrap-coll?","wrap-coll?",908181571)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058),new cljs.core.Keyword(null,"comma?","comma?",1532168963)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"pair","pair",-447516312),new cljs.core.Keyword(null,"justify-hang","justify-hang",1083292243),new cljs.core.Keyword(null,"justify-tuning","justify-tuning",-958931675)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"justify-hang","justify-hang",1083292243),new cljs.core.Keyword(null,"justify-tuning","justify-tuning",-958931675)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"spec","spec",347520401),new cljs.core.Keyword(null,"value","value",305978217)], null),new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"map","map",1371690461),new cljs.core.Keyword(null,"dbg-local?","dbg-local?",-895545325),new cljs.core.Keyword(null,"hang-adjust","hang-adjust",-613514382),new cljs.core.Keyword(null,"justify-hang","justify-hang",1083292243),new cljs.core.Keyword(null,"justify-tuning","justify-tuning",-958931675)], null),new cljs.core.Keyword(null,"tuning","tuning",-48660925),new cljs.core.Keyword(null,"perf-vs-format","perf-vs-format",-1892061514)], null);
 zprint.config.zfnstyle = cljs.core.PersistentHashMap.fromArrays(["map","binding","cond->","as->","with-local-vars","loop","defn","=","some->","if-not","when-first","when-some","defcc","fdef","if-let","doseq","try","s/fdef","with-redefs","matchm","defc","defcs","fn","for","defrecord","with-meta","catch","defexpect","with-redefs-fn","defui","s/or","swap!","apply",":require","s/def","cond","if","let","defproject","reify","defmulti","when-let",":import","not=","with-bindings","doto","cond-let","if-some","extend-protocol","or","case","alt","remove","mapcat","with-open","with-bindings*","filter","condp","when","s/and","->","and","defmethod","do","some->>","fn*","interpose","deftest","match","extend","->>","defprotocol","extend-type","defn-","filterv","def","reduce","dotimes","proxy","assoc-in","assoc","mapv","when-not","cat","letfn","ns","deftype","defmacro"],[new cljs.core.Keyword(null,"arg1","arg1",951899358),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"arg1-pair-body","arg1-pair-body",541801100),new cljs.core.Keyword(null,"arg2","arg2",1729550917),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.Keyword(null,"hang","hang",-1007256173),new cljs.core.Keyword(null,"force-nl-body","force-nl-body",1789087439),new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"arg1-mixin","arg1-mixin",1553512120),new cljs.core.Keyword(null,"arg1-force-nl","arg1-force-nl",-945624718),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"none-body","none-body",-171554854),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"list","list",765357683),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"constant-pair-min","constant-pair-min",1245759721),(2)], null)], null)], null),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"arg1-pair-body","arg1-pair-body",541801100),new cljs.core.Keyword(null,"arg1-mixin","arg1-mixin",1553512120),new cljs.core.Keyword(null,"arg1-mixin","arg1-mixin",1553512120),new cljs.core.Keyword(null,"fn","fn",-1175266204),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"arg2-extend","arg2-extend",1554629186),new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.Keyword(null,"arg2","arg2",1729550917),new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.Keyword(null,"arg1-extend","arg1-extend",-157225050),new cljs.core.Keyword(null,"gt2-force-nl","gt2-force-nl",-1746243317),new cljs.core.Keyword(null,"arg2","arg2",1729550917),new cljs.core.Keyword(null,"arg1","arg1",951899358),new cljs.core.Keyword(null,"force-nl-body","force-nl-body",1789087439),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"list","list",765357683),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"constant-pair-min","constant-pair-min",1245759721),(2)], null)], null)], null),new cljs.core.Keyword(null,"pair-fn","pair-fn",-360146586),new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"arg2-pair","arg2-pair",-1268132126),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"vector","vector",1902966158),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"wrap?","wrap?",-1677427054),false], null)], null)], null),new cljs.core.Keyword(null,"extend","extend",1836484006),new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"force-nl-body","force-nl-body",1789087439),new cljs.core.Keyword(null,"hang","hang",-1007256173),new cljs.core.Keyword(null,"arg1","arg1",951899358),new cljs.core.Keyword(null,"arg1","arg1",951899358),new cljs.core.Keyword(null,"pair-fn","pair-fn",-360146586),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"arg1-extend","arg1-extend",-157225050),new cljs.core.Keyword(null,"hang","hang",-1007256173),new cljs.core.Keyword(null,"arg1-pair-body","arg1-pair-body",541801100),new cljs.core.Keyword(null,"pair-fn","pair-fn",-360146586),new cljs.core.Keyword(null,"arg1","arg1",951899358),new cljs.core.Keyword(null,"arg1","arg1",951899358),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"arg1","arg1",951899358),new cljs.core.Keyword(null,"arg1","arg1",951899358),new cljs.core.Keyword(null,"arg2-pair","arg2-pair",-1268132126),new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.Keyword(null,"gt2-force-nl","gt2-force-nl",-1746243317),new cljs.core.Keyword(null,"noarg1-body","noarg1-body",774553320),new cljs.core.Keyword(null,"hang","hang",-1007256173),new cljs.core.Keyword(null,"arg2","arg2",1729550917),new cljs.core.Keyword(null,"none-body","none-body",-171554854),new cljs.core.Keyword(null,"force-nl-body","force-nl-body",1789087439),new cljs.core.Keyword(null,"fn","fn",-1175266204),new cljs.core.Keyword(null,"arg1","arg1",951899358),new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.Keyword(null,"arg1-pair-body","arg1-pair-body",541801100),new cljs.core.Keyword(null,"arg1-extend","arg1-extend",-157225050),new cljs.core.Keyword(null,"force-nl-body","force-nl-body",1789087439),new cljs.core.Keyword(null,"arg1-force-nl","arg1-force-nl",-945624718),new cljs.core.Keyword(null,"arg1-extend","arg1-extend",-157225050),new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.Keyword(null,"arg1","arg1",951899358),new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.Keyword(null,"arg1","arg1",951899358),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"arg2-fn","arg2-fn",1172769072),new cljs.core.Keyword(null,"arg1","arg1",951899358),new cljs.core.Keyword(null,"arg1-pair","arg1-pair",-38672953),new cljs.core.Keyword(null,"arg1","arg1",951899358),new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.Keyword(null,"force-nl","force-nl",-755040826),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564),new cljs.core.Keyword(null,"arg2-extend","arg2-extend",1554629186),new cljs.core.Keyword(null,"arg1-body","arg1-body",-1677449564)]);
-zprint.config.default_zprint_options = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"old?","old?",-1129887872),new cljs.core.Keyword(null,"format","format",-1306924766),new cljs.core.Keyword(null,"remove","remove",-131428414),new cljs.core.Keyword(null,"indent","indent",-148200125),new cljs.core.Keyword(null,"max-length","max-length",-254826109),new cljs.core.Keyword(null,"tuning","tuning",-48660925),new cljs.core.Keyword(null,"fn-force-nl","fn-force-nl",1501458692),new cljs.core.Keyword(null,"max-hang-depth","max-hang-depth",-915232220),new cljs.core.Keyword(null,"future","future",1877842724),new cljs.core.Keyword(null,"max-depth-string","max-depth-string",-474325435),new cljs.core.Keyword(null,"user-fn-map","user-fn-map",-908243227),new cljs.core.Keyword(null,"pair-fn","pair-fn",-360146586),new cljs.core.Keyword(null,"extend","extend",1836484006),new cljs.core.Keyword(null,"promise","promise",1767129287),new cljs.core.Keyword(null,"spaces?","spaces?",1967773960),new cljs.core.Keyword(null,"pair","pair",-447516312),new cljs.core.Keyword(null,"configured?","configured?",642178633),new cljs.core.Keyword(null,"dbg-ge","dbg-ge",257927017),new cljs.core.Keyword(null,"width","width",-384071477),new cljs.core.Keyword(null,"uneval","uneval",1932037707),new cljs.core.Keyword(null,"fn-name","fn-name",-766594004),new cljs.core.Keyword(null,"color-map","color-map",-207789684),new cljs.core.Keyword(null,"color?","color?",-1891974356),new cljs.core.Keyword(null,"output","output",-1105869043),new cljs.core.Keyword(null,"agent","agent",-766455027),new cljs.core.Keyword(null,"do-in-hang?","do-in-hang?",-1235364947),new cljs.core.Keyword(null,"search-config?","search-config?",-932850546),new cljs.core.Keyword(null,"vector","vector",1902966158),new cljs.core.Keyword(null,"array","array",-2080713842),new cljs.core.Keyword(null,"parse-string-all?","parse-string-all?",-744455473),new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.Keyword(null,"dbg-print?","dbg-print?",-660113872),new cljs.core.Keyword(null,"file?","file?",1755223728),new cljs.core.Keyword(null,"fn-obj","fn-obj",465065936),new cljs.core.Keyword(null,"fn-gt2-force-nl","fn-gt2-force-nl",1348579537),new cljs.core.Keyword(null,"spec","spec",347520401),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"dbg?","dbg?",1845730771),new cljs.core.Keyword(null,"list","list",765357683),new cljs.core.Keyword(null,"trim-comments?","trim-comments?",-1532658667),new cljs.core.Keyword(null,"max-hang-span","max-hang-span",256100693),new cljs.core.Keyword(null,"record","record",-779106859),new cljs.core.Keyword(null,"comment","comment",532206069),new cljs.core.Keyword(null,"parse","parse",-1162164619),new cljs.core.Keyword(null,"cwd-zprintrc?","cwd-zprintrc?",167207541),new cljs.core.Keyword(null,"parse-string?","parse-string?",2006674325),new cljs.core.Keyword(null,"auto-width?","auto-width?",93515862),new cljs.core.Keyword(null,"perf-vs-format","perf-vs-format",-1892061514),new cljs.core.Keyword(null,"style-map","style-map",1488693527),new cljs.core.Keyword(null,"fn-gt3-force-nl","fn-gt3-force-nl",-58306985),new cljs.core.Keyword(null,"process-bang-zprint?","process-bang-zprint?",-1250782024),new cljs.core.Keyword(null,"additional-libraries?","additional-libraries?",-538987431),new cljs.core.Keyword(null,"max-depth","max-depth",127060793),new cljs.core.Keyword(null,"drop?","drop?",-2009514790),new cljs.core.Keyword(null,"set","set",304602554),new cljs.core.Keyword(null,"fn-map","fn-map",565481146),new cljs.core.Keyword(null,"atom","atom",-397043653),new cljs.core.Keyword(null,"tab","tab",-559583621),new cljs.core.Keyword(null,"max-hang-count","max-hang-count",637294812),new cljs.core.Keyword(null,"parallel?","parallel?",-25273892),new cljs.core.Keyword(null,"delay","delay",-574225219),new cljs.core.Keyword(null,"map","map",1371690461),new cljs.core.Keyword(null,"object","object",1474613949),new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058),new cljs.core.Keyword(null,"return-cvec?","return-cvec?",1372433982),new cljs.core.Keyword(null,"zipper?","zipper?",-1061271842)],[true,new cljs.core.Keyword(null,"on","on",173873944),new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"fn-force-nl","fn-force-nl",1501458692),null,new cljs.core.Keyword(null,"fn-gt2-force-nl","fn-gt2-force-nl",1348579537),null,new cljs.core.Keyword(null,"fn-gt3-force-nl","fn-gt3-force-nl",-58306985),null,new cljs.core.Keyword(null,"extend","extend",1836484006),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"modifiers","modifiers",50378834),null], null)], null),(0),(1000),new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"hang-flow","hang-flow",428126548),1.1,new cljs.core.Keyword(null,"hang-type-flow","hang-type-flow",-1585576590),1.5,new cljs.core.Keyword(null,"hang-flow-limit","hang-flow-limit",389146586),(10),new cljs.core.Keyword(null,"general-hang-adjust","general-hang-adjust",-1631406987),(-1),new cljs.core.Keyword(null,"hang-if-equal-flow?","hang-if-equal-flow?",-1113113992),true], null),new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 7, [new cljs.core.Keyword(null,"force-nl","force-nl",-755040826),null,new cljs.core.Keyword(null,"flow","flow",590489032),null,new cljs.core.Keyword(null,"noarg1","noarg1",2031519464),null,new cljs.core.Keyword(null,"noarg1-body","noarg1-body",774553320),null,new cljs.core.Keyword(null,"force-nl-body","force-nl-body",1789087439),null,new cljs.core.Keyword(null,"arg1-force-nl","arg1-force-nl",-945624718),null,new cljs.core.Keyword(null,"flow-body","flow-body",1355242804),null], null), null),(300),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"object?","object?",-1313059217),false], null),"##",cljs.core.PersistentArrayMap.EMPTY,new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"hang-diff","hang-diff",-1575205424),(1),new cljs.core.Keyword(null,"hang-expand","hang-expand",1086807559),2.0,new cljs.core.Keyword(null,"hang-size","hang-size",-347944063),(10),new cljs.core.Keyword(null,"hang?","hang?",-579442854),true], null),new cljs.core.PersistentArrayMap(null, 8, [new cljs.core.Keyword(null,"flow?","flow?",96929057),true,new cljs.core.Keyword(null,"force-nl?","force-nl?",-1299761462),true,new cljs.core.Keyword(null,"hang-diff","hang-diff",-1575205424),(1),new cljs.core.Keyword(null,"hang-expand","hang-expand",1086807559),1000.0,new cljs.core.Keyword(null,"hang?","hang?",-579442854),true,new cljs.core.Keyword(null,"indent","indent",-148200125),(2),new cljs.core.Keyword(null,"modifiers","modifiers",50378834),new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 1, ["static",null], null), null),new cljs.core.Keyword(null,"nl-separator?","nl-separator?",-758068767),false], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"object?","object?",-1313059217),false], null),null,cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"flow?","flow?",96929057),new cljs.core.Keyword(null,"nl-separator?","nl-separator?",-758068767),new cljs.core.Keyword(null,"indent","indent",-148200125),new cljs.core.Keyword(null,"justify?","justify?",294994148),new cljs.core.Keyword(null,"justify-tuning","justify-tuning",-958931675),new cljs.core.Keyword(null,"hang-expand","hang-expand",1086807559),new cljs.core.Keyword(null,"force-nl?","force-nl?",-1299761462),new cljs.core.Keyword(null,"hang-diff","hang-diff",-1575205424),new cljs.core.Keyword(null,"justify-hang","justify-hang",1083292243),new cljs.core.Keyword(null,"hang?","hang?",-579442854)],[false,false,(2),false,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"hang-flow","hang-flow",428126548),(4),new cljs.core.Keyword(null,"hang-flow-limit","hang-flow-limit",389146586),(30)], null),2.0,null,(1),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang-expand","hang-expand",1086807559),(5)], null),true]),false,null,(80),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"color-map","color-map",-207789684),cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"fn","fn",-1175266204),new cljs.core.Keyword(null,"hash-paren","hash-paren",-1158425562),new cljs.core.Keyword(null,"number","number",1570378438),new cljs.core.Keyword(null,"brace","brace",-1705077624),new cljs.core.Keyword(null,"user-fn","user-fn",223976490),new cljs.core.Keyword(null,"uneval","uneval",1932037707),new cljs.core.Keyword(null,"string","string",-1989541586),new cljs.core.Keyword(null,"paren","paren",-294107600),new cljs.core.Keyword(null,"quote","quote",-262615245),new cljs.core.Keyword(null,"keyword","keyword",811389747),new cljs.core.Keyword(null,"syntax-quote-paren","syntax-quote-paren",646342677),new cljs.core.Keyword(null,"nil","nil",99600501),new cljs.core.Keyword(null,"deref","deref",-145586795),new cljs.core.Keyword(null,"bracket","bracket",-600276523),new cljs.core.Keyword(null,"comment","comment",532206069),new cljs.core.Keyword(null,"hash-brace","hash-brace",-1522139685),new cljs.core.Keyword(null,"none","none",1333468478)],[new cljs.core.Keyword(null,"cyan","cyan",1118839274),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"cyan","cyan",1118839274),new cljs.core.Keyword(null,"magenta","magenta",1687937081),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"green","green",-945526839),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449)])], null),null,cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"fn","fn",-1175266204),new cljs.core.Keyword(null,"hash-paren","hash-paren",-1158425562),new cljs.core.Keyword(null,"number","number",1570378438),new cljs.core.Keyword(null,"brace","brace",-1705077624),new cljs.core.Keyword(null,"user-fn","user-fn",223976490),new cljs.core.Keyword(null,"uneval","uneval",1932037707),new cljs.core.Keyword(null,"string","string",-1989541586),new cljs.core.Keyword(null,"paren","paren",-294107600),new cljs.core.Keyword(null,"quote","quote",-262615245),new cljs.core.Keyword(null,"keyword","keyword",811389747),new cljs.core.Keyword(null,"syntax-quote-paren","syntax-quote-paren",646342677),new cljs.core.Keyword(null,"nil","nil",99600501),new cljs.core.Keyword(null,"deref","deref",-145586795),new cljs.core.Keyword(null,"bracket","bracket",-600276523),new cljs.core.Keyword(null,"comment","comment",532206069),new cljs.core.Keyword(null,"hash-brace","hash-brace",-1522139685),new cljs.core.Keyword(null,"none","none",1333468478)],[new cljs.core.Keyword(null,"blue","blue",-622100620),new cljs.core.Keyword(null,"green","green",-945526839),new cljs.core.Keyword(null,"purple","purple",-876021126),new cljs.core.Keyword(null,"red","red",-969428204),new cljs.core.Keyword(null,"black","black",1294279647),new cljs.core.Keyword(null,"magenta","magenta",1687937081),new cljs.core.Keyword(null,"red","red",-969428204),new cljs.core.Keyword(null,"green","green",-945526839),new cljs.core.Keyword(null,"red","red",-969428204),new cljs.core.Keyword(null,"magenta","magenta",1687937081),new cljs.core.Keyword(null,"red","red",-969428204),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"red","red",-969428204),new cljs.core.Keyword(null,"purple","purple",-876021126),new cljs.core.Keyword(null,"green","green",-945526839),new cljs.core.Keyword(null,"red","red",-969428204),new cljs.core.Keyword(null,"black","black",1294279647)]),true,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"focus","focus",234677911),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"zloc?","zloc?",-1457193855),false,new cljs.core.Keyword(null,"surround","surround",2016177296),null], null),new cljs.core.Keyword(null,"lines","lines",-700165781),null,new cljs.core.Keyword(null,"elide","elide",-1239101386),null], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"object?","object?",-1313059217),false], null),true,false,new cljs.core.PersistentArrayMap(null, 7, [new cljs.core.Keyword(null,"indent","indent",-148200125),(1),new cljs.core.Keyword(null,"binding?","binding?",-1071925644),false,new cljs.core.Keyword(null,"option-fn-first","option-fn-first",-1679196201),null,new cljs.core.Keyword(null,"respect-nl?","respect-nl?",604814635),false,new cljs.core.Keyword(null,"wrap-after-multi?","wrap-after-multi?",1010808052),true,new cljs.core.Keyword(null,"wrap-coll?","wrap-coll?",908181571),true,new cljs.core.Keyword(null,"wrap?","wrap?",-1677427054),true], null),new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"hex?","hex?",890937870),false,new cljs.core.Keyword(null,"indent","indent",-148200125),(1),new cljs.core.Keyword(null,"object?","object?",-1313059217),false,new cljs.core.Keyword(null,"wrap?","wrap?",-1677427054),true], null),false,null,null,false,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"object?","object?",-1313059217),false], null),new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"pair-fn","pair-fn",-360146586),null,new cljs.core.Keyword(null,"gt2-force-nl","gt2-force-nl",-1746243317),null,new cljs.core.Keyword(null,"binding","binding",539932593),null], null), null),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"docstring?","docstring?",-1820749410),true,new cljs.core.Keyword(null,"value","value",305978217),null], null),cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"flow?","flow?",96929057),new cljs.core.Keyword(null,"nl-separator?","nl-separator?",-758068767),new cljs.core.Keyword(null,"indent","indent",-148200125),new cljs.core.Keyword(null,"justify?","justify?",294994148),new cljs.core.Keyword(null,"justify-tuning","justify-tuning",-958931675),new cljs.core.Keyword(null,"hang-expand","hang-expand",1086807559),new cljs.core.Keyword(null,"force-nl?","force-nl?",-1299761462),new cljs.core.Keyword(null,"hang-diff","hang-diff",-1575205424),new cljs.core.Keyword(null,"justify-hang","justify-hang",1083292243),new cljs.core.Keyword(null,"hang?","hang?",-579442854)],[false,false,(2),false,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"hang-flow","hang-flow",428126548),(4),new cljs.core.Keyword(null,"hang-flow-limit","hang-flow-limit",389146586),(30)], null),2.0,false,(1),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang-expand","hang-expand",1086807559),(5)], null),true]),null,cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"hang-size","hang-size",-347944063),new cljs.core.Keyword(null,"indent-arg","indent-arg",58691874),new cljs.core.Keyword(null,"constant-pair?","constant-pair?",-1009181437),new cljs.core.Keyword(null,"indent","indent",-148200125),new cljs.core.Keyword(null,"hang-expand","hang-expand",1086807559),new cljs.core.Keyword(null,"pair-hang?","pair-hang?",-492564664),new cljs.core.Keyword(null,"constant-pair-min","constant-pair-min",1245759721),new cljs.core.Keyword(null,"hang-avoid","hang-avoid",-138703568),new cljs.core.Keyword(null,"hang-diff","hang-diff",-1575205424),new cljs.core.Keyword(null,"hang?","hang?",-579442854)],[(100),null,true,(2),2.0,true,(4),0.5,(1),true]),null,(4),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),true,new cljs.core.Keyword(null,"record-type?","record-type?",-1195765660),true,new cljs.core.Keyword(null,"to-string?","to-string?",1452120886),false], null),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"count?","count?",-122202128),false,new cljs.core.Keyword(null,"wrap?","wrap?",-1677427054),true,new cljs.core.Keyword(null,"inline?","inline?",-1674483791),true], null),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"interpose","interpose",576140629),null,new cljs.core.Keyword(null,"left-space","left-space",457574289),new cljs.core.Keyword(null,"drop","drop",364481611)], null),false,false,false,null,cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"pair-nl","pair-nl",-252106299),new cljs.core.Keyword(null,"community","community",1600340198),new cljs.core.Keyword(null,"extend-nl","extend-nl",-757494042),new cljs.core.Keyword(null,"no-hang","no-hang",-667516119),new cljs.core.Keyword(null,"keyword-respect-nl","keyword-respect-nl",1810746249),new cljs.core.Keyword(null,"binding-nl","binding-nl",-1642873971),new cljs.core.Keyword(null,"spec","spec",347520401),new cljs.core.Keyword(null,"map-nl","map-nl",727129906),new cljs.core.Keyword(null,"sort-dependencies","sort-dependencies",-1642412524),new cljs.core.Keyword(null,"all-hang","all-hang",-1243746923),new cljs.core.Keyword(null,"justified","justified",-547284074),new cljs.core.Keyword(null,"how-to-ns","how-to-ns",366186553)],[new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"pair","pair",-447516312),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"indent","indent",-148200125),(0),new cljs.core.Keyword(null,"nl-separator?","nl-separator?",-758068767),true], null)], null),new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"indent","indent",-148200125),(0)], null),new cljs.core.Keyword(null,"fn-map","fn-map",565481146),cljs.core.PersistentHashMap.fromArrays(["map","with-meta","apply","remove","filter","filterv","reduce","assoc","mapv"],[new cljs.core.Keyword(null,"none","none",1333468478),new cljs.core.Keyword(null,"none-body","none-body",-171554854),new cljs.core.Keyword(null,"none","none",1333468478),new cljs.core.Keyword(null,"none","none",1333468478),new cljs.core.Keyword(null,"none","none",1333468478),new cljs.core.Keyword(null,"none","none",1333468478),new cljs.core.Keyword(null,"none","none",1333468478),new cljs.core.Keyword(null,"none","none",1333468478),new cljs.core.Keyword(null,"none","none",1333468478)]),new cljs.core.Keyword(null,"list","list",765357683),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"indent-arg","indent-arg",58691874),(1)], null),new cljs.core.Keyword(null,"map","map",1371690461),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"indent","indent",-148200125),(0)], null),new cljs.core.Keyword(null,"pair","pair",-447516312),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"indent","indent",-148200125),(0)], null)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"extend","extend",1836484006),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"flow?","flow?",96929057),true,new cljs.core.Keyword(null,"indent","indent",-148200125),(0),new cljs.core.Keyword(null,"nl-separator?","nl-separator?",-758068767),true], null)], null),new cljs.core.PersistentArrayMap(null, 7, [new cljs.core.Keyword(null,"map","map",1371690461),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),false], null),new cljs.core.Keyword(null,"list","list",765357683),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),false], null),new cljs.core.Keyword(null,"extend","extend",1836484006),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),false], null),new cljs.core.Keyword(null,"pair","pair",-447516312),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),false], null),new cljs.core.Keyword(null,"pair-fn","pair-fn",-360146586),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),false], null),new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),false], null),new cljs.core.Keyword(null,"record","record",-779106859),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),false], null)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"vector","vector",1902966158),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"option-fn-first","option-fn-first",-1679196201),(function (p1__55787_SHARP_,p2__55786_SHARP_){
-var k_QMARK_ = (p2__55786_SHARP_ instanceof cljs.core.Keyword);
-if(cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(k_QMARK_,new cljs.core.Keyword(null,"respect-nl?","respect-nl?",604814635).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"vector","vector",1902966158).cljs$core$IFn$_invoke$arity$1(p1__55787_SHARP_)))){
+zprint.config.default_zprint_options = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"old?","old?",-1129887872),new cljs.core.Keyword(null,"format","format",-1306924766),new cljs.core.Keyword(null,"remove","remove",-131428414),new cljs.core.Keyword(null,"indent","indent",-148200125),new cljs.core.Keyword(null,"max-length","max-length",-254826109),new cljs.core.Keyword(null,"tuning","tuning",-48660925),new cljs.core.Keyword(null,"fn-force-nl","fn-force-nl",1501458692),new cljs.core.Keyword(null,"max-hang-depth","max-hang-depth",-915232220),new cljs.core.Keyword(null,"future","future",1877842724),new cljs.core.Keyword(null,"max-depth-string","max-depth-string",-474325435),new cljs.core.Keyword(null,"user-fn-map","user-fn-map",-908243227),new cljs.core.Keyword(null,"pair-fn","pair-fn",-360146586),new cljs.core.Keyword(null,"extend","extend",1836484006),new cljs.core.Keyword(null,"promise","promise",1767129287),new cljs.core.Keyword(null,"spaces?","spaces?",1967773960),new cljs.core.Keyword(null,"pair","pair",-447516312),new cljs.core.Keyword(null,"configured?","configured?",642178633),new cljs.core.Keyword(null,"dbg-ge","dbg-ge",257927017),new cljs.core.Keyword(null,"width","width",-384071477),new cljs.core.Keyword(null,"uneval","uneval",1932037707),new cljs.core.Keyword(null,"fn-name","fn-name",-766594004),new cljs.core.Keyword(null,"color-map","color-map",-207789684),new cljs.core.Keyword(null,"color?","color?",-1891974356),new cljs.core.Keyword(null,"output","output",-1105869043),new cljs.core.Keyword(null,"agent","agent",-766455027),new cljs.core.Keyword(null,"do-in-hang?","do-in-hang?",-1235364947),new cljs.core.Keyword(null,"search-config?","search-config?",-932850546),new cljs.core.Keyword(null,"vector","vector",1902966158),new cljs.core.Keyword(null,"array","array",-2080713842),new cljs.core.Keyword(null,"parse-string-all?","parse-string-all?",-744455473),new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.Keyword(null,"dbg-print?","dbg-print?",-660113872),new cljs.core.Keyword(null,"file?","file?",1755223728),new cljs.core.Keyword(null,"fn-obj","fn-obj",465065936),new cljs.core.Keyword(null,"fn-gt2-force-nl","fn-gt2-force-nl",1348579537),new cljs.core.Keyword(null,"spec","spec",347520401),new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.Keyword(null,"dbg?","dbg?",1845730771),new cljs.core.Keyword(null,"list","list",765357683),new cljs.core.Keyword(null,"trim-comments?","trim-comments?",-1532658667),new cljs.core.Keyword(null,"max-hang-span","max-hang-span",256100693),new cljs.core.Keyword(null,"record","record",-779106859),new cljs.core.Keyword(null,"comment","comment",532206069),new cljs.core.Keyword(null,"parse","parse",-1162164619),new cljs.core.Keyword(null,"cwd-zprintrc?","cwd-zprintrc?",167207541),new cljs.core.Keyword(null,"parse-string?","parse-string?",2006674325),new cljs.core.Keyword(null,"auto-width?","auto-width?",93515862),new cljs.core.Keyword(null,"perf-vs-format","perf-vs-format",-1892061514),new cljs.core.Keyword(null,"style-map","style-map",1488693527),new cljs.core.Keyword(null,"fn-gt3-force-nl","fn-gt3-force-nl",-58306985),new cljs.core.Keyword(null,"process-bang-zprint?","process-bang-zprint?",-1250782024),new cljs.core.Keyword(null,"additional-libraries?","additional-libraries?",-538987431),new cljs.core.Keyword(null,"max-depth","max-depth",127060793),new cljs.core.Keyword(null,"drop?","drop?",-2009514790),new cljs.core.Keyword(null,"set","set",304602554),new cljs.core.Keyword(null,"fn-map","fn-map",565481146),new cljs.core.Keyword(null,"atom","atom",-397043653),new cljs.core.Keyword(null,"tab","tab",-559583621),new cljs.core.Keyword(null,"max-hang-count","max-hang-count",637294812),new cljs.core.Keyword(null,"parallel?","parallel?",-25273892),new cljs.core.Keyword(null,"delay","delay",-574225219),new cljs.core.Keyword(null,"map","map",1371690461),new cljs.core.Keyword(null,"object","object",1474613949),new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058),new cljs.core.Keyword(null,"return-cvec?","return-cvec?",1372433982),new cljs.core.Keyword(null,"zipper?","zipper?",-1061271842)],[true,new cljs.core.Keyword(null,"on","on",173873944),new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"fn-force-nl","fn-force-nl",1501458692),null,new cljs.core.Keyword(null,"fn-gt2-force-nl","fn-gt2-force-nl",1348579537),null,new cljs.core.Keyword(null,"fn-gt3-force-nl","fn-gt3-force-nl",-58306985),null,new cljs.core.Keyword(null,"extend","extend",1836484006),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"modifiers","modifiers",50378834),null], null)], null),(0),(1000),new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"hang-flow","hang-flow",428126548),1.1,new cljs.core.Keyword(null,"hang-type-flow","hang-type-flow",-1585576590),1.5,new cljs.core.Keyword(null,"hang-flow-limit","hang-flow-limit",389146586),(10),new cljs.core.Keyword(null,"general-hang-adjust","general-hang-adjust",-1631406987),(-1),new cljs.core.Keyword(null,"hang-if-equal-flow?","hang-if-equal-flow?",-1113113992),true], null),new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 7, [new cljs.core.Keyword(null,"force-nl","force-nl",-755040826),null,new cljs.core.Keyword(null,"flow","flow",590489032),null,new cljs.core.Keyword(null,"noarg1","noarg1",2031519464),null,new cljs.core.Keyword(null,"noarg1-body","noarg1-body",774553320),null,new cljs.core.Keyword(null,"force-nl-body","force-nl-body",1789087439),null,new cljs.core.Keyword(null,"arg1-force-nl","arg1-force-nl",-945624718),null,new cljs.core.Keyword(null,"flow-body","flow-body",1355242804),null], null), null),(300),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"object?","object?",-1313059217),false], null),"##",cljs.core.PersistentArrayMap.EMPTY,new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"hang-diff","hang-diff",-1575205424),(1),new cljs.core.Keyword(null,"hang-expand","hang-expand",1086807559),2.0,new cljs.core.Keyword(null,"hang-size","hang-size",-347944063),(10),new cljs.core.Keyword(null,"hang?","hang?",-579442854),true], null),new cljs.core.PersistentArrayMap(null, 8, [new cljs.core.Keyword(null,"flow?","flow?",96929057),true,new cljs.core.Keyword(null,"force-nl?","force-nl?",-1299761462),true,new cljs.core.Keyword(null,"hang-diff","hang-diff",-1575205424),(1),new cljs.core.Keyword(null,"hang-expand","hang-expand",1086807559),1000.0,new cljs.core.Keyword(null,"hang?","hang?",-579442854),true,new cljs.core.Keyword(null,"indent","indent",-148200125),(2),new cljs.core.Keyword(null,"modifiers","modifiers",50378834),new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 1, ["static",null], null), null),new cljs.core.Keyword(null,"nl-separator?","nl-separator?",-758068767),false], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"object?","object?",-1313059217),false], null),null,cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"flow?","flow?",96929057),new cljs.core.Keyword(null,"nl-separator?","nl-separator?",-758068767),new cljs.core.Keyword(null,"indent","indent",-148200125),new cljs.core.Keyword(null,"justify?","justify?",294994148),new cljs.core.Keyword(null,"justify-tuning","justify-tuning",-958931675),new cljs.core.Keyword(null,"hang-expand","hang-expand",1086807559),new cljs.core.Keyword(null,"force-nl?","force-nl?",-1299761462),new cljs.core.Keyword(null,"hang-diff","hang-diff",-1575205424),new cljs.core.Keyword(null,"justify-hang","justify-hang",1083292243),new cljs.core.Keyword(null,"hang?","hang?",-579442854)],[false,false,(2),false,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"hang-flow","hang-flow",428126548),(4),new cljs.core.Keyword(null,"hang-flow-limit","hang-flow-limit",389146586),(30)], null),2.0,null,(1),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang-expand","hang-expand",1086807559),(5)], null),true]),false,null,(80),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"color-map","color-map",-207789684),cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"fn","fn",-1175266204),new cljs.core.Keyword(null,"hash-paren","hash-paren",-1158425562),new cljs.core.Keyword(null,"number","number",1570378438),new cljs.core.Keyword(null,"brace","brace",-1705077624),new cljs.core.Keyword(null,"user-fn","user-fn",223976490),new cljs.core.Keyword(null,"uneval","uneval",1932037707),new cljs.core.Keyword(null,"string","string",-1989541586),new cljs.core.Keyword(null,"paren","paren",-294107600),new cljs.core.Keyword(null,"quote","quote",-262615245),new cljs.core.Keyword(null,"keyword","keyword",811389747),new cljs.core.Keyword(null,"syntax-quote-paren","syntax-quote-paren",646342677),new cljs.core.Keyword(null,"nil","nil",99600501),new cljs.core.Keyword(null,"deref","deref",-145586795),new cljs.core.Keyword(null,"bracket","bracket",-600276523),new cljs.core.Keyword(null,"comment","comment",532206069),new cljs.core.Keyword(null,"hash-brace","hash-brace",-1522139685),new cljs.core.Keyword(null,"none","none",1333468478)],[new cljs.core.Keyword(null,"cyan","cyan",1118839274),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"cyan","cyan",1118839274),new cljs.core.Keyword(null,"magenta","magenta",1687937081),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"green","green",-945526839),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"yellow","yellow",-881035449)])], null),null,cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"fn","fn",-1175266204),new cljs.core.Keyword(null,"hash-paren","hash-paren",-1158425562),new cljs.core.Keyword(null,"number","number",1570378438),new cljs.core.Keyword(null,"brace","brace",-1705077624),new cljs.core.Keyword(null,"user-fn","user-fn",223976490),new cljs.core.Keyword(null,"uneval","uneval",1932037707),new cljs.core.Keyword(null,"string","string",-1989541586),new cljs.core.Keyword(null,"paren","paren",-294107600),new cljs.core.Keyword(null,"quote","quote",-262615245),new cljs.core.Keyword(null,"keyword","keyword",811389747),new cljs.core.Keyword(null,"syntax-quote-paren","syntax-quote-paren",646342677),new cljs.core.Keyword(null,"nil","nil",99600501),new cljs.core.Keyword(null,"deref","deref",-145586795),new cljs.core.Keyword(null,"bracket","bracket",-600276523),new cljs.core.Keyword(null,"comment","comment",532206069),new cljs.core.Keyword(null,"hash-brace","hash-brace",-1522139685),new cljs.core.Keyword(null,"none","none",1333468478)],[new cljs.core.Keyword(null,"blue","blue",-622100620),new cljs.core.Keyword(null,"green","green",-945526839),new cljs.core.Keyword(null,"purple","purple",-876021126),new cljs.core.Keyword(null,"red","red",-969428204),new cljs.core.Keyword(null,"black","black",1294279647),new cljs.core.Keyword(null,"magenta","magenta",1687937081),new cljs.core.Keyword(null,"red","red",-969428204),new cljs.core.Keyword(null,"green","green",-945526839),new cljs.core.Keyword(null,"red","red",-969428204),new cljs.core.Keyword(null,"magenta","magenta",1687937081),new cljs.core.Keyword(null,"red","red",-969428204),new cljs.core.Keyword(null,"yellow","yellow",-881035449),new cljs.core.Keyword(null,"red","red",-969428204),new cljs.core.Keyword(null,"purple","purple",-876021126),new cljs.core.Keyword(null,"green","green",-945526839),new cljs.core.Keyword(null,"red","red",-969428204),new cljs.core.Keyword(null,"black","black",1294279647)]),true,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"focus","focus",234677911),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"zloc?","zloc?",-1457193855),false,new cljs.core.Keyword(null,"surround","surround",2016177296),null], null),new cljs.core.Keyword(null,"lines","lines",-700165781),null,new cljs.core.Keyword(null,"elide","elide",-1239101386),null], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"object?","object?",-1313059217),false], null),true,false,new cljs.core.PersistentArrayMap(null, 7, [new cljs.core.Keyword(null,"indent","indent",-148200125),(1),new cljs.core.Keyword(null,"binding?","binding?",-1071925644),false,new cljs.core.Keyword(null,"option-fn-first","option-fn-first",-1679196201),null,new cljs.core.Keyword(null,"respect-nl?","respect-nl?",604814635),false,new cljs.core.Keyword(null,"wrap-after-multi?","wrap-after-multi?",1010808052),true,new cljs.core.Keyword(null,"wrap-coll?","wrap-coll?",908181571),true,new cljs.core.Keyword(null,"wrap?","wrap?",-1677427054),true], null),new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"hex?","hex?",890937870),false,new cljs.core.Keyword(null,"indent","indent",-148200125),(1),new cljs.core.Keyword(null,"object?","object?",-1313059217),false,new cljs.core.Keyword(null,"wrap?","wrap?",-1677427054),true], null),false,null,null,false,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"object?","object?",-1313059217),false], null),new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"pair-fn","pair-fn",-360146586),null,new cljs.core.Keyword(null,"gt2-force-nl","gt2-force-nl",-1746243317),null,new cljs.core.Keyword(null,"binding","binding",539932593),null], null), null),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"docstring?","docstring?",-1820749410),true,new cljs.core.Keyword(null,"value","value",305978217),null], null),cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"flow?","flow?",96929057),new cljs.core.Keyword(null,"nl-separator?","nl-separator?",-758068767),new cljs.core.Keyword(null,"indent","indent",-148200125),new cljs.core.Keyword(null,"justify?","justify?",294994148),new cljs.core.Keyword(null,"justify-tuning","justify-tuning",-958931675),new cljs.core.Keyword(null,"hang-expand","hang-expand",1086807559),new cljs.core.Keyword(null,"force-nl?","force-nl?",-1299761462),new cljs.core.Keyword(null,"hang-diff","hang-diff",-1575205424),new cljs.core.Keyword(null,"justify-hang","justify-hang",1083292243),new cljs.core.Keyword(null,"hang?","hang?",-579442854)],[false,false,(2),false,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"hang-flow","hang-flow",428126548),(4),new cljs.core.Keyword(null,"hang-flow-limit","hang-flow-limit",389146586),(30)], null),2.0,false,(1),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang-expand","hang-expand",1086807559),(5)], null),true]),null,cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"hang-size","hang-size",-347944063),new cljs.core.Keyword(null,"indent-arg","indent-arg",58691874),new cljs.core.Keyword(null,"constant-pair?","constant-pair?",-1009181437),new cljs.core.Keyword(null,"indent","indent",-148200125),new cljs.core.Keyword(null,"hang-expand","hang-expand",1086807559),new cljs.core.Keyword(null,"pair-hang?","pair-hang?",-492564664),new cljs.core.Keyword(null,"constant-pair-min","constant-pair-min",1245759721),new cljs.core.Keyword(null,"hang-avoid","hang-avoid",-138703568),new cljs.core.Keyword(null,"hang-diff","hang-diff",-1575205424),new cljs.core.Keyword(null,"hang?","hang?",-579442854)],[(100),null,true,(2),2.0,true,(4),0.5,(1),true]),null,(4),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),true,new cljs.core.Keyword(null,"record-type?","record-type?",-1195765660),true,new cljs.core.Keyword(null,"to-string?","to-string?",1452120886),false], null),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"count?","count?",-122202128),false,new cljs.core.Keyword(null,"wrap?","wrap?",-1677427054),true,new cljs.core.Keyword(null,"inline?","inline?",-1674483791),true], null),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"interpose","interpose",576140629),null,new cljs.core.Keyword(null,"left-space","left-space",457574289),new cljs.core.Keyword(null,"drop","drop",364481611)], null),false,false,false,null,cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"pair-nl","pair-nl",-252106299),new cljs.core.Keyword(null,"community","community",1600340198),new cljs.core.Keyword(null,"extend-nl","extend-nl",-757494042),new cljs.core.Keyword(null,"no-hang","no-hang",-667516119),new cljs.core.Keyword(null,"keyword-respect-nl","keyword-respect-nl",1810746249),new cljs.core.Keyword(null,"binding-nl","binding-nl",-1642873971),new cljs.core.Keyword(null,"spec","spec",347520401),new cljs.core.Keyword(null,"map-nl","map-nl",727129906),new cljs.core.Keyword(null,"sort-dependencies","sort-dependencies",-1642412524),new cljs.core.Keyword(null,"all-hang","all-hang",-1243746923),new cljs.core.Keyword(null,"justified","justified",-547284074),new cljs.core.Keyword(null,"how-to-ns","how-to-ns",366186553)],[new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"pair","pair",-447516312),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"indent","indent",-148200125),(0),new cljs.core.Keyword(null,"nl-separator?","nl-separator?",-758068767),true], null)], null),new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"binding","binding",539932593),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"indent","indent",-148200125),(0)], null),new cljs.core.Keyword(null,"fn-map","fn-map",565481146),cljs.core.PersistentHashMap.fromArrays(["map","with-meta","apply","remove","filter","filterv","reduce","assoc","mapv"],[new cljs.core.Keyword(null,"none","none",1333468478),new cljs.core.Keyword(null,"none-body","none-body",-171554854),new cljs.core.Keyword(null,"none","none",1333468478),new cljs.core.Keyword(null,"none","none",1333468478),new cljs.core.Keyword(null,"none","none",1333468478),new cljs.core.Keyword(null,"none","none",1333468478),new cljs.core.Keyword(null,"none","none",1333468478),new cljs.core.Keyword(null,"none","none",1333468478),new cljs.core.Keyword(null,"none","none",1333468478)]),new cljs.core.Keyword(null,"list","list",765357683),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"indent-arg","indent-arg",58691874),(1)], null),new cljs.core.Keyword(null,"map","map",1371690461),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"indent","indent",-148200125),(0)], null),new cljs.core.Keyword(null,"pair","pair",-447516312),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"indent","indent",-148200125),(0)], null)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"extend","extend",1836484006),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"flow?","flow?",96929057),true,new cljs.core.Keyword(null,"indent","indent",-148200125),(0),new cljs.core.Keyword(null,"nl-separator?","nl-separator?",-758068767),true], null)], null),new cljs.core.PersistentArrayMap(null, 7, [new cljs.core.Keyword(null,"map","map",1371690461),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),false], null),new cljs.core.Keyword(null,"list","list",765357683),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),false], null),new cljs.core.Keyword(null,"extend","extend",1836484006),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),false], null),new cljs.core.Keyword(null,"pair","pair",-447516312),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),false], null),new cljs.core.Keyword(null,"pair-fn","pair-fn",-360146586),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),false], null),new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),false], null),new cljs.core.Keyword(null,"record","record",-779106859),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"hang?","hang?",-579442854),false], null)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"vector","vector",1902966158),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"option-fn-first","option-fn-first",-1679196201),(function (p1__56227_SHARP_,p2__56226_SHARP_){
+var k_QMARK_ = (p2__56226_SHARP_ instanceof cljs.core.Keyword);
+if(cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(k_QMARK_,new cljs.core.Keyword(null,"respect-nl?","respect-nl?",604814635).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"vector","vector",1902966158).cljs$core$IFn$_invoke$arity$1(p1__56227_SHARP_)))){
 return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"vector","vector",1902966158),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"respect-nl?","respect-nl?",604814635),k_QMARK_], null)], null);
 } else {
 return null;
@@ -50,14 +50,14 @@ return val_in_latter;
  */
 zprint.config.merge_deep = (function zprint$config$merge_deep(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___55938 = arguments.length;
-var i__4731__auto___55939 = (0);
+var len__4730__auto___56370 = arguments.length;
+var i__4731__auto___56371 = (0);
 while(true){
-if((i__4731__auto___55939 < len__4730__auto___55938)){
-args__4736__auto__.push((arguments[i__4731__auto___55939]));
+if((i__4731__auto___56371 < len__4730__auto___56370)){
+args__4736__auto__.push((arguments[i__4731__auto___56371]));
 
-var G__55940 = (i__4731__auto___55939 + (1));
-i__4731__auto___55939 = G__55940;
+var G__56373 = (i__4731__auto___56371 + (1));
+i__4731__auto___56371 = G__56373;
 continue;
 } else {
 }
@@ -75,9 +75,9 @@ return cljs.core.apply.cljs$core$IFn$_invoke$arity$3(cljs.core.merge_with,zprint
 zprint.config.merge_deep.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-zprint.config.merge_deep.cljs$lang$applyTo = (function (seq55788){
+zprint.config.merge_deep.cljs$lang$applyTo = (function (seq56234){
 var self__4718__auto__ = this;
-return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq55788));
+return self__4718__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq56234));
 });
 
 /**
@@ -96,14 +96,14 @@ return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"fr
  */
 zprint.config.merge_deep_doc = (function zprint$config$merge_deep_doc(var_args){
 var args__4736__auto__ = [];
-var len__4730__auto___55945 = arguments.length;
-var i__4731__auto___55946 = (0);
+var len__4730__auto___56375 = arguments.length;
+var i__4731__auto___56376 = (0);
 while(true){
-if((i__4731__auto___55946 < len__4730__auto___55945)){
-args__4736__auto__.push((arguments[i__4731__auto___55946]));
+if((i__4731__auto___56376 < len__4730__auto___56375)){
+args__4736__auto__.push((arguments[i__4731__auto___56376]));
 
-var G__55947 = (i__4731__auto___55946 + (1));
-i__4731__auto___55946 = G__55947;
+var G__56377 = (i__4731__auto___56376 + (1));
+i__4731__auto___56376 = G__56377;
 continue;
 } else {
 }
@@ -121,11 +121,11 @@ return cljs.core.apply.cljs$core$IFn$_invoke$arity$3(cljs.core.merge_with,cljs.c
 zprint.config.merge_deep_doc.cljs$lang$maxFixedArity = (1);
 
 /** @this {Function} */
-zprint.config.merge_deep_doc.cljs$lang$applyTo = (function (seq55789){
-var G__55790 = cljs.core.first(seq55789);
-var seq55789__$1 = cljs.core.next(seq55789);
+zprint.config.merge_deep_doc.cljs$lang$applyTo = (function (seq56238){
+var G__56239 = cljs.core.first(seq56238);
+var seq56238__$1 = cljs.core.next(seq56238);
 var self__4717__auto__ = this;
-return self__4717__auto__.cljs$core$IFn$_invoke$arity$variadic(G__55790,seq55789__$1);
+return self__4717__auto__.cljs$core$IFn$_invoke$arity$variadic(G__56239,seq56238__$1);
 });
 
 /**
@@ -136,9 +136,9 @@ zprint.config.remove_key = (function zprint$config$remove_key(m,k){
 if(cljs.core.coll_QMARK_(k)){
 var map_key = cljs.core.first(k);
 var keys_to_remove = cljs.core.next(k);
-return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(m,map_key,(function (){var G__55791 = (m.cljs$core$IFn$_invoke$arity$1 ? m.cljs$core$IFn$_invoke$arity$1(map_key) : m.call(null,map_key));
-var G__55792 = keys_to_remove;
-return (zprint.config.remove_keys.cljs$core$IFn$_invoke$arity$2 ? zprint.config.remove_keys.cljs$core$IFn$_invoke$arity$2(G__55791,G__55792) : zprint.config.remove_keys.call(null,G__55791,G__55792));
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(m,map_key,(function (){var G__56241 = (m.cljs$core$IFn$_invoke$arity$1 ? m.cljs$core$IFn$_invoke$arity$1(map_key) : m.call(null,map_key));
+var G__56242 = keys_to_remove;
+return (zprint.config.remove_keys.cljs$core$IFn$_invoke$arity$2 ? zprint.config.remove_keys.cljs$core$IFn$_invoke$arity$2(G__56241,G__56242) : zprint.config.remove_keys.call(null,G__56241,G__56242));
 })());
 } else {
 return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(m,k);
@@ -148,8 +148,8 @@ return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(m,k);
  * Remove keys from a map at multiple levels.
  */
 zprint.config.remove_keys = (function zprint$config$remove_keys(m,ks){
-return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__55793_SHARP_,p2__55794_SHARP_){
-return zprint.config.remove_key(p1__55793_SHARP_,p2__55794_SHARP_);
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__56243_SHARP_,p2__56244_SHARP_){
+return zprint.config.remove_key(p1__56243_SHARP_,p2__56244_SHARP_);
 }),m,ks);
 });
 /**
@@ -157,16 +157,16 @@ return zprint.config.remove_key(p1__55793_SHARP_,p2__55794_SHARP_);
  */
 zprint.config.key_seq = (function zprint$config$key_seq(m){
 if(cljs.core.map_QMARK_(m)){
-return cljs.core.mapcat.cljs$core$IFn$_invoke$arity$variadic((function (p__55796){
-var vec__55797 = p__55796;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55797,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55797,(1),null);
+return cljs.core.mapcat.cljs$core$IFn$_invoke$arity$variadic((function (p__56247){
+var vec__56248 = p__56247;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56248,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56248,(1),null);
 var ks = (zprint.config.key_seq.cljs$core$IFn$_invoke$arity$1 ? zprint.config.key_seq.cljs$core$IFn$_invoke$arity$1(v) : zprint.config.key_seq.call(null,v));
 if(cljs.core.truth_(ks)){
-return cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (ks,vec__55797,k,v){
-return (function (p1__55795_SHARP_){
-return cljs.core.cons(k,((cljs.core.coll_QMARK_(p1__55795_SHARP_))?p1__55795_SHARP_:new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [p1__55795_SHARP_], null)));
-});})(ks,vec__55797,k,v))
+return cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (ks,vec__56248,k,v){
+return (function (p1__56245_SHARP_){
+return cljs.core.cons(k,((cljs.core.coll_QMARK_(p1__56245_SHARP_))?p1__56245_SHARP_:new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [p1__56245_SHARP_], null)));
+});})(ks,vec__56248,k,v))
 ,ks);
 } else {
 return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [k], null)], null);
@@ -231,8 +231,8 @@ return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"se
  *   in the ks-seq.
  */
 zprint.config.diff_deep_ks = (function zprint$config$diff_deep_ks(doc_string,doc_map,changed_key_seq,existing){
-return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__55800_SHARP_,p2__55801_SHARP_){
-return cljs.core.update_in.cljs$core$IFn$_invoke$arity$4(p1__55800_SHARP_,p2__55801_SHARP_,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(zprint.config.value_set_by,doc_string),cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(existing,p2__55801_SHARP_));
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__56251_SHARP_,p2__56252_SHARP_){
+return cljs.core.update_in.cljs$core$IFn$_invoke$arity$4(p1__56251_SHARP_,p2__56252_SHARP_,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(zprint.config.value_set_by,doc_string),cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(existing,p2__56252_SHARP_));
 }),doc_map,changed_key_seq);
 });
 /**
@@ -251,10 +251,10 @@ return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$2(zprint.config.explaine
  * Do a simple dissoc-in for two levels.  Does not remove the
  *   second map if it is empty.
  */
-zprint.config.dissoc_two = (function zprint$config$dissoc_two(m,p__55802){
-var vec__55803 = p__55802;
-var k1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55803,(0),null);
-var k2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55803,(1),null);
+zprint.config.dissoc_two = (function zprint$config$dissoc_two(m,p__56253){
+var vec__56254 = p__56253;
+var k1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56254,(0),null);
+var k2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56254,(1),null);
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(m,k1,cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.get.cljs$core$IFn$_invoke$arity$2(m,k1),k2));
 });
 /**
@@ -263,16 +263,16 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(m,k1,cljs.core.dissoc.cljs$
  *   it, being smart about things that were set to nil.
  */
 zprint.config.add_calculated_options = (function zprint$config$add_calculated_options(updated_map){
-var G__55806 = updated_map;
-var G__55806__$1 = (cljs.core.truth_(new cljs.core.Keyword(null,"key-order","key-order",-356936372).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"map","map",1371690461).cljs$core$IFn$_invoke$arity$1(updated_map)))?cljs.core.assoc_in(G__55806,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"map","map",1371690461),new cljs.core.Keyword(null,"key-value","key-value",-34906839)], null),cljs.core.zipmap(new cljs.core.Keyword(null,"key-order","key-order",-356936372).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"map","map",1371690461).cljs$core$IFn$_invoke$arity$1(updated_map)),cljs.core.range.cljs$core$IFn$_invoke$arity$0())):G__55806);
-var G__55806__$2 = (((((new cljs.core.Keyword(null,"key-order","key-order",-356936372).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"map","map",1371690461).cljs$core$IFn$_invoke$arity$1(updated_map)) == null)) && ((!((new cljs.core.Keyword(null,"key-value","key-value",-34906839).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"map","map",1371690461).cljs$core$IFn$_invoke$arity$1(updated_map)) == null))))))?zprint.config.dissoc_two(G__55806__$1,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"map","map",1371690461),new cljs.core.Keyword(null,"key-value","key-value",-34906839)], null)):G__55806__$1);
-var G__55806__$3 = (cljs.core.truth_(new cljs.core.Keyword(null,"key-order","key-order",-356936372).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058).cljs$core$IFn$_invoke$arity$1(updated_map)))?cljs.core.assoc_in(G__55806__$2,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058),new cljs.core.Keyword(null,"key-value","key-value",-34906839)], null),cljs.core.zipmap(new cljs.core.Keyword(null,"key-order","key-order",-356936372).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058).cljs$core$IFn$_invoke$arity$1(updated_map)),cljs.core.range.cljs$core$IFn$_invoke$arity$0())):G__55806__$2);
-var G__55806__$4 = (((((new cljs.core.Keyword(null,"key-order","key-order",-356936372).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058).cljs$core$IFn$_invoke$arity$1(updated_map)) == null)) && ((!((new cljs.core.Keyword(null,"key-value","key-value",-34906839).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058).cljs$core$IFn$_invoke$arity$1(updated_map)) == null))))))?zprint.config.dissoc_two(G__55806__$3,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058),new cljs.core.Keyword(null,"key-value","key-value",-34906839)], null)):G__55806__$3);
-var G__55806__$5 = ((cljs.core.not(new cljs.core.Keyword(null,"color?","color?",-1891974356).cljs$core$IFn$_invoke$arity$1(updated_map)))?cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(G__55806__$4,new cljs.core.Keyword(null,"color-map","color-map",-207789684),zprint.config.no_color_map):G__55806__$4);
+var G__56257 = updated_map;
+var G__56257__$1 = (cljs.core.truth_(new cljs.core.Keyword(null,"key-order","key-order",-356936372).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"map","map",1371690461).cljs$core$IFn$_invoke$arity$1(updated_map)))?cljs.core.assoc_in(G__56257,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"map","map",1371690461),new cljs.core.Keyword(null,"key-value","key-value",-34906839)], null),cljs.core.zipmap(new cljs.core.Keyword(null,"key-order","key-order",-356936372).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"map","map",1371690461).cljs$core$IFn$_invoke$arity$1(updated_map)),cljs.core.range.cljs$core$IFn$_invoke$arity$0())):G__56257);
+var G__56257__$2 = (((((new cljs.core.Keyword(null,"key-order","key-order",-356936372).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"map","map",1371690461).cljs$core$IFn$_invoke$arity$1(updated_map)) == null)) && ((!((new cljs.core.Keyword(null,"key-value","key-value",-34906839).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"map","map",1371690461).cljs$core$IFn$_invoke$arity$1(updated_map)) == null))))))?zprint.config.dissoc_two(G__56257__$1,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"map","map",1371690461),new cljs.core.Keyword(null,"key-value","key-value",-34906839)], null)):G__56257__$1);
+var G__56257__$3 = (cljs.core.truth_(new cljs.core.Keyword(null,"key-order","key-order",-356936372).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058).cljs$core$IFn$_invoke$arity$1(updated_map)))?cljs.core.assoc_in(G__56257__$2,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058),new cljs.core.Keyword(null,"key-value","key-value",-34906839)], null),cljs.core.zipmap(new cljs.core.Keyword(null,"key-order","key-order",-356936372).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058).cljs$core$IFn$_invoke$arity$1(updated_map)),cljs.core.range.cljs$core$IFn$_invoke$arity$0())):G__56257__$2);
+var G__56257__$4 = (((((new cljs.core.Keyword(null,"key-order","key-order",-356936372).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058).cljs$core$IFn$_invoke$arity$1(updated_map)) == null)) && ((!((new cljs.core.Keyword(null,"key-value","key-value",-34906839).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058).cljs$core$IFn$_invoke$arity$1(updated_map)) == null))))))?zprint.config.dissoc_two(G__56257__$3,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"reader-cond","reader-cond",-2133265058),new cljs.core.Keyword(null,"key-value","key-value",-34906839)], null)):G__56257__$3);
+var G__56257__$5 = ((cljs.core.not(new cljs.core.Keyword(null,"color?","color?",-1891974356).cljs$core$IFn$_invoke$arity$1(updated_map)))?cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(G__56257__$4,new cljs.core.Keyword(null,"color-map","color-map",-207789684),zprint.config.no_color_map):G__56257__$4);
 if(cljs.core.not(new cljs.core.Keyword(null,"color?","color?",-1891974356).cljs$core$IFn$_invoke$arity$1(updated_map))){
-return cljs.core.assoc_in(G__55806__$5,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"uneval","uneval",1932037707),new cljs.core.Keyword(null,"color-map","color-map",-207789684)], null),zprint.config.no_color_map);
+return cljs.core.assoc_in(G__56257__$5,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"uneval","uneval",1932037707),new cljs.core.Keyword(null,"color-map","color-map",-207789684)], null),zprint.config.no_color_map);
 } else {
-return G__55806__$5;
+return G__56257__$5;
 }
 });
 /**
@@ -280,8 +280,8 @@ return G__55806__$5;
  *   these options already!
  */
 zprint.config.reset_options_BANG_ = (function zprint$config$reset_options_BANG_(var_args){
-var G__55808 = arguments.length;
-switch (G__55808) {
+var G__56259 = arguments.length;
+switch (G__56259) {
 case 2:
 return zprint.config.reset_options_BANG_.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -361,10 +361,10 @@ return zprint.config.default_zprint_options;
  *   and the doc-map as well.  Will throw an exceptino for errors.
  */
 zprint.config.internal_set_options_BANG_ = (function zprint$config$internal_set_options_BANG_(doc_string,doc_map,existing_options,new_options){
-var vec__55813 = (zprint.config.config_and_validate.cljs$core$IFn$_invoke$arity$4 ? zprint.config.config_and_validate.cljs$core$IFn$_invoke$arity$4(doc_string,doc_map,existing_options,new_options) : zprint.config.config_and_validate.call(null,doc_string,doc_map,existing_options,new_options));
-var updated_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55813,(0),null);
-var new_doc_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55813,(1),null);
-var error_vec = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55813,(2),null);
+var vec__56260 = (zprint.config.config_and_validate.cljs$core$IFn$_invoke$arity$4 ? zprint.config.config_and_validate.cljs$core$IFn$_invoke$arity$4(doc_string,doc_map,existing_options,new_options) : zprint.config.config_and_validate.call(null,doc_string,doc_map,existing_options,new_options));
+var updated_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56260,(0),null);
+var new_doc_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56260,(1),null);
+var error_vec = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56260,(2),null);
 if(cljs.core.truth_(error_vec)){
 throw (new Error(["set-options! for ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(doc_string)," found these errors: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(error_vec)].join('')));
 } else {
@@ -381,8 +381,8 @@ return null;
  *   Defaults to true, unusually enough.
  */
 zprint.config.config_configure_all_BANG_ = (function zprint$config$config_configure_all_BANG_(var_args){
-var G__55817 = arguments.length;
-switch (G__55817) {
+var G__56264 = arguments.length;
+switch (G__56264) {
 case 1:
 return zprint.config.config_configure_all_BANG_.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -402,18 +402,18 @@ if(cljs.core.truth_(additional_libraries_QMARK_)){
 } else {
 }
 
-var vec__55818 = (zprint.config.config_and_validate_all.cljs$core$IFn$_invoke$arity$2 ? zprint.config.config_and_validate_all.cljs$core$IFn$_invoke$arity$2(null,null) : zprint.config.config_and_validate_all.call(null,null,null));
-var zprint_options = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55818,(0),null);
-var doc_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55818,(1),null);
-var errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55818,(2),null);
+var vec__56265 = (zprint.config.config_and_validate_all.cljs$core$IFn$_invoke$arity$2 ? zprint.config.config_and_validate_all.cljs$core$IFn$_invoke$arity$2(null,null) : zprint.config.config_and_validate_all.call(null,null,null));
+var zprint_options = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56265,(0),null);
+var doc_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56265,(1),null);
+var errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56265,(2),null);
 if(cljs.core.truth_(errors)){
 return errors;
 } else {
 zprint.config.reset_options_BANG_.cljs$core$IFn$_invoke$arity$2(zprint_options,doc_map);
 
-var G__55823_55969 = new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"configured?","configured?",642178633),true], null);
-var G__55824_55970 = "internal";
-(zprint.config.config_set_options_BANG_.cljs$core$IFn$_invoke$arity$2 ? zprint.config.config_set_options_BANG_.cljs$core$IFn$_invoke$arity$2(G__55823_55969,G__55824_55970) : zprint.config.config_set_options_BANG_.call(null,G__55823_55969,G__55824_55970));
+var G__56268_56414 = new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"configured?","configured?",642178633),true], null);
+var G__56269_56415 = "internal";
+(zprint.config.config_set_options_BANG_.cljs$core$IFn$_invoke$arity$2 ? zprint.config.config_set_options_BANG_.cljs$core$IFn$_invoke$arity$2(G__56268_56414,G__56269_56415) : zprint.config.config_set_options_BANG_.call(null,G__56268_56414,G__56269_56415));
 
 if(cljs.core.truth_(cljs.core.find_ns(new cljs.core.Symbol(null,"clojure.repl","clojure.repl",570897595,null)))){
 zprint.config.internal_set_options_BANG_("REPL execution default",zprint.config.get_explained_all_options(),zprint.config.get_options(),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"parallel?","parallel?",-25273892),true], null));
@@ -435,8 +435,8 @@ zprint.config.config_configure_all_BANG_.cljs$lang$maxFixedArity = 1;
  *   sure that they are correct.
  */
 zprint.config.config_set_options_BANG_ = (function zprint$config$config_set_options_BANG_(var_args){
-var G__55828 = arguments.length;
-switch (G__55828) {
+var G__56271 = arguments.length;
+switch (G__56271) {
 case 2:
 return zprint.config.config_set_options_BANG_.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -453,10 +453,10 @@ throw (new Error(["Invalid arity: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(
 
 zprint.config.config_set_options_BANG_.cljs$core$IFn$_invoke$arity$2 = (function (new_options,doc_str){
 if(((cljs.core.not(new cljs.core.Keyword(null,"configured?","configured?",642178633).cljs$core$IFn$_invoke$arity$1(zprint.config.get_options()))) && (cljs.core.not(new cljs.core.Keyword(null,"configured?","configured?",642178633).cljs$core$IFn$_invoke$arity$1(new_options))))){
-var additional_libraries_existing_QMARK__55972 = new cljs.core.Keyword(null,"additional-libraries?","additional-libraries?",-538987431).cljs$core$IFn$_invoke$arity$1(zprint.config.get_options());
-var additional_libraries_new_QMARK__55973 = cljs.core.get.cljs$core$IFn$_invoke$arity$3(new_options,new cljs.core.Keyword(null,"additional-libraries?","additional-libraries?",-538987431),new cljs.core.Keyword(null,"not-found","not-found",-629079980));
-var additional_libraries_QMARK__55974 = ((cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(additional_libraries_new_QMARK__55973,new cljs.core.Keyword(null,"not-found","not-found",-629079980)))?additional_libraries_new_QMARK__55973:additional_libraries_existing_QMARK__55972);
-zprint.config.config_configure_all_BANG_.cljs$core$IFn$_invoke$arity$1(additional_libraries_QMARK__55974);
+var additional_libraries_existing_QMARK__56422 = new cljs.core.Keyword(null,"additional-libraries?","additional-libraries?",-538987431).cljs$core$IFn$_invoke$arity$1(zprint.config.get_options());
+var additional_libraries_new_QMARK__56423 = cljs.core.get.cljs$core$IFn$_invoke$arity$3(new_options,new cljs.core.Keyword(null,"additional-libraries?","additional-libraries?",-538987431),new cljs.core.Keyword(null,"not-found","not-found",-629079980));
+var additional_libraries_QMARK__56424 = ((cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(additional_libraries_new_QMARK__56423,new cljs.core.Keyword(null,"not-found","not-found",-629079980)))?additional_libraries_new_QMARK__56423:additional_libraries_existing_QMARK__56422);
+zprint.config.config_configure_all_BANG_.cljs$core$IFn$_invoke$arity$1(additional_libraries_QMARK__56424);
 } else {
 }
 
@@ -475,8 +475,8 @@ zprint.config.config_set_options_BANG_.cljs$lang$maxFixedArity = 2;
  *   processing.
  */
 zprint.config.build_key_seq_set = (function zprint$config$build_key_seq_set(options){
-return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentHashSet.EMPTY,cljs.core.remove.cljs$core$IFn$_invoke$arity$2((function (p1__55829_SHARP_){
-return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.first(p1__55829_SHARP_),new cljs.core.Keyword(null,"fn-map","fn-map",565481146));
+return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentHashSet.EMPTY,cljs.core.remove.cljs$core$IFn$_invoke$arity$2((function (p1__56272_SHARP_){
+return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.first(p1__56272_SHARP_),new cljs.core.Keyword(null,"fn-map","fn-map",565481146));
 }),cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.vec,zprint.config.key_seq(options))));
 });
 zprint.config.allowed_key_set = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(null);
@@ -516,21 +516,21 @@ return empty_seq;
 zprint.config.separate_fn_map_options = (function zprint$config$separate_fn_map_options(options){
 var fn_map = new cljs.core.Keyword(null,"fn-map","fn-map",565481146).cljs$core$IFn$_invoke$arity$1(options);
 var fns_w_options = cljs.core.filter.cljs$core$IFn$_invoke$arity$2(((function (fn_map){
-return (function (p1__55830_SHARP_){
-return cljs.core.vector_QMARK_(cljs.core.second(p1__55830_SHARP_));
+return (function (p1__56273_SHARP_){
+return cljs.core.vector_QMARK_(cljs.core.second(p1__56273_SHARP_));
 });})(fn_map))
 ,fn_map);
 if(cljs.core.empty_QMARK_(fns_w_options)){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [options,null], null);
 } else {
 var new_fn_map = cljs.core.apply.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc,fn_map,cljs.core.mapcat.cljs$core$IFn$_invoke$arity$variadic(((function (fn_map,fns_w_options){
-return (function (p1__55831_SHARP_){
-return (new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.first(p1__55831_SHARP_),cljs.core.first(cljs.core.second(p1__55831_SHARP_))],null));
+return (function (p1__56274_SHARP_){
+return (new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.first(p1__56274_SHARP_),cljs.core.first(cljs.core.second(p1__56274_SHARP_))],null));
 });})(fn_map,fns_w_options))
 ,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([fns_w_options], 0)));
 var fn_option_pairs = cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (new_fn_map,fn_map,fns_w_options){
-return (function (p1__55832_SHARP_){
-return (new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.first(p1__55832_SHARP_),cljs.core.second(cljs.core.second(p1__55832_SHARP_))],null));
+return (function (p1__56275_SHARP_){
+return (new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.first(p1__56275_SHARP_),cljs.core.second(cljs.core.second(p1__56275_SHARP_))],null));
 });})(new_fn_map,fn_map,fns_w_options))
 ,fns_w_options);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(options,new cljs.core.Keyword(null,"fn-map","fn-map",565481146),new_fn_map),fn_option_pairs], null);
@@ -542,10 +542,10 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
  */
 zprint.config.validate_fn_option_pairs = (function zprint$config$validate_fn_option_pairs(fn_option_pairs){
 if((!(cljs.core.empty_QMARK_(fn_option_pairs)))){
-var error_seq = cljs.core.mapv.cljs$core$IFn$_invoke$arity$2((function (p1__55833_SHARP_){
-var G__55834 = cljs.core.second(p1__55833_SHARP_);
-var G__55835 = [":fn-map, in the options map assocated with the function: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.first(p1__55833_SHARP_))].join('');
-return (zprint.config.validate_options.cljs$core$IFn$_invoke$arity$2 ? zprint.config.validate_options.cljs$core$IFn$_invoke$arity$2(G__55834,G__55835) : zprint.config.validate_options.call(null,G__55834,G__55835));
+var error_seq = cljs.core.mapv.cljs$core$IFn$_invoke$arity$2((function (p1__56276_SHARP_){
+var G__56277 = cljs.core.second(p1__56276_SHARP_);
+var G__56278 = [":fn-map, in the options map assocated with the function: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.first(p1__56276_SHARP_))].join('');
+return (zprint.config.validate_options.cljs$core$IFn$_invoke$arity$2 ? zprint.config.validate_options.cljs$core$IFn$_invoke$arity$2(G__56277,G__56278) : zprint.config.validate_options.call(null,G__56277,G__56278));
 }),fn_option_pairs);
 var error_seq__$1 = cljs.core.remove.cljs$core$IFn$_invoke$arity$2(cljs.core.nil_QMARK_,error_seq);
 var error_string = cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.str,cljs.core.interpose.cljs$core$IFn$_invoke$arity$2(", ",error_seq__$1));
@@ -564,8 +564,8 @@ return null;
  *   for success, a string with error(s) if not.
  */
 zprint.config.validate_options = (function zprint$config$validate_options(var_args){
-var G__55838 = arguments.length;
-switch (G__55838) {
+var G__56281 = arguments.length;
+switch (G__56281) {
 case 2:
 return zprint.config.validate_options.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -581,14 +581,14 @@ throw (new Error(["Invalid arity: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(
 });
 
 zprint.config.validate_options.cljs$core$IFn$_invoke$arity$2 = (function (options,source_str){
-var vec__55839 = zprint.config.separate_fn_map_options(options);
-var options__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55839,(0),null);
-var fn_option_pairs = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55839,(1),null);
+var vec__56282 = zprint.config.separate_fn_map_options(options);
+var options__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56282,(0),null);
+var fn_option_pairs = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56282,(1),null);
 if(cljs.core.truth_(options__$1)){
-return zprint.config.empty_to_nil(cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.str,cljs.core.interpose.cljs$core$IFn$_invoke$arity$2(", ",cljs.core.remove.cljs$core$IFn$_invoke$arity$2(((function (vec__55839,options__$1,fn_option_pairs){
-return (function (p1__55836_SHARP_){
-return (((p1__55836_SHARP_ == null)) || (cljs.core.empty_QMARK_(p1__55836_SHARP_)));
-});})(vec__55839,options__$1,fn_option_pairs))
+return zprint.config.empty_to_nil(cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.str,cljs.core.interpose.cljs$core$IFn$_invoke$arity$2(", ",cljs.core.remove.cljs$core$IFn$_invoke$arity$2(((function (vec__56282,options__$1,fn_option_pairs){
+return (function (p1__56279_SHARP_){
+return (((p1__56279_SHARP_ == null)) || (cljs.core.empty_QMARK_(p1__56279_SHARP_)));
+});})(vec__56282,options__$1,fn_option_pairs))
 ,cljs.core.conj.cljs$core$IFn$_invoke$arity$variadic(cljs.core.PersistentVector.EMPTY,zprint.spec.validate_basic.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(options__$1,new cljs.core.Keyword(null,"style-map","style-map",1488693527)),source_str),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([(cljs.core.truth_(fn_option_pairs)?zprint.config.validate_fn_option_pairs(fn_option_pairs):null),(cljs.core.truth_(new cljs.core.Keyword(null,"style-map","style-map",1488693527).cljs$core$IFn$_invoke$arity$1(options__$1))?(zprint.config.validate_style_map.cljs$core$IFn$_invoke$arity$1 ? zprint.config.validate_style_map.cljs$core$IFn$_invoke$arity$1(options__$1) : zprint.config.validate_style_map.call(null,options__$1)):null)], 0))))));
 } else {
 return null;
@@ -614,8 +614,8 @@ return zprint.config.validate_options.cljs$core$IFn$_invoke$arity$2(style_option
  *   Return an error string with any errors.
  */
 zprint.config.validate_style_map = (function zprint$config$validate_style_map(options){
-var error_seq = cljs.core.mapv.cljs$core$IFn$_invoke$arity$2((function (p1__55842_SHARP_){
-return zprint.config.validate_style(cljs.core.first(p1__55842_SHARP_),cljs.core.second(p1__55842_SHARP_));
+var error_seq = cljs.core.mapv.cljs$core$IFn$_invoke$arity$2((function (p1__56285_SHARP_){
+return zprint.config.validate_style(cljs.core.first(p1__56285_SHARP_),cljs.core.second(p1__56285_SHARP_));
 }),new cljs.core.Keyword(null,"style-map","style-map",1488693527).cljs$core$IFn$_invoke$arity$1(options));
 var error_seq__$1 = cljs.core.remove.cljs$core$IFn$_invoke$arity$2(cljs.core.nil_QMARK_,error_seq);
 var error_str = cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.str,cljs.core.interpose.cljs$core$IFn$_invoke$arity$2(", ",error_seq__$1));
@@ -630,11 +630,11 @@ return error_str;
  *   and produce a new [existing-map doc-map error-str] from the style defined
  *   in the existing map.
  */
-zprint.config.apply_one_style = (function zprint$config$apply_one_style(doc_string,p__55843,style_name){
-var vec__55844 = p__55843;
-var existing_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55844,(0),null);
-var doc_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55844,(1),null);
-var error_str = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55844,(2),null);
+zprint.config.apply_one_style = (function zprint$config$apply_one_style(doc_string,p__56286,style_name){
+var vec__56287 = p__56286;
+var existing_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56287,(0),null);
+var doc_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56287,(1),null);
+var error_str = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56287,(2),null);
 if(((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(style_name,new cljs.core.Keyword(null,"not-specified","not-specified",1542080231))) || ((style_name == null)))){
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [existing_map,doc_map,null], null);
 } else {
@@ -669,8 +669,8 @@ return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(cljs.core.partial.cljs$cor
  *   them exist, which is fine if optional? is truthy.
  */
 zprint.config.get_config_from_file = (function zprint$config$get_config_from_file(var_args){
-var G__55848 = arguments.length;
-switch (G__55848) {
+var G__56296 = arguments.length;
+switch (G__56296) {
 case 2:
 return zprint.config.get_config_from_file.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -703,8 +703,8 @@ zprint.config.get_config_from_file.cljs$lang$maxFixedArity = 2;
 zprint.config.get_config_from_path = (function zprint$config$get_config_from_path(filename_vec,file_sep,dir_vec){
 var dirspec = cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.str,cljs.core.interpose.cljs$core$IFn$_invoke$arity$2(file_sep,dir_vec));
 var config_vec = cljs.core.some(((function (dirspec){
-return (function (p1__55849_SHARP_){
-return zprint.config.get_config_from_file.cljs$core$IFn$_invoke$arity$2(p1__55849_SHARP_,new cljs.core.Keyword(null,"optional","optional",2053951509));
+return (function (p1__56297_SHARP_){
+return zprint.config.get_config_from_file.cljs$core$IFn$_invoke$arity$2(p1__56297_SHARP_,new cljs.core.Keyword(null,"optional","optional",2053951509));
 });})(dirspec))
 ,cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$3(cljs.core.str,dirspec,file_sep),filename_vec));
 return config_vec;
@@ -745,7 +745,7 @@ zprint.config.get_config_from_map = (function zprint$config$get_config_from_map(
 if(cljs.core.truth_(map_string)){
 try{var opts_map = cljs.reader.read_string.cljs$core$IFn$_invoke$arity$1(map_string);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [opts_map,null], null);
-}catch (e55850){var e = e55850;
+}catch (e56298){var e = e56298;
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [null,["Unable to read configuration from map",cljs.core.str.cljs$core$IFn$_invoke$arity$1(map_string)," because ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(e)].join('')], null);
 }} else {
 return null;
@@ -775,10 +775,10 @@ return false;
  * Return true if a sequence starts with another sequence.
  */
 zprint.config.starts_with_QMARK_ = (function zprint$config$starts_with_QMARK_(coll,seq){
-return cljs.core.reduce.cljs$core$IFn$_invoke$arity$2((function (p1__55851_SHARP_,p2__55852_SHARP_){
-var and__4120__auto__ = p1__55851_SHARP_;
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$2((function (p1__56299_SHARP_,p2__56300_SHARP_){
+var and__4120__auto__ = p1__56299_SHARP_;
 if(cljs.core.truth_(and__4120__auto__)){
-return p2__55852_SHARP_;
+return p2__56300_SHARP_;
 } else {
 return and__4120__auto__;
 }
@@ -792,18 +792,18 @@ return and__4120__auto__;
 zprint.config.build_fn_map_update = (function zprint$config$build_fn_map_update(m){
 var mapseq = cljs.core.seq(m);
 var fn_map_entries = cljs.core.filter.cljs$core$IFn$_invoke$arity$2(((function (mapseq){
-return (function (p1__55853_SHARP_){
-return zprint.config.starts_with_QMARK_(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"zprint","zprint",1501225152),new cljs.core.Keyword(null,"fn-map","fn-map",565481146)], null),cljs.core.first(p1__55853_SHARP_));
+return (function (p1__56302_SHARP_){
+return zprint.config.starts_with_QMARK_(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"zprint","zprint",1501225152),new cljs.core.Keyword(null,"fn-map","fn-map",565481146)], null),cljs.core.first(p1__56302_SHARP_));
 });})(mapseq))
 ,mapseq);
 var fn_map_keys = cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (mapseq,fn_map_entries){
-return (function (p1__55854_SHARP_){
-return cljs.core.name(cljs.core.nth.cljs$core$IFn$_invoke$arity$2(cljs.core.first(p1__55854_SHARP_),(2)));
+return (function (p1__56303_SHARP_){
+return cljs.core.name(cljs.core.nth.cljs$core$IFn$_invoke$arity$2(cljs.core.first(p1__56303_SHARP_),(2)));
 });})(mapseq,fn_map_entries))
 ,fn_map_entries);
 var fn_map_vals = cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (mapseq,fn_map_entries,fn_map_keys){
-return (function (p1__55855_SHARP_){
-return cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(cljs.core.second(p1__55855_SHARP_));
+return (function (p1__56304_SHARP_){
+return cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(cljs.core.second(p1__56304_SHARP_));
 });})(mapseq,fn_map_entries,fn_map_keys))
 ,fn_map_entries);
 return cljs.core.zipmap(fn_map_keys,fn_map_vals);
@@ -825,10 +825,10 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(options,new cljs.core.Keywo
  * If a particular key-path exists in an existing map, replace it
  *   with a new key-path.  The existing key-path can have a nil value.
  */
-zprint.config.replace_existing = (function zprint$config$replace_existing(existing,p__55856){
-var vec__55857 = p__55856;
-var k_path = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55857,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55857,(1),null);
+zprint.config.replace_existing = (function zprint$config$replace_existing(existing,p__56309){
+var vec__56310 = p__56309;
+var k_path = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56310,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56310,(1),null);
 if(((cljs.core.seq(k_path)) && (cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.get_in.cljs$core$IFn$_invoke$arity$3(existing,k_path,new cljs.core.Keyword(null,"not-present","not-present",125254321)),new cljs.core.Keyword(null,"not-present","not-present",125254321))))){
 return cljs.core.assoc_in(existing,k_path,v);
 } else {
@@ -850,14 +850,14 @@ return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(zprint.config.replace_exis
 zprint.config.config_and_validate = (function zprint$config$config_and_validate(doc_string,doc_map,existing_map,new_map){
 if(cljs.core.truth_(new_map)){
 var errors = zprint.config.validate_options.cljs$core$IFn$_invoke$arity$2(new_map,doc_string);
-var vec__55860 = zprint.config.perform_remove(doc_string,doc_map,existing_map,new_map);
-var existing_map__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55860,(0),null);
-var new_map__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55860,(1),null);
-var new_doc_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55860,(2),null);
-var vec__55863 = zprint.config.apply_style(doc_string,new_doc_map,existing_map__$1,new_map__$1);
-var updated_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55863,(0),null);
-var new_doc_map__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55863,(1),null);
-var style_errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55863,(2),null);
+var vec__56313 = zprint.config.perform_remove(doc_string,doc_map,existing_map,new_map);
+var existing_map__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56313,(0),null);
+var new_map__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56313,(1),null);
+var new_doc_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56313,(2),null);
+var vec__56316 = zprint.config.apply_style(doc_string,new_doc_map,existing_map__$1,new_map__$1);
+var updated_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56316,(0),null);
+var new_doc_map__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56316,(1),null);
+var style_errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56316,(2),null);
 var errors__$1 = (cljs.core.truth_(style_errors)?[cljs.core.str.cljs$core$IFn$_invoke$arity$1(errors)," ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(style_errors)].join(''):errors);
 var new_updated_map = zprint.config.merge_deep.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([updated_map,new_map__$1], 0));
 var new_doc_map__$2 = zprint.config.diff_deep_ks(doc_string,new_doc_map__$1,zprint.config.key_seq(new_map__$1),new_updated_map);
@@ -881,41 +881,41 @@ var default_doc_map = zprint.config.get_default_explained_all_options();
 var home = null;
 var file_separator = null;
 var zprintrc_file = [home,file_separator,zprint.config.zprintrc].join('');
-var vec__55866 = (cljs.core.truth_((function (){var and__4120__auto__ = home;
+var vec__56321 = (cljs.core.truth_((function (){var and__4120__auto__ = home;
 if(cljs.core.truth_(and__4120__auto__)){
 return file_separator;
 } else {
 return and__4120__auto__;
 }
 })())?zprint.config.get_config_from_path(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [zprint.config.zprintrc,zprint.config.zprintedn], null),file_separator,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [home], null)):null);
-var opts_rcfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55866,(0),null);
-var errors_rcfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55866,(1),null);
-var rc_filename = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55866,(2),null);
-var home_config = vec__55866;
-var vec__55869 = zprint.config.config_and_validate(["Home directory file: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(rc_filename)].join(''),default_doc_map,default_map,opts_rcfile);
-var updated_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55869,(0),null);
-var new_doc_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55869,(1),null);
-var rc_errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55869,(2),null);
-var vec__55872 = (cljs.core.truth_((function (){var and__4120__auto__ = new cljs.core.Keyword(null,"search-config?","search-config?",-932850546).cljs$core$IFn$_invoke$arity$1(updated_map);
+var opts_rcfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56321,(0),null);
+var errors_rcfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56321,(1),null);
+var rc_filename = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56321,(2),null);
+var home_config = vec__56321;
+var vec__56324 = zprint.config.config_and_validate(["Home directory file: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(rc_filename)].join(''),default_doc_map,default_map,opts_rcfile);
+var updated_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56324,(0),null);
+var new_doc_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56324,(1),null);
+var rc_errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56324,(2),null);
+var vec__56327 = (cljs.core.truth_((function (){var and__4120__auto__ = new cljs.core.Keyword(null,"search-config?","search-config?",-932850546).cljs$core$IFn$_invoke$arity$1(updated_map);
 if(cljs.core.truth_(and__4120__auto__)){
 return file_separator;
 } else {
 return and__4120__auto__;
 }
 })())?zprint.config.scan_up_dir_tree(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [zprint.config.zprintrc,zprint.config.zprintedn], null),file_separator):null);
-var search_rcfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55872,(0),null);
-var search_errors_rcfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55872,(1),null);
-var search_filename = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55872,(2),null);
-var search_config = vec__55872;
-var vec__55875 = ((cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(home_config,search_config))?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [search_rcfile,search_errors_rcfile,search_filename], null):null);
-var search_rcfile__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55875,(0),null);
-var search_errors_rcfile__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55875,(1),null);
-var search_filename__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55875,(2),null);
-var vec__55878 = zprint.config.config_and_validate([":search-config? file: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(search_filename__$1)].join(''),new_doc_map,updated_map,search_rcfile__$1);
-var search_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55878,(0),null);
-var search_doc_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55878,(1),null);
-var search_rc_errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55878,(2),null);
-var vec__55881 = (cljs.core.truth_((function (){var and__4120__auto__ = cljs.core.not(new cljs.core.Keyword(null,"search-config?","search-config?",-932850546).cljs$core$IFn$_invoke$arity$1(updated_map));
+var search_rcfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56327,(0),null);
+var search_errors_rcfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56327,(1),null);
+var search_filename = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56327,(2),null);
+var search_config = vec__56327;
+var vec__56330 = ((cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(home_config,search_config))?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [search_rcfile,search_errors_rcfile,search_filename], null):null);
+var search_rcfile__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56330,(0),null);
+var search_errors_rcfile__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56330,(1),null);
+var search_filename__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56330,(2),null);
+var vec__56333 = zprint.config.config_and_validate([":search-config? file: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(search_filename__$1)].join(''),new_doc_map,updated_map,search_rcfile__$1);
+var search_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56333,(0),null);
+var search_doc_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56333,(1),null);
+var search_rc_errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56333,(2),null);
+var vec__56336 = (cljs.core.truth_((function (){var and__4120__auto__ = cljs.core.not(new cljs.core.Keyword(null,"search-config?","search-config?",-932850546).cljs$core$IFn$_invoke$arity$1(updated_map));
 if(and__4120__auto__){
 var and__4120__auto____$1 = new cljs.core.Keyword(null,"cwd-zprintrc?","cwd-zprintrc?",167207541).cljs$core$IFn$_invoke$arity$1(search_map);
 if(cljs.core.truth_(and__4120__auto____$1)){
@@ -927,54 +927,54 @@ return and__4120__auto____$1;
 return and__4120__auto__;
 }
 })())?zprint.config.get_config_from_path(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [zprint.config.zprintrc,zprint.config.zprintedn], null),file_separator,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["."], null)):null);
-var cwd_rcfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55881,(0),null);
-var cwd_errors_rcfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55881,(1),null);
-var cwd_filename = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55881,(2),null);
-var vec__55884 = zprint.config.config_and_validate([":cwd-zprintrc? file: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cwd_filename)].join(''),search_doc_map,search_map,cwd_rcfile);
-var cwd_updated_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55884,(0),null);
-var cwd_new_doc_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55884,(1),null);
-var cwd_rc_errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55884,(2),null);
+var cwd_rcfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56336,(0),null);
+var cwd_errors_rcfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56336,(1),null);
+var cwd_filename = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56336,(2),null);
+var vec__56339 = zprint.config.config_and_validate([":cwd-zprintrc? file: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cwd_filename)].join(''),search_doc_map,search_map,cwd_rcfile);
+var cwd_updated_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56339,(0),null);
+var cwd_new_doc_map = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56339,(1),null);
+var cwd_rc_errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56339,(2),null);
 var read_system_env_fn = null;
 var env_map = (cljs.core.truth_(read_system_env_fn)?(read_system_env_fn.cljs$core$IFn$_invoke$arity$0 ? read_system_env_fn.cljs$core$IFn$_invoke$arity$0() : read_system_env_fn.call(null)):null);
 var env_and_default_map = zprint.config.merge_existing(new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"zprint","zprint",1501225152),default_map], null),env_map);
 var new_env_map = zprint.config.diff_map(default_map,new cljs.core.Keyword(null,"zprint","zprint",1501225152).cljs$core$IFn$_invoke$arity$1(env_and_default_map));
 var new_env_map__$1 = zprint.config.update_fn_map(new_env_map,env_map);
 var new_env_map__$2 = zprint.config.map_leaves(zprint.config.strtf__GT_boolean,new_env_map__$1);
-var vec__55887 = zprint.config.config_and_validate("Environment variable",cwd_new_doc_map,cwd_updated_map,new_env_map__$2);
-var updated_map__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55887,(0),null);
-var new_doc_map__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55887,(1),null);
-var env_errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55887,(2),null);
+var vec__56342 = zprint.config.config_and_validate("Environment variable",cwd_new_doc_map,cwd_updated_map,new_env_map__$2);
+var updated_map__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56342,(0),null);
+var new_doc_map__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56342,(1),null);
+var env_errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56342,(2),null);
 var read_system_props_fn = null;
 var prop_map = (cljs.core.truth_(read_system_props_fn)?(read_system_props_fn.cljs$core$IFn$_invoke$arity$0 ? read_system_props_fn.cljs$core$IFn$_invoke$arity$0() : read_system_props_fn.call(null)):null);
 var prop_and_default_map = zprint.config.merge_existing(new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"zprint","zprint",1501225152),default_map], null),prop_map);
 var new_prop_map = zprint.config.diff_map(default_map,new cljs.core.Keyword(null,"zprint","zprint",1501225152).cljs$core$IFn$_invoke$arity$1(prop_and_default_map));
 var new_prop_map__$1 = zprint.config.update_fn_map(new_prop_map,prop_map);
 var new_prop_map__$2 = zprint.config.map_leaves(zprint.config.strtf__GT_boolean,new_prop_map__$1);
-var vec__55890 = zprint.config.config_and_validate("System property",new_doc_map__$1,updated_map__$1,new_prop_map__$2);
-var updated_map__$2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55890,(0),null);
-var new_doc_map__$2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55890,(1),null);
-var prop_errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55890,(2),null);
+var vec__56345 = zprint.config.config_and_validate("System property",new_doc_map__$1,updated_map__$1,new_prop_map__$2);
+var updated_map__$2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56345,(0),null);
+var new_doc_map__$2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56345,(1),null);
+var prop_errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56345,(2),null);
 var config_filename = null;
-var vec__55893 = (cljs.core.truth_(config_filename)?zprint.config.get_config_from_file.cljs$core$IFn$_invoke$arity$1(config_filename):null);
-var opts_configfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55893,(0),null);
-var errors_configfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55893,(1),null);
-var config_filename__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55893,(2),null);
-var vec__55896 = zprint.config.config_and_validate(["Config file: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(config_filename__$1)].join(''),new_doc_map__$2,updated_map__$2,opts_configfile);
-var updated_map__$3 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55896,(0),null);
-var new_doc_map__$3 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55896,(1),null);
-var config_errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55896,(2),null);
-var vec__55899 = zprint.config.get_config_from_map(new cljs.core.Keyword(null,"config-map","config-map",807193777).cljs$core$IFn$_invoke$arity$1(cli_opts));
-var opts_configmap = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55899,(0),null);
-var errors_configmap = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55899,(1),null);
-var vec__55902 = zprint.config.config_and_validate(["Config map:",cljs.core.str.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"config-map","config-map",807193777).cljs$core$IFn$_invoke$arity$1(cli_opts))].join(''),new_doc_map__$3,updated_map__$3,opts_configmap);
-var updated_map__$4 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55902,(0),null);
-var new_doc_map__$4 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55902,(1),null);
-var config_errors__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55902,(2),null);
+var vec__56348 = (cljs.core.truth_(config_filename)?zprint.config.get_config_from_file.cljs$core$IFn$_invoke$arity$1(config_filename):null);
+var opts_configfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56348,(0),null);
+var errors_configfile = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56348,(1),null);
+var config_filename__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56348,(2),null);
+var vec__56351 = zprint.config.config_and_validate(["Config file: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(config_filename__$1)].join(''),new_doc_map__$2,updated_map__$2,opts_configfile);
+var updated_map__$3 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56351,(0),null);
+var new_doc_map__$3 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56351,(1),null);
+var config_errors = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56351,(2),null);
+var vec__56354 = zprint.config.get_config_from_map(new cljs.core.Keyword(null,"config-map","config-map",807193777).cljs$core$IFn$_invoke$arity$1(cli_opts));
+var opts_configmap = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56354,(0),null);
+var errors_configmap = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56354,(1),null);
+var vec__56357 = zprint.config.config_and_validate(["Config map:",cljs.core.str.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"config-map","config-map",807193777).cljs$core$IFn$_invoke$arity$1(cli_opts))].join(''),new_doc_map__$3,updated_map__$3,opts_configmap);
+var updated_map__$4 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56357,(0),null);
+var new_doc_map__$4 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56357,(1),null);
+var config_errors__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56357,(2),null);
 var opts_cli = cljs.core.select_keys(cli_opts,zprint.config.zprint_keys);
-var vec__55905 = zprint.config.config_and_validate("CLI options",new_doc_map__$4,updated_map__$4,opts_cli);
-var updated_map__$5 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55905,(0),null);
-var new_doc_map__$5 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55905,(1),null);
-var cli_errors__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__55905,(2),null);
+var vec__56360 = zprint.config.config_and_validate("CLI options",new_doc_map__$4,updated_map__$4,opts_cli);
+var updated_map__$5 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56360,(0),null);
+var new_doc_map__$5 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56360,(1),null);
+var cli_errors__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__56360,(2),null);
 var all_errors = cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.str,cljs.core.interpose.cljs$core$IFn$_invoke$arity$2("\n",cljs.core.filter.cljs$core$IFn$_invoke$arity$2(cljs.core.identity,(new cljs.core.List(null,errors_rcfile,(new cljs.core.List(null,rc_errors,(new cljs.core.List(null,cwd_errors_rcfile,(new cljs.core.List(null,cwd_rc_errors,(new cljs.core.List(null,env_errors,(new cljs.core.List(null,prop_errors,(new cljs.core.List(null,errors_configfile,(new cljs.core.List(null,config_errors__$1,(new cljs.core.List(null,cli_errors__$1,null,(1),null)),(2),null)),(3),null)),(4),null)),(5),null)),(6),null)),(7),null)),(8),null)),(9),null)))));
 var all_errors__$1 = ((cljs.core.empty_QMARK_(all_errors))?null:all_errors);
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [updated_map__$5,new_doc_map__$5,all_errors__$1], null);

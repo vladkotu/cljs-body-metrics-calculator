@@ -44,7 +44,7 @@ goog.storage.mechanism.HTML5WebStorage.prototype.isAvailable = function() {
 };
 /** @override */ goog.storage.mechanism.HTML5WebStorage.prototype.get = function(key) {
   var value = this.storage_.getItem(key);
-  if (!goog.isString(value) && !goog.isNull(value)) {
+  if (typeof value !== "string" && value !== null) {
     throw goog.storage.mechanism.ErrorCode.INVALID_VALUE;
   }
   return value;
@@ -68,7 +68,7 @@ goog.storage.mechanism.HTML5WebStorage.prototype.isAvailable = function() {
       return key;
     }
     var value = storage.getItem(key);
-    if (!goog.isString(value)) {
+    if (typeof value !== "string") {
       throw goog.storage.mechanism.ErrorCode.INVALID_VALUE;
     }
     return value;
