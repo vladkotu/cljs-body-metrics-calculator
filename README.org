@@ -1,0 +1,25 @@
+* Body Metrics Calculator
+  Built on reagent/re-frame stack and is aim to help people, who want to
+  calculate different [[https://en.wikipedia.org/wiki/Allometry][allometry]] indexes in a one place.
+
+** List of currently available indexes
+   - Basal Metabolic Rate
+   - Body Adiposity Index (Body Shape Index)
+   - Body Fat Percentage
+   - Lean Body Mass
+   - Body Mass Index
+   - Waist to Hip Ratio
+
+** TODO list
+  - [X] Reagent
+  - [X] Material UI
+  - [X] Re-frame
+  - [X] Localization
+  - [X] Dark/Light theme switcher
+  - [X] Imperial/Metrics systems support
+  - [X] Real-time form validation flow based on specs
+  - [X] core.async jsonp implementation for language detection
+  - [ ] Store profile into Firebase DB
+  - [ ] Add more indices
+  - [ ] Store last form field on timeout
+  - [ ] Sticky footer
