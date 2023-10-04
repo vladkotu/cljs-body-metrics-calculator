@@ -68,9 +68,9 @@
      {:items [{:label    [:locale.en/label]
                :active?  (= :en @locale)
                :on-click #(rf/dispatch [::ev/locale :en])}
-              {:label    [:locale.ru/label]
-               :active?  (= :ru @locale)
-               :on-click #(rf/dispatch [::ev/locale :ru])}]}]))
+              {:label    [:locale.ua/label]
+               :active?  (= :ua @locale)
+               :on-click #(rf/dispatch [::ev/locale :ua])}]}]))
 
 (defn units-picker []
   (r/with-let [system (rf/subscribe [::s/system])]

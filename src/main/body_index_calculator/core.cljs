@@ -1,5 +1,6 @@
 (ns body-index-calculator.core
   (:require [reagent.core :as r]
+            [reagent.dom :as rm]
             [re-frame.core :as rf]
             [body-index-calculator.subscriptions]
             [body-index-calculator.events :as e]
@@ -12,7 +13,7 @@
     (js/console.log m)))
 
 (defn render []
-  (r/render [error-boundary [app]] (js/document.getElementById "core"))
+  (rm/render [error-boundary [app]] (js/document.getElementById "core"))
   (log "app render"))
 
 (defn instrument-specs []

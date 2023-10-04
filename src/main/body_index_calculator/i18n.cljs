@@ -71,8 +71,8 @@
         :locale {:label "Language"
                  :en    {:label "En"
                          :title "English"}
-                 :ru    {:label "Ru"
-                         :title "Russian"}}
+                 :ua    {:label "Ua"
+                         :title "Ukrainian"}}
 
         :theme {:label "Color Theme"
                 :light {:label "Light"}
@@ -92,38 +92,38 @@
                    :time :en.system.metric.units/time
                    :mass "lb"}}}}
 
-   :ru {:missing "Нэту тэкста"
-        :form    {:call-to-action "Измерьте свое тело"
-                  :hip            "Окружность бедер"
-                  :waist          "Обхват а талии"
-                  :height         "Рост"
-                  :weight         "Вес"
-                  :age            "Возраст"
-                  :gender         {:label  "Пол"
-                                   :male   "Мужской"
-                                   :female "Женский"}}
-        :locale  {:label "Выбор языка"
+   :ua {:missing "Текст відсутній"
+        :form    {:call-to-action "Поміряйте своє тіло"
+                  :hip            "Обхват стегон"
+                  :waist          "Обхват талії"
+                  :height         "Зріст"
+                  :weight         "Вага"
+                  :age            "Вік"
+                  :gender         {:label  "Стать"
+                                   :male   "Чоловіча"
+                                   :female "Жіноча"}}
+        :locale  {:label "Оберіть мову"
                   :en    {:label "En"
-                          :title "Английский"}
-                  :ru    {:label "Ru"
-                          :title "Русский"}}
+                          :title "Англійска"}
+                  :ua    {:label "Ua"
+                          :title "Українська"}}
 
-        :theme {:label "Цветовая тема"
-                :light {:label "Светлая"}
-                :dark  {:label "Темная"}}
+        :theme {:label "Кольорова схема"
+                :light {:label "Світла"}
+                :dark  {:label "Темна"}}
 
-        :system {:label "Система исчисления"
+        :system {:label "Система числення"
                  :metric
-                 {:label "Метрическая"
+                 {:label "Метричнa"
                   :units
                   {:len  "cм"
-                   :time "лет"
+                   :time "роки"
                    :mass "кг"}
                   :imperial
-                  {:label "Имперская"
+                  {:label "Імперская"
                    :units
-                   {:len  "футы"
-                    :time :ru.system.metric.units/time
-                    :mass "фунты"}}}}}})
+                   {:len  "фути"
+                    :time :ua.system.metric.units/time
+                    :mass "фунти"}}}}}})
 
 (def tr (partial tempura/tr {:dict local-dictionary}))

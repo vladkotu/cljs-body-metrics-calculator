@@ -76,7 +76,7 @@
                                ::waist]))
 
 (s/def ::system #{:metric :imperial})
-(s/def ::locale #{:en :ru})
+(s/def ::locale #{:en :ua})
 (s/def ::theme #{:light :dark})
 (s/def ::db (s/keys :req-un [::form
                              ::system
