@@ -1,8 +1,11 @@
 * Body Metrics Calculator
+
+ https://vladkotu.github.io/cljs-body-metrics-calculator/
+
   Built on reagent/re-frame stack and is aim to help people, who want to
   calculate different [[https://en.wikipedia.org/wiki/Allometry][allometry]] indexes in a one place.
 
-** List of currently available indexes
+** Currently available indexes
    - Basal Metabolic Rate
    - Body Adiposity Index (Body Shape Index)
    - Body Fat Percentage
